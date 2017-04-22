@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ModePasse SecuRest</string>
+
+    <string name="texte_accueil">Gestion de comptes et mots de passe</string>
+
+    <string name="analysor">Analyser</string>
+    <string name="generator">Générer</string>
+
+    <string name="connexion">Connexion</string>
+    <string name="creation">Création</string>
+
+
+</resources>

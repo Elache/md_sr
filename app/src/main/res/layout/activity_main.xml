@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android=
+    "http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cadnas"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+
+    <TextView
+        android:id=
+            "@+id/accueilTitre"
+        android:layout_width="match_parent"
+        android:layout_height="217dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="cursive"
+        android:gravity="top|center_horizontal"
+        android:text="@string/texte_accueil"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id=
+            "@+id/accueilTexte"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:fontFamily="monospace"
+        android:gravity="top|center_horizontal"
+        android:text="@string/texte_accueil"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width=
+            "match_parent"
+        android:layout_height=
+            "50dp"
+        android:orientation=
+            "horizontal">
+
+        <EditText
+            android:id=
+                "@+id/saisiePass"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.37"
+            android:background="@drawable/linearborder"
+            android:inputType="textPassword"
+            android:text="*************"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id=
+                "@+id/connexion"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.36"
+            android:background="@drawable/linearborder"
+            android:contextClickable="true"
+            android:text="@string/connexion"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width=
+            "match_parent"
+        android:layout_height=
+            "match_parent"
+        android:orientation=
+            "horizontal"
+        android:weightSum=
+            "1">
+
+
+        <Button
+            android:id=
+                "@+id/analysor"
+            android:layout_width="75dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ico_analysor"
+            />
+
+        <Button
+            android:id="@+id/creation"
+            android:layout_width="181dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@android:color/transparent"
+
+            android:text="@string/creation"
+            android:textAlignment="textEnd"
+
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id=
+                "@+id/generator"
+            android:layout_width="75dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ico_generator"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
