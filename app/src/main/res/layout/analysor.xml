@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cadnas_fond"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:weightSum="1">
+
+
+    <!-- Icone et titre -->
+    <TextView
+        android:text="@string/analysor_titre"
+        android:id="@+id/generator_titre"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:textAppearance="@style/titre2"
+        android:drawableLeft="@drawable/ico_analysor" />
+
+
+    <!-- saisie a tester -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.09">
+
+        <!-- a tester titre -->
+        <TextView
+            android:id="@+id/titre_aTester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aTester"
+            android:textAppearance="@style/texte_simple" />
+
+
+        <!-- exclusions saisie caracteres -->
+        <EditText
+            android:id="@+id/saisie_aTester"
+            android:layout_width="wrap_content"
+            android:layout_height="20sp"
+            android:layout_gravity="start"
+            android:background="@color/champ"
+            android:hint="@string/aTester_indic"
+            android:inputType="text"
+            android:textAppearance="@style/texte_bleu" />
+
+    </LinearLayout>
+
+    <!-- resultat graphique -->
+    <ProgressBar
+        android:id="@+id/resultat_graphique"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="left"
+        android:background="@drawable/echelle_analyse" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/resultat_trfaible"
+        android:layout_width="80dp"
+        android:layout_height="20sp"
+        android:layout_gravity="start"
+        android:text="@string/forcepasse_tresfaible"
+        android:textAppearance="@style/texte_bleu" />
+
+    <TextView
+        android:id="@+id/resultat_faible"
+        android:layout_width="80dp"
+        android:layout_height="20sp"
+        android:layout_gravity="start"
+        android:text="@string/forcepasse_faible"
+        android:textAppearance="@style/texte_bleu" />
+
+    <TextView
+        android:id="@+id/resultat_accept"
+        android:layout_width="80dp"
+        android:layout_height="20sp"
+        android:layout_gravity="start"
+        android:text="@string/forcepasse_acceptable"
+        android:textAppearance="@style/texte_bleu" />
+
+    <TextView
+        android:id="@+id/resultat_bon"
+        android:layout_width="80dp"
+        android:layout_height="20sp"
+        android:layout_gravity="start"
+        android:text="@string/forcepasse_bon"
+        android:textAppearance="@style/texte_bleu" />
+
+    </LinearLayout>
+
+</LinearLayout>

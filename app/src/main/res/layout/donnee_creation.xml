@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cadnas_fond"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:weightSum="1">
+
+    <!-- titre -->
+    <TextView
+        android:id="@+id/donnee_creation"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="@string/donnee_titre"
+        android:textAppearance="@style/titre2" />
+
+    <!-- Encadré du formulaire -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/linearborder">
+
+        <!-- nom donnee -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- intitule -->
+            <TextView
+                android:id="@+id/donnee_titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donnee_nom"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- champ saisie -->
+            <EditText
+                android:id="@+id/donnee_nom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/champ"
+                android:hint="@string/invite_remplir"
+                android:inputType="text"
+                android:textAppearance="@style/texte_bleu" />
+        </LinearLayout>
+
+
+        <!--  mot de passe -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- intitule -->
+            <TextView
+                android:id="@+id/donnee_pass_titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donnee_passe"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- champ saisie -->
+            <EditText
+                android:id="@+id/donnee_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/champ"
+                android:hint="@string/invite_remplir"
+                android:inputType="text"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- intitule confirm -->
+            <TextView
+                android:id="@+id/donnee_confirmer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pass_confirm"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- champ confirm -->
+            <EditText
+                android:id="@+id/donnee_pass2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/champ"
+                android:hint="@string/invite_remplir"
+                android:inputType="text"
+                android:textAppearance="@style/texte_bleu" />
+        </LinearLayout>
+
+
+        <!--  site web -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- intitule -->
+            <TextView
+                android:id="@+id/donnee_web_titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donnee_web"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- champ saisie -->
+            <EditText
+                android:id="@+id/donnee_web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/champ"
+                android:hint="@string/invite_remplir"
+                android:inputType="text"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- intitule -->
+            <TextView
+                android:id="@+id/donnee_web_url_titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donnee_web_url"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- champ saisie -->
+            <EditText
+                android:id="@+id/donnee_web_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/champ"
+                android:hint="@string/invite_remplir"
+                android:inputType="textUri"
+                android:textAppearance="@style/texte_bleu" />
+        </LinearLayout>
+
+
+        <!--  identifiant -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- intitule -->
+            <TextView
+                android:id="@+id/donnee_id_titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donnee_identifiant"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- champ saisie -->
+            <EditText
+                android:id="@+id/donnee_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/champ"
+                android:hint="@string/invite_remplir"
+                android:inputType="textVisiblePassword"
+                android:textAppearance="@style/texte_bleu" />
+        </LinearLayout>
+
+
+        <!--  mail -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- intitule -->
+            <TextView
+                android:id="@+id/donnee_mail_titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donnee_mail"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- champ saisie -->
+            <EditText
+                android:id="@+id/donnee_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/champ"
+                android:hint="@string/invite_remplir"
+                android:inputType="textEmailAddress"
+                android:textAppearance="@style/texte_bleu" />
+        </LinearLayout>
+
+
+        <!--  question secrete -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- intitule -->
+            <TextView
+                android:id="@+id/donnee_quest_titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donnee_question"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- champ saisie -->
+            <EditText
+                android:id="@+id/donnee_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/champ"
+                android:hint="@string/invite_remplir"
+                android:inputType="text"
+                android:textAppearance="@style/texte_bleu" />
+        </LinearLayout>
+
+
+
+        <!-- note additionnelle  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- intitule -->
+            <TextView
+                android:id="@+id/donnee_notes_titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donnee_note"
+                android:textAppearance="@style/texte_bleu" />
+            <!-- champ saisie -->
+            <EditText
+                android:id="@+id/donnee_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/champ"
+                android:hint="@string/invite_remplir"
+                android:inputType="text"
+                android:textAppearance="@style/texte_bleu" />
+        </LinearLayout>
+
+
+        <!-- Titre bouton creer -->
+        <TextView
+            android:id="@+id/creer_bouton_titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/texte_bleu"
+            android:text="@string/creation" />
+
+        <!-- bouton creer -->
+        <Button
+            android:id="@+id/creer_bouton"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:background="@drawable/cadnas" />
+
+    </LinearLayout>
+
+</LinearLayout>

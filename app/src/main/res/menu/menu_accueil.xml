@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/connexionMenu"
+        android:title="@string/connexion"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/creationMenu"
+        android:title="@string/creation"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/generatorMenu"
+        android:icon="@drawable/ico_generator"
+        android:title="@string/generator"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/analysorMenu"
+        android:icon="@drawable/ico_analysor"
+        android:title="@string/analysor"
+        app:showAsAction="never"  />
+
+</menu>

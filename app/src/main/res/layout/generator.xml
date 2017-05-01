@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:weightSum="1"
+    android:background="@color/blanc" >
+
+
+    <!-- Icone et titre -->
+    <TextView
+        android:text="@string/generator_titre"
+        android:id="@+id/generator_titre"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:textAppearance="@style/titre2"
+        android:drawableLeft="@drawable/ico_generator" />
+
+
+
+
+    <!-- Champ du mot de passe genere -->
+    <TextView
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAppearance="@style/passw"
+        android:layout_weight="0.06"
+
+        android:text="@string/exemple_passwd" />
+
+
+    <!-- Titre Parametrage -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/generator_parametres"
+        android:textAppearance="@style/titre2"
+        android:layout_weight="0.07" />
+
+
+    <!-- Encadrement -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/linearborder"
+        android:orientation="vertical"
+        android:layout_weight="0.06">
+
+        <!-- LONGUEUR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Longueur titre -->
+            <TextView
+                android:id="@+id/longueur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/generator_longueur"
+                android:textAppearance="@style/texte_simple" />
+
+            <!-- Longueur champ saisie -->
+            <EditText
+                android:id="@+id/saisie_longueur"
+                android:layout_width="30dp"
+                android:layout_height="20sp"
+                android:layout_gravity="start"
+                android:background="@color/champ"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <!-- Types choisis -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- minuscules -->
+            <CheckBox
+                android:id="@+id/chk_minusc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/caracteres_min"
+                android:textAppearance="@style/texte_simple"
+                android:textColor="@color/colorPrimary" />
+
+            <!-- majuscules -->
+            <CheckBox
+                android:id="@+id/chk_majusc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/caracteres_maj"
+                android:textAppearance="@style/texte_simple"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- accents -->
+            <CheckBox
+                android:id="@+id/chk_accent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/caracteres_accents"
+                android:textAppearance="@style/texte_simple"
+                android:textColor="@color/colorPrimary" />
+
+            <!-- speciaux -->
+            <CheckBox
+                android:id="@+id/chk_speciaux"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/caracteres_speciaux"
+                android:textAppearance="@style/texte_simple"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- chiffres -->
+            <CheckBox
+                android:id="@+id/chk_chiffres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/caracteres_chiffres"
+                android:textAppearance="@style/texte_simple"
+                android:textColor="@color/colorPrimary" />
+
+
+        </LinearLayout>
+
+
+        <!-- Caracteres exclus -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.04"
+            android:orientation="horizontal">
+
+            <!-- exclusions titre -->
+            <TextView
+                android:id="@+id/exclus_tit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/generator_exclure"
+                android:textAppearance="@style/texte_simple" />
+
+
+            <!-- exclusions saisie caracteres -->
+            <EditText
+                android:id="@+id/exclus_saisie"
+                android:layout_width="wrap_content"
+                android:layout_height="20sp"
+                android:layout_gravity="start"
+                android:background="@color/champ"
+                android:hint="@string/generator_exclure_indic"
+                android:inputType="text"
+                android:textAppearance="@style/texte_simple" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="3.04">
+
+        <!-- Titre generer -->
+        <TextView
+            android:id="@+id/titre_generer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/texte_bleu"
+            android:text="@string/generator" />
+
+        <!-- bouton generer -->
+        <Button
+            android:id="@+id/bouton_generer"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:background="@drawable/cadnas" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- resultat graphique -->
+    <ProgressBar
+        android:id="@+id/resultat_graphique"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/echelle_analyse" />
+
+</LinearLayout>

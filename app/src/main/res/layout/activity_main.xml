@@ -27,7 +27,7 @@
         android:id=
             "@+id/accueilTexte"
         android:layout_width="match_parent"
-        android:layout_height="123dp"
+        android:layout_height="90dp"
         android:fontFamily="monospace"
         android:gravity="top|center_horizontal"
         android:text="@string/texte_accueil"
@@ -78,49 +78,54 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/creation"
+        android:layout_width="101dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right"
+        android:background="@android:color/transparent"
+
+        android:text="@string/creation"
+
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/titre2"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+
     <LinearLayout
-        android:layout_width=
-            "match_parent"
-        android:layout_height=
-            "match_parent"
-        android:orientation=
-            "horizontal"
-        android:weightSum=
-            "1">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
 
         <Button
-            android:id=
-                "@+id/analysor"
-            android:layout_width="75dp"
+            android:id="@+id/analysor"
+            android:layout_width="115dp"
             android:layout_height="64dp"
             android:layout_gravity="center"
-            android:background="@drawable/ico_analysor"
-            />
+            android:background="@drawable/ico_analysor" />
+
 
         <Button
-            android:id="@+id/creation"
-            android:layout_width="181dp"
-            android:layout_height="50dp"
+            android:id="@+id/generator"
+            android:layout_width="115dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ico_generator" />
+
+
+        <TextView
+            android:id=
+                "@+id/codeTestEnDur"
+            android:text="        f_4iRjçE&amp;d"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_gravity="bottom"
-            android:background="@android:color/transparent"
-
-            android:text="@string/creation"
-            android:textAlignment="textEnd"
-
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id=
-                "@+id/generator"
-            android:layout_width="75dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:background="@drawable/ico_generator"
-            />
+            android:textColor="@android:color/background_dark"
+             />
 
     </LinearLayout>
 

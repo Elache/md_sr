@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <!-- cadre de formulaire -->
+    <color name="fond_form">#bbfa7c</color>
+
+    <!-- champ de saisie -->
+    <color name="champ">#f0f0f0</color>
+
+
+    <color name="blanc">#fff</color>
+    <color name="noir">#000</color>
+
+    <color name="titre1">#3436AE</color>
+    <color name="titre2">#3b3bda</color>
+
+
+</resources>
