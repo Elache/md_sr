@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import fr.hibon.modepassesecurest.outipasses.*;
-import fr.hibon.modepassesecurest.utilisateur.*;
+import fr.hibon.modepassesecurest.compte.*;
 
 /**
  */
@@ -59,13 +59,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String passeSaisi = champPasse.getText().toString();
                 boolean passeValide = passeSaisi.equals("123456") ;
                 if (passeValide)
-                    mIn = new Intent(MainActivity.this, Connecte.class) ;
+                    mIn = new Intent(MainActivity.this, ConnecteAccueilInterface.class) ;
                 else
                     mIn = new Intent(MainActivity.this, MainActivity.class);
                 break ;
 
             case(R.id.creation):
-                mIn = new Intent(MainActivity.this, Creation.class) ;
+                mIn = new Intent(MainActivity.this, CreationCompteInterface.class) ;
                 break ;
         }
         startActivity(mIn) ;
@@ -89,14 +89,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String passeSaisi = champPasse.getText().toString();
                 boolean passeValide = passeSaisi.equals("123456") ;
                 if (passeValide){
-                    mIn = new Intent(MainActivity.this, Connecte.class) ;
+                    mIn = new Intent(MainActivity.this, ConnecteAccueilInterface.class) ;
                     return true;
                 }
                 else
                     mIn = new Intent(MainActivity.this, MainActivity.class);
                 return false ;
             case R.id.creationMenu:
-                mIn = new Intent(MainActivity.this, Creation.class) ;
+                mIn = new Intent(MainActivity.this, CreationCompteInterface.class) ;
                 return true;
             case R.id.generatorMenu:
                 mIn = new Intent(MainActivity.this, Generator.class) ;

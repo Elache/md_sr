@@ -29,8 +29,8 @@
 
         <activity android:name=".outipasses.Analysor" />
         <activity android:name=".outipasses.Generator" />
-        <activity android:name=".utilisateur.Connecte" />
-        <activity android:name=".utilisateur.Creation" />
+        <activity android:name=".compte.ConnecteAccueilInterface" />
+        <activity android:name=".compte.CreationCompteInterface" />
 
     </application>
 

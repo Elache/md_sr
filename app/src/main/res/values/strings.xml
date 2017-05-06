@@ -10,8 +10,11 @@
 
     <!-- param generaux -->
     <string name="creation">Création</string>
-    <string name="invite_remplir">.........</string>
     <string name="pass_confirm">Saisir à nouveau</string>
+
+    <string name="invite_remplir">...........................</string>
+    <string name="invite_remplir_multilines">...........................\n...........................</string>
+    <string name="invite_deroule_categorie">Choisir une catégorie</string>
 
     <!-- ####################### -->
     <!-- COMPTE-UTILISATEUR -->
@@ -42,7 +45,11 @@
     <!-- DONNEE -->
     <!-- ####################### -->
 
-    <string name="donnee_titre">Enregistrement d\'une Donnée</string>
+    <string name="donnee_creation">Enregistrement d\'une Donnée</string>
+    <string name="donnee_consultation">Consultation d\'une Donnée</string>
+
+    <string name="donnee_passe_clair">Afficher le mot de passe</string>
+
 
     <string name="donnee_nom">Nom / identifiant</string>
     <string name="donnee_passe">Mot de passe</string>
@@ -52,7 +59,7 @@
     <string name="donnee_mail">E-mail associé</string>
     <string name="donnee_question">Question secrète</string>
     <string name="donnee_note">Note personnelle</string>
-
+    <string name="donnee_categorie">Catégorie</string>
 
 
     <!-- ####################### -->
