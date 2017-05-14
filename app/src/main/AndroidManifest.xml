@@ -27,10 +27,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".outipasses.Analysor" />
-        <activity android:name=".outipasses.Generator" />
-        <activity android:name=".compte.ConnecteAccueilInterface" />
-        <activity android:name=".compte.CreationCompteInterface" />
+        <activity android:name=".ihm.outipasses.Analysor" />
+        <activity android:name=".ihm.outipasses.Generator" />
+        <activity android:name=".ihm.compte.ConnecteAccueilInterface" />
+        <activity android:name=".ihm.compte.CreationCompteInterface" />
 
     </application>
 

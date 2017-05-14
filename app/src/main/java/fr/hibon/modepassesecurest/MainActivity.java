@@ -8,8 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import fr.hibon.modepassesecurest.outipasses.*;
-import fr.hibon.modepassesecurest.compte.*;
+
+import fr.hibon.modepassesecurest.ihm.outipasses.Analysor;
+import fr.hibon.modepassesecurest.ihm.outipasses.Generator;
+import fr.hibon.modepassesecurest.ihm.compte.*;
 
 /**
  */
