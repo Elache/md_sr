@@ -27,13 +27,13 @@ public class CompteUtilisateur {
 	private ChainePasse passeCompleteInternet;
 
 	/**
-	 * Constructeur priv� : PDC Singleton
+	 * Constructeur priv&eacute; : PDC Singleton
 	 */
 	private CompteUtilisateur() {
 	}
 
 	/**
-	 * Acc&egrave;s � l'instance unique de CompteUtilisateur OU cr&eacute;ation
+	 * Acc&egrave;s &agrave; l'instance unique de CompteUtilisateur OU cr&eacute;ation
 	 * avec informations compl&egrave;tes
 	 * @return instanceSingleton instance unique de CompteUtilisateur
 	 */
@@ -97,11 +97,11 @@ public class CompteUtilisateur {
 		passeCompleteInternet = null;
 	}
 
-	// ////////// Acc�s INTERNET //////////////////
+	// ////////// Accès INTERNET //////////////////
 
 	/**
 	 * V&eacute;rifie si au moins un mot de passe a une s&eacute;curit&eacute;
-	 * suffisante pour connexion � la base de donn&eacute;es en ligne <BR>
+	 * suffisante pour connexion &agrave; la base de donn&eacute;es en ligne <BR>
 	 * Si aucun mot de passe adapt&eacute;, mot de passe compl&eacute;t&eacute;
 	 * jusque longueur 10 et stock&eacute; dans attribut passeCompleteInternet
 	 * 
@@ -149,7 +149,7 @@ public class CompteUtilisateur {
 			this.lesRepertoires.remove(r);
 			return;
 		}
-		// TODO g�rer exception
+		// TODO gérer exception
 		throw new CompteException(ErreurDetail.RepertoireNExistePas);
 	}
 
@@ -185,7 +185,7 @@ public class CompteUtilisateur {
 	 *             si plusieurs r&eacute;pertoires de m&ecirc;me nom
 	 */
 	public Repertoire trouverRepert(String nomRep) throws CompteException {
-		// TODO g�rer exception
+		// TODO gérer exception
 		int doublons = 0;
 		Repertoire enCours = null;
 		for (Repertoire rep : lesRepertoires) {
@@ -194,7 +194,7 @@ public class CompteUtilisateur {
 				enCours = rep;
 			}
 			if (doublons > 1) {
-				// TODO g�rer exception
+				// TODO gérer exception
 				throw new CompteException(ErreurDetail.NomRepertoireAmbigu);
 			}
 		}

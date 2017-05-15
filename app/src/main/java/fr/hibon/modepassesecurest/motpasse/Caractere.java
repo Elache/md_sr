@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Caractere d&eacute;finit 5 types de caract&egrave; (110 au total) <BR>
+ * Caractere d&eacute;finit 5 types de caract&egrave;res (110 au total) <BR>
  * Chiffres, lettres majuscules et minuscules, lettres accentu&eacute;es, caract&egrave;res
  * sp&eacute;ciaux.
  * 
@@ -18,7 +18,7 @@ public class Caractere {
 	private static final Integer[] MAJUSCULES = { 65, 90 }; // 26
 	private static final Integer[] MINUSCULES = { 97, 122 }; // 26
 
-	// Caract�res accentu�s et sp�ciaux : listes exhaustives ordonn�es
+	// Caractères accentués et spéciaux : listes exhaustives ordonnées
 	private static final Integer[] ACCENTCEDIL = { 224, 226, 231, 232, 233, 234, 235, 238, 239, 244, 249, 251 }; // 12
 	private static final Integer[] SPECIAUX = caracteresSpeciaux(); // 36
 
@@ -134,7 +134,7 @@ public class Caractere {
 		Integer[] poolCompletTab ; 
 		ArrayList<Integer> poolEnCoursAL = new ArrayList<>() ; 
 		poolEnCoursAL.addAll((Arrays.asList(pool)));	
-		// d�doublonne  
+		// dédoublonne
 		for (Integer inc : inclusions) {
 			if (!poolEnCoursAL.contains(inc)) {
 				poolEnCoursAL.add(inc) ; 

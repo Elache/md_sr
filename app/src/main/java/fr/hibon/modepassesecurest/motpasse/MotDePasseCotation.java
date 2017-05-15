@@ -148,7 +148,7 @@ public class MotDePasseCotation {
 	private String bilanTexte() {
 		switch (valeurAnalyse) {
 		case 1:
-			return "Tr�s faible";
+			return "Très faible";
 		case 2:
 			return "Faible";
 		case 3:
@@ -184,7 +184,7 @@ public class MotDePasseCotation {
 
 	private String classifAnssi() {
 		if (this.forceBits <= 64)
-			return "tr�s faible";
+			return "très faible";
 		if (this.forceBits <= 80)
 			return "faible";
 		if (this.forceBits <= 100)

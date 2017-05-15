@@ -2,7 +2,7 @@ package fr.hibon.modepassesecurest.compte.exception;
 
 	// todo 
 	/**
-	 * Cette classe regroupe une enum de XXXXXXXXXX types d'erreur <BR>
+	 * Cette classe regroupe une enum de 5 types d'erreur <BR>
 	 * 
 	 * */
 	public class CompteException extends Exception {

@@ -59,7 +59,7 @@ public class Repertoire {
 			lesDonnees.remove(d);
 			return ;
 		}
-		// TODO  g�rer exception
+		// TODO  gérer exception
 		throw new CompteException(ErreurDetail.DonneeNExistePas) ;
 	}
 
