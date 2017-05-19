@@ -133,7 +133,7 @@ public class ChiffeMode {
 
     /**
      * Ajoute un pr&eacute;fixe &agrave; la cha&icirc;ne &agrave; chiffrer (constante de ChiffeMode)
-     * @param passe passe &àgrave; pr&eacute;fixer
+     * @param passe passe &agrave; pr&eacute;fixer
      * @return passe pr&eacute;fix&eacute;
      */
     protected String prefixer(String passe) {
@@ -145,7 +145,7 @@ public class ChiffeMode {
 
     /**
      * Retire le pr&eacute;fixe ajout&eacute; (constante de ChiffeMode)
-     * @param passe passe &àgrave; dé-pr&eacute;fixer
+     * @param passe passe &agrave; d&eacute;pr&eacute;fixer
      * @return passe sans pr&eacute;fixe
      */
     protected String dePrefixer(String passe) {
