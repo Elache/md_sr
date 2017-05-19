@@ -1,20 +1,13 @@
 package fr.hibon.modepassesecurest.compte.utiles;
 
-import org.junit.Test;
 
-import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Teste la Classe ChiffeMode
- * <BR>A cette fin, les m&eacute;thodes de ChiffeMode ont &eacute;t&eacute; d&eacute;clar&eacute;e <I>protected</I>
- *
  *
  */
 public class ChiffeModeTest {
@@ -22,14 +15,6 @@ public class ChiffeModeTest {
 
     public ChiffeModeTest() {
     }
-
-
-
-
-
-
-    // //////// PREFIXER  ////////////////////
-    
 
 
     // //////// PREFIXER  ////////////////////

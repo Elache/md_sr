@@ -22,23 +22,25 @@ public class ChainePasse {
 		avecSpecial = false;
 	}
 	
-	// Construit un ChainePasse � partir d'une chaine et analyse types caract�res pr�sents
+	// Construit un ChainePasse à partir d'une chaine et analyse types caractères présents
 	public static ChainePasse composition(String aTester) {
 		ChainePasse mp = new ChainePasse();
 		if (aTester == null)
 			return mp ;
 		mp.chaineDuPasse = aTester ;
 		mp.longueur = aTester.length() ;
+		Caractere valCharATester = new Caractere(0) ;
 		for (int i = 0; i < aTester.length(); i++) {
-			if (Caractere.estUnChiffre(aTester.charAt(i)))
+			valCharATester.setLaValeurDuChar(aTester.charAt(i)) ;
+			if (valCharATester.estUnChiffre())
 				mp.avecChiffre = true;
-			if (Caractere.estUneMinuscule(aTester.charAt(i)))
+			if (valCharATester.estUneMinuscule())
 				mp.avecMinuscule = true;
-			if (Caractere.estUneMajuscule(aTester.charAt(i)))
+			if (valCharATester.estUneMajuscule())
 				mp.avecMajuscule = true;
-			if (Caractere.estUnAccentCedil(aTester.charAt(i)))
+			if (valCharATester.estUnAccentCedil())
 				mp.avecAccentCedil = true;
-			if (Caractere.estUnSpecial(aTester.charAt(i)))
+			if (valCharATester.estUnSpecial())
 				mp.avecSpecial = true;
 		}
 		return mp;
@@ -60,7 +62,7 @@ public class ChainePasse {
 	}
 
 
-	// Generer ChainePasse Par d�faut
+	// Generer ChainePasse Par défaut
 	
 	public static ChainePasse genererMotDePasse() {
 		return genererMotDePasse(10);
@@ -117,7 +119,7 @@ public class ChainePasse {
 		ChainePasse mp = new ChainePasse();
 		Integer[] pool = Caractere.poolCaracteres(chiffres, minusc, majusc, accent, special) ;
 		
-		// mot de passe de 1 � 60 caract�res
+		// mot de passe de 1 à 60 caractères
 		if (n < 1)
 			n = 1; 	
 		if (n > 60)

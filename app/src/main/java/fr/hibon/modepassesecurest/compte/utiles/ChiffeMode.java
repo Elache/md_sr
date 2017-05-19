@@ -81,7 +81,7 @@ public class ChiffeMode {
      *
      * @return SecretKey g&eacute;n&eacute;r&eacute;e ou null si NoSuchAlgorithmException
      */
-    private SecretKey genererCle() throws NoSuchAlgorithmException {
+    protected SecretKey genererCle() throws NoSuchAlgorithmException {
         SecretKey cleSK = null;
         KeyGenerator kyGen = KeyGenerator.getInstance("AES");
         kyGen.init(128);

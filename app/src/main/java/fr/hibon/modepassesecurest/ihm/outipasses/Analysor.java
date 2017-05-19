@@ -33,14 +33,15 @@ public class Analysor extends AppCompatActivity  implements View.OnClickListener
         EditText champPasse = (EditText)findViewById(R.id.saisieMP);
         String message  = champPasse.getText().toString();
 
-        ChiffeMode ch = ChiffeMode.chiffrer(message) ;
+        ChiffeMode ch = new ChiffeMode() ;
+        ch.chiffrer(message) ;
 
         TextView total = (TextView) findViewById(R.id.aff);
-        total.setText(message + " : " + ch.getPasseCode() + " cle " + ch.getCleCode());
+//        total.setText(message + " : " + ch.getPasseCode() + " cle " + ch.getCleCode());
+        total.setText(ch.getPasseCode().length() + " " + ch.getPasseCode());
 
-
-        TextView tot = (TextView) findViewById(R.id.aff2);
-        tot.setText(message + " : " + ChiffeMode.dechiffrer(ch.getPasseCode(),ch.getCleCode()));
+ //       TextView tot = (TextView) findViewById(R.id.aff2);
+ //       tot.setText(message + " : " + ch.dechiffrer(ch.getPasseCode(),ch.getCleCode()));
 
 
     }

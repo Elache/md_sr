@@ -95,7 +95,8 @@ public class Donnee {
      * @return mot de passe en clair (String)
      */
     public String afficherMotPasse() {
-        return ChiffeMode.dechiffrer(this.passeDonneeChiffre, this.cleChiffrementDonnee);
+        ChiffeMode cm = new ChiffeMode() ;
+        return cm.dechiffrer(this.passeDonneeChiffre, this.cleChiffrementDonnee);
     }
 
 
@@ -108,7 +109,8 @@ public class Donnee {
      * @return Objet ChiffeMode (passe chiffr&eacute; + cl&eacute;)
      */
     public void chiffrerMotPasse() {
-        ChiffeMode cm = ChiffeMode.chiffrer(this.passeDonnee);
+        ChiffeMode cm = new ChiffeMode() ;
+        cm.chiffrer(this.passeDonnee);
         this.passeDonneeChiffre = cm.getPasseCode();
         this.cleChiffrementDonnee = cm.getCleCode();
     }

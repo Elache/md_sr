@@ -1,6 +1,6 @@
 package fr.hibon.modepassesecurest.compte.exception;
 
-	// todo 
+
 	/**
 	 * Cette classe regroupe une enum de 5 types d'erreur <BR>
 	 * 

@@ -13,6 +13,8 @@ import java.util.Arrays;
  */
 public class Caractere {
 
+	int laValeurDuChar ;
+
 	// Chiffres, Majuscules et Minuscules : plage [codes ASCII]
 	private static final Integer[] CHIFFRES = { 48, 57 }; // 10
 	private static final Integer[] MAJUSCULES = { 65, 90 }; // 26
@@ -22,43 +24,48 @@ public class Caractere {
 	private static final Integer[] ACCENTCEDIL = { 224, 226, 231, 232, 233, 234, 235, 238, 239, 244, 249, 251 }; // 12
 	private static final Integer[] SPECIAUX = caracteresSpeciaux(); // 36
 
-	
+
+	public Caractere(int valChar) {
+		this.laValeurDuChar = valChar ;
+	}
+
+
 	/////////////// TESTER LE TYPE D'UN CARACTERE ///////////////
 	
-	public static boolean estUnChiffre(char car) {
-		return estDansPlage(car, CHIFFRES);
+	public boolean estUnChiffre() {
+		return estDansPlage(CHIFFRES);
 	}
 
-	public static boolean estUneMinuscule(char car) {
-		return estDansPlage(car, MINUSCULES);
+	public boolean estUneMinuscule() {
+		return estDansPlage(MINUSCULES);
 	}
 
-	public static boolean estUneMajuscule(char car) {
-		return estDansPlage(car, MAJUSCULES);
+	public boolean estUneMajuscule() {
+		return estDansPlage(MAJUSCULES);
 	}
 
-	public static boolean estUnAccentCedil(char c) {
-		return estDansTable(c, ACCENTCEDIL);
+	public boolean estUnAccentCedil() {
+		return estDansTable(ACCENTCEDIL);
 	}
 
-	public static boolean estUnSpecial(char c) {
-		return estDansTable(c, SPECIAUX);
+	public boolean estUnSpecial() {
+		return estDansTable(SPECIAUX);
 	}
 
 	// // // // // // // // //
-	private static boolean estDansTable(char caractere, Integer[] table) {
+	private boolean estDansTable(Integer[] table) {
 		for (int i = 0; i < table.length; i++) {
-			if ((int) table[i] > (int) caractere)
+			if (table[i] > this.laValeurDuChar)
 				return false;
-			if ((int) table[i] == (int) caractere)
+			if (table[i] == this.laValeurDuChar)
 				return true;
 		}
 		return false;
 	}
 
 	// // // // // // // // //
-	private static boolean estDansPlage(char caractere, Integer[] plage) {
-		if (caractere >= plage[0] && caractere <= plage[1]) {
+	private boolean estDansPlage(Integer[] plage) {
+		if (this.laValeurDuChar >= plage[0] && this.laValeurDuChar <= plage[1]) {
 			return true;
 		}
 		return false;
@@ -208,9 +215,17 @@ public class Caractere {
 	// outil : developper table bornee
 	private static ArrayList<Integer> developperTableBornes(Integer[] aDevelop){
 		ArrayList<Integer> a = new ArrayList<>() ;
-		
-		return a ;	
+		for(int i = 0 ; i < aDevelop.length ; i++) {
+            a.add(i);
+        }
+		return a ;
 	}
-	
+
+	// setter valeur
+	public void setLaValeurDuChar(int valChar) {
+		this.laValeurDuChar = valChar ;
+	} ;
+
+
 }
 

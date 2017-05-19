@@ -62,6 +62,13 @@ public class DonneeTest {
 	// TODO Tests Méthode d'affichage en clair (mocked / Base64)
 	// encodeToString et decode in android.util.Base64 not mocked.
 
+	/*@Test
+	public void afficherMotPasse_nominal() {
+		String pass = "rz'ssNFéè&" ;
+		ChiffeMode ch = new ChiffeMode();
+		ch.chiffrer(pass) ;
+		assertEquals(pass, ch.affic)
+	}*/
 
 
 	// //////////// Recherche dans champs texte de la Donnéee : ////////////////
