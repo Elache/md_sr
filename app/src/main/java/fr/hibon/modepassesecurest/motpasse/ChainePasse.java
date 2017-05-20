@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Attributs : chaine, longueur, caracterisation de la chaine (types presents /
  * absents) Services : - analyser composition d'une chaine <BR>
- * - generer une chaine pour mot de passe : par défaut (10 caracteres parmi 110)
+ * - generer une chaine pour mot de passe : par dÃ©faut (10 caracteres parmi 110)
  * ; de longueur parametr&eacute;e ; avec des caracteres specifiques &agrave;
  * inclure et/ou exclure <BR>
  * - completer un mot de passe pour augmenter sa force
@@ -29,12 +29,12 @@ public class ChainePasse {
 		avecSpecial = false;
 	}
 
-	// Construit un ChainePasse à partir d'une chaine et analyse types
-	// caractères présents
+	// Construit un ChainePasse Ã  partir d'une chaine et analyse types
+	// caractÃ¨res prÃ©sents
 	/**
 	 * Instancie un ChainePasse &agrave; partir d'une chaine de caracteres <BR>
-	 * (inclut la détermination de sa composition)
-	 * 
+	 * (inclut la dÃ©termination de sa composition)
+	 *
 	 * @param chaineRef
 	 *            chaine pour tester composition et constituer un mot de passe
 	 * @return ChainePasse instance avec le mot de passe et sa composition
@@ -76,12 +76,12 @@ public class ChainePasse {
 		return this.longueur;
 	}
 
-	// Generer ChainePasse Par défaut
+	// Generer ChainePasse Par dÃ©faut
 
 	/**
 	 * Genere un ChainePasse, mot de passe par defaut de l'application : 10
 	 * caracteres parmi 110
-	 * 
+	 *
 	 * @return ChainePasse mot de passe de longueur 10 (et composition
 	 *         encapsul&eacute;e)
 	 */
@@ -92,7 +92,7 @@ public class ChainePasse {
 	/**
 	 * /** Genere un ChainePasse, mot de passe de longueur parametr&eacute;e
 	 * (parmi 110)
-	 * 
+	 *
 	 * @param n
 	 *            longueur voulue pour le mot de passe
 	 * @return ChainePasse mot de passe de longueur parametr&eacute;e (et
@@ -102,7 +102,7 @@ public class ChainePasse {
 		return genererMotDePasse(n, true, true, true, true, true, null, null);
 	}
 
-	// Generer ChainePasse Paramétré
+	// Generer ChainePasse ParamÃ©trÃ©
 	/**
 	 * Genere un ChainePasse, de longueur parametr&eacute;e, en utilisant les
 	 * caracteres des types selectionn&eacute;s (possibilit&eacute; d'une liste
@@ -110,7 +110,7 @@ public class ChainePasse {
 	 * exclure) <BR>
 	 * Pour tout type attendu, au moins un caractere est
 	 * g&eacute;n&eacute;r&eacute;
-	 * 
+	 *
 	 * @param n
 	 *            longueur de mot de passe demand&eacute;e
 	 * @param chiffres
@@ -131,24 +131,24 @@ public class ChainePasse {
 	 * @return ChainePasse (mot de passe et composition)
 	 */
 	public static ChainePasse genererMotDePasse(int nb, boolean chiffres, boolean minusc, boolean majusc,
-			boolean accent, boolean special, ArrayList<Character> exclusions, ArrayList<Character> inclusions) {
+												boolean accent, boolean special, ArrayList<Character> exclusions, ArrayList<Character> inclusions) {
 
 		// attentes
 		int longueur ;
 		int nbTypes ;
-		
+
 		// pool initial de caracteres
 		ArrayList<Character> pool ;
-				
+
 		// mot de passe
 		String leMP  ;
 		ChainePasse mp ;
-		
+
 		// outils
 		TriInclusions inc  ;
 		Caractere cc  ;
-		
-		
+
+
 		longueur = nb;
 		// longueur max 60 caract (longueur)
 		if (nb > 60)
@@ -156,8 +156,8 @@ public class ChainePasse {
 		// longueur min 1 caract (nb)
 		if (nb < 1)
 			nb = 1;
-		
-		// nb de types : pour ajouter 1 caract par type 
+
+		// nb de types : pour ajouter 1 caract par type
 		nbTypes = (chiffres ? 1 : 0) + (minusc ? 1 : 0) ;
 		nbTypes +=	(majusc ? 1 : 0) + (accent ? 1 : 0) + (special ? 1 : 0);
 		// pour generer autant de caracteres que de types
@@ -168,7 +168,7 @@ public class ChainePasse {
 		// variables pour generation du mot de passe
 		mp = new ChainePasse();
 		leMP = "";
-		
+
 		//outils
 		inc = new TriInclusions();
 		cc = new Caractere();
@@ -251,8 +251,8 @@ public class ChainePasse {
 			nbTypes++;
 		}
 
-		// apres avoir généré 1 caract de chaque type attendu,
-		// on complete le mot de passe jusqu'à longueur voulue avec des
+		// apres avoir gÃ©nÃ©rÃ© 1 caract de chaque type attendu,
+		// on complete le mot de passe jusqu'Ã  longueur voulue avec des
 		// caracteres (tous types autorises confondus)
 		for (int i = 1; i <= longueur - nbTypes; i++) {
 			leMP += Caractere.genererCaractere(pool, exclusions);
@@ -260,18 +260,18 @@ public class ChainePasse {
 
 		// si nb types voulus > longueur voulue, on renvoie seulement la longueur voulue
 		if(nbTypes > nb)
-			leMP = leMP.substring(0,nb) ; 
-		
+			leMP = leMP.substring(0,nb) ;
+
 		// le mot de passe
 		mp.chaineDuPasse = leMP;
 		mp.longueur = leMP.length();
 		return mp;
 	}
 
-	// Completer une ChainePasse à 10
+	// Completer une ChainePasse Ã  10
 	/**
 	 * Complete un mot de passe trop court (jusqu'&agrave; une longueur de 10)
-	 * 
+	 *
 	 * @param motPasse
 	 *            le mot de passe trop court &agrave; compl&eacute;ter
 	 * @return ChainePasse avec mot de passe de 10 caracteres
@@ -286,7 +286,7 @@ public class ChainePasse {
 
 	/**
 	 * Verifie si presence d'un chiffre dans le mot de passe
-	 * 
+	 *
 	 * @return true si un chiffre au moins est present
 	 */
 	public boolean avecChiffre() {
@@ -295,7 +295,7 @@ public class ChainePasse {
 
 	/**
 	 * Verifie si presence d'une minuscule dans le mot de passe
-	 * 
+	 *
 	 * @return true si une minuscule au moins est presente
 	 */
 	public boolean avecMinuscule() {
@@ -304,7 +304,7 @@ public class ChainePasse {
 
 	/**
 	 * Verifie si presence d'une majuscule dans le mot de passe
-	 * 
+	 *
 	 * @return true si une majuscule au moins est presente
 	 */
 	public boolean avecMajuscule() {
@@ -314,7 +314,7 @@ public class ChainePasse {
 	/**
 	 * Verifie si presence d'une minuscule accentu&eacute;e (ou c cedille) dans
 	 * le mot de passe
-	 * 
+	 *
 	 * @return true si un accent au moins est present
 	 */
 	public boolean avecAccentcedil() {
@@ -323,7 +323,7 @@ public class ChainePasse {
 
 	/**
 	 * Verifie si presence d'un caractere special dans le mot de passe
-	 * 
+	 *
 	 * @return true si une caractere special au moins est presente
 	 */
 	public boolean avecSpecial() {
@@ -377,7 +377,7 @@ public class ChainePasse {
 /**
  * Classe outil, interne, pour r&eacute;partir les caracteres que l'on peut
  * inclure en plus, suivant leur type
- * 
+ *
  *
  */
 class TriInclusions {
