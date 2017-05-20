@@ -61,7 +61,6 @@ public class ChainePasse {
 		}
 		return mp;
 	}
-	
 
 	// La Chaine : getter, setter, longueur
 
@@ -77,7 +76,6 @@ public class ChainePasse {
 		return this.longueur;
 	}
 
-	
 	// Generer ChainePasse Par défaut
 
 	/**
@@ -90,7 +88,6 @@ public class ChainePasse {
 	public static ChainePasse genererMotDePasse() {
 		return genererMotDePasse(10);
 	}
-	
 
 	/**
 	 * /** Genere un ChainePasse, mot de passe de longueur parametr&eacute;e
@@ -102,51 +99,9 @@ public class ChainePasse {
 	 *         composition encapsul&eacute;e)
 	 */
 	public static ChainePasse genererMotDePasse(int n) {
-		if (n < 1){
-			n = 1;
-		}
-		if (n > 60){
-			n = 60;
-		}
-			
-		ChainePasse mp = new ChainePasse();
-		int type;
-		String leMP = "";
-
-		for (int i = 0; i < n; i++) {
-			type = (int) (Math.random() * 5 + 1);
-			switch (type) {
-			case 1:
-				leMP += Caractere.genereChiffre();
-				mp.avecChiffre = true;
-				break;
-			case 2:
-				leMP += Caractere.genereAccentCedil();
-				mp.avecAccentCedil = true;
-				break;
-			case 3:
-				leMP += Caractere.genereMajuscule();
-				mp.avecMajuscule = true;
-				break;
-			case 4:
-				leMP += Caractere.genereSpecial();
-				mp.avecSpecial = true;
-				break;
-			case 5:
-				leMP += Caractere.genereMinuscule();
-				mp.avecMinuscule = true;
-				break;
-			default:
-				leMP += Caractere.genereChiffre();
-				mp.avecChiffre = true;
-				break;
-			}
-		}
-		mp.chaineDuPasse = leMP;
-		return mp;
+		return genererMotDePasse(n, true, true, true, true, true, null, null);
 	}
 
-	
 	// Generer ChainePasse Paramétré
 	/**
 	 * Genere un ChainePasse, de longueur parametr&eacute;e, en utilisant les
@@ -175,31 +130,57 @@ public class ChainePasse {
 	 *            ajouter &agrave; la table
 	 * @return ChainePasse (mot de passe et composition)
 	 */
-	public static ChainePasse genererMotDePasse(int n, boolean chiffres, boolean minusc, boolean majusc, boolean accent,
-			boolean special, ArrayList<Integer> exclusions, ArrayList<Integer> inclusions) {
+	public static ChainePasse genererMotDePasse(int nb, boolean chiffres, boolean minusc, boolean majusc,
+			boolean accent, boolean special, ArrayList<Character> exclusions, ArrayList<Character> inclusions) {
 
-		// nombre de types representés ; permet d'ajouter un caractere par type
-		// attendu
-		// et completer ensuite la longueur du mot de passe avec n'importe quel
-		// caractere
-		int nbTypes = 0;
+		// attentes
+		int longueur ;
+		int nbTypes ;
+		
+		// pool initial de caracteres
+		ArrayList<Character> pool ;
+				
+		// mot de passe
+		String leMP  ;
+		ChainePasse mp ;
+		
+		// outils
+		TriInclusions inc  ;
+		Caractere cc  ;
+		
+		
+		longueur = nb;
+		// longueur max 60 caract (longueur)
+		if (nb > 60)
+			longueur = 60;
+		// longueur min 1 caract (nb)
+		if (nb < 1)
+			nb = 1;
+		
+		// nb de types : pour ajouter 1 caract par type 
+		nbTypes = (chiffres ? 1 : 0) + (minusc ? 1 : 0) ;
+		nbTypes +=	(majusc ? 1 : 0) + (accent ? 1 : 0) + (special ? 1 : 0);
+		// pour generer autant de caracteres que de types
+		if (nbTypes > longueur)
+			longueur = nbTypes;
+
 
 		// variables pour generation du mot de passe
-		String leMP = "";
-		ChainePasse mp = new ChainePasse();
-		TriInclusions inc = new TriInclusions() ;
+		mp = new ChainePasse();
+		leMP = "";
+		
+		//outils
+		inc = new TriInclusions();
+		cc = new Caractere();
 
 		// pool initial de caracteres
-		Integer[] pool = Caractere.poolCaracteres(chiffres, minusc, majusc, accent, special);
-
-		// mot de passe : limite de 1 à 60 caractères
-		if (n < 1)
-			n = 1;
-		if (n > 60)
-			n = 60;
+		pool = Caractere.poolCaracteres(chiffres, minusc, majusc, accent, special);
+		// aucun type choisi : chiffres utilises
+		if (!chiffres && !minusc && !majusc && !accent && !special)
+			chiffres = true;
 
 		// extension du pool avec les inclusions
-		// tri des inclusions par type
+		// et tri des inclusions par type
 		if (inclusions != null) {
 			pool = Caractere.completerPool(pool, inclusions);
 			inc = new TriInclusions(inclusions);
@@ -208,13 +189,12 @@ public class ChainePasse {
 		// si le type chiffre est attendu : on tire 1 chiffre
 		// sinon si les inclusions comportent des chiffres, on en tire un dedans
 		if (chiffres) {
-			leMP += Caractere.genererCaractere(Caractere.completerPool(Caractere.getChiffres(), inc.chiffres),
-					exclusions);
+			leMP += Caractere.genererCaractere(Caractere.completerPool(cc.getChiffres(), inc.chiffres), exclusions);
 			mp.avecChiffre = true;
-			nbTypes++;
 		} else if (inc.chiffres != null && inc.chiffres.size() != 0) {
-			leMP += Caractere.genererCaractere(convertirALenTab(inc.chiffres), exclusions);
+			leMP += Caractere.genererCaractere(inc.chiffres, exclusions);
 			mp.avecChiffre = true;
+			// type present dans inclusions
 			nbTypes++;
 		}
 
@@ -222,13 +202,12 @@ public class ChainePasse {
 		// sinon si les inclusions comportent des minuscules, on en tire 1
 		// dedans
 		if (minusc) {
-			leMP += Caractere.genererCaractere(Caractere.completerPool(Caractere.getMinuscules(), inc.minuscules),
-					exclusions);
+			leMP += Caractere.genererCaractere(Caractere.completerPool(cc.getMinuscules(), inc.minuscules), exclusions);
 			mp.avecMinuscule = true;
-			nbTypes++;
 		} else if (inc.minuscules != null && inc.minuscules.size() != 0) {
-			leMP += Caractere.genererCaractere(convertirALenTab(inc.minuscules), exclusions);
+			leMP += Caractere.genererCaractere(inc.minuscules, exclusions);
 			mp.avecMinuscule = true;
+			// type present dans inclusions
 			nbTypes++;
 		}
 
@@ -236,13 +215,12 @@ public class ChainePasse {
 		// sinon si les inclusions comportent des majuscules, on en tire 1
 		// dedans
 		if (majusc) {
-			leMP += Caractere.genererCaractere(Caractere.completerPool(Caractere.getMajuscules(), inc.majuscules),
-					exclusions);
+			leMP += Caractere.genererCaractere(Caractere.completerPool(cc.getMajuscules(), inc.majuscules), exclusions);
 			mp.avecMajuscule = true;
-			nbTypes++;
 		} else if (inc.majuscules != null && inc.majuscules.size() != 0) {
-			leMP += Caractere.genererCaractere(convertirALenTab(inc.majuscules), exclusions);
+			leMP += Caractere.genererCaractere(inc.majuscules, exclusions);
 			mp.avecMajuscule = true;
+			// type present dans inclusions
 			nbTypes++;
 		}
 
@@ -250,13 +228,13 @@ public class ChainePasse {
 		// sinon si les inclusions comportent des 'accent/cedille', on en tire 1
 		// dedans
 		if (accent) {
-			leMP += Caractere.genererCaractere(Caractere.completerPool(Caractere.getAccentcedil(), inc.accentsCedil),
+			leMP += Caractere.genererCaractere(Caractere.completerPool(cc.getAccentcedil(), inc.accentsCedil),
 					exclusions);
 			mp.avecAccentCedil = true;
-			nbTypes++;
 		} else if (inc.accentsCedil != null && inc.accentsCedil.size() != 0) {
-			leMP += Caractere.genererCaractere(convertirALenTab(inc.accentsCedil), exclusions);
+			leMP += Caractere.genererCaractere(inc.accentsCedil, exclusions);
 			mp.avecAccentCedil = true;
+			// type present dans inclusions
 			nbTypes++;
 		}
 
@@ -264,35 +242,32 @@ public class ChainePasse {
 		// sinon si les inclusions comportent des 'caracteres speciaux', on en
 		// tire 1 dedans
 		if (special) {
-			leMP += Caractere.genererCaractere(Caractere.completerPool(Caractere.getSpeciaux(), inc.speciaux),
-					exclusions);
+			leMP += Caractere.genererCaractere(Caractere.completerPool(cc.getSpeciaux(), inc.speciaux), exclusions);
 			mp.avecSpecial = true;
-			nbTypes++;
 		} else if (inc.speciaux != null && inc.speciaux.size() != 0) {
-			leMP += Caractere.genererCaractere(convertirALenTab(inc.speciaux), exclusions);
+			leMP += Caractere.genererCaractere(inc.speciaux, exclusions);
 			mp.avecSpecial = true;
+			// type present dans inclusions
 			nbTypes++;
 		}
 
-		// si aucun type n'a été sélectionné, on utilise des chiffres
-		if (nbTypes == 0) {
-			leMP += Caractere.genererCaractere(Caractere.getChiffres(), exclusions);
-			mp.avecChiffre = true;
-			nbTypes = 1;
-		}
-
-		// apres avoir généré un caractere de chaque type attendu,
-		// on complete le mot de passe jusqu'à longueur voulu avec des
-		// caracteres (tous types confondus)
-		for (int i = 0; i < n - nbTypes; i++) {
+		// apres avoir généré 1 caract de chaque type attendu,
+		// on complete le mot de passe jusqu'à longueur voulue avec des
+		// caracteres (tous types autorises confondus)
+		for (int i = 1; i <= longueur - nbTypes; i++) {
 			leMP += Caractere.genererCaractere(pool, exclusions);
 		}
 
+		// si nb types voulus > longueur voulue, on renvoie seulement la longueur voulue
+		if(nbTypes > nb)
+			leMP = leMP.substring(0,nb) ; 
+		
+		// le mot de passe
 		mp.chaineDuPasse = leMP;
+		mp.longueur = leMP.length();
 		return mp;
 	}
 
-	
 	// Completer une ChainePasse à 10
 	/**
 	 * Complete un mot de passe trop court (jusqu'&agrave; une longueur de 10)
@@ -307,8 +282,6 @@ public class ChainePasse {
 		return composition(nouvelleChaine);
 	}
 
-	
-	
 	// getters pour tester composition mot de passe
 
 	/**
@@ -320,7 +293,6 @@ public class ChainePasse {
 		return avecChiffre;
 	}
 
-	
 	/**
 	 * Verifie si presence d'une minuscule dans le mot de passe
 	 * 
@@ -330,7 +302,6 @@ public class ChainePasse {
 		return avecMinuscule;
 	}
 
-	
 	/**
 	 * Verifie si presence d'une majuscule dans le mot de passe
 	 * 
@@ -340,7 +311,6 @@ public class ChainePasse {
 		return avecMajuscule;
 	}
 
-	
 	/**
 	 * Verifie si presence d'une minuscule accentu&eacute;e (ou c cedille) dans
 	 * le mot de passe
@@ -350,7 +320,6 @@ public class ChainePasse {
 	public boolean avecAccentcedil() {
 		return avecAccentCedil;
 	}
-	
 
 	/**
 	 * Verifie si presence d'un caractere special dans le mot de passe
@@ -361,32 +330,13 @@ public class ChainePasse {
 		return avecSpecial;
 	}
 
-	
 	/**
-	 * toString() 
+	 * toString()
 	 */
 	public String toString() {
-		return chaineDuPasse ;
-	}
-	
-
-	// methode outil
-	/**
-	 * Convertit une ArrayList d'Integer en tableau d'Integer
-	 * 
-	 * @param al
-	 *            ArrayList d'Integer
-	 * @return tableau d'Integer
-	 */
-	public static Integer[] convertirALenTab(ArrayList<Integer> al) {
-		Integer[] tab = new Integer[al.size()];
-		for (int i = 0; i < al.size(); i++) {
-			tab[i] = al.get(i);
-		}
-		return tab;
+		return chaineDuPasse;
 	}
 
-	
 	/**
 	 * Equals : deux ChainePasse sont &eacute;gaux si les chaines qui les
 	 * constituent sont identiques
@@ -407,7 +357,6 @@ public class ChainePasse {
 			return false;
 		return true;
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -423,7 +372,6 @@ public class ChainePasse {
 
 }
 
-
 // classe-outil : representation des types de caracteres dans une liste
 // d'inclusions
 /**
@@ -434,7 +382,7 @@ public class ChainePasse {
  */
 class TriInclusions {
 
-	ArrayList<Integer> chiffres, minuscules, majuscules, accentsCedil, speciaux;
+	ArrayList<Character> chiffres, minuscules, majuscules, accentsCedil, speciaux;
 
 	public TriInclusions() {
 		chiffres = new ArrayList<>();
@@ -443,10 +391,10 @@ class TriInclusions {
 		accentsCedil = new ArrayList<>();
 		speciaux = new ArrayList<>();
 	}
-	
-	public TriInclusions(ArrayList<Integer> inclusions) {
-		this() ;
-		for (Integer incl : inclusions) {
+
+	public TriInclusions(ArrayList<Character> inclusions) {
+		this();
+		for (Character incl : inclusions) {
 			if (new Caractere(incl).estUnChiffre())
 				chiffres.add(incl);
 			if (new Caractere(incl).estUneMinuscule())

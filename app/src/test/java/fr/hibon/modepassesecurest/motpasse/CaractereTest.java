@@ -7,6 +7,7 @@ import static org.junit.Assert.assertFalse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.IntConsumer;
 
 import org.junit.Test;
 
@@ -16,36 +17,42 @@ import org.junit.Test;
  */
 public class CaractereTest {
 
-		private Caractere[] echantillon;
+		private ArrayList<Character> echantillon;
 	
 		// ////// Echantillon /////////////////////////////////////
 	
 		// chiffre, minusc, majusc, cédille, accent, composé, symbole, symbole et
 		// '¤' hors-reference appli
 		public CaractereTest() {
-			echantillon = new Caractere[9];
-			echantillon[0] = new Caractere('5');
-			echantillon[1] = new Caractere('a');
-			echantillon[2] = new Caractere('T');
-			echantillon[3] = new Caractere('ç');
-			echantillon[4] = new Caractere('ù');
-			echantillon[5] = new Caractere('â');
-			echantillon[6] = new Caractere('&');
-			echantillon[7] = new Caractere('#');
-			echantillon[8] = new Caractere('¤');
+			echantillon = new ArrayList<>(); 
+			echantillon.add('5');
+			echantillon.add('a');
+			echantillon.add('T');
+			echantillon.add('ç');
+			echantillon.add('ù');
+			echantillon.add('â');
+			echantillon.add('&');
+			echantillon.add('#');
+			echantillon.add('¤');
+			echantillon.add('z') ;
+			echantillon.add('v') ;
+			echantillon.add('O') ;
+			echantillon.add('[') ;
+			echantillon.add('!') ; 
+			echantillon.add('f') ;
 		}
 	
 		// ////// setter /////////////////////////////////////
 	
 		/**
-		 * Verifie setter de getLaValeurDuChar() (valeur int ASCII d'un char) <BR>
+		 * Verifie setter de getLeChar() (valeur int ASCII d'un char) <BR>
 		 * Test : set d'un caractere : le retrouver avec un get
 		 */
 		@Test
-		public void setLaValeurDuChar_doitModifier() {
+		public void setLeChar_doitModifier() {
 			Caractere c = new Caractere('&');
-			c.setLaValeurDuChar('y'); // caractere 121
-			assertEquals(121, c.getLaValeurDuChar());
+			c.setLeChar('y'); // caractere 121
+			assertEquals(121, c.getLeChar());
 		}
 	
 		// ////// Generer CARACTERE
@@ -59,13 +66,10 @@ public class CaractereTest {
 		 */
 		@Test
 		public void genererCaractere_nominal() {
-			Integer[] sourceTab = { new Integer('z'), new Integer('v'), new Integer('O'), new Integer('['),
-					new Integer('!'), new Integer('f'), new Integer('5') };
-			List<Integer> sourceAL = Arrays.asList(sourceTab);
 			boolean special = true;
 			// test 'statistique'
 			for (int i = 0; i < 100; i++) {
-				if (!sourceAL.contains((int) Caractere.genererCaractere(sourceTab)))
+				if (!echantillon.contains(Caractere.genererCaractere(echantillon)))
 					special = false;
 			}
 			assertTrue(special);
@@ -84,19 +88,18 @@ public class CaractereTest {
 		 */
 		@Test
 		public void genererCaractere_exclusions() {
-			Integer[] sourceTab = {new Integer('z'),new Integer('v'),new Integer('O'),new Integer('['),new Integer('!'),new Integer('f'),new Integer('5')} ;
-			List<Integer> sourceAL = Arrays.asList(sourceTab);
 			// exclusions
-			ArrayList<Integer> exclusions = new ArrayList<>() ; 
-			exclusions.add(new Integer('z')); 
-			exclusions.add(new Integer('v')); 
+			ArrayList<Character> exclusions = new ArrayList<>() ; 
+			exclusions.add('z'); 
+			exclusions.add('v'); 
 			boolean special = true ; 
-			int enCours = 0 ;
+			char enCours = '\0' ;
 			// test 'statistique'
 	 		for (int i = 0; i < 100; i++) {
-	 			enCours = (int) Caractere.genererCaractere(sourceTab, exclusions) ;
-	 			if( !sourceAL.contains(enCours) || enCours == 'z' || enCours == 'v')
-					special = false ; 
+	 			enCours = Caractere.genererCaractere(echantillon, exclusions) ;
+	 			if( !echantillon.contains(enCours) || enCours == 'z' || enCours == 'v') {
+	 				special = false ;
+	 			}
 			}
 	 		assertTrue(special) ; 
 		}
@@ -114,18 +117,16 @@ public class CaractereTest {
 		 */
 		@Test
 		public void genererCaractere_inclusions() {
-			Integer[] poolInit = Caractere.getSpeciaux();
-			List<Integer> poolToCherche = Arrays.asList(poolInit) ; 
 			// inclusions
-			ArrayList<Integer> inclusions = new ArrayList<>() ; 
-			inclusions.add(new Integer('z')); 
-			inclusions.add(new Integer('v'));
+			ArrayList<Character> inclusions = new ArrayList<>() ; 
+			inclusions.add('3'); 
+			inclusions.add('4');
 			boolean special = true ; 
-			int enCours = 0 ;
+			char enCours = '\0' ;
 			// test 'statistique'
 	 		for (int i = 0; i < 100; i++) {
-	 			enCours = (int) Caractere.genererCaractere(poolInit, null, inclusions) ;
-	 			if( (!poolToCherche.contains(enCours) && enCours != 'z' && enCours != 'v'))
+	 			enCours = Caractere.genererCaractere(echantillon, null, inclusions) ;
+	 			if( (!echantillon.contains(enCours) && enCours != '3' && enCours != '4'))
 					special = false ; 
 			}
 	 		assertTrue(special) ; 		
@@ -139,17 +140,15 @@ public class CaractereTest {
 		 */
 		@Test
 		public void genererCaractere_inclusionsPresentes() {
-			Integer[] poolInit = Caractere.getSpeciaux();
-			List<Integer> poolToCherche = Arrays.asList(poolInit) ; 
-			ArrayList<Integer> inclusions = new ArrayList<>() ; 
-			inclusions.add(new Integer('z')); 
-			inclusions.add(new Integer('v'));
+			ArrayList<Character> inclusions = new ArrayList<>() ; 
+			inclusions.add('3'); 
+			inclusions.add('4');
 			boolean special = false ; 
-			int enCours = 0 ;
+			char enCours = '\0' ;
 			// test 'statistique'
 	 		for (int i = 0; i < 100; i++) {
-	 			enCours = (int) Caractere.genererCaractere(poolInit, null, inclusions) ;
-	 			if(enCours == 'z' || enCours == 'v')
+	 			enCours = Caractere.genererCaractere(echantillon, null, inclusions) ;
+	 			if(enCours == '3' || enCours == '4')
 					special = true ; 
 			}
 	 		assertTrue(special) ; 			
@@ -168,23 +167,24 @@ public class CaractereTest {
 		 */
 		@Test
 		public void genererCaractere_inclusionsEtExclusions() {
-			Integer[] poolInit = Caractere.getSpeciaux();
-			List<Integer> poolToCherche = Arrays.asList(poolInit) ; 
+			ArrayList<Character> poolInit = new Caractere().getSpeciaux(); 
 			// inclusions
-			ArrayList<Integer> inclusions = new ArrayList<>() ; 
-			inclusions.add(new Integer('z')); 
-			inclusions.add(new Integer('v'));
+			ArrayList<Character> inclusions = new ArrayList<>() ; 
+			inclusions.add('z'); 
+			inclusions.add('v');
 			// exclusions
-			ArrayList<Integer> exclusions = new ArrayList<>() ; 
-			exclusions.add(new Integer('#')); 
-			exclusions.add(new Integer('$')); 
+			ArrayList<Character> exclusions = new ArrayList<>() ; 
+			exclusions.add('#'); 
+			exclusions.add('$'); 
 			boolean special = true ; 
-			int enCours = 0 ;
+			char enCours = '\0' ;
 			// test 'statistique'
 	 		for (int i = 0; i < 100; i++) {
-	 			enCours = (int) Caractere.genererCaractere(poolInit, exclusions, inclusions) ;
-	 			if( (!poolToCherche.contains(enCours) && enCours != 'z' && enCours != 'v') || enCours == '#' || enCours == '$')
-					special = false ; 
+	 			enCours = Caractere.genererCaractere(poolInit, exclusions, inclusions) ;
+	 			if( (!poolInit.contains(enCours) && enCours != 'z' && enCours != 'v') || enCours == '#' || enCours == '$') {
+	 				special = false ;
+	 				System.out.println(enCours);
+	 			}	 
 			}
 	 		assertTrue(special) ; 
 		}
@@ -197,11 +197,10 @@ public class CaractereTest {
 		 */
 		@Test
 		public void genereChiffre() {
-			ArrayList<Integer> essais = new ArrayList<>();
 			boolean test = true;
-			int enCours = 0;
+			char enCours = '\0' ;
 			for (int i = 0; i < 5; i++) {
-				enCours = (int) Caractere.genereChiffre();
+				enCours = Caractere.genereChiffre();
 				if(enCours < '0' || enCours > '9') {
 					test = false ; 
 				}
@@ -215,11 +214,10 @@ public class CaractereTest {
 		 *  */
 		@Test
 		public void genereMinuscule() {
-			ArrayList<Integer> essais = new ArrayList<>();
 			boolean test = true;
-			int enCours = 0;
+			char enCours = '\0' ;
 			for (int i = 0; i < 5; i++) {
-				enCours = (int) Caractere.genereMinuscule();
+				enCours = Caractere.genereMinuscule();
 				if(enCours < 'a' || enCours > 'z') {
 					test = false ; 
 				}
@@ -233,11 +231,10 @@ public class CaractereTest {
 		 */
 		@Test
 		public void genereMajuscule() {
-			ArrayList<Integer> essais = new ArrayList<>();
 			boolean test = true;
-			int enCours = 0;
+			char enCours = '\0' ;
 			for (int i = 0; i < 5; i++) {
-				enCours = (int) Caractere.genereMajuscule();
+				enCours = Caractere.genereMajuscule();
 				if(enCours < 'A' || enCours > 'Z') {
 					test = false ; 
 				}
@@ -254,19 +251,19 @@ public class CaractereTest {
 		 */
 		@Test
 		public void genereSpecial() {
-			ArrayList<Integer> reference = new ArrayList<>();
-			reference.add((int)'!'); reference.add((int)'"'); reference.add((int)'#'); reference.add((int)'$'); reference.add((int)'%'); 
-			reference.add((int)'&'); reference.add((int)'\''); reference.add((int)'('); reference.add((int)')'); reference.add((int)'*');
-			reference.add((int)'+'); reference.add((int)','); reference.add((int)'-'); reference.add((int)'.'); reference.add((int)'/');
-			reference.add((int)':'); reference.add((int)';'); reference.add((int)'<'); reference.add((int)'='); reference.add((int)'>');
-			reference.add((int)'?'); reference.add((int)'@'); reference.add((int)'['); reference.add((int)'\\'); reference.add((int)']');
-			reference.add((int)'^'); reference.add((int)'_'); reference.add((int)'`'); reference.add((int)'{'); reference.add((int)'|');
-			reference.add((int)'}'); reference.add((int)'~'); reference.add((int)'£'); reference.add((int)'¦'); reference.add((int)'§');
-			reference.add((int)'°');
+			ArrayList<Character> reference = new ArrayList<>();
+			reference.add('!'); reference.add('"'); reference.add('#'); reference.add('$'); reference.add('%'); 
+			reference.add('&'); reference.add('\''); reference.add('('); reference.add(')'); reference.add('*');
+			reference.add('+'); reference.add(','); reference.add('-'); reference.add('.'); reference.add('/');
+			reference.add(':'); reference.add(';'); reference.add('<'); reference.add('='); reference.add('>');
+			reference.add('?'); reference.add('@'); reference.add('['); reference.add('\\'); reference.add(']');
+			reference.add('^'); reference.add('_'); reference.add('`'); reference.add('{'); reference.add('|');
+			reference.add('}'); reference.add('~'); reference.add('£'); reference.add('¦'); reference.add('§');
+			reference.add('°');
 			boolean special = true ; 
 			// test 'statistique'
 	 		for (int i = 0; i < 100; i++) {
-				if(!reference.contains((int)Caractere.genereSpecial()))
+				if(!reference.contains(Caractere.genereSpecial()))
 					special = false ; 
 			}
 	 		assertTrue(special) ; 
@@ -279,15 +276,15 @@ public class CaractereTest {
 		*/
 		@Test
 		public void genereAccent() {
-			ArrayList<Integer> reference = new ArrayList<>();
-			reference.add((int)'à'); reference.add((int)'â'); reference.add((int)'ç'); reference.add((int)'è');
-			reference.add((int)'é'); reference.add((int)'ê'); reference.add((int)'ë'); reference.add((int)'î');
-			reference.add((int)'ï'); reference.add((int)'ô'); reference.add((int)'ù'); reference.add((int)'û');
-			reference.add((int)'°');
+			ArrayList<Character> reference = new ArrayList<>();
+			reference.add('à'); reference.add('â'); reference.add('ç'); reference.add('è');
+			reference.add('é'); reference.add('ê'); reference.add('ë'); reference.add('î');
+			reference.add('ï'); reference.add('ô'); reference.add('ù'); reference.add('û');
+			reference.add('°');
 			boolean special = true ; 
 			// test 'statistique'
 	 		for (int i = 0; i < 100; i++) {
-				if(!reference.contains((int)Caractere.genereAccentCedil()))
+				if(!reference.contains(Caractere.genereAccentCedil()))
 					special = false ; 
 			}
 	 		assertTrue(special) ; 
@@ -303,8 +300,7 @@ public class CaractereTest {
 		 */
 		@Test
 		public void caracteresSpeciaux_Complet() {
-			Integer[] pool = Caractere.caracteresSpeciaux();
-			List<Integer> poolAL = Arrays.asList(pool);
+			ArrayList<Character> pool = new Caractere().getSpeciaux() ;
 			boolean test = true;
 			boolean enCours = true;
 			// test positif
@@ -312,13 +308,13 @@ public class CaractereTest {
 					new Caractere(47), new Caractere(95), new Caractere(125), new Caractere(166), new Caractere('*'),
 					new Caractere(60), new Caractere('%') };
 			for (int i = 0; i < tabTestOK.length; i++) {
-				enCours = poolAL.contains(tabTestOK[i].getLaValeurDuChar());
+				enCours = pool.contains(tabTestOK[i].getLeChar());
 				test = test && enCours;
 			}
 			// test negatif
 			Caractere[] tabTestFalse = { new Caractere('a'), new Caractere('f'), new Caractere('R'), new Caractere('¤') };
 			for (int i = 0; i < tabTestFalse.length; i++) {
-				enCours = !poolAL.contains(tabTestFalse[i].getLaValeurDuChar());
+				enCours = !pool.contains(tabTestFalse[i].getLeChar());
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -331,8 +327,7 @@ public class CaractereTest {
 		 */
 		@Test
 		public void les110_Complet() {
-			Integer[] pool = Caractere.les110();
-			List<Integer> poolAL = Arrays.asList(pool);
+			ArrayList<Character> pool = Caractere.les110();
 			boolean test = true;
 			boolean enCours = true;
 			// test positif
@@ -341,13 +336,13 @@ public class CaractereTest {
 					new Caractere(95), new Caractere(125), new Caractere(166), new Caractere('*'), new Caractere(60),
 					new Caractere('%') };
 			for (int i = 0; i < tabTestOK.length; i++) {
-				enCours = poolAL.contains(tabTestOK[i].getLaValeurDuChar());
+				enCours = pool.contains(tabTestOK[i].getLeChar());
 				test = test && enCours;
 			}
 			// test negatif
 			Caractere[] tabTestFalse = { new Caractere('€'), new Caractere('ä'), new Caractere('ÿ'), new Caractere('¤') };
 			for (int i = 0; i < tabTestFalse.length; i++) {
-				enCours = !poolAL.contains(tabTestFalse[i].getLaValeurDuChar());
+				enCours = !pool.contains(tabTestFalse[i].getLeChar());
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -363,8 +358,7 @@ public class CaractereTest {
 		@Test
 		public void poolCaracteres_Complet() {
 			// tous caracteres possibles
-			Integer[] pool = Caractere.poolCaracteres(true, true, true, true, true);
-			List<Integer> poolAL = Arrays.asList(pool);
+			ArrayList<Character> pool = Caractere.poolCaracteres(true, true, true, true, true);
 			boolean test = true;
 			boolean enCours = true;
 			// test positif
@@ -372,13 +366,13 @@ public class CaractereTest {
 					new Caractere(239), new Caractere(251), new Caractere('a'), new Caractere('e'), new Caractere('4'),
 					new Caractere('#'), new Caractere('%') };
 			for (int i = 0; i < tabTestOK.length; i++) {
-				enCours = poolAL.contains(tabTestOK[i].getLaValeurDuChar());
+				enCours = pool.contains(tabTestOK[i].getLeChar());
 				test = test && enCours;
 			}
 			// test negatif
 			Caractere[] tabTestFalse = { new Caractere('ä'), new Caractere('¤'), new Caractere('¨'), new Caractere('ÿ') };
 			for (int i = 0; i < tabTestFalse.length; i++) {
-				enCours = !poolAL.contains(tabTestFalse[i].getLaValeurDuChar());
+				enCours = !pool.contains(tabTestFalse[i].getLeChar());
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -392,21 +386,20 @@ public class CaractereTest {
 		@Test
 		public void poolCaracteres_lettresMinMaj() {
 			// seulement lettres min et maj
-			Integer[] pool = Caractere.poolCaracteres(false, true, true, false, false);
-			List<Integer> poolAL = Arrays.asList(pool);
+			ArrayList<Character> pool = Caractere.poolCaracteres(false, true, true, false, false);
 			boolean test = true;
 			boolean enCours = true;
 			// test positif
 			Caractere[] tabTestOK = { new Caractere('a'), new Caractere('R'), new Caractere('f'), new Caractere(65),
 					new Caractere(89), new Caractere(121), new Caractere('J'), new Caractere('q') };
 			for (int i = 0; i < tabTestOK.length; i++) {
-				enCours = poolAL.contains(tabTestOK[i].getLaValeurDuChar());
+				enCours = pool.contains(tabTestOK[i].getLeChar());
 				test = test && enCours;
 			}
 			// test negatif
 			Caractere[] tabTestFalse = { new Caractere('ë'), new Caractere('¤'), new Caractere('5'), new Caractere('¨'), new Caractere('ÿ') };
 			for (int i = 0; i < tabTestFalse.length; i++) {
-				enCours = !poolAL.contains(tabTestFalse[i].getLaValeurDuChar());
+				enCours = !pool.contains(tabTestFalse[i].getLeChar());
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -420,21 +413,20 @@ public class CaractereTest {
 		@Test
 		public void poolCaracteres_sansChiffres() {
 			// seulement lettres (min, maj, accent) et caracteres speciaux
-			Integer[] pool = Caractere.poolCaracteres(false, true, true, true, true);
-			List<Integer> poolAL = Arrays.asList(pool);
+			ArrayList<Character> pool = Caractere.poolCaracteres(false, true, true, true, true);
 			boolean test = true;
 			boolean enCours = true;
 			// test positif
 			Caractere[] tabTestOK = { new Caractere('a'), new Caractere('R'), new Caractere('f'), new Caractere(65),
 					new Caractere('#'), new Caractere('é'), new Caractere('J'), new Caractere(')') };
 			for (int i = 0; i < tabTestOK.length; i++) {
-				enCours = poolAL.contains(tabTestOK[i].getLaValeurDuChar());
+				enCours = pool.contains(tabTestOK[i].getLeChar());
 				test = test && enCours;
 			}
 			// test negatif
 			Caractere[] tabTestFalse = { new Caractere('5'), new Caractere('9'), new Caractere('7'), new Caractere('4') };
 			for (int i = 0; i < tabTestFalse.length; i++) {
-				enCours = !poolAL.contains(tabTestFalse[i].getLaValeurDuChar());
+				enCours = !pool.contains(tabTestFalse[i].getLeChar());
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -448,21 +440,20 @@ public class CaractereTest {
 		@Test
 		public void poolCaracteres_sansLettres() {
 			// seulement chiffres et caracteres speciaux
-			Integer[] pool = Caractere.poolCaracteres(true, false, false, false, true);
-			List<Integer> poolAL = Arrays.asList(pool);
+			ArrayList<Character> pool = Caractere.poolCaracteres(true, false, false, false, true);
 			boolean test = true;
 			boolean enCours = true;
 			// test positif
 			Caractere[] tabTestOK = { new Caractere('-'), new Caractere('\\'), new Caractere('#'), new Caractere(91),
 					new Caractere(58), new Caractere('8') };
 			for (int i = 0; i < tabTestOK.length; i++) {
-				enCours = poolAL.contains(tabTestOK[i].getLaValeurDuChar());
+				enCours = pool.contains(tabTestOK[i].getLeChar());
 				test = test && enCours;
 			}
 			// test negatif
 			Caractere[] tabTestFalse = { new Caractere('a'), new Caractere('F'), new Caractere('c'), new Caractere('Y') };
 			for (int i = 0; i < tabTestFalse.length; i++) {
-				enCours = !poolAL.contains(tabTestFalse[i].getLaValeurDuChar());
+				enCours = !pool.contains(tabTestFalse[i].getLeChar());
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -476,20 +467,19 @@ public class CaractereTest {
 		 */
 		@Test
 		public void poolCaracteres_defaut() {
-			Integer[] pool = Caractere.poolCaracteres(false, false, false, false, false);
-			List<Integer> poolAL = Arrays.asList(pool);
+			ArrayList<Character> pool = Caractere.poolCaracteres(false, false, false, false, false);
 			boolean test = true;
 			boolean enCours = true;
 			// test positif
 			Caractere[] tabTestOK = { new Caractere('5'), new Caractere('3'), new Caractere('7'), new Caractere(56) };
 			for (int i = 0; i < tabTestOK.length; i++) {
-				enCours = poolAL.contains(tabTestOK[i].getLaValeurDuChar());
+				enCours = pool.contains(tabTestOK[i].getLeChar());
 				test = test && enCours;
 			}
 			// test negatif
 			Caractere[] tabTestFalse = { new Caractere('a'), new Caractere('F'), new Caractere('#'), new Caractere('Y') };
 			for (int i = 0; i < tabTestFalse.length; i++) {
-				enCours = !poolAL.contains(tabTestFalse[i].getLaValeurDuChar());
+				enCours = !pool.contains(tabTestFalse[i].getLeChar());
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -503,22 +493,21 @@ public class CaractereTest {
 		@Test
 		public void poolCaracteres_lettres() {
 			// seulement lettres (min, maj, accent)
-			Integer[] pool = Caractere.poolCaracteres(false, true, true, true, false);
-			List<Integer> poolAL = Arrays.asList(pool);
+			ArrayList<Character> pool =  Caractere.poolCaracteres(false, true, true, true, false);
 			boolean test = true;
 			boolean enCours = true;
 			// test positif
 			Caractere[] tabTestOK = { new Caractere('0'), new Caractere('4'), new Caractere('{'), new Caractere(59),
 					new Caractere('9') };
 			for (int i = 0; i < tabTestOK.length; i++) {
-				enCours = !poolAL.contains(tabTestOK[i].getLaValeurDuChar());
+				enCours = !pool.contains(tabTestOK[i].getLeChar());
 				test = test && enCours;
 			}
 			// test negatif
 			Caractere[] tabTestFalse = { new Caractere('T'), new Caractere('é'), new Caractere('a'), new Caractere('u') };
 			for (int i = 0; i < tabTestFalse.length; i++) {
 				// true
-				enCours = poolAL.contains(tabTestFalse[i].getLaValeurDuChar());
+				enCours = pool.contains(tabTestFalse[i].getLeChar());
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -537,28 +526,27 @@ public class CaractereTest {
 		@Test
 		public void completerPool() {
 			// seulement lettres (min, maj, accent)
-			Integer[] pool = Caractere.poolCaracteres(false, true, true, true, false);
-			ArrayList<Integer> inclusions = new ArrayList<>();
-			inclusions.add((int) '0');
-			inclusions.add((int) '4');
-			inclusions.add((int) '{');
-			inclusions.add((int) ';');
-			inclusions.add((int) '%');
+			ArrayList<Character> pool =  Caractere.poolCaracteres(false, true, true, true, false);
+			ArrayList<Character> inclusions = new ArrayList<>();
+			inclusions.add('0');
+			inclusions.add('4');
+			inclusions.add('{');
+			inclusions.add(';');
+			inclusions.add('%');
 			pool = Caractere.completerPool(pool, inclusions);
-			List<Integer> poolAL = Arrays.asList(pool);
 			boolean test = true;
 			boolean enCours = true;
 			// test positif
 			Caractere[] tabTestOK = { new Caractere('0'), new Caractere('4'), new Caractere('{'), new Caractere(59),
 					new Caractere('a'), new Caractere('T'), new Caractere('é') };
 			for (int i = 0; i < tabTestOK.length; i++) {
-				enCours = poolAL.contains(tabTestOK[i].getLaValeurDuChar());
+				enCours = pool.contains(tabTestOK[i].getLeChar());
 				test = test && enCours;
 			}
 			// test negatif
 			Caractere[] tabTestFalse = { new Caractere('5'), new Caractere('7'), new Caractere('#'), new Caractere('~') };
 			for (int i = 0; i < tabTestFalse.length; i++) {
-				enCours = !poolAL.contains(tabTestFalse[i].getLaValeurDuChar());
+				enCours = !pool.contains(tabTestFalse[i].getLeChar());
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -574,10 +562,10 @@ public class CaractereTest {
 		@Test
 		public void estUnChiffre() {
 			// valeur True
-			boolean test = echantillon[0].estUnChiffre();
+			boolean test = (new Caractere(echantillon.get(0))).estUnChiffre();
 			// valeurs false
-			for (int i = 1; i < echantillon.length; i++) {
-				boolean enCours = !echantillon[i].estUnChiffre();
+			for (int i = 1; i < echantillon.size() ; i++) {
+				boolean enCours = !(new Caractere(echantillon.get(i))).estUnChiffre();
 				test = test && enCours;
 			}
 			assertTrue(test);
@@ -590,12 +578,17 @@ public class CaractereTest {
 		@Test
 		public void estUneMinuscule() {
 			// valeur true
-			boolean test = echantillon[1].estUneMinuscule();
-			// valeurs false
-			test = test && !echantillon[0].estUneMinuscule();
-			for (int i = 2; i < echantillon.length; i++) {
-				boolean enCours = !echantillon[i].estUneMinuscule();
-				test = test && enCours;
+			Caractere[] vrais = {new Caractere('a'),new Caractere('y'),new Caractere('k'),new Caractere('z'),new Caractere('n'),new Caractere('m')};
+			boolean test = true ;
+			for (int i = 0 ; i < vrais.length ; i++){
+				if(!vrais[i].estUneMinuscule())
+					test = false; 
+			}
+			// valeur false
+			Caractere[] faux = 	{new Caractere('é'),new Caractere('E'),new Caractere('_'),new Caractere('+'),new Caractere('|'),new Caractere('ù')};
+			for (int j = 0 ; j < faux.length ; j++){
+				if(faux[j].estUneMinuscule())
+					test = false; 
 			}
 			assertTrue(test);
 		}
@@ -608,13 +601,17 @@ public class CaractereTest {
 		@Test
 		public void estUneMajuscule() {
 			// valeur true
-			boolean test = echantillon[2].estUneMajuscule();
-			// valeurs false
-			test = test && !echantillon[0].estUneMajuscule();
-			test = test && !echantillon[1].estUneMajuscule();
-			for (int i = 3; i < echantillon.length; i++) {
-				boolean enCours = !echantillon[i].estUneMajuscule();
-				test = test && enCours;
+			Caractere[] vrais = {new Caractere('A'),new Caractere('Y'),new Caractere('K'),new Caractere('Z'),new Caractere('N'),new Caractere('M')};
+			boolean test = true ;
+			for (int i = 0 ; i < vrais.length ; i++){
+				if(!vrais[i].estUneMajuscule())
+					test = false; 
+			}
+			// valeur false
+			Caractere[] faux = 	{new Caractere('é'),new Caractere('e'),new Caractere('_'),new Caractere('+'),new Caractere('|'),new Caractere('m')};
+			for (int j = 0 ; j < faux.length ; j++){
+				if(faux[j].estUneMajuscule())
+					test = false; 
 			}
 			assertTrue(test);
 		}
@@ -625,18 +622,18 @@ public class CaractereTest {
 		 */
 		@Test
 		public void estUnAccent() {
-			// valeurs true
-			boolean test = echantillon[3].estUnAccentCedil();
-			test = test && echantillon[4].estUnAccentCedil();
-			test = test && echantillon[5].estUnAccentCedil();
-			// valeurs false
-			for (int i = 6; i < echantillon.length; i++) {
-				boolean enCours = !echantillon[i].estUnAccentCedil();
-				test = test && enCours;
+			// valeur true
+			Caractere[] vrais = {new Caractere('é'),new Caractere('ï'),new Caractere('ô'),new Caractere('ç'),new Caractere('à')};
+			boolean test = true ;
+			for (int i = 0 ; i < vrais.length ; i++){
+				if(!vrais[i].estUnAccentCedil())
+					test = false; 
 			}
-			for (int i = 0; i < 3; i++) {
-				boolean enCours = !echantillon[i].estUnAccentCedil();
-				test = test && enCours;
+			// valeur false
+			Caractere[] faux = 	{new Caractere('A'),new Caractere('e'),new Caractere('_'),new Caractere('+'),new Caractere('ÿ'),new Caractere('ö')};
+			for (int j = 0 ; j < faux.length ; j++){
+				if(faux[j].estUnAccentCedil())
+					test = false; 
 			}
 			assertTrue(test);
 		}
@@ -647,57 +644,39 @@ public class CaractereTest {
 		 */
 		@Test
 		public void estUnSpecial() {
-			// valeurs true
-			boolean test = echantillon[6].estUnSpecial();
-			test = test && echantillon[7].estUnSpecial();
-			// valeurs false
-			for (int i = 0; i < 6; i++) {
-				boolean enCours = !echantillon[i].estUnSpecial();
-				test = test && enCours;
+			// valeur true
+			Caractere[] vrais = {new Caractere('~'),new Caractere('&'),new Caractere('['),new Caractere('@'),new Caractere('%')
+					,new Caractere('+'),new Caractere('$'), new Caractere('£'), new Caractere('^')};
+			boolean test = true ;
+			for (int i = 0 ; i < vrais.length ; i++){
+				if(!vrais[i].estUnSpecial())
+					test = false; 
 			}
-			test = test && !echantillon[8].estUnAccentCedil();
+			// valeur false - inclut 2 valeurs hors application (¤ et €)
+			Caractere[] faux = 	{new Caractere('é'),new Caractere('¤'),new Caractere('€'),new Caractere('D'),new Caractere('R'),new Caractere('m')};
+			for (int j = 0 ; j < faux.length ; j++){
+				if(faux[j].estUnSpecial())
+					test = false; 
+			}
 			assertTrue(test);
 		}
 	
 		/**
 		 * Teste la verification estUnSpecial()
-		 * <BR> verifie des valeurs qui ne font pas partie du tableau des caracteres de l'application
+		 * <BR> verifie des valeurs qui ne font pas partie de la table des caracteres de l'application
 		 */
 		@Test
 		public void estUn_HorsCaractereApplication() {
 			// valeurs false
-			boolean test = !echantillon[8].estUnChiffre() && !echantillon[8].estUneMinuscule()
-					&& !echantillon[8].estUneMajuscule() && !echantillon[8].estUnAccentCedil()
-					&& !echantillon[8].estUnSpecial();
-		}
-	
-		// ////// utilitaires : dansTable de caracteres (cf. tableaux)
-	
-		
-		// table : les valeurs ordonnees
-		/**
-		 * Teste la verification de la presence d'un caractere dans un tableau (cf. types de caracteres)
-		 * <BR> verifie des valeurs : inclure (true) ou non (false)
-		 */
-		@Test
-		public void estDansTable() {
-			boolean test = true;
-			// valeurs true
-			Caractere[] tabTestOK = { new Caractere('ù'), new Caractere('û'), new Caractere('é'), new Caractere(226),
-					new Caractere(239), new Caractere(251) };
-			for (int i = 0; i < tabTestOK.length; i++) {
-				boolean enCours = tabTestOK[i].estDansTable(Caractere.getAccentcedil());
-				test = test && enCours;
-			}
-			// valeurs false
-			Caractere[] tabTestFalse = { new Caractere('a'), new Caractere('e'), new Caractere('4'), new Caractere('#'),
-					new Caractere('ÿ'), new Caractere(225), new Caractere(117), new Caractere(236) };
-			for (int i = 0; i < tabTestFalse.length; i++) {
-				boolean enCours = !tabTestFalse[i].estDansTable(Caractere.getAccentcedil());
-				test = test && enCours;
-			}
-			assertTrue(test);
-		}
+			Caractere[] hors = {new Caractere('¤'), new Caractere('€'), new Caractere('²'), new Caractere('µ')} ;
+			boolean test = true ;
+			for (int i = 0; i < hors.length; i++) {
+				if(hors[i].estUnChiffre() || hors[i].estUneMinuscule() || hors[i].estUneMajuscule() || hors[i].estUnAccentCedil() || hors[i].estUnSpecial())
+					test = false ; 
+			} 
 
+				
+		}
+	
 
 }

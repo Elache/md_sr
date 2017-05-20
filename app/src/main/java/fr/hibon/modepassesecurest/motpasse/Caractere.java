@@ -5,29 +5,45 @@ import java.util.Arrays;
 
 /**
  * Caractere d&eacute;finit 5 types de caract&egrave;res (110 au total) <BR>
- * Chiffres, lettres majuscules et minuscules, lettres accentu&eacute;es,
- * caract&egrave;res sp&eacute;ciaux.
- * <BR>Services : determiner type d'un caractere ; <BR>
- * generer un caractere (de type-s specifi&eacute;-s ; en excluant une liste specifique de caracteres ; en incluant une liste specifique de caracteres)
-*<BR> generer des pools de caracteres suivant parametres
+ * Chiffres, lettres majuscules et minuscules, lettres accentu&eacute;es (12),
+ * caract&egrave;res sp&eacute;ciaux (36).
+ * <BR>Services : <BR>-determiner type d'un caractere ; 
+ * <BR>- generer un caractere (de type-s specifi&eacute;-s ; en excluant une liste specifique de caracteres ; en incluant une liste specifique de caracteres)
+ * <BR>- generer des pools de caracteres suivant parametres
  */
 public class Caractere {
 
-	private int laValeurDuChar;
+	private char leChar;
 
-	// Chiffres, Majuscules et Minuscules : plage [codes ASCII]
-	private static final Integer[] CHIFFRES = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 }; // 10
-	private static final Integer[] MAJUSCULES = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90 }; // 26
-	private static final Integer[] MINUSCULES = { 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122}; // 26 
+	// Listes exhaustives ordonnées
+	private static ArrayList<Character> ensembleChiffres ;  // 10 chiffres [48-57]
+	private static ArrayList<Character> ensembleMinuscules ; // 26 minusc [97-122] 
+	private static ArrayList<Character> ensembleMajuscules ; // 26 majusc [65-90]
+	private static ArrayList<Character> ensembleAccentCedil ; // 12 minusc. accentuees, cedille {224, 226,231,232,233,234,235,238,239,244,249,251};
+	private static ArrayList<Character> ensembleSpeciaux ; // = caracteresSpeciaux(); // 36 caract speciaux
 
-	// Caractères accentués et spéciaux : listes exhaustives ordonnées
-	private static final Integer[] ACCENTCEDIL = { 224, 226, 231, 232, 233, 234, 235, 238, 239, 244, 249, 251 }; // 12
-	private static final Integer[] SPECIAUX = caracteresSpeciaux(); // 36
-
-	public Caractere(int valChar) {
-		this.laValeurDuChar = valChar;
+	/**
+	 * Constructeur affecte le caractere du parametre et initialise les 5 listes de caracteres (=types)
+	 * @param caract caractere &agrave; affecter
+	 */
+	public Caractere(char caract) {
+		this.leChar = caract;
+		lesChiffres(); 
+		lesMinuscules();
+		lesMajuscules() ;
+		lesAccents() ;
+		lesSpeciaux() ; 
 	}
 
+	public Caractere(int valChar) {
+		this((char) valChar) ; 
+	}
+	
+	public Caractere() {
+		this('\0') ; 
+	}
+
+	
 	/////////////// TESTER LE TYPE D'UN CARACTERE ///////////////
 
 	/**
@@ -35,7 +51,7 @@ public class Caractere {
 	 * @return true si le type est bon
 	 */
 	public boolean estUnChiffre() {
-		return estDansTable(CHIFFRES);
+		return ensembleChiffres.contains(leChar);
 	}
 
 	/**
@@ -43,7 +59,7 @@ public class Caractere {
 	 * @return true si le type est bon
 	 */
 	public boolean estUneMinuscule() {
-		return estDansTable(MINUSCULES);
+		return ensembleMinuscules.contains(leChar);
 	}
 
 	/**
@@ -51,7 +67,7 @@ public class Caractere {
 	 * @return true si le type est bon
 	 */
 	public boolean estUneMajuscule() {
-		return estDansTable(MAJUSCULES);
+		return ensembleMajuscules.contains(leChar);
 	}
 
 	/**
@@ -59,7 +75,7 @@ public class Caractere {
 	 * @return true si le type est bon
 	 */
 	public boolean estUnAccentCedil() {
-		return estDansTable(ACCENTCEDIL);
+		return ensembleAccentCedil.contains(leChar);
 	}
 
 	/**
@@ -67,64 +83,49 @@ public class Caractere {
 	 * @return true si le type est bon
 	 */
 	public boolean estUnSpecial() {
-		return estDansTable(SPECIAUX);
+		return ensembleSpeciaux.contains(leChar);
 	}
-
-	// // // // // // // // //
-	/**
-	 * Verification de la presence d'un caractere dans un tableau (cf. types de caracteres)
-	 * @param table tableau de caracteres de reference
-	 * @return true si le caractere est present dans le tableau de reference
-	 */
-	boolean estDansTable(Integer[] table) {
-		for (int i = 0; i < table.length; i++) {
-			if (table[i] > this.laValeurDuChar)
-				return false;
-			if (table[i] == this.laValeurDuChar)
-				return true;
-		}
-		return false;
-	}
+	
 
 	/////////////// GENERER UN CARACTERE ///////////////
 
 	/**
-	 * Genere un caractere, pris dans une table (parametre)
-	 * @param table table des caracteres possibles pour la generation
+	 * Genere un caractere, pris dans une liste (parametre)
+	 * @param table liste des caracteres possibles pour la generation
 	 * @return un caractere faisant partie des caracteres possibles (table)
 	 */
-	public static char genererCaractere(Integer[] table) {
+	public static char genererCaractere(ArrayList<Character> table) {
 		return genererCaractere(table, null);
 	}
 
 	/**
-	 * Genere un caractere, pris dans une table, en tenant compte d'exclusions (caracteres &agrave; ne pas utiliser)
-	 * @param table table des caracteres possibles pour la generation
+	 * Genere un caractere, pris dans une liste, en tenant compte d'exclusions (caracteres &agrave; ne pas utiliser)
+	 * @param table liste des caracteres possibles pour la generation
 	 * @param exclusions liste de caracteres &agrave; ne pas utiliser
-	 * @return un caractere faisant partie des caracteres possibles (table - exclusions)
+	 * @return un caractere faisant partie des caracteres possibles (table hors exclusions)
 	 */
-	public static char genererCaractere(Integer[] table, ArrayList<Integer> exclusions) {
-		char c = (char) (int) (table[(int) (Math.random() * table.length)]);
+	public static char genererCaractere(ArrayList<Character> table, ArrayList<Character> exclusions) {
+		char c = table.get((int) (Math.random() * table.size())) ; 
 		if (exclusions == null) {
 			return c;
 		}
-		while (exclusions.contains((int) c)) {
-			c = (char) (int) (table[(int) (Math.random() * table.length)]);
+		while (exclusions.contains(c)) {
+			c = table.get((int) (Math.random() * table.size())) ;
 		}
 		return c;
 	}
 
 	/**
-	 * Genere un caractere, pris dans une table qui est compl&eacute;t&eacute;e d'inclusions (liste de caracteres possible) et r&eacute;duite d'une liste d'exclusions (caracteres &agrave; ne pas utiliser)
+	 * Genere un caractere, pris dans une liste qui est compl&eacute;t&eacute;e d'inclusions (liste de caracteres possibles) et r&eacute;duite d'une liste d'exclusions (caracteres &agrave; ne pas utiliser)
 	 * 
-	 * @param table table des caracteres possibles pour la generation
+	 * @param table liste des caracteres possibles pour la generation
 	 * @param exclusions liste de caracteres &agrave; ne pas utiliser
 	 * @param inclusions liste de caracteres pouvant etre utilis&eacute;s, &agrave; ajouter &agrave; la table
 	 * @return un caractere faisant partie des caracteres possibles (table - exclusions + exclusions)
 	 * @return
 	 */
-	public static char genererCaractere(Integer[] table, ArrayList<Integer> exclusions, ArrayList<Integer> inclusions) {
-		Integer[] poolAvecInclusions = completerPool(table, inclusions) ; 
+	public static char genererCaractere(ArrayList<Character> table, ArrayList<Character> exclusions, ArrayList<Character> inclusions) {
+		ArrayList<Character> poolAvecInclusions = completerPool(table, inclusions) ; 
 		return genererCaractere(poolAvecInclusions, exclusions) ; 
 	}
 
@@ -136,7 +137,8 @@ public class Caractere {
 	 * @return un caractere : chiffre
 	 */
 	public static char genereChiffre() {
-		return genererCaractere(CHIFFRES);
+		Caractere c = new Caractere() ; 
+		return genererCaractere(c.getChiffres());
 	}
 
 	/**
@@ -144,7 +146,8 @@ public class Caractere {
 	 * @return un caractere : lettre minuscule
 	 */
 	public static char genereMinuscule() {
-		return genererCaractere(MINUSCULES);
+		Caractere c = new Caractere() ; 
+		return genererCaractere(c.getMinuscules());
 	}
 
 	/**
@@ -152,7 +155,8 @@ public class Caractere {
 	 * @return un caractere : lettre majuscule
 	 */
 	public static char genereMajuscule() {
-		return genererCaractere(MAJUSCULES);
+		Caractere c = new Caractere() ; 
+		return genererCaractere(c.getMajuscules());
 	}
 
 	/**
@@ -160,7 +164,8 @@ public class Caractere {
 	 * @return un caractere : caractere accentu&eacute;
 	 */
 	public static char genereAccentCedil() {
-		return genererCaractere(ACCENTCEDIL);
+		Caractere c = new Caractere() ; 
+		return genererCaractere(c.getAccentcedil());
 	}
 
 	/**
@@ -168,7 +173,8 @@ public class Caractere {
 	 * @return un caractere : caractere special
 	 */
 	public static char genereSpecial() {
-		return genererCaractere(SPECIAUX);
+		Caractere c = new Caractere() ; 
+		return genererCaractere(c.getSpeciaux());
 	}
 
 	/////////////// TABLEAU AVEC TYPES CHOISIS ///////////////
@@ -180,27 +186,26 @@ public class Caractere {
 	 * @param majusc true si majuscules autoris&eacute;es
 	 * @param accent true si accents autoris&eacute;s
 	 * @param special true si caracteres speciaux autoris&eacute;s
-	 * @return tableau de caracteres
+	 * @return liste de caracteres
 	 */
-	public static Integer[] poolCaracteres(boolean chiffres, boolean minusc, boolean majusc, boolean accent,
+	public static ArrayList<Character> poolCaracteres(boolean chiffres, boolean minusc, boolean majusc, boolean accent,
 			boolean special) {
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		Caractere c = new Caractere() ;
+		ArrayList<Character> list = new ArrayList<Character>();
 		if (chiffres)
-			list.addAll(Arrays.asList(CHIFFRES));
+			list.addAll(c.getChiffres());
 		if (minusc)
-			list.addAll(Arrays.asList(MINUSCULES));
+			list.addAll(c.getMinuscules());
 		if (majusc)
-			list.addAll(Arrays.asList(MAJUSCULES));
+			list.addAll(c.getMajuscules());
 		if (accent)
-			list.addAll(Arrays.asList(ACCENTCEDIL));
+			list.addAll(c.getAccentcedil());
 		if (special)
-			list.addAll(Arrays.asList(SPECIAUX));
+			list.addAll(c.getSpeciaux());
 		if (!chiffres && !minusc && !majusc && !accent && !special) {
-			list.addAll(Arrays.asList(CHIFFRES));
+			list.addAll(c.getChiffres());
 		}
-		Integer[] tabSp = new Integer[list.size()];
-		tabSp = list.toArray(tabSp);
-		return tabSp;
+		return list;
 	}
 
 	/**
@@ -209,102 +214,144 @@ public class Caractere {
 	 * @param inclusions liste de caracteres &agrave; ajouter
 	 * @return pool complet&eacute; avec les inclusions
 	 */
-	public static Integer[] completerPool(Integer[] pool, ArrayList<Integer> inclusions) {
-		Integer[] poolCompletTab;
-		ArrayList<Integer> poolEnCoursAL = new ArrayList<>();
-		poolEnCoursAL.addAll((Arrays.asList(pool)));
+	public static ArrayList<Character> completerPool(ArrayList<Character>  pool, ArrayList<Character> inclusions) {
+		ArrayList<Character> poolEnCoursAL = pool ;
 		if(inclusions != null && inclusions.size() != 0){
 			// dédoublonne
-			for (Integer inc : inclusions) {
+			for (Character inc : inclusions) {
 				if (!poolEnCoursAL.contains(inc)) {
 					poolEnCoursAL.add(inc);
 				}
 			}
 		}
-		poolCompletTab = new Integer[poolEnCoursAL.size()];
-		poolCompletTab = poolEnCoursAL.toArray(poolCompletTab);
-		return poolCompletTab;
+		return poolEnCoursAL;
 	}
 
 	/////////////// TABLEAU DES 110 CARACTERES ///////////////
 
 	/**
-	 * Genere le Tableau des 110 caracteres de l'application
+	 * Genere la liste des 110 caracteres de l'application
 	 * <BR>(= Ensemble des caracteres pouvant etre utilis&eacute;s pour generer des mots de passe) 
-	 * @return tableau des 110 caracteres
+	 * @return liste des 110 caracteres
 	 */
-	public static Integer[] les110() {
-		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(CHIFFRES));
-		list.addAll((Arrays.asList(MINUSCULES)));
-		list.addAll((Arrays.asList(MAJUSCULES)));
-		list.addAll((Arrays.asList(ACCENTCEDIL)));
-		list.addAll((Arrays.asList(SPECIAUX)));
-		Integer[] tabList = new Integer[list.size()];
-		for (int i = 0; i < list.size(); i++) {
-			tabList[i] = list.get(i);
-		}
-		return tabList;
+	public static ArrayList<Character> les110() {
+		Caractere c = new Caractere() ;
+		ArrayList<Character> list = c.getChiffres();
+		list.addAll(c.getMinuscules());
+		list.addAll(c.getMajuscules());
+		list.addAll(c.getAccentcedil());
+		list.addAll(c.getSpeciaux());
+		return list;
 	}
-
-	/////////////// TABLEAU DE 36 CARACTERES SPECIAUX ///////////////
-
+	
+	// //////// Prepare la repartition entre types de caracteres /////////
+	
+	/**
+	 * Genere la liste des 10 chiffres
+	 * @return liste des chiffres
+	 */
+	private void lesChiffres() {
+		Caractere.ensembleChiffres = new ArrayList<Character>() ;
+		for (int i = 48 ; i <= 57 ; i++)
+			ensembleChiffres.add(new Character((char) i)) ; 
+	}
+	
+	/**
+	 * Genere la liste des minuscules
+	 * @return liste des minuscules
+	 */
+	private void lesMinuscules() {
+		Caractere.ensembleMinuscules = new ArrayList<Character>() ;
+		for(int i = 97 ; i <= 122 ; i++)
+			ensembleMinuscules.add(new Character((char) i)) ;
+	}
 
 	/**
-	 * Genere le Tableau des 36 caracteres speciaux de l'application
-	 * @return tableau des 36 caracteres speciaux
+	 * Genere la liste des majuscules
+	 * @return liste des majuscules
 	 */
-	static Integer[] caracteresSpeciaux() {
-		ArrayList<Integer> sp = new ArrayList<>();
-		Integer[] tabSp;
-		for (int i = 33; i <= 47; i++)
-			sp.add(i);
-		for (int i = 58; i <= 64; i++)
-			sp.add(i);
-		for (int i = 91; i <= 96; i++)
-			sp.add(i);
-		for (int i = 123; i <= 126; i++)
-			sp.add(i);
-		sp.add(163);
-		sp.add(166);
-		sp.add(167);
-		sp.add(176);
-		tabSp = new Integer[sp.size()];
-		tabSp = sp.toArray(tabSp);
-		return tabSp;
+	private void lesMajuscules() {
+		Caractere.ensembleMajuscules = new ArrayList<Character>() ;
+		for(int i = 65 ; i <= 90 ; i++)
+			ensembleMajuscules.add(new Character((char) i)) ;
 	}
 
-	
+	/**
+	 * Genere la liste des 12 accents / cedille
+	 * @return liste des accents / cedille
+	 */
+	private void lesAccents() {
+		Caractere.ensembleAccentCedil = new ArrayList<Character>() ; 
+		ensembleAccentCedil.add(new Character((char) 224)) ;
+		ensembleAccentCedil.add(new Character((char) 226)) ;
+		ensembleAccentCedil.add(new Character((char) 231)) ;
+		ensembleAccentCedil.add(new Character((char) 232)) ;
+		ensembleAccentCedil.add(new Character((char) 233)) ;
+		ensembleAccentCedil.add(new Character((char) 234)) ;
+		ensembleAccentCedil.add(new Character((char) 235)) ;
+		ensembleAccentCedil.add(new Character((char) 238)) ;
+		ensembleAccentCedil.add(new Character((char) 239)) ;
+		ensembleAccentCedil.add(new Character((char) 244)) ;
+		ensembleAccentCedil.add(new Character((char) 249)) ;
+		ensembleAccentCedil.add(new Character((char) 251)) ;
+	}
+
+	// les 36 caract speciaux
+	/**
+	 * Genere la liste des 36 caracteres speciaux de l'application
+	 * @return liste des 36 caracteres speciaux
+	 */
+	private void lesSpeciaux() {
+		Caractere.ensembleSpeciaux = new ArrayList<Character>() ;
+		for (int i = 33; i <= 47; i++)
+			ensembleSpeciaux.add(new Character((char) i));
+		for (int i = 58; i <= 64; i++)
+			ensembleSpeciaux.add(new Character((char) i));
+		for (int i = 91; i <= 96; i++)
+			ensembleSpeciaux.add(new Character((char) i));
+		for (int i = 123; i <= 126; i++)
+			ensembleSpeciaux.add(new Character((char) i));
+		ensembleSpeciaux.add(new Character((char) 163));
+		ensembleSpeciaux.add(new Character((char) 166));
+		ensembleSpeciaux.add(new Character((char) 167));
+		ensembleSpeciaux.add(new Character((char) 176));
+	}
+
+
 	
 	// ////////////////Getters ////////////////////
 	
-	public static Integer[] getChiffres() {
-		return CHIFFRES;
-	}
-	
-	public static Integer[] getMajuscules() {
-		return MAJUSCULES;
+	public ArrayList<Character> getChiffres() {
+		return ensembleChiffres;
 	}
 
-	public static Integer[] getMinuscules() {
-		return MINUSCULES;
+	public ArrayList<Character> getMinuscules() {
+		return ensembleMinuscules;
+	}
+	public ArrayList<Character> getMajuscules() {
+		return ensembleMajuscules;
 	}
 
-	public static Integer[] getAccentcedil() {
-		return ACCENTCEDIL;
+	public ArrayList<Character> getAccentcedil() {
+		return ensembleAccentCedil;
 	}
 
-	public static Integer[] getSpeciaux() {
-		return SPECIAUX;
+	public ArrayList<Character> getSpeciaux() {
+		return ensembleSpeciaux;
 	}
 
 	
-	// pour la valeur ASCII du char
+	// pour this.leChar et sa valeur ASCII 
 	
-	public void setLaValeurDuChar(int valChar) {
-		this.laValeurDuChar = valChar;
+	public void setLeChar(int valChar) {
+		setLeChar((char) valChar);
 	}
 	
-	public int getLaValeurDuChar() {
-		return this.laValeurDuChar ;
+	public void setLeChar(char caract) {
+		this.leChar = caract ;
+	}
+	
+	public char getLeChar() {
+		return this.leChar ;
 	}
 }
