@@ -25,7 +25,7 @@ public class Donnee {
     }
 
     /**
-     * Cr&eacute;ation d'une Donn&eacute;e par l'Utilisateur (= saisie).<br>
+     * Cr&eacute;ation d'une <b>Donn&eacute;e par l'Utilisateur (= saisie)</b>.<br>
      * L'objet conserve le mot de passe saisi
      *
      * @param passeDonnee           le mot de passe &agrave; conserver ( = saisi )
@@ -44,7 +44,7 @@ public class Donnee {
     }
 
     /**
-     * R&eacute;cup&eacute;ration d'une Donn&eacute;e dans la base de donn&eacute;es <br>
+     * R&eacute;cup&eacute;ration d'une Donn&eacute;e dans la <B>base de donn&eacute;es</B> <br>
      * L'affichage du mot de passe en clair est possible mais il n'est conserv&eacute; que sous forme chiffr&eacute;e
      * @param passeDonnee           le mot de passe &agrave; conserver ( = saisi )
      * @param nomDonnee             nom de la Donn&eacute;e
@@ -95,7 +95,8 @@ public class Donnee {
      * @return mot de passe en clair (String)
      */
     public String afficherMotPasse() {
-        ChiffeMode cm = new ChiffeMode() ;
+        ChiffeMode cm;
+        cm = new ChiffeMode();
         return cm.dechiffrer(this.passeDonneeChiffre, this.cleChiffrementDonnee);
     }
 
@@ -105,8 +106,6 @@ public class Donnee {
     /**
      * Chiffrement du mot de passe
      * <BR>(appelle la fonction de chiffrement) ChiffeMode.chiffrer(passeClair)
-     *
-     * @return Objet ChiffeMode (passe chiffr&eacute; + cl&eacute;)
      */
     public void chiffrerMotPasse() {
         ChiffeMode cm = new ChiffeMode() ;
@@ -125,7 +124,7 @@ public class Donnee {
      * @param champ champ dans lequel tester pr&eacute;sence
      * @return true si mot pr&eacute;sent
      */
-    public static boolean presenceMotDansChamp(String champ, String mot) {
+    static boolean presenceMotDansChamp(String champ, String mot) {
         if (champ.contains(mot))
             return true;
         return false;
@@ -138,10 +137,11 @@ public class Donnee {
      * @param mot cha&icirc;ne &agrave; tester
      * @return true si mot pr&eacute;sent
      */
-    public boolean presenceMotDansObjet(String mot) {
+    boolean presenceMotDansObjet(String mot) {
         if (presenceMotDansChamp(nomDonnee, mot) || presenceMotDansChamp(questionSecreteDonnee, mot)
-                || presenceMotDansChamp(noteDonnee, mot))
+                || presenceMotDansChamp(noteDonnee, mot)) {
             return true;
+        }
         return false;
     }
 

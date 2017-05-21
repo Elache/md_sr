@@ -1,12 +1,11 @@
-package fr.hibon.modepassesecurest;
-
-import static org.junit.Assert.assertTrue;
+package fr.hibon.modepassesecurest.motpasse;
 
 import java.util.ArrayList;
 
-import javax.jws.WebParam.Mode;
 
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 public class MotDePasseCotationTest {
 
@@ -27,39 +26,39 @@ public class MotDePasseCotationTest {
 
 	/**
 	 * Test Constructeur num 1 (param String) et getters <BR>
-	 * Constructeur prive : methode publique analyser(String) String 5gAù%(
-	 * degré 1 de 'force' (6 caract de long parmi 110)
+	 * Constructeur prive : methode publique analyser(String) String 5gAÃ¹%(
+	 * degrÃ© 1 de 'force' (6 caract de long parmi 110)
 	 */
 	@Test
 	public void MotDePasseCotation_paramString_OK() {
 		String sp = ChainePasse.composition(echantillon_1.get(8)).getChaineDuPasse();
-		// tout110_6 = "5gAù%(";
+		// tout110_6 = "5gAÃ¹%(";
 		MotDePasseCotation mp = MotDePasseCotation.analyser(sp);
 		boolean test = true;
-		if (mp.longueurPasse() != 6 || mp.getValeurAnalyse() != 1 || !mp.getQualifieAnalyse().equals("Très faible")
-				|| mp.getForceBits() != 41 || !mp.getNiveauAnssi().equals("très faible")
-				|| !mp.getMotPasse().toString().equals("5gAù%("))
+		if (mp.longueurPasse() != 6 || mp.getValeurAnalyse() != 1 || !mp.getQualifieAnalyse().equals("TrÃ¨s faible")
+				|| mp.getForceBits() != 41 || !mp.getNiveauAnssi().equals("trÃ¨s faible")
+				|| !mp.getMotPasse().toString().equals("5gAÃ¹%("))
 			test = false;
 		assertTrue(test);
 	}
-	
+
 	/**
 	 * Test Constructeur num 2 (param ChainePasse) et getters <BR>
 	 * Constructeur prive : methode publique analyser(String) appel&eacute;e
-	 * 5gAù%( degré 1 de 'force' (6 caract de long parmi 110)
+	 * 5gAÃ¹%( degrÃ© 1 de 'force' (6 caract de long parmi 110)
 	 */
 	@Test
 	public void MotDePasseCotation_paramChainePasse() {
 		ChainePasse cp = ChainePasse.composition(echantillon_1.get(8)); // tout110_6
-																		// =
-																		// "5gAù%(";
+		// =
+		// "5gAÃ¹%(";
 		MotDePasseCotation mp = MotDePasseCotation.analyser(cp);
 
 	}
 
-	
+
 	// /////////   teste methode de classification ModePasseSecuRest
-	
+
 	/**
 	 * Verifie, sur ~50 passw, si le classement est le meme que celui determine
 	 * 'manuellement'. <br>
@@ -99,34 +98,34 @@ public class MotDePasseCotationTest {
 		assertTrue(masseTest);
 	}
 
-	
+
 	// /////////   teste methode de classification Anssi pour forces importantes
-	
-		/**
-		 * 
-		 */
-		@Test
-		public void classiAnssi_() {
-			boolean test = true; 
-			String chiffres10_77 = echantillon_4.get(1) ; // 256
-			MotDePasseCotation mp = MotDePasseCotation.analyser(chiffres10_77) ;
-			if (mp.getForceBits() != 256 || !mp.getNiveauAnssi().equals("fort (>128b)"))
-					test = false ; 
-			String tout110_19 = echantillon_4.get(8) ; // 129
-			mp = MotDePasseCotation.analyser(tout110_19) ;
-			if (mp.getForceBits() != 129 || !mp.getNiveauAnssi().equals("fort (>128b)"))
-					test = false ; 
-			String tout110_38 = echantillon_4.get(9) ; // 258
-			mp = MotDePasseCotation.analyser(tout110_38) ;
-			if (mp.getForceBits() != 258 || !mp.getNiveauAnssi().equals("fort (>256b)"))
-				test = false ; 
-			String tout110_18 = echantillon_4.get(8).substring(0, 18) ; // 123
-			mp = MotDePasseCotation.analyser(tout110_18) ;
-			if (mp.getForceBits() != 123 || !mp.getNiveauAnssi().equals("fort"))
-				test = false ; 
-			assertTrue(test)  ;		
-		}
-	
+
+	/**
+	 *
+	 */
+	@Test
+	public void classiAnssi_() {
+		boolean test = true;
+		String chiffres10_77 = echantillon_4.get(1) ; // 256
+		MotDePasseCotation mp = MotDePasseCotation.analyser(chiffres10_77) ;
+		if (mp.getForceBits() != 256 || !mp.getNiveauAnssi().equals("fort (>128b)"))
+			test = false ;
+		String tout110_19 = echantillon_4.get(8) ; // 129
+		mp = MotDePasseCotation.analyser(tout110_19) ;
+		if (mp.getForceBits() != 129 || !mp.getNiveauAnssi().equals("fort (>128b)"))
+			test = false ;
+		String tout110_38 = echantillon_4.get(9) ; // 258
+		mp = MotDePasseCotation.analyser(tout110_38) ;
+		if (mp.getForceBits() != 258 || !mp.getNiveauAnssi().equals("fort (>256b)"))
+			test = false ;
+		String tout110_18 = echantillon_4.get(8).substring(0, 18) ; // 123
+		mp = MotDePasseCotation.analyser(tout110_18) ;
+		if (mp.getForceBits() != 123 || !mp.getNiveauAnssi().equals("fort"))
+			test = false ;
+		assertTrue(test)  ;
+	}
+
 	// ECHANTILLON ///////////
 
 	public void echantillonStr() {
@@ -169,19 +168,19 @@ public class MotDePasseCotationTest {
 		String minMajChiff62_12 = "Fr6kd2j3ggHs";
 		String minMajChiff62_13 = "Fr6kd2j3ggHs9";
 
-		String minMajAccentChiff74_7 = "mAé5d1s";
-		String minMajAccentChiff74_8 = "mAé5d1s5";
-		String minMajAccentChiff74_9 = "mAé5d1s5ù";
-		String minMajAccentChiff74_10 = "mAé5d1s5ùL";
-		String minMajAccentChiff74_11 = "mAé5d1s5ùLd";
+		String minMajAccentChiff74_7 = "mAÃ©5d1s";
+		String minMajAccentChiff74_8 = "mAÃ©5d1s5";
+		String minMajAccentChiff74_9 = "mAÃ©5d1s5Ã¹";
+		String minMajAccentChiff74_10 = "mAÃ©5d1s5Ã¹L";
+		String minMajAccentChiff74_11 = "mAÃ©5d1s5Ã¹Ld";
 
-		String tout110_6 = "5gAù%(";
-		String tout110_7 = "5gtAù%(";
-		String tout110_8 = "5gA0@ù%(";
-		String tout110_9 = "5gAùù'{%(";
-		String tout110_10 = "5gA5e8]ù%(";
-		String tout110_19 = "5gA5e8]ù%(5gA5e8]ù%";
-		String tout110_38 = "5gA5e8]ù%(5gA5e8]ù%5gA5e8]ù%(5gA5e8]ù%";
+		String tout110_6 = "5gAÃ¹%(";
+		String tout110_7 = "5gtAÃ¹%(";
+		String tout110_8 = "5gA0@Ã¹%(";
+		String tout110_9 = "5gAÃ¹Ã¹'{%(";
+		String tout110_10 = "5gA5e8]Ã¹%(";
+		String tout110_19 = "5gA5e8]Ã¹%(5gA5e8]Ã¹%";
+		String tout110_38 = "5gA5e8]Ã¹%(5gA5e8]Ã¹%5gA5e8]Ã¹%(5gA5e8]Ã¹%";
 
 		echantillon_1.add(chiffres10_6);
 		echantillon_1.add(chiffres10_19);

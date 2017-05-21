@@ -1,29 +1,26 @@
 package fr.hibon.modepassesecurest.compte.utiles;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import static junit.framework.Assert.assertNotNull;
+
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import android.support.test.runner.AndroidJUnit4;
 
-import org.junit.runner.RunWith;
-
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.SecretKey;
-
-import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
 
 /**
  * Teste la Classe ChiffeMode
  *
  */
 @RunWith(AndroidJUnit4.class)
-public class ChiffeModeTest {
+public class ChiffeModeMockTest {
 
 
-    public ChiffeModeTest() {
+    public ChiffeModeMockTest() {
     }
 
     /**
@@ -70,7 +67,7 @@ public class ChiffeModeTest {
         String pass = "rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&rz'ssNFéè&" ;
         ChiffeMode ch = new ChiffeMode();
         ch.chiffrer(pass) ;
-        assertTrue(ch.getPasseCode().length() <= 24 );
+        assertTrue(ch.getPasseCode().length() >= 300 );
     }
 
     /**
@@ -98,7 +95,7 @@ public class ChiffeModeTest {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        assertNotNull(dsk.getAlgorithm()) ;
+        assert dsk != null;
         assertEquals(dsk.getAlgorithm(), "AES");
     }
 

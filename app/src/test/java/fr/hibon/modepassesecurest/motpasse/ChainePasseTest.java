@@ -1,11 +1,17 @@
-package fr.hibon.modepassesecurest;
+package fr.hibon.modepassesecurest.motpasse;
+
+
+
+import java.util.ArrayList;
+
+import fr.hibon.modepassesecurest.motpasse.Caractere;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import org.junit.Test;
 
-/** 
+/**
  * Teste la classe ChainePasse <BR>
  * (MotDePasseCotation - ChainePasse - Caractere)
  */
@@ -17,13 +23,13 @@ public class ChainePasseTest {
 	 * - rep&eacute;re les types de caracteres presents dans une chaine (param)
 	 * <BR>
 	 * - instancie le ChainePasse correspondant <BR>
-	 * Teste : échantillon de 5 chaine ; verification de la bonne analyse des
+	 * Teste : Ã©chantillon de 5 chaine ; verification de la bonne analyse des
 	 * types presents / absents
 	 */
 	@Test
 	public void composition() {
 		boolean test = true;
-		String chTest = "&aEé";
+		String chTest = "&aEÃ©";
 		ChainePasse passe = ChainePasse.composition(chTest);
 		if (passe.avecChiffre() || !passe.avecAccentcedil() || !passe.avecMinuscule() || !passe.avecMajuscule()
 				|| !passe.avecSpecial())
@@ -33,7 +39,7 @@ public class ChainePasseTest {
 		if (!passe.avecChiffre() || passe.avecAccentcedil() || !passe.avecMinuscule() || passe.avecMajuscule()
 				|| passe.avecSpecial())
 			test = false;
-		chTest = "çallut!";
+		chTest = "Ã§allut!";
 		passe = ChainePasse.composition(chTest);
 		if (passe.avecChiffre() || !passe.avecAccentcedil() || !passe.avecMinuscule() || passe.avecMajuscule()
 				|| !passe.avecSpecial())
@@ -58,7 +64,7 @@ public class ChainePasseTest {
 	 * &nbsp; <BR>
 	 * Suivant le tirage (plus ou moins de types represent&eacute;s), le mot de
 	 * passe sera d'un niveau variable <BR>
-	 * (test sur 4 x 10 000 : ~ 13-14 % de niveau inférieur à Bon). <BR>
+	 * (test sur 4 x 10 000 : ~ 13-14 % de niveau infÃ©rieur Ã  Bon). <BR>
 	 * Le test verifie que tous les mots de passe g&eacute;n&eacute;r&eacute;s
 	 * sont de longueur 10 et que moins de 20% ne sont pas de niveau Bon
 	 */
@@ -89,7 +95,7 @@ public class ChainePasseTest {
 	 * 110 caracteres utilisables<BR>
 	 * &nbsp; <BR>
 	 * Le test verifie que tous les mots de passe g&eacute;n&eacute;r&eacute;s
-	 * sont de la longueur fixée
+	 * sont de la longueur fixÃ©e
 	 */
 	@Test
 	public void genererMotDePasse_longueurChoisie_longueur() {
@@ -101,7 +107,7 @@ public class ChainePasseTest {
 			String pass = ch.getChaineDuPasse();
 			if (pass.length() != longueurEnCours) {
 				test = false ;
-			}	
+			}
 		}
 		assertTrue(test);
 	}
@@ -250,7 +256,7 @@ public class ChainePasseTest {
 	/**
 	 * Verifie g&eacute;n&eacute;ration de mot de passe avec la selection des
 	 * types autorises <BR>
-	 * Test : autorise les lettres minuscules, majuscules et accentuées <BR>
+	 * Test : autorise les lettres minuscules, majuscules et accentuÃ©es <BR>
 	 * 100 mots de passe de longueur 20 : tout caractere doit etre d'un des
 	 * types autoris&eacute;s
 	 */
@@ -309,7 +315,7 @@ public class ChainePasseTest {
 	 */
 	@Test
 	public void genererMotDePasse_tousParam_longueur0() {
-		boolean test = true ; 
+		boolean test = true ;
 		ChainePasse exTest = null;
 		exTest = ChainePasse.genererMotDePasse(0, true, true, true, false, false, null, null);
 		if(exTest.longeurMot() != 1)
@@ -320,20 +326,19 @@ public class ChainePasseTest {
 			test = false ;
 		assertTrue(test);
 	}
-	
+
 	/**
 	 * Verifie le respect de la limite de longueur de mot de passe > 0
 	 *<BR>test : mot de passe de longueur 0 (et moins) demand&eacute;. Doit donner un mot de longueur 1.
 	 */
 	@Test
 	public void genererMotDePasse_tousParam_longueur61() {
-		boolean test = true ; 
 		ChainePasse exTest = null;
 		exTest = ChainePasse.genererMotDePasse(61, false, true, true, false, false, null, null);
 		assertEquals(exTest.longeurMot(), 60);
 	}
 
-	
+
 	// //////// Completer passe jusque 10 caracteres ////////////////////
 	/**
 	 * verifie methode passeComplete10() qui permet de completer un mot de passe
@@ -506,13 +511,13 @@ public class ChainePasseTest {
 		excl.add(new Character('e'));
 		excl.add(new Character('#'));
 		excl.add(new Character('a'));
-		excl.add(new Character('ù'));
-		excl.add(new Character('â'));
-		excl.add(new Character('é'));
+		excl.add(new Character('Ã¹'));
+		excl.add(new Character('Ã¢'));
+		excl.add(new Character('Ã©'));
 		excl.add(new Character('~'));
 		excl.add(new Character('Q'));
 		excl.add(new Character('^'));
-		excl.add(new Character('ç'));
+		excl.add(new Character('Ã§'));
 		excl.add(new Character('6'));
 		return excl;
 	}
@@ -540,9 +545,9 @@ public class ChainePasseTest {
 		incl.add(new Character('S'));
 		incl.add(new Character('{'));
 		incl.add(new Character('z'));
-		incl.add(new Character('è'));
-		incl.add(new Character('ô'));
-		incl.add(new Character('à'));
+		incl.add(new Character('Ã¨'));
+		incl.add(new Character('Ã´'));
+		incl.add(new Character('Ã '));
 		incl.add(new Character('}'));
 		incl.add(new Character('R'));
 		incl.add(new Character('@'));

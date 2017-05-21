@@ -1,5 +1,5 @@
+package fr.hibon.modepassesecurest.motpasse;
 
-package fr.hibon.modepassesecurest;
 
 import java.util.ArrayList;
 
@@ -85,7 +85,7 @@ public class ChainePasse {
 	 * @return ChainePasse mot de passe de longueur 10 (et composition
 	 *         encapsul&eacute;e)
 	 */
-	public static ChainePasse genererMotDePasse() {
+	static ChainePasse genererMotDePasse() {
 		return genererMotDePasse(10);
 	}
 
@@ -98,7 +98,7 @@ public class ChainePasse {
 	 * @return ChainePasse mot de passe de longueur parametr&eacute;e (et
 	 *         composition encapsul&eacute;e)
 	 */
-	public static ChainePasse genererMotDePasse(int n) {
+	static ChainePasse genererMotDePasse(int n) {
 		return genererMotDePasse(n, true, true, true, true, true, null, null);
 	}
 
@@ -111,7 +111,7 @@ public class ChainePasse {
 	 * Pour tout type attendu, au moins un caractere est
 	 * g&eacute;n&eacute;r&eacute;
 	 *
-	 * @param n
+	 * @param nb
 	 *            longueur de mot de passe demand&eacute;e
 	 * @param chiffres
 	 *            true si chiffres autoris&eacute;s
@@ -130,7 +130,7 @@ public class ChainePasse {
 	 *            ajouter &agrave; la table
 	 * @return ChainePasse (mot de passe et composition)
 	 */
-	public static ChainePasse genererMotDePasse(int nb, boolean chiffres, boolean minusc, boolean majusc,
+	static ChainePasse genererMotDePasse(int nb, boolean chiffres, boolean minusc, boolean majusc,
 												boolean accent, boolean special, ArrayList<Character> exclusions, ArrayList<Character> inclusions) {
 
 		// attentes
@@ -289,7 +289,7 @@ public class ChainePasse {
 	 *
 	 * @return true si un chiffre au moins est present
 	 */
-	public boolean avecChiffre() {
+	boolean avecChiffre() {
 		return avecChiffre;
 	}
 
@@ -298,7 +298,7 @@ public class ChainePasse {
 	 *
 	 * @return true si une minuscule au moins est presente
 	 */
-	public boolean avecMinuscule() {
+	boolean avecMinuscule() {
 		return avecMinuscule;
 	}
 
@@ -307,7 +307,7 @@ public class ChainePasse {
 	 *
 	 * @return true si une majuscule au moins est presente
 	 */
-	public boolean avecMajuscule() {
+	boolean avecMajuscule() {
 		return avecMajuscule;
 	}
 
@@ -317,7 +317,7 @@ public class ChainePasse {
 	 *
 	 * @return true si un accent au moins est present
 	 */
-	public boolean avecAccentcedil() {
+	boolean avecAccentcedil() {
 		return avecAccentCedil;
 	}
 
@@ -326,7 +326,7 @@ public class ChainePasse {
 	 *
 	 * @return true si une caractere special au moins est presente
 	 */
-	public boolean avecSpecial() {
+	boolean avecSpecial() {
 		return avecSpecial;
 	}
 
@@ -384,7 +384,7 @@ class TriInclusions {
 
 	ArrayList<Character> chiffres, minuscules, majuscules, accentsCedil, speciaux;
 
-	public TriInclusions() {
+	TriInclusions() {
 		chiffres = new ArrayList<>();
 		minuscules = new ArrayList<>();
 		majuscules = new ArrayList<>();
@@ -392,7 +392,7 @@ class TriInclusions {
 		speciaux = new ArrayList<>();
 	}
 
-	public TriInclusions(ArrayList<Character> inclusions) {
+	TriInclusions(ArrayList<Character> inclusions) {
 		this();
 		for (Character incl : inclusions) {
 			if (new Caractere(incl).estUnChiffre())

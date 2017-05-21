@@ -2,7 +2,6 @@ package fr.hibon.modepassesecurest.compte.utiles;
 
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
 
@@ -40,6 +39,8 @@ public class ChiffeModeTest {
     }
 
     /**
+     *
+     *
      * */
     @Test
     public void prefixer_doitAjouterANull() {
