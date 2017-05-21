@@ -25,13 +25,16 @@ public class CompteUtilisateur {
     private String notePersoUser;
 
     private ChainePasse passeUser;
-    private String cleChiffreDonneeUser;
+    private ChainePasse passeUserChiffre;
+    private String cleChiffreUser;
 
-    private ChainePasse passeRecoursUser;
-    private String cleChiffreDonneeRecours;
+    private ChainePasse passeRecours;
+    private ChainePasse passeRecoursChiffre;
+    private String cleChiffreRecours;
 
-    private ChainePasse passeCompleteInternet;
-    private String cleChiffreDonneeCompleteInternet;
+    private ChainePasse passeInternet;
+    private ChainePasse passeInternetChiffre;
+    private String cleChiffreInternet;
 
 
     /**
@@ -57,6 +60,9 @@ public class CompteUtilisateur {
     /**
      * Renseigne les informations du compte &agrave; partir des
      * <b>param&egrave;tres saisis par l'Utilisateur</b>
+     * <BR>
+     * Si aucun mot de passe adapt&eacute; pour usage Internet, mot de passe compl&eacute;t&eacute;
+     * jusque longueur 10 et stock&eacute; dans attribut passeInternet
      *
      * @param nomU          nom d'Utilisateur
      * @param passeU        mot de passe Utilisateur (authentification-syst&egrave;me)
@@ -80,14 +86,21 @@ public class CompteUtilisateur {
             throw new CompteException(ErreurDetail.MotDePasseVide);
 
         instanceSingleton.nomUser = nomU;
-        instanceSingleton.passeUser = ChainePasse.composition(passeU);
-        instanceSingleton.passeRecoursUser = ChainePasse.composition(passeRecoursU);
         instanceSingleton.mailContactUser = mailContactU;
         instanceSingleton.notePersoUser = notePersoU;
-        instanceSingleton.passeCompleteInternet = null;
-        instanceSingleton.cleChiffreDonneeUser = null;
-        instanceSingleton.cleChiffreDonneeRecours = null;
-        instanceSingleton.cleChiffreDonneeCompleteInternet = null;
+
+        instanceSingleton.passeUser = ChainePasse.composition(passeU) ;
+        instanceSingleton.cleChiffreUser = null ;
+
+        instanceSingleton.passeRecours = ChainePasse.composition(passeRecoursU) ;
+        instanceSingleton.cleChiffreRecours = null ;
+
+        instanceSingleton.passeInternet =  null ;
+        instanceSingleton.cleChiffreInternet = null ;
+        if(!instanceSingleton.passeInternetAcceptable(passeU, passeRecoursU)) {
+            ChainePasse chPassInternet = ChainePasse.composition(passeU)  ;
+            instanceSingleton.passeInternet = ChainePasse.passeComplete10(chPassInternet) ;
+        }
     }
 
     /**
@@ -98,25 +111,25 @@ public class CompteUtilisateur {
      * @param passeRecoursU passe de recours en BDD
      * @param mailContactU mail utilisateur en BDD
      * @param notePersoU note personnelle en BDD
-     * @param passeCompleteInternet passe-internet (complete)
-     * @param cleChiffreDonneeUser cle chiffrement Passe-utilisateur en BDD
-     * @param cleChiffreDonneeRecours cle chiffrement Passe-recours en BDD
-     * @param cleChiffreDonneeCompleteInternet cle chiffrement Passe-complete-internet en BDD
+     * @param passeInternet passe-internet (complete)
+     * @param cleChiffreUser cle chiffrement Passe-utilisateur en BDD
+     * @param cleChiffreRecours cle chiffrement Passe-recours en BDD
+     * @param cleChiffreInternet cle chiffrement Passe-complete-internet en BDD
      * @param lesRep liste des repertoires
      * @throws CompteException
      */
     public static void recupereLeCompte(String nomU, String passeU, String passeRecoursU, String mailContactU,
-                                         String notePersoU,  String passeCompleteInternet,  String cleChiffreDonneeUser, String cleChiffreDonneeRecours, String cleChiffreDonneeCompleteInternet, ArrayList<Repertoire> lesRep) throws CompteException {
+                                        String notePersoU,  String passeInternet,  String cleChiffreUser, String cleChiffreRecours, String cleChiffreInternet, ArrayList<Repertoire> lesRep) throws CompteException {
         getCompteConnecte().deconnecter() ;
         instanceSingleton.nomUser = nomU;
-        instanceSingleton.passeUser = ChainePasse.composition(passeU);
-        instanceSingleton.passeRecoursUser = ChainePasse.composition(passeRecoursU);
+        instanceSingleton.passeUserChiffre = ChainePasse.composition(passeU);
+        instanceSingleton.passeRecoursChiffre = ChainePasse.composition(passeRecoursU);
         instanceSingleton.mailContactUser = mailContactU;
         instanceSingleton.notePersoUser = notePersoU;
-        instanceSingleton.passeCompleteInternet = ChainePasse.composition(passeCompleteInternet);
-        instanceSingleton.cleChiffreDonneeUser = cleChiffreDonneeUser;
-        instanceSingleton.cleChiffreDonneeRecours = cleChiffreDonneeRecours;
-        instanceSingleton.cleChiffreDonneeCompleteInternet = cleChiffreDonneeCompleteInternet;
+        instanceSingleton.passeInternetChiffre = ChainePasse.composition(passeInternet);
+        instanceSingleton.cleChiffreUser = cleChiffreUser;
+        instanceSingleton.cleChiffreRecours = cleChiffreRecours;
+        instanceSingleton.cleChiffreInternet = cleChiffreInternet;
         instanceSingleton.lesRepertoires = lesRep;
     }
 
@@ -128,36 +141,38 @@ public class CompteUtilisateur {
     public void deconnecter() {
         instanceSingleton = null;
         lesRepertoires = null;
-        nomUser = "";
-        passeUser = null;
-        passeRecoursUser = null;
+        nomUser = null ;
         mailContactUser = "";
         notePersoUser = "";
-        passeCompleteInternet = null;
-        cleChiffreDonneeUser = null;
-        cleChiffreDonneeRecours = null;
-        cleChiffreDonneeCompleteInternet = null;
 
+        passeUser = null;
+        passeUserChiffre = null;
+
+        passeRecours = null;
+        passeRecoursChiffre = null;
+
+        passeInternet = null;
+        passeInternetChiffre = null;
+
+        cleChiffreUser = null;
+        cleChiffreRecours = null;
+        cleChiffreInternet = null;
     }
 
     // ////////// Accès INTERNET //////////////////
 
     /**
      * V&eacute;rifie si au moins un mot de passe a une s&eacute;curit&eacute;
-     * suffisante pour connexion &agrave; la base de donn&eacute;es en ligne <BR>
-     * Si aucun mot de passe adapt&eacute;, mot de passe compl&eacute;t&eacute;
-     * jusque longueur 10 et stock&eacute; dans attribut passeCompleteInternet
-     *
+     * suffisante pour connexion &agrave; la base de donn&eacute;es en ligne
      * @return true si 1 des mots de passe est de niveau acceptable ou bon
      */
-    public boolean passeInternetAcceptable() {
-        MotDePasseCotation mp = MotDePasseCotation.analyser(passeUser);
+    public boolean passeInternetAcceptable(String pass1, String pass2) {
+        MotDePasseCotation mp = MotDePasseCotation.analyser(pass1);
         if (mp.getValeurAnalyse() >= 3)
             return true;
-        mp = MotDePasseCotation.analyser(passeRecoursUser);
+        mp = MotDePasseCotation.analyser(pass2);
         if (mp.getValeurAnalyse() >= 3)
             return true;
-        this.passeCompleteInternet = ChainePasse.passeComplete10(this.passeUser);
         return false;
     }
 
@@ -248,12 +263,13 @@ public class CompteUtilisateur {
      * @return mot de passe en clair (String)
      */
     public String afficherMotPasse(String passeToAfficher, int selectPasse) {
+        // 1 Mot de passe principal passe
         if(selectPasse == 1)
-            return new ChiffeMode().dechiffrer(passeToAfficher, this.cleChiffreDonneeUser);
+            return new ChiffeMode().dechiffrer(passeToAfficher, this.cleChiffreUser);
         if(selectPasse == 2)
-            return new ChiffeMode().dechiffrer(passeToAfficher, this.cleChiffreDonneeRecours);
+            return new ChiffeMode().dechiffrer(passeToAfficher, this.cleChiffreRecours);
         if(selectPasse == 3)
-            return new ChiffeMode().dechiffrer(passeToAfficher, this.cleChiffreDonneeCompleteInternet);
+            return new ChiffeMode().dechiffrer(passeToAfficher, this.cleChiffreInternet);
         return "" ;
     }
 
@@ -269,31 +285,33 @@ public class CompteUtilisateur {
         cm.chiffrer(passeToChiffrer);
         ChainePasse chP = ChainePasse.composition(cm.getPasseCode());
         if (selectPasse == 1) {
-            this.passeUser = chP;
-            this.cleChiffreDonneeUser = cm.getCleCode();
+            this.passeUserChiffre = chP;
+            this.cleChiffreUser = cm.getCleCode();
         }
         if (selectPasse == 2) {
-            this.passeRecoursUser = chP;
-            this.cleChiffreDonneeRecours = cm.getCleCode();
+            this.passeRecoursChiffre = chP;
+            this.cleChiffreRecours = cm.getCleCode();
         }
         if (selectPasse == 3) {
-            this.passeCompleteInternet = chP;
-            this.cleChiffreDonneeCompleteInternet = cm.getCleCode();
+            this.passeInternetChiffre = chP;
+            this.cleChiffreInternet = cm.getCleCode();
         }
     }
+
+
+    public void chiffrerLesPasses() {
+        CompteUtilisateur cu = getCompteConnecte() ;
+        cu.chiffrerMotPasse(this.passeUser.getChaineDuPasse(), 1);
+        cu.chiffrerMotPasse(this.passeRecours.getChaineDuPasse(), 2);
+        if(this.passeInternet != null && this.passeInternet.getChaineDuPasse() != "" && this.passeInternet.getChaineDuPasse() !=  null)
+            cu.chiffrerMotPasse(this.passeInternet.getChaineDuPasse(), 3);
+    }
+
 
     // ////////// GETTERS Attributs COMPTE-UTILISATEUR///
 
     public String getNomUser() {
         return nomUser;
-    }
-
-    public ChainePasse getPasseUser() {
-        return passeUser;
-    }
-
-    public ChainePasse getPasseRecoursUser() {
-        return passeRecoursUser;
     }
 
     public String getMailContactUser() {
@@ -304,22 +322,47 @@ public class CompteUtilisateur {
         return notePersoUser;
     }
 
-    public ChainePasse getPasseCompleteInternet() {
-        return passeCompleteInternet;
+    public ChainePasse getPasseUser() {
+        return passeUser;
     }
+
+    public ChainePasse getPasseUserChiffre() {
+        return passeUserChiffre;
+    }
+
+    public String getCleChiffreUser() {
+        return cleChiffreUser;
+    }
+
+    public ChainePasse getPasseRecours() {
+        return passeRecours;
+    }
+
+    public ChainePasse getPasseRecoursChiffre() {
+        return passeRecoursChiffre;
+    }
+
+    public String getCleChiffreRecours() {
+        return cleChiffreRecours;
+    }
+
+    public ChainePasse getPasseInternet() {
+        return passeInternet;
+    }
+
+    public ChainePasse getPasseInternetChiffre() {
+        return passeInternetChiffre;
+    }
+
+    public String getCleChiffreInternet() {
+        return cleChiffreInternet;
+    }
+
 
     // ////////// SETTERS //////////////////
 
     public void setNomUser(String nomUser) {
         this.nomUser = nomUser;
-    }
-
-    public void setPasseUser(ChainePasse passeUser) {
-        this.passeUser = passeUser;
-    }
-
-    public void setPasseRecoursUser(ChainePasse passeRecoursUser) {
-        this.passeRecoursUser = passeRecoursUser;
     }
 
     public void setMailContactUser(String mailContactUser) {
@@ -330,4 +373,38 @@ public class CompteUtilisateur {
         this.notePersoUser = notePersoUser;
     }
 
+    public void setPasseUser(ChainePasse passeUser) {
+        this.passeUser = passeUser;
+    }
+
+    public void setPasseUserChiffre(ChainePasse passeChUser) {
+        this.passeUserChiffre = passeChUser;
+    }
+
+    public void setCleChiffreUser(String cleChiffreU) {
+        this.cleChiffreUser = cleChiffreU ;
+    }
+
+    public void setPasseRecours(ChainePasse passeRecours) {
+        this.passeRecours = passeRecours;
+    }
+
+    public void setPasseRecoursChiffre(ChainePasse passeRecoursC) {
+        this.passeRecoursChiffre = passeRecoursC;
+    }
+
+    public void setCleChiffreRecours(String cleChiffreR) {
+        this.cleChiffreRecours = cleChiffreR ;
+    }
+
+    public void setPasseInternet(ChainePasse passInternet)  {
+        this.passeInternet = passInternet;
+    }
+
+    public void setPasseInternetChiffre(ChainePasse passInternet)  {
+        this.passeInternetChiffre = passInternet;
+    }
+    public void setCleChiffreInternet(String cleInternet) {
+        this.cleChiffreInternet= cleInternet ;
+    }
 }
