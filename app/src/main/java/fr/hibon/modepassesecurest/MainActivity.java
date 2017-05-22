@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("MP&SR");
 
         boutonConnexion = (Button) findViewById(R.id.connexion) ;
         boutonCreation = (Button) findViewById(R.id.creation) ;

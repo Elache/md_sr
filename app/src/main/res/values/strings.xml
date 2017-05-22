@@ -2,6 +2,7 @@
     <string name="app_name">ModePasse SecuRest</string>
 
     <string name="texte_accueil">Gestion de comptes et mots de passe</string>
+    <string name="app_sigle">Mp@Sr</string>
 
 
 
@@ -15,6 +16,26 @@
     <string name="invite_remplir">...........................</string>
     <string name="invite_remplir_multilines">...........................\n...........................</string>
     <string name="invite_deroule_categorie">Choisir une catégorie</string>
+
+
+
+
+
+    <!-- ####################### -->
+    <!-- Menu général -->
+    <!-- ####################### -->
+
+    <string name="menu_search">Trouver</string>
+    <string name="menu_add">Ajouter</string>
+    <string name="menu_enregistrer">Enregistrer</string>
+    <string name="menu_info">Aide</string>
+    <string name="menu_outipasses">Outi\'passes</string>
+    <string name="menu_gereCompte">Compte</string>
+    <string name="menu_gereRepert">Répertoire</string>
+    <string name="menu_deco">Déconnexion</string>
+    <string name="menu_creation">Créer un Compte</string>
+
+
 
     <!-- ####################### -->
     <!-- COMPTE-UTILISATEUR -->

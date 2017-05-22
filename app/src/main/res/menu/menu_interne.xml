@@ -1,0 +1,55 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/menu_search"
+        android:title="@string/menu_search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_ajout"
+        android:title="@string/menu_add"
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/menu_save"
+        android:title="@string/menu_enregistrer"
+        android:icon="@android:drawable/ic_menu_save"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_outipasses"
+        android:title="@string/menu_outipasses"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_repert"
+        android:title="@string/menu_gereRepert"
+        android:icon="@android:drawable/ic_menu_agenda"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_gererUser"
+        android:title="@string/menu_gereCompte"
+        android:icon="@android:drawable/ic_menu_preferences"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_deco"
+        android:title="@string/menu_deco"
+        android:icon="@android:drawable/ic_lock_idle_lock"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_info"
+        android:title="@string/menu_info"
+        android:icon="@android:drawable/ic_menu_info_details"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

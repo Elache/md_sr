@@ -1,15 +1,45 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/menu_search"
+        android:title="@string/menu_creation"
+        android:icon="@android:drawable/ic_menu_agenda"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_ajout"
+        android:title="@string/menu_add"
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_save"
+        android:title="@string/menu_enregistrer"
+        android:icon="@android:drawable/ic_menu_save"
+        app:showAsAction="ifRoom" />
+
+
+
     <item
         android:id="@+id/connexionMenu"
         android:title="@string/connexion"
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/menu_ajout2"
+        android:title="@string/connexion"
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="never" />
+
+
+
+
+    <item
         android:id="@+id/creationMenu"
         android:title="@string/creation"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 
 
     <item
@@ -22,6 +52,7 @@
         android:id="@+id/analysorMenu"
         android:icon="@drawable/ico_analysor"
         android:title="@string/analysor"
-        app:showAsAction="never"  />
+        app:showAsAction="always"  />
+
 
 </menu>

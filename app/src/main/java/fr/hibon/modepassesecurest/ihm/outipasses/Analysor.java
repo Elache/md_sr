@@ -2,6 +2,7 @@ package fr.hibon.modepassesecurest.ihm.outipasses;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,13 @@ public class Analysor extends AppCompatActivity  implements View.OnClickListener
 
         boutonConnexion = (Button) findViewById(R.id.connexion) ;
         boutonConnexion.setOnClickListener(this);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_interne, menu);
+        return true;
     }
 
 
