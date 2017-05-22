@@ -298,7 +298,9 @@ public class CompteUtilisateur {
         }
     }
 
-
+    /**
+     * Chiffre les mots de passe (user et recours + internet si existe) et affecte valeurs
+     */
     public void chiffrerLesPasses() {
         CompteUtilisateur cu = getCompteConnecte() ;
         cu.chiffrerMotPasse(this.passeUser.getChaineDuPasse(), 1);

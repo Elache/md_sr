@@ -22,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(AndroidJUnit4.class)
 public class CompteUtilisateurMockTest {
 
+    private CompteUtilisateur compte;
 
     private ArrayList<Repertoire> lesRepertoires;
     private String nomUser;
@@ -29,19 +30,7 @@ public class CompteUtilisateurMockTest {
     private String notePersoUser;
 
     private String passeUserStr;
-    private ChainePasse passeUser;
-    private ChainePasse passeUserChiffre;
-    private String cleChiffreDonneeUser;
-
     private String passeRecoursUserStr;
-    private ChainePasse passeRecoursUser;
-    private ChainePasse passeRecoursUserChiffre;
-    private String cleChiffreDonneeRecours;
-
-    private ChainePasse passeCompleteInternet;
-    private ChainePasse passeCompleteInternetChiffre;
-    private String cleChiffreDonneeCompleteInternet;
-
     private Repertoire rep1;
 
     // ////////////////// ECHANTILLONAGE //////////////////
@@ -50,11 +39,13 @@ public class CompteUtilisateurMockTest {
      * Constructeur qui affecte des valeurs de test
      */
     public CompteUtilisateurMockTest() {
+        compte = CompteUtilisateur.getCompteConnecte();
         nomUser = "loic.hibon";
         passeUserStr = "Fra:3-Bré:0!";
         passeRecoursUserStr = "le plop";
         mailContactUser = "lohibon@free.fr";
         notePersoUser = "Compte de test";
+        rep1 = new Repertoire("RepTest", "");
     }
 
     /**
@@ -69,41 +60,45 @@ public class CompteUtilisateurMockTest {
                     notePersoUser);
         } catch (CompteException e) {
         }
-        lesRepertoires = new ArrayList<Repertoire>();
 
-        passeUser = ChainePasse.composition(passeUserStr);
-        passeUserChiffre = ChainePasse.composition("Chiffre-U-Fra");
-        cleChiffreDonneeUser = "Clé U";
+        cu.getLesRepertoires().add(rep1);
 
-        rep1 = new Repertoire("RepTest", "");
-        lesRepertoires.add(rep1);
+        cu.setPasseUser(ChainePasse.composition(passeUserStr));
+        cu.setPasseUserChiffre(ChainePasse.composition("Chiffre-U-Fra"));
+        cu.setCleChiffreUser(null);
 
-        passeRecoursUser = ChainePasse.composition(passeRecoursUserStr);
-        passeRecoursUserChiffre = ChainePasse.composition("plopCHIFFRE");
-        cleChiffreDonneeRecours = "Clé R";
+        cu.setPasseRecours(ChainePasse.composition(passeRecoursUserStr));
+        cu.setPasseRecoursChiffre(ChainePasse.composition("plopCHIFFRE"));
+        cu.setCleChiffreRecours(null);
 
-        passeCompleteInternet = ChainePasse.composition("ds,f43''tfzét_'NZ");
-        passeCompleteInternetChiffre = ChainePasse.composition("le meme en chiffre");
-        cleChiffreDonneeCompleteInternet = "la clé 3";
+        cu.setPasseInternet(ChainePasse.composition("ds,f43''tfzét_'NZ"));
+        cu.setPasseInternetChiffre(ChainePasse.composition("le meme en chiffre"));
+        cu.setCleChiffreInternet(null);
         return cu;
     }
 
 
-    // ///////// TEsts
+    // ///////// Tests //////////////////////
 
+    /**
+     * Verifie methode chiffrant tous les passes (User, Recours, internet s'il y a lieu)
+     * <BR>Teste : les cles ne doivent plus etre nulles (et longueur > 20) et les passes chiffres initiaux doivent etre remplac&eacute;s
+     * @throws CompteException (cf regles sur id / pass ; control&eacute; dans le test)
+     */
     @Test
     public void chiffrerLesPasses() throws CompteException {
-        CompteUtilisateur compUser = preparerCompteTest() ;
+        CompteUtilisateur compUser = preparerCompteTest();
         compUser.chiffrerLesPasses();
-
-        boolean test = true ;
-        test = test && (compUser.getCleChiffreUser() != null)
-                && (compUser.getCleChiffreRecours() != null)
-                && (compUser.getCleChiffreInternet() != null) ;
-        test=  test &&  compUser.getPasseUser() != null &&  compUser.getPasseRecoursChiffre() != null && compUser.getPasseInternet() != null ;
-        test = test && compUser.getPasseRecoursChiffre().longeurMot() > 24 && compUser.getCleChiffreRecours().length() > 24 ;
-        assertTrue(test) ;
+        String passUChiffre = compUser.getPasseUserChiffre().getChaineDuPasse();
+        String passRChiffre = compUser.getPasseRecoursChiffre().getChaineDuPasse();
+        String passIChiffre = compUser.getPasseInternetChiffre().getChaineDuPasse();
+        String cleU = compUser.getCleChiffreUser();
+        String cleR = compUser.getCleChiffreRecours();
+        String cleI = compUser.getCleChiffreInternet();
+        boolean test = true;
+        test = test && (!passUChiffre.equals("Chiffre-U-Fra")) && (!passRChiffre.equals("plopCHIFFRE")) && (!passIChiffre.equals("le meme en chiffre")) ;
+        test = test &&  (cleU != null) && (cleR != null) && (cleI != null) ;
+        test = test &&  (cleU.length() > 20) && (cleR.length() > 20) && (cleI.length() > 20) ;
+        assertTrue(test);
     }
-
-
 }

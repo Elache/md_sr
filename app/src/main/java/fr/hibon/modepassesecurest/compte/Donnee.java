@@ -41,6 +41,8 @@ public class Donnee {
                   String questionSecreteDonnee, String categorieDonnee, String noteDonnee) {
         this(nomDonnee, loginDonnee, mailDonnee, siteWebDonnee, questionSecreteDonnee, categorieDonnee, noteDonnee);
         this.passeDonnee = passeDonnee ;
+        this.passeDonneeChiffre = null ;
+        this.cleChiffrementDonnee = null ;
     }
 
     /**
@@ -59,6 +61,7 @@ public class Donnee {
     public Donnee(String passeDonnee, String nomDonnee, String loginDonnee, String mailDonnee, String siteWebDonnee,
                   String questionSecreteDonnee, String categorieDonnee, String noteDonnee, String cleDonnee) {
         this(nomDonnee, loginDonnee, mailDonnee, siteWebDonnee, questionSecreteDonnee, categorieDonnee, noteDonnee);
+        this.passeDonnee = null ;
         this.passeDonneeChiffre = passeDonnee;
         this.cleChiffrementDonnee = cleDonnee;
     }
