@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">ModePasse SecuRest</string>
-
-    <string name="texte_accueil">Gestion de comptes et mots de passe</string>
     <string name="app_sigle">Mp@Sr</string>
 
+    <string name="texte_accueil">Gestion de comptes et mots de passe</string>
 
 
+    <!-- PROVISOIRES -->
+    <string name="provisoire">"Provisoire"</string>
+    <string name="passe_cado">"        f_4iRjçE&amp;d"</string>
     <string name="exemple_passwd">f_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;d</string>
 
 
@@ -92,7 +94,7 @@
     <string name="analysor_titre">Analyser un mot de passe</string>
 
     <string name="aTester">Mot de passe à tester</string>
-        <string name="aTester_indic">Saisir la suite de caractères</string>
+    <string name="aTester_indic">Saisir la suite de caractères</string>
 
     <!-- force des mots de passe-->
     <string name="forcepasse_tresfaible">Très faible</string>
@@ -114,9 +116,15 @@
     <string name="generator_parametres">Paramétrer</string>
     <string name="generator_longueur">Longueur du mot de passe</string>
     <string name="generator_exclure">Caractères à exclure</string>
-        <string name="generator_exclure_indic">Saisir les caractères</string>
+    <string name="generator_inclure">Caractères à inclure</string>
+
+    <string name="passes_remplir">Saisir les caractères</string>
+
 
     <!-- types caracteres -->
+
+    <string name="titre_type">Types de caractères</string>
+
     <string name="caracteres_min">Minuscules</string>
     <string name="caracteres_maj">Majuscules</string>
     <string name="caracteres_chiffres">Chiffres</string>

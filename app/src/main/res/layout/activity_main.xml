@@ -87,9 +87,7 @@
         android:layout_height="50dp"
         android:layout_gravity="end"
         android:background="@android:color/transparent"
-
         android:text="@string/creation"
-
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/titre2"
         android:textSize="22sp"
@@ -125,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="bottom"
-            android:text="        f_4iRjçE&amp;d"
+            android:text="@string/passe_cado"
             android:textColor="@android:color/background_dark"
             android:textSize="20sp"
             />

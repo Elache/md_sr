@@ -21,7 +21,7 @@ public class Generator extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.passes_frag, container, false) ;
+        return inflater.inflate(R.layout.generator, container, false) ;
     }
 
 

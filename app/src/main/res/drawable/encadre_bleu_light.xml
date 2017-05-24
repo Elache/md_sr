@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:paddingTop="3dp"
+    android:paddingLeft="3dp" android:paddingRight="3dp" android:paddingBottom="3dp"  >
+    <item android:drawable="@color/bleu_light" />
+    <item android:drawable="@drawable/linearborder" />
+</layer-list>

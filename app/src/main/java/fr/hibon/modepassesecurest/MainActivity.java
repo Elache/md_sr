@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()) {
 
             case(R.id.analysor):
-                mIn = new Intent(MainActivity.this, Analysor.class) ;
+                mIn = new Intent(MainActivity.this, Passes.class) ;
                 break ;
             case(R.id.generator):
                 mIn = new Intent(MainActivity.this, Passes.class) ;
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mIn = new Intent(MainActivity.this, Generator.class) ;
                 return true;
             case R.id.analysorMenu:
-                mIn = new Intent(MainActivity.this, Analysor.class) ;
+                mIn = new Intent(MainActivity.this, Passes.class) ;
                 return true;
         }
 

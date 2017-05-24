@@ -6,7 +6,8 @@
 
 
     <!-- PROVISOIRES -->
-
+    <string name="provisoire">"Provisoire"</string>
+    <string name="passe_cado">"        f_4iRjçE&amp;d"</string>
     <string name="exemple_passwd">f_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;d</string>
 
 
@@ -19,7 +20,7 @@
     <string name="invite_deroule_categorie">Choisir une catégorie</string>
 
 
-
+    <string name="bouton_valider">Valider</string>
 
 
     <!-- ####################### -->
@@ -114,6 +115,7 @@
 
     <string name="generator_parametres">Paramétrer</string>
     <string name="generator_longueur">Longueur du mot de passe</string>
+        <string name="generator_longueur_note">Défaut 10 caractères</string>
     <string name="generator_exclure">Caractères à exclure</string>
     <string name="generator_inclure">Caractères à inclure</string>
 
@@ -121,6 +123,9 @@
 
 
     <!-- types caracteres -->
+
+    <string name="titre_type">Types de caractères</string>
+
     <string name="caracteres_min">Minuscules</string>
     <string name="caracteres_maj">Majuscules</string>
     <string name="caracteres_chiffres">Chiffres</string>

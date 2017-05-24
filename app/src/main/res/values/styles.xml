@@ -32,7 +32,9 @@
         <item name="android:textColor">@color/titre2</item>
     </style>
 
-
+    <style name="texte_note" parent="texte_simple">
+        <item name="android:textSize">9sp</item>
+    </style>
 
 
 
@@ -47,7 +49,7 @@
     </style>
 
     <style name="chkbx" parent="AppTheme">
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/dore</item>
         <item name="android:textSize">11sp</item>
     </style>
 
