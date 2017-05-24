@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,8 +15,7 @@
         android:id="@+id/generator_titre"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:textAppearance="@style/titre2"
-        android:drawableLeft="@drawable/ico_generator" />
+        android:textAppearance="@style/titre2" />
 
 
 
@@ -27,10 +25,10 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:textAppearance="@style/passw"
         android:layout_weight="0.06"
-
+        android:background="@drawable/encadre_gris"
         android:text="@string/exemple_passwd" />
 
 
@@ -153,8 +151,7 @@
         <!-- Caracteres exclus -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.04"
+            android:layout_height="wrap_content"android:layout_weight="0.04"
             android:orientation="horizontal">
 
             <!-- exclusions titre -->
@@ -173,7 +170,36 @@
                 android:layout_height="20sp"
                 android:layout_gravity="start"
                 android:background="@color/champ"
-                android:hint="@string/generator_exclure_indic"
+                android:hint="@string/passes_remplir"
+                android:inputType="text"
+                android:textAppearance="@style/texte_simple" />
+        </LinearLayout>
+
+
+        <!-- Caracteres à inclure -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.04"
+            android:orientation="horizontal">
+
+            <!-- exclusions titre -->
+            <TextView
+                android:id="@+id/inclus_tit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/generator_inclure"
+                android:textAppearance="@style/texte_simple" />
+
+
+            <!-- exclusions saisie caracteres -->
+            <EditText
+                android:id="@+id/inclus_saisie"
+                android:layout_width="wrap_content"
+                android:layout_height="20sp"
+                android:layout_gravity="start"
+                android:background="@color/champ"
+                android:hint="@string/passes_remplir"
                 android:inputType="text"
                 android:textAppearance="@style/texte_simple" />
         </LinearLayout>

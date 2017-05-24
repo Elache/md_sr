@@ -8,9 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import fr.hibon.modepassesecurest.ihm.outipasses.Analysor;
-import fr.hibon.modepassesecurest.ihm.outipasses.Generator;
+;
+import fr.hibon.modepassesecurest.ihm.outipasses.Passes ;
+import fr.hibon.modepassesecurest.ihm.outipasses.frag.Analysor;
+import fr.hibon.modepassesecurest.ihm.outipasses.frag.Generator;
 import fr.hibon.modepassesecurest.ihm.compte.*;
 
 /**
@@ -18,7 +19,7 @@ import fr.hibon.modepassesecurest.ihm.compte.*;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    private EditText champPasse ;
 
     Button boutonConnexion, boutonCreation, boutonGenerator, boutonAnalysor ;
 
@@ -39,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boutonConnexion.setOnClickListener(this);
         boutonCreation.setOnClickListener(this);
 
-
-
     }
 
     @Override
@@ -54,11 +53,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mIn = new Intent(MainActivity.this, Analysor.class) ;
                 break ;
             case(R.id.generator):
-                mIn = new Intent(MainActivity.this, Generator.class) ;
+                mIn = new Intent(MainActivity.this, Passes.class) ;
                 break ;
             case(R.id.connexion):
 
-                EditText champPasse = (EditText)findViewById(R.id.saisiePass);
+                champPasse = (EditText)findViewById(R.id.saisiePass);
                 String passeSaisi = champPasse.getText().toString();
                 boolean passeValide = passeSaisi.equals("123456") ;
                 if (passeValide)
