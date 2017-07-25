@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cadnas"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:weightSum="1">
+
+
+        <!-- Titre 1 -->
+        <TextView
+            android:text="@string/titre1"
+            android:id="@+id/info_titre1"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:textAppearance="@style/titre2"
+            android:paddingTop="20dp"/>
+
+        <!-- infos -->
+        <TextView
+            android:id="@+id/info1"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:textAppearance="@style/titre2"
+            android:background="@drawable/encadre_gris"
+            android:layout_marginTop="20dp"/>
+
+
+        <!-- Titre 2 -->
+        <TextView
+            android:text="@string/titre2"
+            android:id="@+id/info_titre2"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:textAppearance="@style/titre2"
+            android:paddingTop="20dp"/>
+
+          <!-- infos -->
+        <TextView
+            android:id="@+id/info2"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:textAppearance="@style/titre2"
+            android:background="@drawable/encadre_gris"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

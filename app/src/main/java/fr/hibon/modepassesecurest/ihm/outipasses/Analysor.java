@@ -1,22 +1,24 @@
 package fr.hibon.modepassesecurest.ihm.outipasses;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import fr.hibon.modepassesecurest.R;
 
 /**
+ *
  */
 
-public class Passes extends AppCompatActivity {
+public class Analysor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.passes);
-        setTitle("MP&SR - Outi'passes");
-
+        setContentView(R.layout.analysor);
     }
 
 }

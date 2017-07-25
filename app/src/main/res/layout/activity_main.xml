@@ -2,135 +2,261 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
-<LinearLayout xmlns:android=
-    "http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/cadnas"
-    android:orientation="vertical"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp">
+    <LinearLayout xmlns:android=
+                      "http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/cadnas"
+                  android:orientation="vertical"
+                  android:paddingLeft="5dp"
+                  android:paddingRight="5dp">
 
-       <TextView
-        android:id=
-            "@+id/accueilTitre"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center_horizontal"
-        android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        <!-- Nom app -->
 
 
-    <TextView
-        android:id=
-            "@+id/accueilTexte"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:gravity="top|center_horizontal"
-        android:text="@string/texte_accueil"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"/>
-
-
-    <LinearLayout
-        android:layout_width=
-            "match_parent"
-        android:layout_height=
-            "50dp"
-        android:orientation=
-            "horizontal">
-
-        <EditText
-            android:id=
-                "@+id/saisiePass"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.37"
-            android:background="@drawable/encadre_gris"
-            android:inputType="textPassword"
-            android:text="@string/invite_remplir"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id=
-                "@+id/connexion"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.36"
-            android:background="@drawable/encadre_gris"
-            android:text="@string/connexion"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/creation"
-        android:layout_width="101dp"
-        android:layout_height="50dp"
-        android:layout_gravity="end"
-        android:background="@android:color/transparent"
-        android:text="@string/creation"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="@color/titre2"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-
-        <Button
-            android:id="@+id/analysor"
-            android:layout_width="115dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:background="@drawable/ico_analysor" />
-
-
-        <Button
-            android:id="@+id/generator"
-            android:layout_width="115dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:background="@drawable/ico_generator" />
-
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/texte_logo"
+            android:padding="10dp"
+            app:srcCompat="@drawable/app_name"/>
 
         <TextView
             android:id=
-                "@+id/codeTestEnDur"
+                "@+id/accueilTexte"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_gravity="bottom"
-            android:text="@string/passe_cado"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:gravity="top|start"
+            android:padding="10dp"
+            android:text="@string/texte_accueil"
+            android:textColor="@color/titre1"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+
+        <!-- Panneau d'identification -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/encadre_gris"
+            android:columnCount="3"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <!-- titre Connexion-->
+
+            <TextView
+                android:id="@+id/titre_connexion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="2"
+                android:layout_gravity="start"
+                android:layout_row="0"
+                android:padding="5dp"
+                android:text="@string/connexion_compte"
+                android:textAppearance="@style/titre2"/>
+
+            <!-- titre saisie identifiant-->
+
+            <TextView
+                android:id="@+id/titre_identifiant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="end"
+                android:layout_row="1"
+                android:padding="5dp"
+                android:text="@string/u_identifiant"
+                android:textAppearance="@style/texte_bleu"/>
+
+            <!-- champ saisie identifiant-->
+
+            <EditText
+                android:id=
+                    "@+id/saisie_Identifiant"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_column="1"
+                android:layout_gravity="center"
+                android:layout_row="1"
+                android:background="@drawable/linearborder"
+                android:inputType="text"
+                android:padding="5dp"
+                android:text="@string/invite_remplir"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+
+            <!-- titre saisie mot de passe -->
+
+            <TextView
+                android:id="@+id/titre_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_row="2"
+                android:padding="5dp"
+                android:text="@string/mot_passe"
+                android:textAppearance="@style/texte_bleu"/>
+
+            <!-- champ saisie mot de passe -->
+            <EditText
+                android:id=
+                    "@+id/saisie_Pass"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_column="1"
+                android:layout_gravity="center"
+                android:layout_row="2"
+                android:background="@drawable/encadre_gris"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_column="2"
+                          android:layout_gravity="start|center_vertical"
+                          android:layout_marginLeft="20dp"
+                          android:layout_row="0"
+                          android:layout_rowSpan="3"
+                          android:background="@drawable/linearborder"
+                          android:orientation="vertical"
+                          android:padding="5dp">
+
+                <!-- bouton connexion -->
+                <Button
+                    android:id="@+id/bouton_connexion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@mipmap/mp_sr"/>
+
+                <!-- Titre connexion -->
+                <TextView
+                    android:id="@+id/titre_valider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="0dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="0dp"
+                    android:paddingStart="5dp"
+                    android:text="@string/bouton_valider"
+                    android:textAppearance="@style/texte_bleu"/>
+
+            </LinearLayout>
+
+        </GridLayout>
+
+        <!-- créer un compte -->
+
+
+        <ImageButton
+            android:id="@+id/bouton_creation"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="end"
+            android:background="@drawable/creation"
+            android:contentDescription="@string/creation_compte"
             />
 
-    </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="70dp"/>
 
-</LinearLayout>
+
+        <!-- outils mots de passe -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/encadre_gris"
+            android:columnCount="3"
+            android:foregroundGravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+
+            <TextView
+                android:id="@+id/outipasses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="2"
+                android:layout_gravity="start"
+                android:layout_row="0"
+                android:text="@string/outipasses"
+                android:textAppearance="@style/titre2"/>
+
+
+            <EditText
+                android:id="@+id/passeDispo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_gravity="start"
+                android:layout_row="0"
+                android:text="@string/passe_cado"
+                android:textColor="@android:color/background_dark"/>
+
+
+            <ImageButton
+                android:id="@+id/bouton_analysor"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/analyser"
+                android:contentDescription="@string/analysor"
+                />
+
+            <ImageButton
+                android:id="@+id/bouton_generator"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="5dp"
+                android:background="@drawable/generer"
+                android:contentDescription="@string/generator"
+                />
+
+
+            <LinearLayout
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/encadre_bleu_dark"
+                >
+
+            <ImageButton
+                android:id="@+id/bouton_outipasses_help"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@android:drawable/ic_menu_help"
+                android:contentDescription="@string/menu_info"
+                />
+
+            </LinearLayout>
+
+        </GridLayout>
+
+    </LinearLayout>
 
 
 </ScrollView>

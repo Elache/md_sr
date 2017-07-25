@@ -2,22 +2,22 @@
     <string name="app_name">ModePasse SecuRest</string>
     <string name="app_sigle">Mp@Sr</string>
 
-    <string name="texte_accueil">Gestion de comptes et mots de passe</string>
-
+    <string name="texte_accueil">Gestion de\n mots de passe</string>
+    <string name="texte_logo">ModePasse SecuRest - logo</string>
 
     <!-- PROVISOIRES -->
     <string name="provisoire">"Provisoire"</string>
     <string name="passe_cado">"        f_4iRjçE&amp;d"</string>
-    <string name="exemple_passwd">f_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;d</string>
-
+    <string name="exemple_passwd">longueur50.amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;d</string>
 
     <!-- param generaux -->
     <string name="creation">Création</string>
-    <string name="pass_confirm">Saisir à nouveau</string>
+    <string name="pass_confirm">Confirmer</string>
 
     <string name="invite_remplir">................</string>
     <string name="invite_remplir_multilines">...........................\n...........................</string>
     <string name="invite_deroule_categorie">Choisir une catégorie</string>
+    <string name="outipasses">Outi\'passes</string>
 
 
     <string name="bouton_valider">Valider</string>
@@ -38,18 +38,23 @@
     <string name="menu_creation">Créer un Compte</string>
 
 
-
     <!-- ####################### -->
     <!-- COMPTE-UTILISATEUR -->
     <!-- ####################### -->
 
     <string name="connexion">Connexion</string>
+    <string name="connexion_compte">Me connecter</string>
+    <string name="creation_compte">Création du Compte</string>
+
+
+    <string name="u_identifiant">Identifiant</string>
+    <string name="mot_passe">Mot de passe</string>
 
     <string name="compte_titre">Création d\'un Compte-utilisateur</string>
 
-    <string name="user_nom">Nom / pseudonyme</string>
-    <string name="user_pass1">Mot de passe</string>
-    <string name="user_pass2">Mot de passe de secours</string>
+    <string name="user_nom">@string/u_identifiant</string>
+    <string name="user_pass1">Passe</string>
+    <string name="user_pass2">Passe-secours</string>
     <string name="user_notes">Note additionnelle</string>
 
 
@@ -74,15 +79,17 @@
     <string name="donnee_passe_clair">Afficher le mot de passe</string>
 
 
-    <string name="donnee_nom">Nom / identifiant</string>
+    <string name="donnee_nom">Nom de la donnée</string>
     <string name="donnee_passe">Mot de passe</string>
     <string name="donnee_web">Site web</string>
-    <string name="donnee_web_url">Adresse du site</string>
+    <string name="donnee_web_url">adresse</string>
     <string name="donnee_identifiant">Identifiant</string>
     <string name="donnee_mail">E-mail associé</string>
     <string name="donnee_question">Question secrète</string>
     <string name="donnee_note">Note personnelle</string>
     <string name="donnee_categorie">Catégorie</string>
+
+        <string name="controle_facultatif">Contrôle facultatif</string>
 
 
     <!-- ####################### -->
@@ -131,5 +138,13 @@
     <string name="caracteres_chiffres">Chiffres</string>
     <string name="caracteres_accents">Accents</string>
     <string name="caracteres_speciaux">Caractères spéciaux</string>
+
+    <!-- ####################### -->
+    <!-- INFOS -->
+    <!-- ####################### -->
+
+    <string name="info_titre">Aide et Informations</string>
+    <string name="titre1">Aide sur...</string>
+    <string name="titre2">Infos sur...</string>
 
 </resources>

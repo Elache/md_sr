@@ -3,7 +3,8 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:background="#e5e5e5"
-                android:id="@+id/servicesListView" >
+                android:id="@+id/servicesListView"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  >
 
     <ExpandableListView
         android:dividerHeight="10dp"
@@ -33,7 +34,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#cccccc"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
     </RelativeLayout>
 
     <com.shamanland.fab.FloatingActionButton
@@ -47,9 +48,9 @@
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
-        />
-        <!--android:background="@color/brand"-->
-        <!--android:src="@drawable/add"-->
-        <!--android:theme="@style/FloatingActionButton.Light"-->
+    />
+    <!--android:background="@color/brand"-->
+    <!--android:src="@drawable/add"-->
+    <!--android:theme="@style/FloatingActionButton.Light"-->
 
 </RelativeLayout>

@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@drawable/cadnas_fond"
-              android:orientation="vertical"
-              android:layout_gravity="center_horizontal"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/cadnas_fond"
+                  android:orientation="vertical"
+                  android:layout_gravity="center_horizontal"
+                  android:paddingLeft="5dp"
+                  android:paddingRight="5dp"
+                  android:weightSum="1">
+
 
 
     <!-- Titre -->
@@ -26,6 +30,10 @@
         />
 
 
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="30dp"/>
+
     <!-- Champ du mot de passe genere -->
     <TextView
         android:id="@+id/password"
@@ -33,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="5dp"
-        android:background="@drawable/encadre_vert_clair"
+        android:background="@drawable/encadre_gris"
         android:text="@string/exemple_passwd"
         android:textAppearance="@style/passw"/>
 
@@ -57,7 +65,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/encadre_bleu_light"
+        android:background="@drawable/encadre_gris"
         android:orientation="vertical"
         android:padding="5dp">
 
@@ -136,6 +144,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="@string/caracteres_chiffres"
+                android:theme="@android:style/Theme.Holo.Light"
                 android:textAppearance="@style/texte_simple"
                 android:textColor="@color/colorPrimary"
                 android:paddingEnd="5dp"
@@ -149,6 +158,7 @@
                 android:checked="true"
                 android:text="@string/caracteres_min"
                 android:textAppearance="@style/texte_simple"
+                android:theme="@android:style/Theme.Holo.Light"
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"
                 android:textColor="@color/colorPrimary"/>
@@ -160,6 +170,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="@string/caracteres_maj"
+                android:theme="@android:style/Theme.Holo.Light"
                 android:textAppearance="@style/texte_simple"
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"
@@ -180,6 +191,7 @@
                 android:checked="true"
                 android:text="@string/caracteres_accents"
                 android:textAppearance="@style/texte_simple"
+                android:theme="@android:style/Theme.Holo.Light"
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"
                 android:textColor="@color/colorPrimary"
@@ -192,6 +204,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="@string/caracteres_speciaux"
+                android:theme="@android:style/Theme.Holo.Light"
                 android:textAppearance="@style/texte_simple"
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"
@@ -267,33 +280,7 @@
     
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:background="@drawable/linearborder"
-            android:padding="5dp">
 
-            <!-- bouton generer -->
-            <Button
-                android:id="@+id/bouton_generer"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@mipmap/mp_sr" />
-
-            <!-- Titre generer -->
-            <TextView
-                android:id="@+id/titre_generer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/generator"
-                android:textAppearance="@style/texte_bleu"
-                android:paddingTop="5dp"
-                android:paddingLeft="5dp"/>
-
-
-       </LinearLayout>
 
 
     </LinearLayout>
@@ -308,8 +295,7 @@
         android:layout_gravity="center"
         android:background="@drawable/echelle_analyse"
         android:layout_marginTop="20dp" />
-    
-    
-</LinearLayout>
 
-</ScrollView>
+
+    </LinearLayout>
+    </ScrollView>

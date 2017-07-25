@@ -24,6 +24,13 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+
+    <style name="titre3" parent="AppTheme">
+        <item name="android:textColor">#64128d</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
     <style name="texte_simple" parent="AppTheme">
         <item name="android:textSize">12sp</item>
     </style>
@@ -48,9 +55,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="chkbx" parent="AppTheme">
-        <item name="android:textColor">@color/dore</item>
+    <style name="chkbx" parent="@android:style/TextAppearance.Holo">
         <item name="android:textSize">11sp</item>
     </style>
+
+
+
 
 </resources>

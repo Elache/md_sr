@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.hibon.modepassesecurest.R;
-import fr.hibon.modepassesecurest.ihm.outipasses.frag.Analysor;
 // version non app.v4 =     import android.app.Fragment;
 
 /**

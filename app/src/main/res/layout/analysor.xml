@@ -20,7 +20,7 @@
         <!-- Titre -->
         <TextView
             android:text="@string/analysor_titre"
-            android:id="@+id/generator_titre"
+            android:id="@+id/analysor_titre"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:textAppearance="@style/titre2"
@@ -50,12 +50,18 @@
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_gravity="start"
-                android:background="@drawable/encadre_bleu_light"
+                android:background="@drawable/encadre_gris"
                 android:hint="@string/aTester_indic"
                 android:inputType="text"
                 android:textAppearance="@style/texte_simple" />
 
-
+            <!--  saisie caracteres -->
+            <TextView
+                android:id="@+id/alert_long"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/texte_note" />
 
         </LinearLayout>
 
@@ -75,7 +81,7 @@
         android:layout_width="fill_parent"
         android:layout_height="250dp"
         android:textAppearance="@style/titre2"
-        android:background="@drawable/encadre_vert_clair"
+        android:background="@drawable/encadre_gris"
         android:layout_marginTop="20dp"/>
 
     </LinearLayout>

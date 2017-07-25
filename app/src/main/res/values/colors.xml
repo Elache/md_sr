@@ -6,7 +6,7 @@
 
 
     <!-- cadre de formulaire -->
-    <color name="fond_form">#bbfa7c</color>
+    <color name="fond_form">#caf0e4</color>
 
     <!-- champ de saisie -->
     <color name="champ">#f0f0f0</color>
@@ -14,14 +14,14 @@
 
     <color name="blanc">#fff</color>
     <color name="noir">#000</color>
-    <color name="gris_fonce">#747474</color>
-    <color name="dore">#c18221</color>
-    <color name="bleu_light">#e0f8fa</color>
-    <color name="vert_clair">#d0f2a9</color>
+    <color name="gris_fonce">#424141</color>
 
+    <color name="gris_clair">#c8ececec</color>
 
-    <color name="titre1">#3436AE</color>
-    <color name="titre2">#3b3bda</color>
+    <color name="cadre">#011298</color>
+
+    <color name="titre1">#080a70</color>
+    <color name="titre2">#161697</color>
 
     <color name="rouge_bouton">#eb4d67</color>
 
