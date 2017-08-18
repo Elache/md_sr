@@ -34,8 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:weightSum="1">
+            android:padding="5dp">
 
             <!-- intitule -->
             <TextView
@@ -48,14 +47,13 @@
             <!-- champ saisie -->
             <EditText
                 android:id="@+id/donnee_nom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
                 android:padding="3dp"
-                android:textAppearance="@style/texte_bleu"
-                android:layout_weight="0.25"/>
+                android:textAppearance="@style/texte_bleu"/>
         </LinearLayout>
 
 
@@ -64,8 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:weightSum="1">
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
                 android:layout_width="wrap_content"
@@ -77,14 +74,13 @@
             <!-- champ saisie -->
             <EditText
                 android:id="@+id/donnee_pass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
                 android:padding="3dp"
-                android:textAppearance="@style/texte_bleu"
-                android:layout_weight="0.41"/>
+                android:textAppearance="@style/texte_bleu"/>
             <!-- intitule confirm -->
             <TextView
                 android:layout_width="wrap_content"
@@ -96,8 +92,8 @@
             <!-- champ confirm -->
             <EditText
                 android:id="@+id/donnee_pass2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/controle_facultatif"
                 android:inputType="text"
@@ -111,8 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:weightSum="1">
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
                 android:layout_width="wrap_content"
@@ -124,9 +119,8 @@
             <!-- champ saisie -->
             <EditText
                 android:id="@+id/donnee_web"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.33"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
@@ -143,14 +137,13 @@
             <!-- champ saisie -->
             <EditText
                 android:id="@+id/donnee_web_url"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="textUri"
                 android:padding="3dp"
-                android:textAppearance="@style/texte_bleu"
-                android:layout_weight="0.36"/>
+                android:textAppearance="@style/texte_bleu"/>
         </LinearLayout>
 
 
@@ -159,8 +152,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:weightSum="1">
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
                 android:layout_width="wrap_content"
@@ -172,14 +164,13 @@
             <!-- champ saisie -->
             <EditText
                 android:id="@+id/donnee_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="textVisiblePassword"
                 android:padding="3dp"
-                android:textAppearance="@style/texte_bleu"
-                android:layout_weight="0.20"/>
+                android:textAppearance="@style/texte_bleu"/>
         </LinearLayout>
 
 
@@ -188,8 +179,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:weightSum="1">
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
                 android:layout_width="wrap_content"
@@ -201,14 +191,13 @@
             <!-- champ saisie -->
             <EditText
                 android:id="@+id/donnee_mail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="textEmailAddress"
                 android:padding="3dp"
-                android:textAppearance="@style/texte_bleu"
-                android:layout_weight="0.36"/>
+                android:textAppearance="@style/texte_bleu"/>
         </LinearLayout>
 
 
@@ -217,8 +206,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:weightSum="1">
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
                 android:layout_width="wrap_content"
@@ -230,9 +218,8 @@
             <!-- champ saisie -->
             <EditText
                 android:id="@+id/donnee_question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.63"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir_multilines"
                 android:inputType="textMultiLine"
@@ -273,8 +260,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:weightSum="1">
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
                 android:layout_width="wrap_content"
@@ -286,9 +272,8 @@
             <!-- champ saisie -->
             <EditText
                 android:id="@+id/donnee_notes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.69"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir_multilines"
                 android:inputType="textMultiLine"
@@ -320,6 +305,7 @@
                 android:layout_height="wrap_content"
                 android:padding="3dp"
                 android:paddingLeft="5dp"
+                android:paddingStart="5dp"
                 android:paddingTop="5dp"
                 android:text="@string/bouton_valider"
                 android:textAppearance="@style/texte_bleu"/>

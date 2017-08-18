@@ -3,29 +3,30 @@
     <string name="app_sigle">Mp@Sr</string>
 
     <string name="texte_accueil">Gestion de comptes et mots de passe</string>
-
+    <string name="texte_logo">ModePasse SecuRest - logo</string>
 
     <!-- PROVISOIRES -->
     <string name="provisoire">"Provisoire"</string>
     <string name="passe_cado">"        f_4iRjçE&amp;d"</string>
-    <string name="exemple_passwd">f_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;d</string>
-
+    <string name="exemple_passwd">longueur50.amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;d</string>
 
     <!-- param generaux -->
     <string name="creation">Création</string>
-    <string name="pass_confirm">Saisir à nouveau</string>
+    <string name="pass_confirm">Confirmer</string>
 
     <string name="invite_remplir">................</string>
     <string name="invite_remplir_multilines">...........................\n...........................</string>
     <string name="invite_deroule_categorie">Choisir une catégorie</string>
+    <string name="outipasses">Outi\'passes</string>
 
 
-
+    <string name="bouton_valider">Valider</string>
 
 
     <!-- ####################### -->
     <!-- Menu général -->
     <!-- ####################### -->
+
 
     <string name="menu_search">Trouver</string>
     <string name="menu_add">Ajouter</string>
@@ -44,13 +45,20 @@
     <!-- ####################### -->
 
     <string name="connexion">Connexion</string>
+    <string name="connexion_compte">Me connecter</string>
+    <string name="creation_compte">Création du Compte</string>
+
+
+    <string name="u_identifiant">Identifiant</string>
+    <string name="mot_passe">Mot de passe</string>
 
     <string name="compte_titre">Création d\'un Compte-utilisateur</string>
 
-    <string name="user_nom">Nom / pseudonyme</string>
-    <string name="user_pass1">Mot de passe</string>
-    <string name="user_pass2">Mot de passe de secours</string>
+    <string name="user_nom">@string/u_identifiant</string>
+    <string name="user_pass1">Passe</string>
+    <string name="user_pass2">Passe-secours</string>
     <string name="user_notes">Note additionnelle</string>
+
 
 
 
@@ -91,7 +99,7 @@
 
     <string name="analysor">Analyser</string>
     <string name="analysor_icone">Icône "Analyser"</string>
-    <string name="analysor_titre">Analyser un mot de passe</string>
+    <string name="analyse_titre">Analyse du mot de passe</string>
 
     <string name="aTester">Mot de passe à tester</string>
     <string name="aTester_indic">Saisir la suite de caractères</string>
@@ -103,8 +111,6 @@
     <string name="forcepasse_bon">Bon</string>
 
 
-
-
     <!-- ####################### -->
     <!-- GENERATEUR Mot de passe -->
     <!-- ####################### -->
@@ -113,13 +119,13 @@
     <string name="generator_icone">Icône "Générer"</string>
     <string name="generator_titre">Générer un mot de passe</string>
 
-    <string name="generator_parametres">Paramétrer</string>
-    <string name="generator_longueur">Longueur du mot de passe</string>
+    <string name="generator_parametres">Paramètres pour générer</string>
+    <string name="generator_longueur">Longueur du passe</string>
+    <string name="generator_longueur_note">Défaut 10 caractères</string>
     <string name="generator_exclure">Caractères à exclure</string>
     <string name="generator_inclure">Caractères à inclure</string>
 
     <string name="passes_remplir">Saisir les caractères</string>
-
 
     <!-- types caracteres -->
 

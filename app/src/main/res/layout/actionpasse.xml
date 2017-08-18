@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:paddingTop="10dp"
+                  android:paddingStart="10dp"
+                  android:paddingLeft="5dp">
+
+
+        <!--  saisie caracteres -->
+        <EditText
+            android:id="@+id/saisie_aTester"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:background="@drawable/encadre_gris"
+            android:hint="@string/aTester_indic"
+            android:inputType="text"
+            android:textAppearance="@style/texte_simple" />
+
+
+
+
+    </LinearLayout>
+</ScrollView>

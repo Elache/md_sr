@@ -15,59 +15,60 @@
                   android:layout_gravity="center_horizontal"
                   android:paddingLeft="5dp"
                   android:paddingRight="5dp"
-                  android:weightSum="1">
+                  android:paddingTop="0dp">
+
+
+        <!-- Bouton -->
+        <ImageButton
+            android:id="@+id/bouton_generator"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:padding="5dp"
+            android:background="@drawable/generer"
+            android:contentDescription="@string/generator"
+            />
 
 
 
-    <!-- Titre -->
-    <TextView
-        android:id="@+id/generator_titre"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="@string/generator_titre"
-        android:textAppearance="@style/titre2"
-        android:paddingTop="5dp"
-        />
-
-
-    <Space
-        android:layout_width="1dp"
-        android:layout_height="30dp"/>
-
-    <!-- Champ du mot de passe genere -->
-    <TextView
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="5dp"
-        android:background="@drawable/encadre_gris"
-        android:text="@string/exemple_passwd"
-        android:textAppearance="@style/passw"/>
-
-    <Space
-        android:layout_width="1dp"
-        android:layout_height="30dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <!-- Titre Parametrage -->
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/generator_parametres"
-            android:textAppearance="@style/titre2"
+            android:textAppearance="@style/titre3"
             android:layout_marginBottom="10dp"
-            android:background="@color/champ"
-            android:drawableRight="@android:drawable/ic_menu_help"
-            android:drawableEnd="@android:drawable/ic_menu_help" />
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"/>
 
-    <!-- Encadrement -->
+
+        <ImageButton
+            android:id="@+id/bouton_outipasses_help"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/aide_passes"
+            android:contentDescription="@string/menu_info"/>
+
+            </LinearLayout>
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="10dp"/>
+
+        <!-- Encadrement -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/encadre_gris"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:orientation="vertical">
 
         <!-- LONGUEUR -->
 
@@ -90,7 +91,7 @@
             <EditText
                 android:id="@+id/saisie_longueur"
                 android:layout_width="30dp"
-                android:layout_height="25sp"
+                android:layout_height="40dp"
                 android:background="@color/champ"
                 android:inputType="number"
                 android:layout_marginLeft="5dp"
@@ -134,14 +135,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:orientation="horizontal">
 
             <!-- chiffres -->
             <CheckBox
                 android:id="@+id/chk_chiffres"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:checked="true"
                 android:text="@string/caracteres_chiffres"
                 android:theme="@android:style/Theme.Holo.Light"
@@ -154,7 +154,7 @@
             <CheckBox
                 android:id="@+id/chk_minusc"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:checked="true"
                 android:text="@string/caracteres_min"
                 android:textAppearance="@style/texte_simple"
@@ -167,27 +167,24 @@
             <CheckBox
                 android:id="@+id/chk_majusc"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:checked="true"
                 android:text="@string/caracteres_maj"
                 android:theme="@android:style/Theme.Holo.Light"
                 android:textAppearance="@style/texte_simple"
-                android:paddingEnd="5dp"
-                android:paddingRight="5dp"
                 android:textColor="@color/colorPrimary"/>
         </LinearLayout>
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dp">
+                android:orientation="horizontal">
 
             <!-- accents -->
             <CheckBox
                 android:id="@+id/chk_accent"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:checked="true"
                 android:text="@string/caracteres_accents"
                 android:textAppearance="@style/texte_simple"
@@ -201,7 +198,7 @@
             <CheckBox
                 android:id="@+id/chk_speciaux"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:checked="true"
                 android:text="@string/caracteres_speciaux"
                 android:theme="@android:style/Theme.Holo.Light"
@@ -227,6 +224,7 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="@string/generator_exclure"
+                android:layout_gravity="center_vertical"
                 android:textAppearance="@style/texte_simple"
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"/>
@@ -236,7 +234,7 @@
             <EditText
                 android:id="@+id/exclus_saisie"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="start"
                 android:background="@color/champ"
                 android:hint="@string/passes_remplir"
@@ -262,7 +260,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/generator_inclure"
                 android:textAppearance="@style/texte_simple"
-
+                android:layout_gravity="center_vertical"
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"/>
     
@@ -271,7 +269,7 @@
             <EditText
                 android:id="@+id/inclus_saisie"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="start"
                 android:background="@color/champ"
                 android:hint="@string/passes_remplir"
@@ -284,17 +282,6 @@
 
 
     </LinearLayout>
-
-
-    <!-- resultat graphique -->
-    <ProgressBar
-        android:id="@+id/resultat_graphique"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:background="@drawable/echelle_analyse"
-        android:layout_marginTop="20dp" />
 
 
     </LinearLayout>

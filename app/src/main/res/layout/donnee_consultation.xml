@@ -40,7 +40,7 @@
             <EditText
                 android:id="@+id/donnee_nom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/champ"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
@@ -63,7 +63,7 @@
             <EditText
                 android:id="@+id/donnee_pass"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/champ"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
@@ -87,7 +87,7 @@
             <EditText
                 android:id="@+id/donnee_web"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/champ"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
@@ -103,7 +103,7 @@
             <EditText
                 android:id="@+id/donnee_web_url"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/champ"
                 android:hint="@string/invite_remplir"
                 android:inputType="textUri"
@@ -127,7 +127,7 @@
             <EditText
                 android:id="@+id/donnee_id"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/champ"
                 android:hint="@string/invite_remplir"
                 android:inputType="textVisiblePassword"
@@ -151,7 +151,7 @@
             <EditText
                 android:id="@+id/donnee_mail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/champ"
                 android:hint="@string/invite_remplir"
                 android:inputType="textEmailAddress"
@@ -175,7 +175,7 @@
             <EditText
                 android:id="@+id/donnee_question"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/champ"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
@@ -200,7 +200,7 @@
             <EditText
                 android:id="@+id/donnee_notes"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/champ"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"

@@ -130,7 +130,7 @@ public class ChainePasse {
 	 *            ajouter &agrave; la table
 	 * @return ChainePasse (mot de passe et composition)
 	 */
-	static ChainePasse genererMotDePasse(int nb, boolean chiffres, boolean minusc, boolean majusc,
+	public static ChainePasse genererMotDePasse(int nb, boolean chiffres, boolean minusc, boolean majusc,
 												boolean accent, boolean special, ArrayList<Character> exclusions, ArrayList<Character> inclusions) {
 
 		// attentes

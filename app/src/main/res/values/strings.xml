@@ -98,7 +98,7 @@
 
     <string name="analysor">Analyser</string>
     <string name="analysor_icone">Icône "Analyser"</string>
-    <string name="analysor_titre">Analyser un mot de passe</string>
+    <string name="analyse_titre">Analyse du mot de passe</string>
 
     <string name="aTester">Mot de passe à tester</string>
         <string name="aTester_indic">Saisir la suite de caractères</string>
@@ -120,8 +120,8 @@
     <string name="generator_icone">Icône "Générer"</string>
     <string name="generator_titre">Générer un mot de passe</string>
 
-    <string name="generator_parametres">Paramétrer</string>
-    <string name="generator_longueur">Longueur du mot de passe</string>
+    <string name="generator_parametres">Paramètres pour générer</string>
+    <string name="generator_longueur">Longueur du passe</string>
         <string name="generator_longueur_note">Défaut 10 caractères</string>
     <string name="generator_exclure">Caractères à exclure</string>
     <string name="generator_inclure">Caractères à inclure</string>
@@ -144,7 +144,7 @@
     <!-- ####################### -->
 
     <string name="info_titre">Aide et Informations</string>
-    <string name="titre1">Aide sur...</string>
-    <string name="titre2">Infos sur...</string>
+    <string name="titre1">Aide à voir</string>
+    <string name="titre2">Infos à voir</string>
 
 </resources>

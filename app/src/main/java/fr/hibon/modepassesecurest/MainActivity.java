@@ -21,7 +21,7 @@ import fr.hibon.modepassesecurest.ihm.compte.*;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button boutonConnexion ;
-    ImageButton outipasses_help, boutonCreation, boutonGenerator, boutonAnalysor  ;
+    ImageButton outipasses_help, boutonCreation, boutonOutil ;
 
     int largeurEcran ;
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("MP&SR");
-        largeurEcran =largeurEcran(this) ;
+       largeurEcran =largeurEcran(this) ;
 
         boutonConnexion = (Button) findViewById(R.id.bouton_connexion) ;
         boutonConnexion.setOnClickListener(this);
@@ -39,11 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boutonCreation = (ImageButton) findViewById(R.id.bouton_creation) ;
         boutonCreation.setOnClickListener(this);
 
-        boutonGenerator = (ImageButton) findViewById(R.id.bouton_generator) ;
-        boutonGenerator.setOnClickListener(this);
-
-        boutonAnalysor =(ImageButton) findViewById(R.id.bouton_analysor) ;
-        boutonAnalysor.setOnClickListener(this);
+        boutonOutil = (ImageButton) findViewById(R.id.bouton_outils) ;
+        boutonOutil.setOnClickListener(this);
 
         outipasses_help = (ImageButton) findViewById(R.id.bouton_outipasses_help);
         outipasses_help.setOnClickListener(this);
@@ -54,24 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent mIn = null ;
 
         switch(v.getId()) {
-
-            case R.id.bouton_generator:
-                if(largeurEcran > 959) {
-                    mIn = new Intent(MainActivity.this, Passes.class);
-                }
-                else {
-                    mIn = new Intent(MainActivity.this, Generator.class);
-                }
-                break;
-
-            case R.id.bouton_analysor:
-                if(largeurEcran > 959) {
-                    mIn = new Intent(MainActivity.this, Passes.class);
-                }
-                else {
-                    mIn = new Intent(MainActivity.this, Analysor.class);
-                }
-                break;
+            case(R.id.bouton_outils):
+                mIn = new Intent(MainActivity.this, Passes.class) ;
+                break ;
 
             case(R.id.bouton_outipasses_help):
                 mIn = new Intent(MainActivity.this, Infos.class) ;
@@ -102,10 +84,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent mIn = null  ;
+        Intent mIn ;
         int largeurEcran = largeurEcran(this) ;
 
         switch (item.getItemId()){
@@ -146,10 +127,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-*/
+
     public int largeurEcran(Context context) {
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(dm);
         return dm.widthPixels;
     }
+
 }

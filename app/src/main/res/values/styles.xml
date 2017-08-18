@@ -24,6 +24,10 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="titre2v" parent="AppTheme">
+        <item name="android:textColor">@color/titre2v</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 
     <style name="titre3" parent="AppTheme">
         <item name="android:textColor">#64128d</item>

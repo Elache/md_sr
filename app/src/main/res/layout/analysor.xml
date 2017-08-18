@@ -17,14 +17,24 @@
         android:weightSum="1">
 
 
+        <!-- Bouton -->
+        <ImageButton
+            android:id="@+id/bouton_analysor"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/analyser"
+            android:contentDescription="@string/analysor"
+            />
+
         <!-- Titre -->
         <TextView
-            android:text="@string/analysor_titre"
+            android:text="@string/analyse_titre"
             android:id="@+id/analysor_titre"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:textAppearance="@style/titre2"
-            android:paddingTop="20dp"/>
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/titre3"
+            android:paddingTop="10dp"/>
 
 
         <!-- saisie a tester -->
@@ -33,27 +43,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- a tester titre -->
-            <TextView
-                android:id="@+id/titre_aTester"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/aTester"
-                android:textAppearance="@style/titre2"
-                android:paddingRight="10dp"
-                android:paddingEnd="10dp"         />
-
-
-            <!--  saisie caracteres -->
-            <EditText
-                android:id="@+id/saisie_aTester"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_gravity="start"
-                android:background="@drawable/encadre_gris"
-                android:hint="@string/aTester_indic"
-                android:inputType="text"
-                android:textAppearance="@style/texte_simple" />
 
             <!--  saisie caracteres -->
             <TextView
@@ -72,14 +61,14 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@drawable/echelle_analyse"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
 
 
     <!-- infos resultats -->
     <TextView
         android:id="@+id/info_analyse"
         android:layout_width="fill_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:textAppearance="@style/titre2"
         android:background="@drawable/encadre_gris"
         android:layout_marginTop="20dp"/>
