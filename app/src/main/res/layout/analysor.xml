@@ -27,6 +27,11 @@
             android:contentDescription="@string/analysor"
             />
 
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <!-- Titre -->
         <TextView
             android:text="@string/analyse_titre"
@@ -34,8 +39,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/titre3"
+            android:paddingRight="15dp"
             android:paddingTop="10dp"/>
 
+        <ImageButton
+            android:id="@+id/bouton_analyse_help"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/aide_analyse"
+            android:contentDescription="@string/menu_info"/>
+
+        </LinearLayout>
 
         <!-- saisie a tester -->
         <LinearLayout
@@ -55,9 +69,8 @@
         </LinearLayout>
 
         <!-- resultat graphique -->
-        <ProgressBar
+        <ImageView
             android:id="@+id/resultat_graphique"
-            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@drawable/echelle_analyse"
@@ -68,8 +81,8 @@
     <TextView
         android:id="@+id/info_analyse"
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:textAppearance="@style/titre2"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/texte_simple"
         android:background="@drawable/encadre_gris"
         android:layout_marginTop="20dp"/>
 

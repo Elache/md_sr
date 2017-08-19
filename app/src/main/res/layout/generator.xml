@@ -24,8 +24,6 @@
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
             android:padding="5dp"
             android:background="@drawable/generer"
             android:contentDescription="@string/generator"
@@ -45,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/generator_parametres"
             android:textAppearance="@style/titre3"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"/>
@@ -93,6 +92,7 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:background="@color/champ"
+                android:textAppearance="@style/texte_simple"
                 android:inputType="number"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"/>

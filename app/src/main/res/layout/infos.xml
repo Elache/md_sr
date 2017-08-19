@@ -19,7 +19,7 @@
 
         <!-- Titre 1 -->
         <TextView
-            android:text="@string/titre1"
+            android:text="@string/info_param"
             android:id="@+id/info_titre1"
             android:layout_width="wrap_content"
             android:layout_height="80dp"

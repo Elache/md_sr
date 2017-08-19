@@ -85,7 +85,7 @@ public class ChainePasse {
 	 * @return ChainePasse mot de passe de longueur 10 (et composition
 	 *         encapsul&eacute;e)
 	 */
-	static ChainePasse genererMotDePasse() {
+	public static ChainePasse genererMotDePasse() {
 		return genererMotDePasse(10);
 	}
 
@@ -331,12 +331,31 @@ public class ChainePasse {
 	}
 
 	/**
+	 * Etablit un texte listant les types de caracteres présents
+	 */
+	public String caracteresPresents() {
+		String presence = ""; 
+		if(avecChiffre)
+			presence += "-Chiffres- " ; 
+		if(avecMinuscule)
+			presence += "-Minuscules- " ;
+		if(avecMajuscule)
+			presence += "-Majuscules- " ;
+		if(avecAccentCedil)
+			presence += "-Caractères accentués-  " ;
+		if(avecSpecial)	
+			presence += "-Caractères spéciaux- " ;
+		return presence;
+	}
+	
+	/**
 	 * toString()
 	 */
 	public String toString() {
 		return chaineDuPasse;
 	}
 
+	
 	/**
 	 * Equals : deux ChainePasse sont &eacute;gaux si les chaines qui les
 	 * constituent sont identiques

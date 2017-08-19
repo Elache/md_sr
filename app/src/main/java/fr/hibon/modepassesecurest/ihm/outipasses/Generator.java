@@ -16,12 +16,13 @@ import fr.hibon.modepassesecurest.motpasse.ChainePasse;
 import fr.hibon.modepassesecurest.motpasse.MotDePasseCotation;
 
 /**
- *
+ * Crée l'activité "Génération de mot de passe"
+ * <BR>et son aide
  */
 
-public class Generator extends AppCompatActivity implements View.OnClickListener {
+public class Generator extends AppCompatActivity  {
 
-    ImageButton btnGenere ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,87 +31,23 @@ public class Generator extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.generator);
         setTitle("MP&SR");
 
-        btnGenere = (ImageButton) findViewById(R.id.bouton_generator) ;
-        btnGenere.setOnClickListener(this);
-
     }
 
+    public static String infoGeneration() {
 
-    @Override
-    public void onClick(View v) {
-        Intent mIn ;
+        String infos = "L'utilisation du paramétrage est facultative." ;
 
-        /* LONGUEUR SELECTIONNEE */
-        EditText nbCaractSaisi = (EditText) findViewById(R.id.saisie_longueur) ;
-        int longueur = longueurChoisie(nbCaractSaisi) ;
+        infos += "\n" + "Par défaut, le mot de passe généré comporte 10 caractères, tous les types listés pouvant en faire partie" ;
 
+        infos += "\n" + "\n" + "Remarque : d'une façon générale, la qualité d'un mot de passe est plus particulièrement liée à sa longueur." ;
 
-        /* CARACTERES */
-        boolean chiffres, minuscules, majuscules, accents, speciaux ;
-        CheckBox chiff, min, maj, acc, sp ;
+        infos += "\n" + "\n" + "PARAMETRES : Caractéristiques du mot de passe" ;
+        infos += "\n" + "- " + "Longueur : nombre de caractères (10 par défaut)" ;
+        infos += "\n" + "- " + "Types de caractères : cochés = utilisables" ;
+        infos += "\n" + "- " + "Exclure : lister des caractères interdits" ;
+        infos += "\n" + "- " + "Inclure : lister des caractères possibles" ;
 
-        chiff = (CheckBox) findViewById(R.id.chk_chiffres);
-        min = (CheckBox) findViewById(R.id.chk_minusc);
-        maj = (CheckBox) findViewById(R.id.chk_majusc);
-        acc = (CheckBox) findViewById(R.id.chk_accent);
-        sp = (CheckBox) findViewById(R.id.chk_speciaux);
-
-        chiffres = chiff.isChecked() ;
-        minuscules = min.isChecked() ;
-        majuscules = maj.isChecked() ;
-        accents = acc.isChecked() ;
-        speciaux = sp.isChecked() ;
-
-
-        /* INCLUSIONS, EXCLUSIONS */
-        EditText inclu, exclu ;
-        String inclure, exclure ;
-        ArrayList<Character> inclusions, exclusions ;
-
-        inclu = (EditText)findViewById(R.id.inclus_saisie);
-        exclu = (EditText)findViewById(R.id.exclus_saisie);
-        inclure = inclu.getText().toString();
-        exclure = exclu.getText().toString();
-        inclusions = etablirListe(inclure) ;
-        exclusions = etablirListe(exclure) ;
-
-        /* Affichage MOT GENERE */
-        EditText champ = (EditText) findViewById(R.id.saisie_aTester) ;
-        ChainePasse chaine = ChainePasse.genererMotDePasse(longueur, chiffres, minuscules, majuscules,accents,speciaux, exclusions, inclusions);
-        champ.setText(chaine.getChaineDuPasse());
-
-        /* Affichage ANALYSE */
-        MotDePasseCotation lePasse = MotDePasseCotation.analyser(chaine);
-
-        TextView affichAnalyse = (TextView) findViewById(R.id.info_analyse) ;
-        affichAnalyse.setText(lePasse.getQualifieAnalyse() + " (" + lePasse.getForceBits() + "bits )") ;
-
-
-        mIn = new Intent(Generator.this, Analysor.class);
-
-        startActivity(mIn) ;
-    }
-
-
-
-     /* OUTILS : recuperation de la longueur */
-    private int longueurChoisie(EditText nb) {
-        String nbCaractLu = nb.getText().toString() ;
-        return Integer.parseInt(nbCaractLu) ;
-    }
-
-
-    /* OUTILS : crée liste d'exclusions ou d'inclusions */
-    private ArrayList<Character> etablirListe(String chaine){
-        if(chaine == null || chaine.length() == 0)
-            return null ;
-
-        ArrayList<Character> liste = new ArrayList<>() ;
-        for (char c : chaine.toCharArray()) {
-            if(c != ' ')
-                liste.add(c);
-        }
-        return liste ;
+        return infos ;
     }
 
 }

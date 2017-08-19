@@ -2,10 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item
-        android:id="@+id/connexionMenu"
-        android:title="@string/connexion"
-        app:showAsAction="always" />
 
     <item
         android:id="@+id/menu_info"
@@ -14,21 +10,23 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/creationMenu"
+        android:id="@+id/menu_connexion"
+        android:title="@string/connexion"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_creation"
         android:title="@string/menu_creation"
         app:showAsAction="ifRoom"
         />
 
 
     <item
-        android:id="@+id/generatorMenu"
-        android:title="@string/generator"
+        android:id="@+id/menu_outipasses"
+        android:title="@string/outipasse"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/analysorMenu"
-        android:title="@string/analysor"
-        app:showAsAction="never"  />
+
 
 
 </menu>

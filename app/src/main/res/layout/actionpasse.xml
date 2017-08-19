@@ -20,13 +20,14 @@
         <!--  saisie caracteres -->
         <EditText
             android:id="@+id/saisie_aTester"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="start"
+            android:layout_marginRight="10dp"
             android:background="@drawable/encadre_gris"
             android:hint="@string/aTester_indic"
             android:inputType="text"
-            android:textAppearance="@style/texte_simple" />
+            android:textAppearance="@style/titre2" />
 
 
 

@@ -7,17 +7,19 @@
 
     <!-- PROVISOIRES -->
     <string name="provisoire">"Provisoire"</string>
-    <string name="passe_cado">"        f_4iRjçE&amp;d"</string>
     <string name="exemple_passwd">longueur50.amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;d</string>
 
     <!-- param generaux -->
     <string name="creation">Création</string>
     <string name="pass_confirm">Confirmer</string>
+    <string name="fermer">Fermer</string>
+
 
     <string name="invite_remplir">................</string>
     <string name="invite_remplir_multilines">...........................\n...........................</string>
     <string name="invite_deroule_categorie">Choisir une catégorie</string>
     <string name="outipasses">Outi\'passes</string>
+    <string name="pregen">Mot de passe</string>
 
 
     <string name="bouton_valider">Valider</string>
@@ -58,6 +60,27 @@
     <string name="user_notes">Note additionnelle</string>
 
 
+    <!-- ####################### -->
+    <!-- Version en ligne -->
+    <!-- ####################### -->
+
+    <string name="mettre_en_ligne">Créer une COPIE EN LIGNE \n de vos données</string>
+    <string name="bouton_enligne_help">Aide</string>
+    <string name="sauver_en_ligne">
+        - La copie de vos données dans une base de données collective en ligne peut constituer une sauvegarde.
+        \n  (il existe un moyen alternatif de sauvegarde, hors Internet)
+        \n\n
+        - Vous pouvez alors choisir de bénéficier d\'une interface web
+        pour interroger vos données en ligne (sans recours à votre appareil Android).
+        \n\n
+        Pour ce type d\'utilisation, des conditions sur les identifiants et mots de passe sont nécessaires (identifiant unique, passe d\'un bon niveau de sécurité).
+        \n\n
+        Tous les mots de passe sont conservés sous une forme chiffrée (clés AES 128bits).
+        \n\n
+        L\'hébergement est réalisé sur les serveurs de pages personnelles de Free.
+        \n Administration par le concepteur de l\'application : L. HIBON
+    </string>
+
 
     <!-- ####################### -->
     <!-- REPERTOIRE -->
@@ -91,6 +114,14 @@
 
         <string name="controle_facultatif">Contrôle facultatif</string>
 
+
+
+    <!-- ####################### -->
+    <!-- OUTI'PASSES             -->
+    <!-- ####################### -->*
+
+    <string name="outipasse">Outi\'passes</string>
+    <string name="outipasse_long">Outi\'passes (analyse, génération)</string>
 
     <!-- ####################### -->
     <!-- ANALYSEUR Mot de passe -->
@@ -144,7 +175,8 @@
     <!-- ####################### -->
 
     <string name="info_titre">Aide et Informations</string>
-    <string name="titre1">Aide à voir</string>
+    <string name="info_param">Paramétrer</string>
     <string name="titre2">Infos à voir</string>
+    <string name="passe_a_dispo">Passe aléatoire</string>
 
 </resources>

@@ -205,7 +205,7 @@
                 android:columnCount="3"
                 android:foregroundGravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="10dp" >
+                android:padding="10dp">
 
 
                 <TextView
@@ -219,51 +219,43 @@
                     android:textAppearance="@style/titre2"/>
 
 
+                <TextView
+                    android:id="@+id/passeDispo_titre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="0"
+                    android:paddingLeft="15dp"
+                    android:paddingStart="15dp"
+                    android:text="@string/passe_a_dispo"
+                    android:textAppearance="@style/texte_simple"/>
+
                 <EditText
                     android:id="@+id/passeDispo"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_column="1"
+                    android:layout_column="2"
                     android:layout_gravity="start"
                     android:layout_marginBottom="10dp"
                     android:layout_row="0"
-                    android:text="@string/passe_cado"
+                    android:inputType="text"
+                    android:paddingLeft="15dp"
+                    android:paddingStart="15dp"
                     android:textColor="@android:color/background_dark"/>
 
 
                 <ImageButton
-                    android:id="@+id/bouton_analysor"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
+                    android:id="@+id/bouton_outils"
+                    android:layout_width="79dp"
+                    android:layout_height="30dp"
                     android:layout_row="1"
                     android:layout_column="0"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/analyser"
-                    android:contentDescription="@string/analysor"
+                    android:layout_columnSpan="3"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/actions_passes"
+                    android:contentDescription="@string/menu_outipasses"
                     />
-
-                <ImageButton
-                    android:id="@+id/bouton_generator"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/generer"
-                    android:contentDescription="@string/generator"
-                    />
-
-
-                <ImageButton
-                    android:id="@+id/bouton_outipasses_help"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/aide_passes"
-                    android:contentDescription="@string/menu_info"
-                    />
-
-
 
             </GridLayout>
 

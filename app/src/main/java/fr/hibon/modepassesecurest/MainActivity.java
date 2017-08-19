@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 
 import fr.hibon.modepassesecurest.ihm.outipasses.*;
 import fr.hibon.modepassesecurest.ihm.compte.*;
+import fr.hibon.modepassesecurest.motpasse.ChainePasse;
 
 /**
  */
@@ -23,7 +24,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button boutonConnexion ;
     ImageButton outipasses_help, boutonCreation, boutonOutil ;
 
-    int largeurEcran ;
+    EditText passeDispo ;
+    String passeCado ;
+
+    // TODO largeur d\'ecran et haute densite ??
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("MP&SR");
-       largeurEcran =largeurEcran(this) ;
 
         boutonConnexion = (Button) findViewById(R.id.bouton_connexion) ;
         boutonConnexion.setOnClickListener(this);
@@ -42,8 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boutonOutil = (ImageButton) findViewById(R.id.bouton_outils) ;
         boutonOutil.setOnClickListener(this);
 
-        outipasses_help = (ImageButton) findViewById(R.id.bouton_outipasses_help);
-        outipasses_help.setOnClickListener(this);
+        passeCado = ChainePasse.genererMotDePasse().getChaineDuPasse() ;
+        passeDispo = (EditText) findViewById(R.id.passeDispo) ;
+        passeDispo.setText(passeCado);
     }
 
     @Override
@@ -53,10 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()) {
             case(R.id.bouton_outils):
                 mIn = new Intent(MainActivity.this, Passes.class) ;
-                break ;
-
-            case(R.id.bouton_outipasses_help):
-                mIn = new Intent(MainActivity.this, Infos.class) ;
+                mIn.putExtra("passeCado", passeCado) ;
                 break ;
 
             case(R.id.bouton_connexion):
@@ -84,13 +85,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+
+    // TODO menu accueil
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent mIn ;
-        int largeurEcran = largeurEcran(this) ;
 
         switch (item.getItemId()){
-            case R.id.connexionMenu:
+
+            case R.id.menu_connexion:
                 EditText champPasse = (EditText)findViewById(R.id.saisie_Pass);
                 String passeSaisi = champPasse.getText().toString();
                 boolean passeValide = passeSaisi.equals("123456") ;
@@ -101,37 +104,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else
                     mIn = new Intent(MainActivity.this, MainActivity.class);
                 return false ;
-            case R.id.creationMenu:
+
+            case R.id.menu_creation:
                 mIn = new Intent(MainActivity.this, CreationCompteInterface.class) ;
                 return true;
-            case R.id.generatorMenu:
-                if(largeurEcran > 959) {
-                    mIn = new Intent(MainActivity.this, Passes.class);
-                    return true;
-                }
-                else {
-                    mIn = new Intent(MainActivity.this, Generator.class);
-                    return true;
-                }
-            case R.id.analysorMenu:
-                if(largeurEcran > 959) {
-                    mIn = new Intent(MainActivity.this, Passes.class);
-                    return true;
-                    }
-                    else {
-                        mIn = new Intent(MainActivity.this, Analysor.class);
-                        return true;
-                    }
-                }
+
+            case R.id.menu_outipasses:
+                mIn = new Intent(MainActivity.this, Passes.class);
+                return true;
+
+            case R.id.menu_info:
+                mIn = new Intent(MainActivity.this, Infos.class);
+                return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
 
-    public int largeurEcran(Context context) {
-        DisplayMetrics dm = new DisplayMetrics();
-        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(dm);
-        return dm.widthPixels;
-    }
 
 }

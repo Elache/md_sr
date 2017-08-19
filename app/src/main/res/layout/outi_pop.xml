@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Titre -->
+        <TextView
+            android:text="@string/info_param"
+            android:id="@+id/info_param_titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/titre2"
+            android:layout_gravity="center_horizontal"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="20dp"/>
+
+
+        <!-- infos -->
+        <TextView
+            android:id="@+id/infogen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/texte_simple"
+            android:background="@drawable/encadre_gris"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="30dp"/>
+
+
+        <!-- Fermeture -->
+        <Button
+            android:id="@+id/close_popUP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/cadre"
+            android:textColor="@color/blanc"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/fermer" />
+
+
+    </LinearLayout>
