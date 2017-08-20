@@ -1,4 +1,4 @@
-package fr.hibon.modepassesecurest.compte.bdd;
+package fr.hibon.modepassesecurest.compte.bdd.table;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,9 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by lohib on 20/08/2017.
  */
 
-public class CreationBase extends SQLiteOpenHelper {
-
-
+public class Table_Donnee {
 
     /* Table: Donnee */
     public static final String DONNEE_TABLE_NOM = "Donnee" ;
@@ -33,20 +31,19 @@ public class CreationBase extends SQLiteOpenHelper {
     public static final String DONNEE_TABLE_CREATE = "CREATE TABLE" + DONNEE_TABLE_NOM + " " +
             "(" + DONNEE_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DONNEE_NOM + " TEXT, " + DONNEE_LOGIN + " TEXT, " + DONNEE_PASSE + " TEXT, " + DONNEE_QUESTION + " TEXT, " + DONNEE_MAIL + " TEXT, " + DONNEE_NOTE + " TEXT, " + DONNEE_DATE_CREE + " REAL NOT NULL, " + DONNEE_DATE_MODIF + " REAL ," + DONNEE_CLE_CHIFFRE + " TEXT, " + DONNEE_CATEGORIE + " INTEGER, " + DONNEE_REPERTOIRE + " INTEGER NOT NULL, " + DONNEE_WEB + " INTEGER ) ;" ;
 
-    // //////////////////////////////////
-    public CreationBase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
+    public static final String DONNEE_REQUETE_INSERTION = "INSERT INTO " + DONNEE_TABLE_NOM
+			+ " (nom_donnee, login_donnee, passe_donnee, question_secrete_donnee, mail_donnee, note_donnee, date_creation_donnee, date_derniere_modif_donnee, cle_chiffre_donnee, id_cat, id_repertoire, id_web) "
+            + "VALUES (?,?,?, ?, ?, ?, ?,?,?,?,?,?)";
 
-    }
+    public static final String DONNEE_REQUETE_UPDATE = "";
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public static final String DONNEE_REQUETE_SUPPRESSION = "";
 
-    }
+    public static final String DONNEE_REQUETE_RECHERCHE_NOM = "";
+    /* nom, mail, note, web, question, tout */
+
+
 }
 
 

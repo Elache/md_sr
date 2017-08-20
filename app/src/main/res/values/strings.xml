@@ -47,6 +47,7 @@
     <string name="connexion">Connexion</string>
     <string name="connexion_compte">Me connecter</string>
     <string name="creation_compte">Création du Compte</string>
+    <string name="creation_compte_rep">Création de votre 1er répertoire</string>
 
 
     <string name="u_identifiant">Identifiant</string>
@@ -89,6 +90,7 @@
     <string name="repertoire_titre">Création d\'un Répertoire</string>
 
     <string name="repertoire_nom">Nom du répertoire</string>
+    <string name="repertoire_nom_abr">Nom</string>
     <string name="repertoire_descript">Description</string>
 
 

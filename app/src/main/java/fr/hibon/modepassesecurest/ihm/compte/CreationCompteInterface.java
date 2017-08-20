@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import fr.hibon.modepassesecurest.R;
+import fr.hibon.modepassesecurest.compte.bdd.CreationBase;
 import fr.hibon.modepassesecurest.ihm.outipasses.Analysor;
 
 /**
@@ -22,6 +23,7 @@ import fr.hibon.modepassesecurest.ihm.outipasses.Analysor;
 public class CreationCompteInterface extends AppCompatActivity implements View.OnClickListener {
 
     String user_nom, user_pass1, user_pass1_confirmer, user_pass2, user_pass2_confirmer ;
+    Button bouton_creation ;
     boolean enLigne ;
     ImageButton info_internet ;
 
@@ -40,6 +42,9 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
 
         info_internet = (ImageButton) findViewById(R.id.bouton_enligne_help) ;
         info_internet.setOnClickListener(this);
+
+        bouton_creation = (Button) findViewById(R.id.bouton_creation) ;
+        bouton_creation.setOnClickListener(this);
 
     }
 
@@ -64,9 +69,10 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
         }
 
         if (v.getId() == R.id.bouton_creation) {
-            if(GestionIHM.verifierCompte(user_nom, user_pass1, user_pass1_confirmer, user_pass2, user_pass2_confirmer, enLigne))
+            if(GestionIHM.verifierCompte(user_nom, user_pass1, user_pass1_confirmer, user_pass2, user_pass2_confirmer, enLigne)) {
                 // TODO creation suivant enligne
-                ;
+                CreationBase.getInstance(getApplicationContext());
+            }
         }
 
     }

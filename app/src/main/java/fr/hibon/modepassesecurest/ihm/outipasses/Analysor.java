@@ -32,6 +32,7 @@ public class Analysor extends AppCompatActivity {
         infos += "\n" + "\n" + "Pour être qualifié de \"bon\", un mot de passe devra comporter au moins 10 caractères..." ;
         infos += "\n" + "ou plus si tous les types ne sont pas représentés" ;
 
+        infos += "\n" + "\n" + "A partir de 28 caractères, le niveau est \"Bon\" même si les 10 chiffres sont uniquement utilisés." ;
         return infos ;
     }
 
