@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/mp_sr"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/Theme.AppCompat.Light">
         <activity android:name=".MainActivity"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -20,13 +20,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ihm.compte.ConnecteAccueilInterface" />
-        <activity android:name=".ihm.compte.CreationCompteInterface" />
+        <activity android:name=".ihm.compte.ConnecteAccueilInterface"  android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ihm.compte.CreationCompteInterface"  android:windowSoftInputMode="stateHidden" />
 
         <activity android:name=".ihm.outipasses.Passes" android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ihm.outipasses.Analysor" android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ihm.outipasses.Generator" android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".ihm.outipasses.Infos" />
+        <activity android:name=".ihm.outipasses.Infos"  android:windowSoftInputMode="stateHidden" />
 
     </application>
 

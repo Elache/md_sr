@@ -13,8 +13,6 @@
 
 
     <color name="blanc">#fff</color>
-    <color name="noir">#000</color>
-    <color name="gris_fonce">#424141</color>
 
     <color name="gris_clair">#c8ececec</color>
 
@@ -23,8 +21,5 @@
     <color name="titre1">#080a70</color>
     <color name="titre2">#161697</color>
     <color name="titre2v">#30A300</color>
-
-    <color name="rouge_bouton">#eb4d67</color>
-
 
 </resources>

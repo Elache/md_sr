@@ -55,9 +55,10 @@
 
     <string name="compte_titre">Création d\'un Compte-utilisateur</string>
 
-    <string name="user_nom">@string/u_identifiant</string>
+    <string name="user_nom">Identifiant</string>
     <string name="user_pass1">Passe</string>
     <string name="user_pass2">Passe-secours</string>
+    <string name="user_mail">Email</string>
     <string name="user_notes">Note additionnelle</string>
 
 

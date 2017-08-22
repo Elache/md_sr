@@ -98,7 +98,7 @@ public class ChainePasse {
 	 * @return ChainePasse mot de passe de longueur parametr&eacute;e (et
 	 *         composition encapsul&eacute;e)
 	 */
-	static ChainePasse genererMotDePasse(int n) {
+	public static ChainePasse genererMotDePasse(int n) {
 		return genererMotDePasse(n, true, true, true, true, true, null, null);
 	}
 
