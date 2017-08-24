@@ -20,7 +20,7 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
 
     /* Nom de la base de donnees */
     public static final String DATABASE_NOM = "modepasse_securest";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
 
     /* ** CREATION DES TABLES - REQUETES ********

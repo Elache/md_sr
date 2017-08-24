@@ -209,4 +209,10 @@ public class Repertoire {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		if(this.getNomRepertoire() == null || this.getNomRepertoire().length() == 0 )
+			return "Mon Répertoire" ;
+		return this.getNomRepertoire() ;
+	}
 }

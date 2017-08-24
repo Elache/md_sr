@@ -1,5 +1,6 @@
 package fr.hibon.modepassesecurest.ihm.compte;
 
+import android.app.Application;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+
+import java.util.zip.CRC32;
 
 import fr.hibon.modepassesecurest.R;
 import fr.hibon.modepassesecurest.motpasse.ChainePasse;
@@ -26,7 +29,7 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
     Button bouton_creation ;
     boolean enLigne ;
     ImageButton info_internet ;
-
+    boolean userInforme ;
 
 
     @Override
@@ -34,21 +37,20 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compte_creation);
 
+        userInforme = false ;
+
         nom = ((EditText) findViewById(R.id.user_nom)) ;
         nom.setText("Moi-" + ChainePasse.genererMotDePasse(4, true, false,false,false,false,null, null).getChaineDuPasse());
-
 
         String passe = ChainePasse.genererMotDePasse().getChaineDuPasse() ;
         pass1 = ((EditText) findViewById(R.id.user_pass1)) ;
         pass1.setText(passe);
         pass1confirm = ((EditText) findViewById(R.id.user_pass1_confirm)) ;
-        pass1confirm.setText(passe);
 
         String passeRecours = ChainePasse.genererMotDePasse(4).getChaineDuPasse() ;
         pass2 = ((EditText) findViewById(R.id.user_pass2)) ;
         pass2.setText(passeRecours) ;
         pass2confirm = ((EditText) findViewById(R.id.user_pass2_confirm)) ;
-        pass2confirm.setText(passeRecours) ;
 
         mail = ((EditText) findViewById(R.id.user_mail_saisi)) ;
 
@@ -65,10 +67,6 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-
-        user_nom = nom.getText().toString() ;
-
-
 
         if (v.getId() == R.id.bouton_enligne_help) {
             final Dialog dialog = new Dialog(this);
@@ -88,32 +86,49 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
 
         if (v.getId() == R.id.bouton_creation) {
 
-
+            Intent mIn ;
+            user_nom = nom.getText().toString() ;
             user_pass1 = pass1.getText().toString() ;
             user_pass1_confirmer = pass1confirm.getText().toString() ;
             user_pass2 = pass2.getText().toString() ;
             user_pass2_confirmer  = pass2confirm.getText().toString() ;
             user_mail = mail.getText().toString() ;
-
             enLigne = ((CheckBox) findViewById(R.id.mettre_en_ligne)).isChecked() ;
 
+            String avertiss = new GestionIHM(user_nom,user_pass1,user_pass1_confirmer,user_pass2, user_pass2_confirmer, user_mail, enLigne).verifier() ;
+            if(avertiss.length() == 0 || userInforme){
+                mIn = new Intent(CreationCompteInterface.this, ConnecteAccueilInterface.class) ;
+                mIn.putExtra("nom", user_nom) ;
+                mIn.putExtra("passe1", user_pass1) ;
+                mIn.putExtra("passe2", user_pass2) ;
+                mIn.putExtra("mail", user_mail) ;
+                mIn.putExtra("creation", true) ;
+                startActivity(mIn) ;            }
+            else {
+                final Dialog dial = new Dialog(this);
+                dial.setContentView(R.layout.en_ligne_pop);
+                dial.setTitle("Informations");
+                TextView titre = (TextView) dial.findViewById(R.id.info_en_ligne);
+                titre.setText("Des saisies incorrectes");
+                TextView textInfo = (TextView) dial.findViewById(R.id.infoenligne);
+                textInfo.setText(avertiss);
+                Button dialogButton = (Button) dial.findViewById(R.id.close_popUP);
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dial.dismiss();
+                    }
+                });
+                dial.show();
+                this.userInforme = true ;
+            }
 
-            // TODO verifie info ; cree base - utilisateur - repertoire
-            // TODO option en ligne
-
-            //  if(GestionIHM.verifierCompte(user_nom, user_pass1, user_pass1_confirmer, user_pass2, user_pass2_confirmer, enLigne)) {}
-            Intent mIn = new Intent(CreationCompteInterface.this, ConnecteAccueilInterface.class) ;
-
-            mIn.putExtra("nom", user_nom) ;
-            mIn.putExtra("passe1", user_pass1) ;
-            mIn.putExtra("passe2", user_pass2) ;
-            mIn.putExtra("mail", user_mail) ;
-
-            startActivity(mIn) ;
+            // TODO option : en ligne
 
         }
 
     }
+
 
 
 }

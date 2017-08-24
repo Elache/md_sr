@@ -26,6 +26,15 @@
             android:padding="5dp"
             app:srcCompat="@drawable/app_name"/>
 
+
+        <ImageButton
+            android:id="@+id/test_btn"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:background="@color/colorAccent"
+            />
+
+
         <TextView
             android:id=
                 "@+id/accueilTexte"
@@ -241,7 +250,7 @@
 
         </GridLayout>
 
-    </LinearLayout>
 
+    </LinearLayout>
 
 </ScrollView>

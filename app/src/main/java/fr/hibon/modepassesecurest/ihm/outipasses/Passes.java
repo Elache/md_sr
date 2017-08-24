@@ -69,9 +69,13 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
         /* pour Aide sur l'ANALYSE */
         if (v.getId() == R.id.bouton_analyse_help) {
             final Dialog dialog = new Dialog(this);
-            dialog.setContentView(R.layout.analyse_pop);
+            dialog.setContentView(R.layout.en_ligne_pop);
             dialog.setTitle("Informations");
-            TextView textInfo = (TextView) dialog.findViewById(R.id.info_analyse) ;
+
+            TextView titre = (TextView) dialog.findViewById(R.id.info_en_ligne);
+            titre.setText("Analyse du mot de passe");
+
+            TextView textInfo = (TextView) dialog.findViewById(R.id.infoenligne) ;
             textInfo.setText(Analysor.infoAnalyse())  ;
 
             Button dialogButton = (Button) dialog.findViewById(R.id.close_popUP);
@@ -87,9 +91,13 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
         /* pour Aide sur la GENERATION */
         if (v.getId() == R.id.bouton_outipasses_help) {
             final Dialog dialog = new Dialog(this);
-            dialog.setContentView(R.layout.outi_pop);
+            dialog.setContentView(R.layout.en_ligne_pop);
+
+            TextView titre = (TextView) dialog.findViewById(R.id.info_en_ligne);
+            titre.setText("Paramétrer");
+
             dialog.setTitle("Informations");
-            TextView textInfo = (TextView) dialog.findViewById(R.id.infogen) ;
+            TextView textInfo = (TextView) dialog.findViewById(R.id.infoenligne) ;
             textInfo.setText(Generator.infoGeneration())  ;
 
             Button dialogButton = (Button) dialog.findViewById(R.id.close_popUP);

@@ -9,10 +9,6 @@
         android:icon="@android:drawable/ic_menu_info_details"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/menu_connexion"
-        android:title="@string/connexion"
-        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_creation"

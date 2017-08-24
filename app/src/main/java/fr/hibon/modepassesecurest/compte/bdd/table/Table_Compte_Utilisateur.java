@@ -22,7 +22,7 @@ public class Table_Compte_Utilisateur  {
     /* CREATION DE LA TABLE */
     public static final String COMPTE_USER_TABLE_CREATE = "CREATE TABLE " + COMPTE_USER_TABLE_NOM + " " +
             "(" + COMPTE_USER_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COMPTE_USER_NOM +
-            " TEXT, " + COMPTE_USER_PASSE + " TEXT, " + COMPTE_USER_PASSE_RECOURS + " TEXT, " + COMPTE_USER_MAIL + " TEXT, " +
+            " TEXT UNIQUE, " + COMPTE_USER_PASSE + " TEXT, " + COMPTE_USER_PASSE_RECOURS + " TEXT, " + COMPTE_USER_MAIL + " TEXT, " +
             COMPTE_USER_NOTE + " TEXT, " + COMPTE_USER_CLE_CHIFFRE + " TEXT ) ; " ;
 
 

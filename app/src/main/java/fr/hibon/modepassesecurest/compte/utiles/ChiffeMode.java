@@ -52,6 +52,26 @@ public class ChiffeMode {
         return this ;
     }
 
+
+    /**
+     * Methode publique de chiffrement<BR>D&eacute;l&egrave;gue pour G&eacute;n&egrave;re une cl&eacute; (genererCle())et l'enregistre (instance ChiffeMode)
+     * <BR>Lance encrypter(passe, cleSK)
+     * @param passe Cha&icirc;ne &agrave; chiffrer
+     * @param cle Cle de chiffrement prealable
+     * @return String Cha&icirc;ne chiffr&eacute;e
+     */
+    public ChiffeMode chiffrer(String passe, String cle) {
+        SecretKey originalSK = stringVersKey(cle) ;
+        try {
+            // enregistre la cle sous forme de String
+            this.cleCode = cle ;
+            this.passeCode = encrypter(passe, originalSK);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException e) {
+            e.printStackTrace();
+        }
+        return this ;
+    }
+
     /**
      * Methode publique de d&eacute;chiffrement<BR>
      *     R&eacute;g&eacute;n&egrave;re la SecretKey &agrave partir de la cha&icirc;ne
@@ -63,8 +83,7 @@ public class ChiffeMode {
     public String dechiffrer(String passe, String cle) {
         String passeClair = null;
         try {
-            byte[] versCle = Base64.decode(cle, Base64.DEFAULT);
-            SecretKey cleOriginale = new SecretKeySpec(versCle, 0, versCle.length, "AES");
+            SecretKey cleOriginale = stringVersKey(cle) ;
             passeClair = decrypter(passe, cleOriginale);
             return passeClair ;
         } catch (Exception e) {
@@ -72,6 +91,16 @@ public class ChiffeMode {
         }
     }
 
+
+    /**
+     * Regenere SecretKey a partir de cle sous forme de String
+     * @param cle cle string
+     * @return SecretKeySpec pour String cle
+     */
+    private SecretKeySpec stringVersKey(String cle) {
+        byte[] versCle = Base64.decode(cle, Base64.DEFAULT);
+        return new SecretKeySpec(versCle, 0, versCle.length, "AES");
+    }
 
     // /////////////////
 

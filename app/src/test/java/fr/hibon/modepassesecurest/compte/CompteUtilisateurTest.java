@@ -408,17 +408,6 @@ public class CompteUtilisateurTest {
 
     // /////////// getter / setter Passes internet
 
-    /**
-     * V&eacute;rifie &eacute;galit&eacute; des cl&eacutes;s internet apr&egrave;s set
-     * (nouveau = affect&eacute;)
-     */
-    @Test
-    public void setCleChiffreInternetChiffre_doitModifier() {
-        String nouveau = "sdfé\"fffsd";
-        CompteUtilisateur cu = preparerCompteTest();
-        cu.setCleChiffreInternet(nouveau);
-        assertEquals("sdfé\"fffsd", cu.getCleChiffreInternet());
-    }
 
     /**
      * V&eacute;rifie &eacute;galit&eacute; des passes chiffr&eacute;s et cl&eacute;s (utilisateur + recours)  apr&egrave;s set
@@ -434,7 +423,6 @@ public class CompteUtilisateurTest {
         Repertoire rep1 = new Repertoire("RepTest", "");
         cu.getLesRepertoires().add(rep1);
         cu.setPasseRecoursChiffre(ChainePasse.composition("##pass recours## chiffr"));
-        cu.setCleChiffreRecours("Clé Rec");
         // passe User chiffre = "##pass user## chiffr"
         // cle = "Clé U";
         pass = cu.getPasseUserChiffre().getChaineDuPasse();
@@ -442,10 +430,8 @@ public class CompteUtilisateurTest {
         if (!pass.equals("##pass user## chiffr") || !cle.equals("Clé U"))
             test = false;
         // passe recours chiffr = "##pass recours## chiffr"
-        // cle = "Clé Rec";
         pass = cu.getPasseRecoursChiffre().getChaineDuPasse();
-        cle = cu.getCleChiffreRecours();
-        if (!pass.equals("##pass recours## chiffr") || !cle.equals("Clé Rec"))
+        if (!pass.equals("##pass recours## chiffr") || !cle.equals("Clé U"))
             test = false;
 
         assertTrue(test);

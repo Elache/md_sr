@@ -40,18 +40,6 @@ public class Table_Donnee {
             DONNEE_WEB + " INTEGER CONSTRAINT FK_" + DONNEE_TABLE_NOM + "_" + Table_Site_Web.SITE_WEB_TABLE_NOM + " REFERENCES " +  Table_Site_Web.SITE_WEB_TABLE_NOM + "(id) ) ; " ;
 
 
-    /* INSERTION */
-    /*
-        public static final String DONNEE_REQUETE_INSERTION = "INSERT INTO " + DONNEE_TABLE_NOM
-            + " (nom_donnee, login_donnee, passe_donnee, question_secrete_donnee, mail_donnee, note_donnee, date_creation_donnee, date_derniere_modif_donnee, cle_chiffre_donnee, id_cat, id_repertoire, id_web) "
-            + "VALUES (?,?,?, ?, ?, ?, ?,?,?,?,?,?)";
-    */
-    /*
-    public static final String DONNEE_REQUETE_UPDATE = "";
-    public static final String DONNEE_REQUETE_SUPPRESSION = "";
-    public static final String DONNEE_REQUETE_RECHERCHE_NOM = "";
-    nom, mail, note, web, question, tout */
-
 }
 
 

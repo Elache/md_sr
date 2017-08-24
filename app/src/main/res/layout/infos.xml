@@ -30,7 +30,7 @@
         <TextView
             android:id="@+id/info1"
             android:layout_width="fill_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:textAppearance="@style/titre2"
             android:background="@drawable/encadre_gris"
             android:layout_marginTop="20dp"/>
@@ -49,7 +49,7 @@
         <TextView
             android:id="@+id/info2"
             android:layout_width="fill_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:textAppearance="@style/titre2"
             android:background="@drawable/encadre_gris"
             android:layout_marginTop="20dp"/>

@@ -23,12 +23,45 @@
         android:id="@+id/connecte"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:textAppearance="@style/titre2"/>
+        android:textAppearance="@style/titre2"
+        android:layout_marginBottom="30dp"/>
 
     <TextView
-        android:id="@+id/accueil_connecte"
+        android:id="@+id/titre_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/titre2"/>
+    <TextView
+        android:id="@+id/accueil_connecte_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/linearborder"/>
+
+
+    <TextView
+        android:id="@+id/titre_repert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/titre2"/>
+    <Spinner
+        android:id="@+id/accueil_connecte_rep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/linearborder"/>
+
+
+    <TextView
+        android:id="@+id/titre_donnees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/titre2"/>
+    <TextView
+        android:id="@+id/accueil_connecte_donnees"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/linearborder"/>
 
 </LinearLayout>

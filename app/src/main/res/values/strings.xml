@@ -15,8 +15,8 @@
     <string name="fermer">Fermer</string>
 
 
-    <string name="invite_remplir">................</string>
-    <string name="invite_remplir_multilines">...........................\n...........................</string>
+    <string name="invite_remplir"></string>
+    <string name="invite_remplir_multilines">\n</string>
     <string name="invite_deroule_categorie">Choisir une catégorie</string>
     <string name="outipasses">Outi\'passes</string>
     <string name="pregen">Mot de passe</string>

@@ -48,7 +48,7 @@ public class MotDePasseCotation {
 
 	private int bilanChiffre() {
 
-		// Cas li�s uniquement � la longueur
+		// Cas lies uniquement a la longueur
 		if (motPasse.longeurMot() <= 6)
 			return 1;
 		if (motPasse.longeurMot() >= 28)
