@@ -100,7 +100,7 @@ public class CaractereTest {
 		exclusions.add('z');
 		exclusions.add('v');
 		boolean special = true ;
-		char enCours = '\0' ;
+		char enCours;
 		// test 'statistique'
 		for (int i = 0; i < 100; i++) {
 			enCours = Caractere.genererCaractere(echantillon, exclusions) ;
@@ -129,7 +129,7 @@ public class CaractereTest {
 		inclusions.add('3');
 		inclusions.add('4');
 		boolean special = true ;
-		char enCours = '\0' ;
+		char enCours;
 		// test 'statistique'
 		for (int i = 0; i < 100; i++) {
 			enCours = Caractere.genererCaractere(echantillon, null, inclusions) ;
@@ -151,7 +151,7 @@ public class CaractereTest {
 		inclusions.add('3');
 		inclusions.add('4');
 		boolean special = false ;
-		char enCours = '\0' ;
+		char enCours;
 		// test 'statistique'
 		for (int i = 0; i < 100; i++) {
 			enCours = Caractere.genererCaractere(echantillon, null, inclusions) ;
@@ -184,7 +184,7 @@ public class CaractereTest {
 		exclusions.add('#');
 		exclusions.add('$');
 		boolean special = true ;
-		char enCours = '\0' ;
+		char enCours;
 		// test 'statistique'
 		for (int i = 0; i < 100; i++) {
 			enCours = Caractere.genererCaractere(poolInit, exclusions, inclusions) ;
@@ -205,7 +205,7 @@ public class CaractereTest {
 	@Test
 	public void genereChiffre() {
 		boolean test = true;
-		char enCours = '\0' ;
+		char enCours;
 		for (int i = 0; i < 5; i++) {
 			enCours = Caractere.genereChiffre();
 			if(enCours < '0' || enCours > '9') {
@@ -222,7 +222,7 @@ public class CaractereTest {
 	@Test
 	public void genereMinuscule() {
 		boolean test = true;
-		char enCours = '\0' ;
+		char enCours;
 		for (int i = 0; i < 5; i++) {
 			enCours = Caractere.genereMinuscule();
 			if(enCours < 'a' || enCours > 'z') {
@@ -239,7 +239,7 @@ public class CaractereTest {
 	@Test
 	public void genereMajuscule() {
 		boolean test = true;
-		char enCours = '\0' ;
+		char enCours;
 		for (int i = 0; i < 5; i++) {
 			enCours = Caractere.genereMajuscule();
 			if(enCours < 'A' || enCours > 'Z') {
@@ -309,7 +309,7 @@ public class CaractereTest {
 	public void caracteresSpeciaux_Complet() {
 		ArrayList<Character> pool = new Caractere().getSpeciaux() ;
 		boolean test = true;
-		boolean enCours = true;
+		boolean enCours;
 		// test positif
 		Caractere[] tabTestOK = { new Caractere('~'), new Caractere('&'), new Caractere('-'), new Caractere('_'),
 				new Caractere(47), new Caractere(95), new Caractere(125), new Caractere(166), new Caractere('*'),
@@ -336,7 +336,7 @@ public class CaractereTest {
 	public void les110_Complet() {
 		ArrayList<Character> pool = Caractere.les110();
 		boolean test = true;
-		boolean enCours = true;
+		boolean enCours;
 		// test positif
 		Caractere[] tabTestOK = { new Caractere('~'), new Caractere('&'), new Caractere('-'), new Caractere('_'),
 				new Caractere(47), new Caractere('a'), new Caractere('A'), new Caractere('é'), new Caractere('#'),
@@ -367,7 +367,7 @@ public class CaractereTest {
 		// tous caracteres possibles
 		ArrayList<Character> pool = Caractere.poolCaracteres(true, true, true, true, true);
 		boolean test = true;
-		boolean enCours = true;
+		boolean enCours;
 		// test positif
 		Caractere[] tabTestOK = { new Caractere('ù'), new Caractere('û'), new Caractere('é'), new Caractere(226),
 				new Caractere(239), new Caractere(251), new Caractere('a'), new Caractere('e'), new Caractere('4'),
@@ -395,7 +395,7 @@ public class CaractereTest {
 		// seulement lettres min et maj
 		ArrayList<Character> pool = Caractere.poolCaracteres(false, true, true, false, false);
 		boolean test = true;
-		boolean enCours = true;
+		boolean enCours;
 		// test positif
 		Caractere[] tabTestOK = { new Caractere('a'), new Caractere('R'), new Caractere('f'), new Caractere(65),
 				new Caractere(89), new Caractere(121), new Caractere('J'), new Caractere('q') };
@@ -422,7 +422,7 @@ public class CaractereTest {
 		// seulement lettres (min, maj, accent) et caracteres speciaux
 		ArrayList<Character> pool = Caractere.poolCaracteres(false, true, true, true, true);
 		boolean test = true;
-		boolean enCours = true;
+		boolean enCours;
 		// test positif
 		Caractere[] tabTestOK = { new Caractere('a'), new Caractere('R'), new Caractere('f'), new Caractere(65),
 				new Caractere('#'), new Caractere('é'), new Caractere('J'), new Caractere(')') };
@@ -449,7 +449,7 @@ public class CaractereTest {
 		// seulement chiffres et caracteres speciaux
 		ArrayList<Character> pool = Caractere.poolCaracteres(true, false, false, false, true);
 		boolean test = true;
-		boolean enCours = true;
+		boolean enCours;
 		// test positif
 		Caractere[] tabTestOK = { new Caractere('-'), new Caractere('\\'), new Caractere('#'), new Caractere(91),
 				new Caractere(58), new Caractere('8') };
@@ -476,7 +476,7 @@ public class CaractereTest {
 	public void poolCaracteres_defaut() {
 		ArrayList<Character> pool = Caractere.poolCaracteres(false, false, false, false, false);
 		boolean test = true;
-		boolean enCours = true;
+		boolean enCours;
 		// test positif
 		Caractere[] tabTestOK = { new Caractere('5'), new Caractere('3'), new Caractere('7'), new Caractere(56) };
 		for (int i = 0; i < tabTestOK.length; i++) {
@@ -502,7 +502,7 @@ public class CaractereTest {
 		// seulement lettres (min, maj, accent)
 		ArrayList<Character> pool =  Caractere.poolCaracteres(false, true, true, true, false);
 		boolean test = true;
-		boolean enCours = true;
+		boolean enCours;
 		// test positif
 		Caractere[] tabTestOK = { new Caractere('0'), new Caractere('4'), new Caractere('{'), new Caractere(59),
 				new Caractere('9') };
@@ -542,7 +542,7 @@ public class CaractereTest {
 		inclusions.add('%');
 		pool = Caractere.completerPool(pool, inclusions);
 		boolean test = true;
-		boolean enCours = true;
+		boolean enCours;
 		// test positif
 		Caractere[] tabTestOK = { new Caractere('0'), new Caractere('4'), new Caractere('{'), new Caractere(59),
 				new Caractere('a'), new Caractere('T'), new Caractere('é') };

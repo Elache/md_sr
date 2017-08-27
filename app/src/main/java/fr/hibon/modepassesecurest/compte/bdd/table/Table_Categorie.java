@@ -1,7 +1,5 @@
 package fr.hibon.modepassesecurest.compte.bdd.table;
 
-import android.provider.BaseColumns;
-
 /**
  * Created by lohib on 20/08/2017.
  */

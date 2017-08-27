@@ -1,6 +1,5 @@
 package fr.hibon.modepassesecurest.compte;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -8,7 +7,6 @@ import org.junit.Test;
 
 import fr.hibon.modepassesecurest.compte.Donnee;
 import fr.hibon.modepassesecurest.compte.Repertoire;
-import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
 
 public class DonneeTest {
 
@@ -163,7 +161,7 @@ public class DonneeTest {
 		d.setNomDonnee(nomDonneeUn);
 		d.setLoginDonnee(loginDonneeUn);
 		d.setPasseDonnee(passeDonneeUn);
-		assertTrue(donneeUn.equals(d)); ;
+		assertTrue(donneeUn.equals(d));
 	}
 	
 	

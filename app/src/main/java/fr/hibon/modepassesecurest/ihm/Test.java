@@ -5,22 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
 import fr.hibon.modepassesecurest.R;
-import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Donnee;
-import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
-import fr.hibon.modepassesecurest.compte.bdd.GestionBaseLocale;
 import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
-import fr.hibon.modepassesecurest.compte.bdd.table.Table_Compte_Utilisateur;
-import fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire;
-import fr.hibon.modepassesecurest.compte.bdd.table.Table_Site_Web;
-import fr.hibon.modepassesecurest.compte.exception.CompteException;
-import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
-import fr.hibon.modepassesecurest.ihm.compte.GestionIHM;
 
 /**
  * Created by lohib on 23/08/2017.

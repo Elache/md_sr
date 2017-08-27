@@ -5,8 +5,6 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
-
 import static junit.framework.Assert.assertTrue;
 
 /**

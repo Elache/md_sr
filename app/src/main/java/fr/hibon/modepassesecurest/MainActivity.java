@@ -4,15 +4,12 @@ package fr.hibon.modepassesecurest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
@@ -20,8 +17,6 @@ import fr.hibon.modepassesecurest.ihm.Test;
 import fr.hibon.modepassesecurest.ihm.outipasses.*;
 import fr.hibon.modepassesecurest.ihm.compte.*;
 import fr.hibon.modepassesecurest.motpasse.ChainePasse;
-
-import static android.view.View.INVISIBLE;
 
 /**
  */
@@ -72,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Intent mIn = null ;
+        Intent mIn;
 
         switch(v.getId()) {
 

@@ -1,6 +1,5 @@
 package fr.hibon.modepassesecurest.compte.bdd;
 
-import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,14 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
 import fr.hibon.modepassesecurest.compte.Donnee;
 import fr.hibon.modepassesecurest.compte.Repertoire;
-import fr.hibon.modepassesecurest.compte.bdd.table.Table_Categorie;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Site_Web;
 import fr.hibon.modepassesecurest.compte.exception.CompteException;
 import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
@@ -143,8 +139,8 @@ public class ManipTables {
     /* Recupere Repertoires de l'Utilisateur */
     public ArrayList<Repertoire> listerRepertoires(int id_User) {
         ArrayList<Repertoire> lesRep = new ArrayList<>() ;
-        String nomRepertoire = ""  ;
-        String noteRepertoire = "" ;
+        String nomRepertoire;
+        String noteRepertoire;
         int idRep = -1 ;
         String requete = "SELECT * FROM "
                 + REPERTOIRE_TABLE_NOM
@@ -171,15 +167,11 @@ public class ManipTables {
         Cursor res = laBase.rawQuery(req, null );
         int nbVal = res.getCount() ;
         res.close();
-        if(nbVal > 0)
-            return true ;
-        return false ;
+        return nbVal > 0;
     }
 
     private boolean identiNVide(String id) {
-        if(id.length() == 0 || id == null)
-            return true ;
-        return false;
+        return id.length() == 0 || id == null;
     }
 
     public String erreursBloquantes(Context context, String identifiant) {
@@ -211,7 +203,6 @@ public class ManipTables {
 
     /* Recupere Donnees d'un Repertoire */
     public ArrayList<Donnee> listerDonnees(int repertoire) {
-        CompteUtilisateur user = CompteUtilisateur.getCompteConnecte() ;
         ArrayList<Donnee> lesInfos = new ArrayList<>() ;
         String passeD, nomD, mailD, questD, catD, noteD, webD, logD, cleChD ;
         int keyD ;
@@ -323,7 +314,7 @@ public class ManipTables {
     public Donnee extraitDonnee(int index) {
         String requete =  " SELECT * FROM " + DONNEE_TABLE_NOM + " WHERE " + DONNEE_KEY + " ='" + index + "' ;" ;
         Cursor res = laBase.rawQuery(requete, null );
-        String nom, login, passe, question, mail, note, cle_chiffre, categ, repertoire, web ;
+        String nom, login, passe, question, mail, note, cle_chiffre, categ, web ;
         int key ;
         Donnee laDonnee = null ;
         if (res.getCount() == 1) {
@@ -348,7 +339,6 @@ public class ManipTables {
     public ArrayList<Donnee> rechercheParMot(int idRep, String chaine) {
         ArrayList<Donnee> resultats = new ArrayList<>() ;
 
-        String table_cible = DONNEE_TABLE_NOM ;
         String[] champs = { DONNEE_NOM  , DONNEE_QUESTION , DONNEE_NOTE } ;
         String mots[] = chaine.split(" ");
 
@@ -366,15 +356,13 @@ public class ManipTables {
         } else {
             condition = condWhere ;
         }
-        String req = "SELECT * FROM " + table_cible + condition ;
+        String req = "SELECT * FROM " + DONNEE_TABLE_NOM + condition ;
 
         Cursor result = laBase.rawQuery(req, null );
-        Donnee donneeCourante = null ;
         if (result.getCount() > 0) {
             for (int i = 0; i < result.getCount(); i++) {
                 result.moveToNext();
-                donneeCourante = extraitDonnee(result.getInt(result.getColumnIndex(DONNEE_KEY))) ;
-                resultats.add(donneeCourante) ;
+                resultats.add(extraitDonnee(result.getInt(result.getColumnIndex(DONNEE_KEY)))) ;
             }
         }
         result.close();

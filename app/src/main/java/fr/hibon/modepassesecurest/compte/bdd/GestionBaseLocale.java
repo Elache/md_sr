@@ -1,11 +1,9 @@
 package fr.hibon.modepassesecurest.compte.bdd;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import fr.hibon.modepassesecurest.compte.Donnee;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Categorie;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Compte_Utilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Donnee;

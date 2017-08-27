@@ -20,12 +20,12 @@ public class Repertoire {
 	private String noteRepertoire;
 
 	public Repertoire() {
-		lesDonnees = new ArrayList<Donnee>();
+		lesDonnees = new ArrayList<>();
 	}
 
 	public Repertoire(String nomRepertoire, String noteRepertoire) {
 		super();
-		this.lesDonnees = new ArrayList<Donnee>();
+		this.lesDonnees = new ArrayList<>();
 		this.nomRepertoire = nomRepertoire;
 		this.noteRepertoire = noteRepertoire;
 		this.idRepEnBase = -1 ;
@@ -33,7 +33,7 @@ public class Repertoire {
 
 	public Repertoire(String nomRepertoire, String noteRepertoire, int id) {
 		super();
-		this.lesDonnees = new ArrayList<Donnee>();
+		this.lesDonnees = new ArrayList<>();
 		this.nomRepertoire = nomRepertoire;
 		this.noteRepertoire = noteRepertoire;
 		this.idRepEnBase = id ;
@@ -93,7 +93,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeNom(String nom) {
-		ArrayList<Donnee> nomsTrouves = new ArrayList<Donnee>();
+		ArrayList<Donnee> nomsTrouves = new ArrayList<>();
 		for (Donnee d : this.lesDonnees) {
 			if (d.getNomDonnee().equals(nom))
 				nomsTrouves.add(d);
@@ -106,7 +106,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeMail(String mail) {
-		ArrayList<Donnee> mailsTrouves = new ArrayList<Donnee>();
+		ArrayList<Donnee> mailsTrouves = new ArrayList<>();
 		for (Donnee d : this.lesDonnees) {
 			if (d.getMailDonnee().equals(mail))
 				mailsTrouves.add(d);
@@ -119,7 +119,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeNote(String ch) {
-		ArrayList<Donnee> notesTrouves = new ArrayList<Donnee>();
+		ArrayList<Donnee> notesTrouves = new ArrayList<>();
 		for (Donnee d : this.lesDonnees) {
 			if (Donnee.presenceMotDansChamp(d.getNoteDonnee(), ch))
 				notesTrouves.add(d);
@@ -132,7 +132,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeQuestSecret(String ch) {
-		ArrayList<Donnee> questionsTrouves = new ArrayList<Donnee>();
+		ArrayList<Donnee> questionsTrouves = new ArrayList<>();
 		for (Donnee d : this.lesDonnees) {
 			if (Donnee.presenceMotDansChamp(d.getQuestionSecreteDonnee(), ch))
 				questionsTrouves.add(d);
@@ -145,7 +145,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeWebsite(String ch) {
-		ArrayList<Donnee> websitesTrouves = new ArrayList<Donnee>();
+		ArrayList<Donnee> websitesTrouves = new ArrayList<>();
 		for (Donnee d : this.lesDonnees) {
 			if (Donnee.presenceMotDansChamp(d.getSiteWebDonnee(), ch))
 				websitesTrouves.add(d);
@@ -162,9 +162,7 @@ public class Repertoire {
 	 * @return true si le mot existe dans le champ
 	 */
 	public static boolean presenceMotDansChamp(String champ, String mot) {
-		if (champ.contains(mot))
-			return true;
-		return false;
+		return champ.contains(mot);
 	}
 
 	/** V&eacute;rifie si la cha&icirc;ne en param&egrave;tres est pr&eacute;sente dans le nom ou la note du Repertoire
@@ -173,10 +171,8 @@ public class Repertoire {
 	 */
 	public boolean presenceMotDansObjet(String mot) {
 		if(mot == null)
-			return false ; 
-		if (this.nomRepertoire.contains(mot) || this.noteRepertoire.contains(mot))
-			return true;
-		return false;
+			return false ;
+		return this.nomRepertoire.contains(mot) || this.noteRepertoire.contains(mot);
 	}
 
 

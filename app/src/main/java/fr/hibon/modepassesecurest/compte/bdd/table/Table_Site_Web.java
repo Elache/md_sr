@@ -1,13 +1,5 @@
 package fr.hibon.modepassesecurest.compte.bdd.table;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.provider.BaseColumns;
-
-import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
-import fr.hibon.modepassesecurest.compte.bdd.GestionBaseLocale;
-
 /**
  * Created by lohib on 20/08/2017.
  */

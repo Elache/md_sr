@@ -29,7 +29,7 @@ public class ChiffeMode {
 
     public ChiffeMode() {
         passeCode = null ;
-        cleCode = null;;
+        cleCode = null;
     }
 
 
@@ -40,7 +40,7 @@ public class ChiffeMode {
      * @return String Cha&icirc;ne chiffr&eacute;e
      */
     public ChiffeMode chiffrer(String passe) {
-        SecretKey cleSK = null;
+        SecretKey cleSK;
         try {
             cleSK = genererCle();
             // enregistre la cle sous forme de String
@@ -111,7 +111,7 @@ public class ChiffeMode {
      * @return SecretKey g&eacute;n&eacute;r&eacute;e ou null si NoSuchAlgorithmException
      */
     protected SecretKey genererCle() throws NoSuchAlgorithmException {
-        SecretKey cleSK = null;
+        SecretKey cleSK;
         KeyGenerator kyGen = KeyGenerator.getInstance("AES");
         kyGen.init(128);
         cleSK = kyGen.generateKey();

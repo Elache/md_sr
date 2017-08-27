@@ -142,9 +142,7 @@ public class Donnee {
      * @return true si mot pr&eacute;sent
      */
     static boolean presenceMotDansChamp(String champ, String mot) {
-        if (champ.contains(mot))
-            return true;
-        return false;
+        return champ.contains(mot);
     }
 
     /**
@@ -155,11 +153,8 @@ public class Donnee {
      * @return true si mot pr&eacute;sent
      */
     boolean presenceMotDansObjet(String mot) {
-        if (presenceMotDansChamp(nomDonnee, mot) || presenceMotDansChamp(questionSecreteDonnee, mot)
-                || presenceMotDansChamp(noteDonnee, mot)) {
-            return true;
-        }
-        return false;
+        return presenceMotDansChamp(nomDonnee, mot) || presenceMotDansChamp(questionSecreteDonnee, mot)
+                || presenceMotDansChamp(noteDonnee, mot);
     }
 
     // ////////// EQUALS et HASHCODE//////////////////

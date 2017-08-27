@@ -9,10 +9,7 @@ import org.junit.runner.RunWith;
 import java.util.ArrayList;
 
 import fr.hibon.modepassesecurest.compte.exception.CompteException;
-import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
 import fr.hibon.modepassesecurest.motpasse.ChainePasse;
-
-import static org.junit.Assert.assertTrue;
 
 
 /***

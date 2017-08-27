@@ -53,7 +53,7 @@ public class DonneeAdapter extends BaseAdapter {
 
     @Override
     public Donnee getItem(int position) {
-        return (Donnee) mItems.get(position) ;
+        return mItems.get(position) ;
     }
 
     @Override

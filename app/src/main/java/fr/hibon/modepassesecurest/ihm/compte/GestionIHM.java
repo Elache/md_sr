@@ -1,20 +1,13 @@
 package fr.hibon.modepassesecurest.ihm.compte;
 
-import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -22,15 +15,9 @@ import fr.hibon.modepassesecurest.R;
 import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
 import fr.hibon.modepassesecurest.compte.Donnee;
 import fr.hibon.modepassesecurest.compte.Repertoire;
-import fr.hibon.modepassesecurest.compte.bdd.GestionBaseLocale;
 import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Compte_Utilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire;
-import fr.hibon.modepassesecurest.compte.bdd.table.Table_Site_Web;
-import fr.hibon.modepassesecurest.compte.exception.CompteException;
-import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
-
-import static java.security.AccessController.getContext;
 
 /**
  * Created by lohib on 19/08/2017.
@@ -93,7 +80,7 @@ public class GestionIHM {
     /* Instancie et Insert en Base */
     public void instanceInsert(Context context) {
         CompteUtilisateur lUtilisateur = CompteUtilisateur.getCompteConnecte();
-        String unPasse = "";
+        String unPasse;
 
         if (lUtilisateur.getPasseUser() != null) {
             unPasse = lUtilisateur.getPasseUser().getChaineDuPasse();
@@ -128,6 +115,7 @@ public class GestionIHM {
         Cursor result = manip.getLaBase().rawQuery(req, null);
         result.moveToFirst();
         int idRep = result.getInt(0) ;
+        result.close();
         Repertoire premierRep = new Repertoire("Mes codes", "Répertoire", idRep);
         lUtilisateur.ajoutRepert(premierRep);
         manip.inserRepertoire(premierRep.getNomRepertoire(), premierRep.getNoteRepertoire(), idUser);
@@ -138,16 +126,12 @@ public class GestionIHM {
 
     private boolean verifNom() {
         // TODO verif du nom a lier a internet
-        if (user_nom.length() < 4)
-            return false;
-        return true;
+        return user_nom.length() >= 4;
     }
 
 
     private boolean verifConcordePasse(String pass, String pass_confirm) {
-        if (!pass.equals(pass_confirm))
-            return false;
-        return true;
+        return pass.equals(pass_confirm);
     }
 
 

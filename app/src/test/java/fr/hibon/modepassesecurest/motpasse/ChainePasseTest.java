@@ -1,8 +1,6 @@
 package fr.hibon.modepassesecurest.motpasse;
 
 
-import java.util.ArrayList;
-
 import fr.hibon.modepassesecurest.motpasse.Caractere;
 
 import static org.junit.Assert.*;
@@ -75,7 +73,7 @@ public class ChainePasseTest {
     public void genererMotDePasse() {
         boolean test = true;
         int peuVaries = 0;
-        MotDePasseCotation cotation = null;
+        MotDePasseCotation cotation;
         for (int i = 1; i <= 100; i++) {
             ChainePasse ch = ChainePasse.genererMotDePasse();
             String pass = ch.getChaineDuPasse();
@@ -104,7 +102,7 @@ public class ChainePasseTest {
     @Test
     public void genererMotDePasse_longueurChoisie_longueur() {
         boolean test = true;
-        int longueurEnCours = 0;
+        int longueurEnCours;
         for (int i = 1; i <= 100; i++) {
             longueurEnCours = (int) (Math.random() * 60 + 1);
             ChainePasse ch = ChainePasse.genererMotDePasse(longueurEnCours);
@@ -168,7 +166,7 @@ public class ChainePasseTest {
         boolean majuscules = false;
         boolean accents = false;
         boolean speciaux = false;
-        int longueurEnCours = 0;
+        int longueurEnCours;
         for (int i = 1; i <= 100; i++) {
             longueurEnCours = (int) (Math.random() * 60 + 1);
             ChainePasse ch = ChainePasse.genererMotDePasse(longueurEnCours);
@@ -200,8 +198,8 @@ public class ChainePasseTest {
         boolean test = true;
         // exclusions
         ArrayList<Character> excl = echantillon_exclusions();
-        ChainePasse exTest = null;
-        char enCours = 'x';
+        ChainePasse exTest;
+        char enCours;
         for (int i = 0; i < 100; i++) {
             exTest = ChainePasse.genererMotDePasse(20, true, true, true, true, true, excl, null);
             for (Character exclus : excl) {
@@ -222,8 +220,8 @@ public class ChainePasseTest {
     @Test
     public void genererMotDePasse_queDesChiffres() {
         boolean test = true;
-        ChainePasse exTest = null;
-        String chainPasse = "";
+        ChainePasse exTest;
+        String chainPasse;
         for (int i = 0; i < 100; i++) {
             exTest = ChainePasse.genererMotDePasse(20, true, false, false, false, false, null, null);
             chainPasse = exTest.getChaineDuPasse();
@@ -247,13 +245,13 @@ public class ChainePasseTest {
         boolean test = true;
         // inclusions
         ArrayList<Character> incl = echantillon_inclusions();
-        ChainePasse exTest = null;
-        String chainPasse = "";
+        ChainePasse exTest;
+        String chainPasse;
         for (int i = 0; i < 100; i++) {
             exTest = ChainePasse.genererMotDePasse(20, true, false, false, false, false, null, incl);
             chainPasse = exTest.getChaineDuPasse();
             for (int k = 0; k < chainPasse.length(); k++) {
-                if (!Character.isDigit(chainPasse.charAt(k)) && !incl.contains(new Character(chainPasse.charAt(k))))
+                if (!Character.isDigit(chainPasse.charAt(k)) && !incl.contains(Character.valueOf(chainPasse.charAt(k))))
                     test = false;
             }
         }
@@ -270,9 +268,9 @@ public class ChainePasseTest {
     @Test
     public void genererMotDePasse_3typesLettres() {
         boolean test = true;
-        ChainePasse exTest = null;
-        String chainPasse = "";
-        Caractere ch = null;
+        ChainePasse exTest;
+        String chainPasse;
+        Caractere ch;
         for (int i = 0; i < 100; i++) {
             exTest = ChainePasse.genererMotDePasse(20, false, true, true, true, false, null, null);
             chainPasse = exTest.getChaineDuPasse();
@@ -299,17 +297,17 @@ public class ChainePasseTest {
         ArrayList<Character> excl = echantillon_exclu_VoyellesMajuscules();
         // inclusions
         ArrayList<Character> incl = echantillon_inclusions();
-        ChainePasse exTest = null;
-        String chainPasse = "";
-        Caractere ch = null;
+        ChainePasse exTest;
+        String chainPasse;
+        Caractere ch;
         for (int i = 0; i < 100; i++) {
             exTest = ChainePasse.genererMotDePasse(20, false, false, true, false, false, excl, incl);
             chainPasse = exTest.getChaineDuPasse();
             for (int k = 0; k < chainPasse.length(); k++) {
                 ch = new Caractere(chainPasse.charAt(k));
-                if (excl.contains(new Character(ch.getLeChar())))
+                if (excl.contains(Character.valueOf(ch.getLeChar())))
                     test = false;
-                if (!ch.estUneMajuscule() && !incl.contains(new Character(ch.getLeChar())))
+                if (!ch.estUneMajuscule() && !incl.contains(Character.valueOf(ch.getLeChar())))
                     test = false;
             }
         }
@@ -323,11 +321,11 @@ public class ChainePasseTest {
     @Test
     public void genererMotDePasse_tousParam_longueur0() {
         boolean test = true;
-        ChainePasse exTest = null;
+        ChainePasse exTest;
         exTest = ChainePasse.genererMotDePasse(0, true, true, true, false, false, null, null);
         if (exTest.longeurMot() != 1)
             test = false;
-        ChainePasse exTest2 = null;
+        ChainePasse exTest2;
         exTest2 = ChainePasse.genererMotDePasse(-2, true, true, true, false, false, null, null);
         if (exTest2.longeurMot() != 1)
             test = false;
@@ -340,7 +338,7 @@ public class ChainePasseTest {
      */
     @Test
     public void genererMotDePasse_tousParam_longueur61() {
-        ChainePasse exTest = null;
+        ChainePasse exTest;
         exTest = ChainePasse.genererMotDePasse(61, false, true, true, false, false, null, null);
         assertEquals(exTest.longeurMot(), 60);
     }
@@ -486,12 +484,12 @@ public class ChainePasseTest {
         boolean test;
 
         ArrayList<Character> inclusions = new ArrayList<>();
-        inclusions.add(new Character('4'));
-        inclusions.add(new Character('#'));
-        inclusions.add(new Character('*'));
-        inclusions.add(new Character('m'));
-        inclusions.add(new Character('v'));
-        inclusions.add(new Character('A'));
+        inclusions.add(Character.valueOf('4'));
+        inclusions.add(Character.valueOf('#'));
+        inclusions.add(Character.valueOf('*'));
+        inclusions.add(Character.valueOf('m'));
+        inclusions.add(Character.valueOf('v'));
+        inclusions.add(Character.valueOf('A'));
 
         TriInclusions caractTries = new TriInclusions(inclusions);
 
@@ -513,19 +511,19 @@ public class ChainePasseTest {
 
     public ArrayList<Character> echantillon_exclusions() {
         ArrayList<Character> excl;
-        excl = (ArrayList<Character>) Arrays.asList(new Character('0'), new Character('o'), new Character('%'), new Character('i'), new Character('+'), new Character('e'),
-                new Character('#'), new Character('a'), new Character('ù'), new Character('â'), new Character('é'), new Character('~'), new Character('Q'), new Character('^'), new Character('ç'), new Character('6'));
+        excl = (ArrayList<Character>) Arrays.asList(Character.valueOf('0'), Character.valueOf('o'), Character.valueOf('%'), Character.valueOf('i'), Character.valueOf('+'), Character.valueOf('e'),
+                Character.valueOf('#'), Character.valueOf('a'), Character.valueOf('ù'), Character.valueOf('â'), Character.valueOf('é'), Character.valueOf('~'), Character.valueOf('Q'), Character.valueOf('^'), Character.valueOf('ç'), Character.valueOf('6'));
         return excl;
     }
 
     public ArrayList<Character> echantillon_exclu_VoyellesMajuscules() {
         ArrayList<Character> excl = new ArrayList<>();
-        excl.add(new Character('A'));
-        excl.add(new Character('E'));
-        excl.add(new Character('I'));
-        excl.add(new Character('O'));
-        excl.add(new Character('U'));
-        excl.add(new Character('Y'));
+        excl.add(Character.valueOf('A'));
+        excl.add(Character.valueOf('E'));
+        excl.add(Character.valueOf('I'));
+        excl.add(Character.valueOf('O'));
+        excl.add(Character.valueOf('U'));
+        excl.add(Character.valueOf('Y'));
         return excl;
     }
 
@@ -533,22 +531,22 @@ public class ChainePasseTest {
 
     public ArrayList<Character> echantillon_inclusions() {
         ArrayList<Character> incl = new ArrayList<>();
-        incl.add(new Character('1'));
-        incl.add(new Character('p'));
-        incl.add(new Character('$'));
-        incl.add(new Character('j'));
-        incl.add(new Character('-'));
-        incl.add(new Character('S'));
-        incl.add(new Character('{'));
-        incl.add(new Character('z'));
-        incl.add(new Character('è'));
-        incl.add(new Character('ô'));
-        incl.add(new Character('à'));
-        incl.add(new Character('}'));
-        incl.add(new Character('R'));
-        incl.add(new Character('@'));
-        incl.add(new Character('*'));
-        incl.add(new Character('9'));
+        incl.add(Character.valueOf('1'));
+        incl.add(Character.valueOf('p'));
+        incl.add(Character.valueOf('$'));
+        incl.add(Character.valueOf('j'));
+        incl.add(Character.valueOf('-'));
+        incl.add(Character.valueOf('S'));
+        incl.add(Character.valueOf('{'));
+        incl.add(Character.valueOf('z'));
+        incl.add(Character.valueOf('è'));
+        incl.add(Character.valueOf('ô'));
+        incl.add(Character.valueOf('à'));
+        incl.add(Character.valueOf('}'));
+        incl.add(Character.valueOf('R'));
+        incl.add(Character.valueOf('@'));
+        incl.add(Character.valueOf('*'));
+        incl.add(Character.valueOf('9'));
         return incl;
     }
 

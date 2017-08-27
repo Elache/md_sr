@@ -40,7 +40,7 @@ package fr.hibon.modepassesecurest.compte.exception;
 		 * mot de passe non valide, format mail invalide, identifiant
 		 * d&eacute;j&agrave; utilis&eacute;
 		 */
-		public static enum ErreurDetail {
+		public enum ErreurDetail {
 			NomRepertoireAmbigu, RepertoireNExistePas, DonneeNExistePas, MotDePasseVide, IdentifiantVide
 		}
 

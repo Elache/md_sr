@@ -3,7 +3,6 @@ package fr.hibon.modepassesecurest.ihm.compte.donnee;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,7 +21,6 @@ import fr.hibon.modepassesecurest.compte.Donnee;
 import fr.hibon.modepassesecurest.compte.Repertoire;
 import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
 import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
-import fr.hibon.modepassesecurest.ihm.compte.GestionIHM;
 
 /**
  * Created by lohib on 26/08/2017.
@@ -50,7 +48,7 @@ public class DonneesControl {
 
             final EditText nomEdT, passEdT, pass2EdT, webEdT, urlEdT, loginEdT, mailEdT, questionEdT, noteEdT ;
             final Spinner catSpin ;
-            final String[] categorie = new String[1];;
+            final String[] categorie = new String[1];
 
             nomEdT = ((EditText) dialog.findViewById(R.id.c_donnee_nom)) ;
             passEdT =  ((EditText) dialog.findViewById(R.id.c_donnee_pass)) ;
@@ -98,7 +96,6 @@ public class DonneesControl {
                 public void onClick(View v) {
 
                     String nom, pass, pass2, web, url, login, mail, question, note, cat ;
-                    int reper = indexRepert ;
                     boolean confirm = true ;
                     nom = nomEdT.getText().toString() ;
                     pass = passEdT.getText().toString() ;
@@ -117,7 +114,7 @@ public class DonneesControl {
 
                     Donnee donneeSaisie = new Donnee(pass, nom, login, mail, web, question, cat, note) ;
 
-                    popCreeConfirm(contxt, donneeSaisie, reper, confirm) ;
+                    popCreeConfirm(contxt, donneeSaisie, indexRepert, confirm) ;
                 }
             });
 
@@ -401,30 +398,30 @@ public class DonneesControl {
     // met a jour l'objet Donnee apres validation des modifications
     private static void upLaDonnee(Donnee laDonnee, Donnee donneeSaisie) {
 
-        if(laDonnee.getNomDonnee() != donneeSaisie.getNomDonnee())
+        if(!laDonnee.getNomDonnee().equals(donneeSaisie.getNomDonnee()))
             laDonnee.setNomDonnee(donneeSaisie.getNomDonnee());
 
-        if(laDonnee.getSiteWebDonnee() != donneeSaisie.getSiteWebDonnee())
+        if(!laDonnee.getSiteWebDonnee().equals(donneeSaisie.getSiteWebDonnee()))
             laDonnee.setSiteWebDonnee(donneeSaisie.getSiteWebDonnee());
 
-        if(laDonnee.getLoginDonnee() != donneeSaisie.getLoginDonnee())
+        if(!laDonnee.getLoginDonnee().equals(donneeSaisie.getLoginDonnee()))
             laDonnee.setLoginDonnee(donneeSaisie.getLoginDonnee());
 
-        if(laDonnee.getMailDonnee() != donneeSaisie.getMailDonnee())
+        if(!laDonnee.getMailDonnee().equals(donneeSaisie.getMailDonnee()))
             laDonnee.setMailDonnee(donneeSaisie.getMailDonnee());
 
-        if(laDonnee.getQuestionSecreteDonnee() != donneeSaisie.getQuestionSecreteDonnee())
+        if(!laDonnee.getQuestionSecreteDonnee().equals(donneeSaisie.getQuestionSecreteDonnee()))
             laDonnee.setQuestionSecreteDonnee(donneeSaisie.getQuestionSecreteDonnee());
 
-        if(laDonnee.getCategorieDonnee() != donneeSaisie.getCategorieDonnee())
+        if(!laDonnee.getCategorieDonnee().equals(donneeSaisie.getCategorieDonnee()))
             laDonnee.setCategorieDonnee(donneeSaisie.getCategorieDonnee());
 
-        if(laDonnee.getNoteDonnee() != donneeSaisie.getNoteDonnee())
+        if(!laDonnee.getNoteDonnee().equals(donneeSaisie.getNoteDonnee()))
             laDonnee.setNoteDonnee(donneeSaisie.getNoteDonnee());
 
         ChiffeMode  cm = new ChiffeMode() ;
         String passeEnBase = cm.dechiffrer(laDonnee.getPasseDonneeChiffre(), laDonnee.getCleChiffrementDonnee()) ;
-        if(passeEnBase != donneeSaisie.getPasseDonnee()) {
+        if(!passeEnBase.equals(donneeSaisie.getPasseDonnee())) {
             laDonnee.setPasseDonnee(donneeSaisie.getPasseDonnee());
             laDonnee.chiffrerMotPasse(true);
         }

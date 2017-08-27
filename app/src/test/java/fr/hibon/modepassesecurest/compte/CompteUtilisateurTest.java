@@ -1,6 +1,5 @@
 package fr.hibon.modepassesecurest.compte;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -66,7 +65,7 @@ public class CompteUtilisateurTest {
                     notePersoUser);
         } catch (CompteException e) {
         }
-        lesRepertoires = new ArrayList<Repertoire>();
+        lesRepertoires = new ArrayList<>();
 
         passeUser = ChainePasse.composition(passeUserStr);
         passeUserChiffre = ChainePasse.composition("Chiffre-U-Fra");
@@ -316,7 +315,7 @@ public class CompteUtilisateurTest {
     public void setLesRepertoires() {
         CompteUtilisateur cu = preparerCompteTestVide();
         int tailleInit = cu.getLesRepertoires().size();
-        ArrayList<Repertoire> toutPret = new ArrayList<Repertoire>();
+        ArrayList<Repertoire> toutPret = new ArrayList<>();
         toutPret.add(new Repertoire());
         toutPret.add(new Repertoire("2", null));
         toutPret.add(new Repertoire("3", "A"));

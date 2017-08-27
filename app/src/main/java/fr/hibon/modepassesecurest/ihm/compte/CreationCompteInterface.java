@@ -65,9 +65,8 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-        TextView textInfo ;
-        String titre = "" ;
-        String erreurs = "" ;
+        String titre;
+        String erreurs;
         String message = "";
 
         switch(v.getId()) {
