@@ -212,6 +212,16 @@ public class CompteUtilisateur {
     }
 
     /**
+     * Supprimer un r&eacute;pertoire &agrave; partir de son idEnBase
+     *
+     * @param idEnBase id du repertoire dans la base locale (cle primaire) a supprimer
+     */
+    public void supprRepert(int idEnBase)  throws CompteException {
+        this.supprRepert(trouverRepert(idEnBase));
+    }
+
+
+    /**
      * Supprimer tous les R&eacute;pertoires
      */
     public void viderListeRepert() {
@@ -241,6 +251,21 @@ public class CompteUtilisateur {
             }
         }
         return enCours;
+    }
+
+    /**
+     * Trouver un r&eacute;pertoire (par idEnBase)
+     *
+     * @param idEnBase identifiant en base de donnee locale du repertoire
+     * @return le r&eacute;pertoire trouv&eacute;
+     */
+    public Repertoire trouverRepert(int idEnBase) {
+        for (Repertoire rep : lesRepertoires) {
+            if (rep.getidRepEnBase() == idEnBase) {
+                return rep;
+            }
+        }
+        return null ;
     }
 
     public void setLesRepertoires(ArrayList<Repertoire> lesRepertoires) {
@@ -333,6 +358,7 @@ public class CompteUtilisateur {
     public ChainePasse getPasseInternetChiffre() {
         return passeInternetChiffre;
     }
+
 
 
     // ////////// SETTERS //////////////////

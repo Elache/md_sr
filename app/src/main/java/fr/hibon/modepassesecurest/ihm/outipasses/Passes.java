@@ -1,10 +1,8 @@
         package fr.hibon.modepassesecurest.ihm.outipasses;
 
-        import android.app.AlertDialog;
-        import android.app.Dialog;
+
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
-        import android.view.LayoutInflater;
         import android.view.View;
         import android.widget.Button;
         import android.widget.CheckBox;
@@ -16,6 +14,7 @@
         import java.util.ArrayList;
 
         import fr.hibon.modepassesecurest.R;
+        import fr.hibon.modepassesecurest.ihm.compte.GestionIHM;
         import fr.hibon.modepassesecurest.motpasse.ChainePasse;
         import fr.hibon.modepassesecurest.motpasse.MotDePasseCotation;
 
@@ -68,46 +67,16 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
 
         /* pour Aide sur l'ANALYSE */
         if (v.getId() == R.id.bouton_analyse_help) {
-            final Dialog dialog = new Dialog(this);
-            dialog.setContentView(R.layout.en_ligne_pop);
-            dialog.setTitle("Informations");
-
-            TextView titre = (TextView) dialog.findViewById(R.id.info_en_ligne);
-            titre.setText("Analyse du mot de passe");
-
-            TextView textInfo = (TextView) dialog.findViewById(R.id.infoenligne) ;
-            textInfo.setText(Analysor.infoAnalyse())  ;
-
-            Button dialogButton = (Button) dialog.findViewById(R.id.close_popUP);
-            dialogButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-            dialog.show();
+            String titre = "Analyse du mot de passe" ;
+            String message = Analysor.infoAnalyse() ;
+            GestionIHM.popInfo(this, titre, message );
         }
 
         /* pour Aide sur la GENERATION */
         if (v.getId() == R.id.bouton_outipasses_help) {
-            final Dialog dialog = new Dialog(this);
-            dialog.setContentView(R.layout.en_ligne_pop);
-
-            TextView titre = (TextView) dialog.findViewById(R.id.info_en_ligne);
-            titre.setText("Paramétrer");
-
-            dialog.setTitle("Informations");
-            TextView textInfo = (TextView) dialog.findViewById(R.id.infoenligne) ;
-            textInfo.setText(Generator.infoGeneration())  ;
-
-            Button dialogButton = (Button) dialog.findViewById(R.id.close_popUP);
-            dialogButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-            dialog.show();
+            String titre = "Paramétrer" ;
+            String message = Generator.infoGeneration() ;
+            GestionIHM.popInfo(this, titre, message );
         }
 
          /* pour ANALYSE */

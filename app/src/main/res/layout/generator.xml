@@ -91,11 +91,11 @@
                 android:id="@+id/saisie_longueur"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:background="@color/champ"
+                android:background="@drawable/linearborder"
                 android:textAppearance="@style/texte_simple"
                 android:inputType="number"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"               />
 
 
             <!-- Remarque : défaut -->
@@ -236,7 +236,7 @@
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_gravity="start"
-                android:background="@color/champ"
+                android:background="@drawable/linearborder"
                 android:hint="@string/passes_remplir"
                 android:inputType="text"
                 android:textAppearance="@style/texte_simple"/>
@@ -271,7 +271,7 @@
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_gravity="start"
-                android:background="@color/champ"
+                android:background="@drawable/linearborder"
                 android:hint="@string/passes_remplir"
                 android:inputType="text"
                 android:textAppearance="@style/texte_simple"/>

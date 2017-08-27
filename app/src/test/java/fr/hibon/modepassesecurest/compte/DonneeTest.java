@@ -121,7 +121,7 @@ public class DonneeTest {
 	@Test
 	public void les10getters() {
 		// constructeur à partir d'infos en BDD : recuperation d'un passe crypté et d'une clé
-		Donnee d = new Donnee("passeCrypre", nomDonneeUn, loginDonneeUn, mailDonneeUn, siteWebDonneeUn, questionSecreteDonneeUn, categorieDonneeUn, noteDonneeUn, "cleChiffrement") ;
+		Donnee d = new Donnee("passeCrypre", nomDonneeUn, loginDonneeUn, mailDonneeUn, siteWebDonneeUn, questionSecreteDonneeUn, categorieDonneeUn, noteDonneeUn, "cleChiffrement", 1) ;
 		// pour complèter le dernier champ
 		d.setPasseDonnee("passeDecrypte");
 		String origine = "passeCrypre" + nomDonneeUn + loginDonneeUn + mailDonneeUn + siteWebDonneeUn + questionSecreteDonneeUn + categorieDonneeUn + noteDonneeUn + "cleChiffrement" + "passeDecrypte" ;

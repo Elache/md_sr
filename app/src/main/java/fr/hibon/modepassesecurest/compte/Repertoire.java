@@ -15,6 +15,7 @@ public class Repertoire {
 
 	private ArrayList<Donnee> lesDonnees;
 
+	private int idRepEnBase ;
 	private String nomRepertoire;
 	private String noteRepertoire;
 
@@ -27,9 +28,17 @@ public class Repertoire {
 		this.lesDonnees = new ArrayList<Donnee>();
 		this.nomRepertoire = nomRepertoire;
 		this.noteRepertoire = noteRepertoire;
+		this.idRepEnBase = -1 ;
 	}
-	
-	
+
+	public Repertoire(String nomRepertoire, String noteRepertoire, int id) {
+		super();
+		this.lesDonnees = new ArrayList<Donnee>();
+		this.nomRepertoire = nomRepertoire;
+		this.noteRepertoire = noteRepertoire;
+		this.idRepEnBase = id ;
+	}
+
 	// ////////// Administration des DONNEES dans le Repertoire ////
 
 
@@ -61,6 +70,19 @@ public class Repertoire {
 		}
 		// TODO  gérer exception
 		throw new CompteException(ErreurDetail.DonneeNExistePas) ;
+	}
+
+	/** Supprimer une donn&eacute;e
+	 * @throws CompteException si la donn&eacute;e ne peut &ecirc;tre trouv&eacute;e
+	 * @param idEnBase de la donnee a supprimer
+	 */
+	public void supprDonnee(int idEnBase) {
+		for (Donnee donn : lesDonnees) {
+			if (donn.getIdEnBaseLocale() == idEnBase) {
+				lesDonnees.remove(donn);
+				return ;
+			}
+		}
 	}
 
 
@@ -167,6 +189,10 @@ public class Repertoire {
 
 	public String getNoteRepertoire() {
 		return noteRepertoire;
+	}
+
+	public int getidRepEnBase() {
+		return idRepEnBase;
 
 	}
 

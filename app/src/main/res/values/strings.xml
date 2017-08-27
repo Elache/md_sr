@@ -7,7 +7,6 @@
 
     <!-- PROVISOIRES -->
     <string name="provisoire">"Provisoire"</string>
-    <string name="exemple_passwd">longueur50.amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;d</string>
 
     <!-- param generaux -->
     <string name="creation">Création</string>
@@ -15,9 +14,8 @@
     <string name="fermer">Fermer</string>
 
 
-    <string name="invite_remplir"></string>
+    <string name="invite_remplir"> </string>
     <string name="invite_remplir_multilines">\n</string>
-    <string name="invite_deroule_categorie">Choisir une catégorie</string>
     <string name="outipasses">Outi\'passes</string>
     <string name="pregen">Mot de passe</string>
 
@@ -46,6 +44,9 @@
 
     <string name="connexion">Connexion</string>
     <string name="connexion_compte">Me connecter</string>
+
+    <string name="connexion_etablie">Consulter (connecté)</string>
+
     <string name="creation_compte">Création du Compte</string>
     <string name="creation_compte_rep">Création de votre 1er répertoire</string>
 
@@ -60,6 +61,11 @@
     <string name="user_pass2">Passe-secours</string>
     <string name="user_mail">Email</string>
     <string name="user_notes">Note additionnelle</string>
+
+    <string name="bouton_consulter">Consulter</string>
+
+
+
 
 
     <!-- ####################### -->
@@ -101,9 +107,16 @@
 
     <string name="donnee_creation">Enregistrement d\'une Donnée</string>
     <string name="donnee_consultation">Consultation d\'une Donnée</string>
+    <string name="donnee_modification">Modification d\'une Donnée</string>
 
-    <string name="donnee_passe_clair">Afficher le mot de passe</string>
+    <string name="donnee_modifier">Modifier</string>
+    <string name="donnee_supprimer">Supprimer</string>
+    <string name="donnee_modif_valider">Enregistrer</string>
 
+    <string name="donnee_passe_clair">Voir</string>
+
+    <string name="donnee_cherche">Recherche</string>
+    <string name="donnee_liste">Liste</string>
 
     <string name="donnee_nom">Nom de la donnée</string>
     <string name="donnee_passe">Mot de passe</string>
@@ -115,7 +128,10 @@
     <string name="donnee_note">Note personnelle</string>
     <string name="donnee_categorie">Catégorie</string>
 
-        <string name="controle_facultatif">Contrôle facultatif</string>
+        <string name="controle_facultatif">Facultatif</string>
+
+    <string name="fonction_cherche">Recherche dans les champs (facultatifs) suivants :
+                \n nom donné, question secrète, note personnelle</string>
 
 
 
@@ -125,6 +141,7 @@
 
     <string name="outipasse">Outi\'passes</string>
     <string name="outipasse_long">Outi\'passes (analyse, génération)</string>
+
 
     <!-- ####################### -->
     <!-- ANALYSEUR Mot de passe -->
@@ -142,8 +159,6 @@
     <string name="forcepasse_faible">Faible</string>
     <string name="forcepasse_acceptable">Acceptable</string>
     <string name="forcepasse_bon">Bon</string>
-
-
 
 
     <!-- ####################### -->

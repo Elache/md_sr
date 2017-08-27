@@ -1,7 +1,6 @@
 package fr.hibon.modepassesecurest.ihm.compte;
 
-import android.app.Application;
-import android.app.Dialog;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +11,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-
-import java.util.zip.CRC32;
-
 import fr.hibon.modepassesecurest.R;
+import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
+import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
 import fr.hibon.modepassesecurest.motpasse.ChainePasse;
 
 /**
@@ -67,68 +65,75 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
+        TextView textInfo ;
+        String titre = "" ;
+        String erreurs = "" ;
+        String message = "";
 
-        if (v.getId() == R.id.bouton_enligne_help) {
-            final Dialog dialog = new Dialog(this);
-            dialog.setContentView(R.layout.en_ligne_pop);
-            dialog.setTitle("Informations");
-            TextView textInfo = (TextView) dialog.findViewById(R.id.infoenligne);
-            textInfo.setText(getString(R.string.sauver_en_ligne));
-            Button dialogButton = (Button) dialog.findViewById(R.id.close_popUP);
-            dialogButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
+        switch(v.getId()) {
+            case R.id.bouton_enligne_help :
+                titre = getString(R.string.mettre_en_ligne) ;
+                message = getString(R.string.sauver_en_ligne) ;
+                GestionIHM.popInfo(this, titre, message);
+                break ;
+
+            case R.id.bouton_creation :
+                // TODO option : en ligne
+                if(CompteUtilisateur.getCompteConnecte().getNomUser() != null){
+                    titre = "Utilisateur déjà connecté" ;
+                    message = "Voulez-vous vous déconnecter et créer un nouveau compte ?" ;
+                    GestionIHM.pop2Choix(this, titre, message);
+                    break ; //
                 }
-            });
-            dialog.show();
-        }
 
-        if (v.getId() == R.id.bouton_creation) {
+                Intent mIn ;
+                user_nom = nom.getText().toString() ;
+                user_pass1 = pass1.getText().toString() ;
+                user_pass1_confirmer = pass1confirm.getText().toString() ;
+                user_pass2 = pass2.getText().toString() ;
+                user_pass2_confirmer  = pass2confirm.getText().toString() ;
+                user_mail = mail.getText().toString() ;
+                enLigne = ((CheckBox) findViewById(R.id.mettre_en_ligne)).isChecked() ;
 
-            Intent mIn ;
-            user_nom = nom.getText().toString() ;
-            user_pass1 = pass1.getText().toString() ;
-            user_pass1_confirmer = pass1confirm.getText().toString() ;
-            user_pass2 = pass2.getText().toString() ;
-            user_pass2_confirmer  = pass2confirm.getText().toString() ;
-            user_mail = mail.getText().toString() ;
-            enLigne = ((CheckBox) findViewById(R.id.mettre_en_ligne)).isChecked() ;
+                String avertiss = new GestionIHM(user_nom,user_pass1,user_pass1_confirmer,user_pass2, user_pass2_confirmer, user_mail, enLigne).verifier() ;
 
-            String avertiss = new GestionIHM(user_nom,user_pass1,user_pass1_confirmer,user_pass2, user_pass2_confirmer, user_mail, enLigne).verifier() ;
-            if(avertiss.length() == 0 || userInforme){
-                mIn = new Intent(CreationCompteInterface.this, ConnecteAccueilInterface.class) ;
-                mIn.putExtra("nom", user_nom) ;
-                mIn.putExtra("passe1", user_pass1) ;
-                mIn.putExtra("passe2", user_pass2) ;
-                mIn.putExtra("mail", user_mail) ;
-                mIn.putExtra("creation", true) ;
-                startActivity(mIn) ;            }
-            else {
-                final Dialog dial = new Dialog(this);
-                dial.setContentView(R.layout.en_ligne_pop);
-                dial.setTitle("Informations");
-                TextView titre = (TextView) dial.findViewById(R.id.info_en_ligne);
-                titre.setText("Des saisies incorrectes");
-                TextView textInfo = (TextView) dial.findViewById(R.id.infoenligne);
-                textInfo.setText(avertiss);
-                Button dialogButton = (Button) dial.findViewById(R.id.close_popUP);
-                dialogButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dial.dismiss();
+                ManipTables manip = new ManipTables(this) ;
+                erreurs = manip.erreursBloquantes(this, user_nom) ;
+                if(erreurs.length() > 0){
+                    titre = "Erreur sur l'Identifiant" ;
+                    message += erreurs + erreursEtExceptions() + avertiss ;
+                    this.userInforme = true ;
+                    GestionIHM.popInfo(this, titre, message);
+                    break ;
+                }
+                else {
+                    if(avertiss.length() == 0 || userInforme){
+                        mIn = new Intent(CreationCompteInterface.this, ConnecteAccueilInterface.class) ;
+                        mIn.putExtra("nom", user_nom) ;
+                        mIn.putExtra("passe1", user_pass1) ;
+                        mIn.putExtra("passe2", user_pass2) ;
+                        mIn.putExtra("mail", user_mail) ;
+                        mIn.putExtra("creation", true) ;
+                        startActivity(mIn) ;
+                        break ;
                     }
-                });
-                dial.show();
-                this.userInforme = true ;
-            }
+                    else {
+                        titre = "Des saisies incorrectes" ;
+                        GestionIHM.popInfo(this, titre, avertiss);
+                        this.userInforme = true ;
+                        break ;
+                    }
+                }
 
-            // TODO option : en ligne
 
         }
 
     }
 
+
+    private String erreursEtExceptions() {
+        return "\n\n_____________________\nAutres anomalies : \n(correction facultative)\n" ;
+    }
 
 
 }

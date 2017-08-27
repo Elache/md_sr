@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@drawable/cadnas_fond"
               android:orientation="vertical"
@@ -18,7 +23,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+        android:layout_height="25dp"/>
 
     <!-- Encadré du formulaire -->
     <LinearLayout
@@ -46,9 +51,10 @@
                 android:textAppearance="@style/texte_bleu"/>
             <!-- champ saisie -->
             <EditText
-                android:id="@+id/donnee_nom"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:id="@+id/c_donnee_nom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
@@ -73,27 +79,41 @@
                 android:textAppearance="@style/texte_bleu"/>
             <!-- champ saisie -->
             <EditText
-                android:id="@+id/donnee_pass"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:id="@+id/c_donnee_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
                 android:padding="3dp"
                 android:textAppearance="@style/texte_bleu"/>
+     </LinearLayout>
+
+
+        <!--  mot de passe confirm -->
+     <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
             <!-- intitule confirm -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/donnee_pass2"
                 android:padding="3dp"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
                 android:text="@string/pass_confirm"
                 android:textAppearance="@style/texte_bleu"/>
             <!-- champ confirm -->
             <EditText
-                android:id="@+id/donnee_pass2"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:id="@+id/c_donnee_pass2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/controle_facultatif"
                 android:inputType="text"
@@ -118,9 +138,10 @@
                 android:textAppearance="@style/texte_bleu"/>
             <!-- champ saisie -->
             <EditText
-                android:id="@+id/donnee_web"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:id="@+id/c_donnee_web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="text"
@@ -136,9 +157,10 @@
                 android:textAppearance="@style/texte_bleu"/>
             <!-- champ saisie -->
             <EditText
-                android:id="@+id/donnee_web_url"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:id="@+id/c_donnee_web_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="textUri"
@@ -163,9 +185,10 @@
                 android:textAppearance="@style/texte_bleu"/>
             <!-- champ saisie -->
             <EditText
-                android:id="@+id/donnee_id"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:id="@+id/c_donnee_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="textVisiblePassword"
@@ -190,9 +213,10 @@
                 android:textAppearance="@style/texte_bleu"/>
             <!-- champ saisie -->
             <EditText
-                android:id="@+id/donnee_mail"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:id="@+id/c_donnee_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir"
                 android:inputType="textEmailAddress"
@@ -217,11 +241,11 @@
                 android:textAppearance="@style/texte_bleu"/>
             <!-- champ saisie -->
             <EditText
-                android:id="@+id/donnee_question"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:id="@+id/c_donnee_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
                 android:background="@drawable/linearborder"
-                android:hint="@string/invite_remplir_multilines"
                 android:inputType="textMultiLine"
                 android:padding="3dp"
                 android:textAppearance="@style/texte_bleu"/>
@@ -239,20 +263,21 @@
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/donnee_categorie"
                 android:padding="3dp"
+                android:gravity="center_vertical"
                 android:text="@string/donnee_categorie"
                 android:textAppearance="@style/texte_bleu"
                 />
             <!-- champ saisie -->
             <Spinner
-                android:id="@+id/donnee_categorie"
+                android:id="@+id/c_donnee_categorie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/linearborder"
-                android:minHeight="30dp"
+                android:minHeight="25dp"
                 android:minWidth="150dp"
                 android:padding="3dp"
-                android:prompt="@string/invite_deroule_categorie"
-                />
+                android:textAppearance="@style/texte_bleu" />
+
         </LinearLayout>
 
         <!-- note additionnelle  -->
@@ -271,9 +296,10 @@
                 android:textAppearance="@style/texte_bleu"/>
             <!-- champ saisie -->
             <EditText
-                android:id="@+id/donnee_notes"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:id="@+id/c_donnee_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
                 android:background="@drawable/linearborder"
                 android:hint="@string/invite_remplir_multilines"
                 android:inputType="textMultiLine"
@@ -315,4 +341,30 @@
 
     </LinearLayout>
 
-</LinearLayout>
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:gravity="center">
+
+
+        <Button
+            android:id="@+id/b_fermerD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fermer"
+            android:background="@android:drawable/btn_default"
+            android:textAppearance="@style/texte_simple"  />
+
+
+    </LinearLayout>
+
+    </LinearLayout></ScrollView>

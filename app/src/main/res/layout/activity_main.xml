@@ -35,25 +35,65 @@
             />
 
 
-        <TextView
-            android:id=
-                "@+id/accueilTexte"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="top|start"
-            android:padding="5dp"
-            android:text="@string/texte_accueil"
-            android:textColor="@color/titre1"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id=
+                    "@+id/accueilTexte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/texte_accueil"
+                android:textColor="@color/titre1"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/linearborder"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <!-- bouton consulter -->
+                <Button
+                    android:id="@+id/bouton_consulter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@mipmap/mp_sr"/>
+
+                <!-- Titre connexion -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/bouton_consulter"
+                    android:paddingEnd="0dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="0dp"
+                    android:paddingStart="5dp"
+                    android:text="@string/bouton_consulter"
+                    android:textAppearance="@style/texte_bleu"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
 
 
+
         <!-- Panneau d'identification -->
         <GridLayout
+            android:id="@+id/panel_identif"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

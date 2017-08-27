@@ -2,41 +2,27 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/cadnas_fond"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="5dp"
-    android:paddingRight="5dp"
-    android:weightSum="1">
+    android:paddingRight="5dp">
 
 
-    <!-- titre -->
-    <TextView
-        android:text="@string/connexion"
-        android:id="@+id/connecte"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:textAppearance="@style/titre2"
-        android:layout_marginBottom="30dp"/>
-
-    <TextView
-        android:id="@+id/titre_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/titre2"/>
-    <TextView
-        android:id="@+id/accueil_connecte_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/linearborder"/>
+        <!-- titre -->
+        <TextView
+            android:id="@+id/accueil_connecte_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="@string/connexion"
+            android:textAppearance="@style/titre2"
+            android:background="@drawable/linearborder"/>
 
 
     <TextView
@@ -49,20 +35,108 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
+        android:minHeight="40dp"
         android:background="@drawable/linearborder"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/linearborder">
 
     <TextView
         android:id="@+id/titre_donnees"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/titre2"/>
-    <TextView
-        android:id="@+id/accueil_connecte_donnees"
+
+        <ImageButton
+            android:id="@+id/btn_lister"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/liste"/>
+
+        <TextView
+            android:labelFor="@+id/btn_lister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/texte_simple"
+            android:text="@string/donnee_liste"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/linearborder"/>
+        android:orientation="horizontal"
+        android:background="@drawable/linearborder">
+
+        <TextView
+            android:labelFor="@+id/cherche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/donnee_cherche"
+            android:textAppearance="@style/texte_simple"
+            android:layout_margin="4dp"/>
+
+        <EditText
+            android:id="@+id/cherche"
+            android:minWidth="150dp"
+            android:background="@drawable/linearborder"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/texte_simple" />
+
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/bouton_cadenas"/>
+
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/info_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/texte_simple"
+            android:text="@string/fonction_cherche"
+            android:gravity="end"
+            android:layout_marginBottom="30dp"
+            />
+
+    <LinearLayout
+        android:id="@+id/lay_liste"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/linearborder"
+        android:minHeight="200dp">
+
+
+     <ListView
+        android:id="@+id/donneesListe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minLines="3" />
+
+    </LinearLayout>
+
+    <ImageButton
+    android:id="@+id/ajouter_donnee"
+    android:layout_width="70dp"
+    android:gravity="end"
+    android:layout_height="70dp"
+    android:src="@drawable/ajout"
+    android:layout_gravity="center"/>
 
 </LinearLayout>
 

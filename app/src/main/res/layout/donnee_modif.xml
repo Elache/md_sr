@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cadnas_fond"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:weightSum="1">
+
+        <!-- titre -->
+        <TextView
+            android:id="@+id/donnee_affich"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:text="@string/donnee_modification"
+            android:textAppearance="@style/titre2" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Encadré du formulaire -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gris_clair"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <!-- nom donnee -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <!-- intitule -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/donnee_nom"
+                    android:padding="3dp"
+                    android:text="@string/donnee_nom"
+                    android:textAppearance="@style/texte_bleu"/>
+                <!-- NOM -->
+                <EditText
+                    android:id="@+id/donnee_nom_modif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linearborder"
+                    android:minWidth="30dp"
+                    android:padding="3dp"
+                    android:textAppearance="@style/texte_bleu"/>
+            </LinearLayout>
+
+            <!--  mot de passe -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <!-- intitule-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/donnee_pass"
+                    android:padding="3dp"
+                    android:text="@string/donnee_passe"
+                    android:textAppearance="@style/texte_bleu"/>
+
+
+                <!-- PASSE -->
+                <EditText
+                    android:id="@+id/donnee_pass_modif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:minWidth="30dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/linearborder"
+                    android:textAppearance="@style/texte_bleu" />
+
+            </LinearLayout>
+
+
+            <!--  site web -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+                <!-- intitule -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/donnee_web"
+                    android:padding="3dp"
+                    android:text="@string/donnee_web"
+                    android:textAppearance="@style/texte_bleu"/>
+                <!-- champ WEB -->
+                <EditText
+                    android:id="@+id/donnee_web_modif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linearborder"
+                    android:padding="3dp"
+                    android:minWidth="30dp"
+                    android:textAppearance="@style/texte_bleu"/>
+                <!-- intitule -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/donnee_web_url_label"
+                    android:padding="3dp"
+                    android:text="@string/donnee_web_url"
+                    android:textAppearance="@style/texte_bleu"/>
+                <!-- champ WEB URL -->
+                <EditText
+                    android:id="@+id/donnee_url_modif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="30dp"
+                    android:background="@drawable/linearborder"
+                    android:padding="3dp"
+                    android:textAppearance="@style/texte_bleu"/>
+            </LinearLayout>
+
+
+            <!--  identifiant -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+                <!-- intitule -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/donnee_id"
+                    android:padding="3dp"
+                    android:text="@string/donnee_identifiant"
+                    android:textAppearance="@style/texte_bleu"/>
+                <!-- LOGIN -->
+                <EditText
+                    android:id="@+id/donnee_id_modif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linearborder"
+                    android:minWidth="30dp"
+                    android:padding="3dp"
+                    android:textAppearance="@style/texte_bleu"/>
+
+                <!--  mail -->
+                <!-- intitule -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/donnee_mail"
+                    android:padding="3dp"
+                    android:text="@string/donnee_mail"
+                    android:textAppearance="@style/texte_bleu"/>
+                <!-- MAIL -->
+                <EditText
+                    android:id="@+id/donnee_mail_modif"
+                    android:layout_width="wrap_content"
+                    android:minWidth="30dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linearborder"
+                    android:padding="3dp"
+                    android:textAppearance="@style/texte_bleu"/>
+
+            </LinearLayout>
+
+            <!--  question secrete -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+                <!-- intitule -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/donnee_question"
+                    android:padding="3dp"
+                    android:text="@string/donnee_question"
+                    android:textAppearance="@style/texte_bleu"/>
+                <!-- Question -->
+                <EditText
+                    android:id="@+id/donnee_question_modif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linearborder"
+                    android:padding="3dp"
+                    android:minWidth="30dp"
+                    android:textAppearance="@style/texte_bleu"/>
+            </LinearLayout>
+
+            <!-- categorisation  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+                <!-- intitule -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/donnee_categorie"
+                    android:padding="3dp"
+                    android:text="@string/donnee_categorie"
+                    android:textAppearance="@style/texte_bleu"
+                    />
+                <!-- CATEG -->
+                <Spinner
+                    android:id="@+id/donnee_categorie_modif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linearborder"
+                    android:minHeight="25dp"
+                    android:minWidth="150dp"
+                    android:padding="3dp"
+                    android:textAppearance="@style/texte_bleu" />
+
+            </LinearLayout>
+
+            <!-- note additionnelle  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+                <!-- intitule -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/donnee_notes"
+                    android:padding="3dp"
+                    android:text="@string/donnee_note"
+                    android:textAppearance="@style/texte_bleu"/>
+                <!-- NOTE -->
+                <EditText
+                    android:id="@+id/donnee_notes_modif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linearborder"
+                    android:minWidth="30dp"
+                    android:padding="3dp"
+                    android:textAppearance="@style/texte_bleu"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:gravity="center">
+
+
+            <Button
+                android:id="@+id/b_fermerD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fermer"
+                android:background="@android:drawable/btn_default"
+                android:textAppearance="@style/texte_simple"
+                />
+
+
+            <Button
+                android:id="@+id/b_valider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donnee_modif_valider"
+                android:background="@android:drawable/btn_default"
+                android:textAppearance="@style/texte_simple"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,32 +1,34 @@
 package fr.hibon.modepassesecurest;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Dialog;
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
+import android.support.v7.widget.GridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
 import fr.hibon.modepassesecurest.ihm.Test;
 import fr.hibon.modepassesecurest.ihm.outipasses.*;
 import fr.hibon.modepassesecurest.ihm.compte.*;
 import fr.hibon.modepassesecurest.motpasse.ChainePasse;
 
+import static android.view.View.INVISIBLE;
+
 /**
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button boutonConnexion ;
+
+    Button boutonConnexion, boutonConsulter ;
     ImageButton boutonCreation, boutonOutil ;
 
     EditText passeDispo, saisieIdentifiant, passeIdentifiant ;
@@ -55,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boutonOutil = (ImageButton) findViewById(R.id.bouton_outils) ;
         boutonOutil.setOnClickListener(this);
 
+        boutonConsulter = (Button) findViewById(R.id.bouton_consulter) ;
+        boutonConsulter.setOnClickListener(this);
+
         passeCado = ChainePasse.genererMotDePasse().getChaineDuPasse() ;
         passeDispo = (EditText) findViewById(R.id.passeDispo) ;
         passeDispo.setText(passeCado);
@@ -70,6 +75,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent mIn = null ;
 
         switch(v.getId()) {
+
+            case(R.id.bouton_consulter):
+                if(CompteUtilisateur.getCompteConnecte().getNomUser() != null) {
+                    mIn = new Intent(MainActivity.this, ConnecteAccueilInterface.class) ;
+                    startActivity(mIn) ;
+                    break ;
+                }
+                GestionIHM.popInfo(this, "Identification requise", "Vous n'êtes pas connecté");
+                break ;
 
             case(R.id.test_btn):
                 mIn = new Intent(MainActivity.this, Test.class) ;
@@ -97,20 +111,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     saisieIdentifiant.setText("");
                     passeIdentifiant.setText("");
-                    final Dialog dialog = new Dialog(this);
-                    dialog.setContentView(R.layout.en_ligne_pop);
-                    TextView titre = (TextView) dialog.findViewById(R.id.info_en_ligne);
-                    titre.setText("Echec de connexion");
-                    TextView textInfo = (TextView) dialog.findViewById(R.id.infoenligne);
-                    textInfo.setText("Compte non reconnu");
-                    Button dialogButton = (Button) dialog.findViewById(R.id.close_popUP);
-                    dialogButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                        }
-                    });
-                    dialog.show();
+                    String titre = "Echec de connexion" ;
+                    String message = "Compte non reconnu \n (identifiant et/ou mot de passe" ;
+                    GestionIHM.popInfo(this, titre, message);
                 }
                 break ;
 

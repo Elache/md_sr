@@ -2,21 +2,22 @@
     <string name="app_name">ModePasse SecuRest</string>
     <string name="app_sigle">Mp@Sr</string>
 
-    <string name="texte_accueil">Gestion de comptes et mots de passe</string>
+    <string name="texte_accueil">Gestion de\n mots de passe</string>
     <string name="texte_logo">ModePasse SecuRest - logo</string>
 
     <!-- PROVISOIRES -->
     <string name="provisoire">"Provisoire"</string>
-    <string name="exemple_passwd">longueur50.amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;df_4iRjçE&amp;d</string>
 
     <!-- param generaux -->
     <string name="creation">Création</string>
     <string name="pass_confirm">Confirmer</string>
+    <string name="fermer">Fermer</string>
 
-    <string name="invite_remplir">................</string>
-    <string name="invite_remplir_multilines">...........................\n...........................</string>
-    <string name="invite_deroule_categorie">Choisir une catégorie</string>
+
+    <string name="invite_remplir"> </string>
+    <string name="invite_remplir_multilines">\n</string>
     <string name="outipasses">Outi\'passes</string>
+    <string name="pregen">Mot de passe</string>
 
 
     <string name="bouton_valider">Valider</string>
@@ -25,7 +26,6 @@
     <!-- ####################### -->
     <!-- Menu général -->
     <!-- ####################### -->
-
 
     <string name="menu_search">Trouver</string>
     <string name="menu_add">Ajouter</string>
@@ -38,14 +38,17 @@
     <string name="menu_creation">Créer un Compte</string>
 
 
-
     <!-- ####################### -->
     <!-- COMPTE-UTILISATEUR -->
     <!-- ####################### -->
 
     <string name="connexion">Connexion</string>
     <string name="connexion_compte">Me connecter</string>
+
+    <string name="connexion_etablie">Consulter (connecté)</string>
+
     <string name="creation_compte">Création du Compte</string>
+    <string name="creation_compte_rep">Création de votre 1er répertoire</string>
 
 
     <string name="u_identifiant">Identifiant</string>
@@ -53,12 +56,38 @@
 
     <string name="compte_titre">Création d\'un Compte-utilisateur</string>
 
-    <string name="user_nom">@string/u_identifiant</string>
+    <string name="user_nom">Identifiant</string>
     <string name="user_pass1">Passe</string>
     <string name="user_pass2">Passe-secours</string>
+    <string name="user_mail">Email</string>
     <string name="user_notes">Note additionnelle</string>
 
+    <string name="bouton_consulter">Consulter</string>
 
+
+
+
+
+    <!-- ####################### -->
+    <!-- Version en ligne -->
+    <!-- ####################### -->
+
+    <string name="mettre_en_ligne">Créer une COPIE EN LIGNE \n de vos données</string>
+    <string name="bouton_enligne_help">Aide</string>
+    <string name="sauver_en_ligne">
+        - La copie de vos données dans une base de données collective en ligne peut constituer une sauvegarde.
+        \n  (il existe un moyen alternatif de sauvegarde, hors Internet)
+        \n\n
+        - Vous pouvez alors choisir de bénéficier d\'une interface web
+        pour interroger vos données en ligne (sans recours à votre appareil Android).
+        \n\n
+        Pour ce type d\'utilisation, des conditions sur les identifiants et mots de passe sont nécessaires (identifiant unique, passe d\'un bon niveau de sécurité).
+        \n\n
+        Tous les mots de passe sont conservés sous une forme chiffrée (clés AES 128bits).
+        \n\n
+        L\'hébergement est réalisé sur les serveurs de pages personnelles de Free.
+        \n Administration par le concepteur de l\'application : L. HIBON
+    </string>
 
 
     <!-- ####################### -->
@@ -68,6 +97,7 @@
     <string name="repertoire_titre">Création d\'un Répertoire</string>
 
     <string name="repertoire_nom">Nom du répertoire</string>
+    <string name="repertoire_nom_abr">Nom</string>
     <string name="repertoire_descript">Description</string>
 
 
@@ -77,19 +107,40 @@
 
     <string name="donnee_creation">Enregistrement d\'une Donnée</string>
     <string name="donnee_consultation">Consultation d\'une Donnée</string>
+    <string name="donnee_modification">Modification d\'une Donnée</string>
 
-    <string name="donnee_passe_clair">Afficher le mot de passe</string>
+    <string name="donnee_modifier">Modifier</string>
+    <string name="donnee_supprimer">Supprimer</string>
+    <string name="donnee_modif_valider">Enregistrer</string>
 
+    <string name="donnee_passe_clair">Voir</string>
 
-    <string name="donnee_nom">Nom / identifiant</string>
+    <string name="donnee_cherche">Recherche</string>
+    <string name="donnee_liste">Liste</string>
+
+    <string name="donnee_nom">Nom de la donnée</string>
     <string name="donnee_passe">Mot de passe</string>
     <string name="donnee_web">Site web</string>
-    <string name="donnee_web_url">Adresse du site</string>
+    <string name="donnee_web_url">adresse</string>
     <string name="donnee_identifiant">Identifiant</string>
     <string name="donnee_mail">E-mail associé</string>
     <string name="donnee_question">Question secrète</string>
     <string name="donnee_note">Note personnelle</string>
     <string name="donnee_categorie">Catégorie</string>
+
+    <string name="controle_facultatif">Facultatif</string>
+
+    <string name="fonction_cherche">Recherche dans les champs (facultatifs) suivants :
+                \n nom donné, question secrète, note personnelle</string>
+
+
+
+    <!-- ####################### -->
+    <!-- OUTI'PASSES             -->
+    <!-- ####################### -->*
+
+    <string name="outipasse">Outi\'passes</string>
+    <string name="outipasse_long">Outi\'passes (analyse, génération)</string>
 
 
     <!-- ####################### -->
@@ -126,6 +177,7 @@
 
     <string name="passes_remplir">Saisir les caractères</string>
 
+
     <!-- types caracteres -->
 
     <string name="titre_type">Types de caractères</string>
@@ -135,5 +187,14 @@
     <string name="caracteres_chiffres">Chiffres</string>
     <string name="caracteres_accents">Accents</string>
     <string name="caracteres_speciaux">Caractères spéciaux</string>
+
+    <!-- ####################### -->
+    <!-- INFOS -->
+    <!-- ####################### -->
+
+    <string name="info_titre">Aide et Informations</string>
+    <string name="info_param">Paramétrer</string>
+    <string name="titre2">Infos à voir</string>
+    <string name="passe_a_dispo">Passe aléatoire</string>
 
 </resources>

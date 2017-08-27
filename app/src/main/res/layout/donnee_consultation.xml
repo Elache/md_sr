@@ -1,73 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/cadnas_fond"
-    android:orientation="vertical"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
-    android:weightSum="1">
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+
+
+<LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/cadnas_fond"
+              android:orientation="vertical"
+              android:padding="5dp"
+              android:weightSum="1">
 
     <!-- titre -->
     <TextView
-        android:id="@+id/donnee_consult"
+        android:id="@+id/donnee_affich"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="30sp"
         android:text="@string/donnee_consultation"
         android:textAppearance="@style/titre2" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <!-- Encadré du formulaire -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/gris_clair"
         android:orientation="vertical"
-        android:background="@drawable/linearborder">
+        android:padding="5dp">
 
         <!-- nom donnee -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
+
             <!-- intitule -->
             <TextView
-                android:id="@+id/donnee_titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:labelFor="@+id/donnee_nom"
+                android:padding="3dp"
                 android:text="@string/donnee_nom"
-                android:textAppearance="@style/texte_bleu" />
-            <!-- champ saisie -->
-            <EditText
+                android:textAppearance="@style/texte_bleu"/>
+            <!-- affichage -->
+            <TextView
                 android:id="@+id/donnee_nom"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/champ"
-                android:hint="@string/invite_remplir"
-                android:inputType="text"
-                android:textAppearance="@style/texte_bleu" />
+                  android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
+                android:background="@drawable/linearborder"
+                android:padding="3dp"
+                android:textAppearance="@style/texte_bleu"/>
         </LinearLayout>
-
 
         <!--  mot de passe -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-           <!-- intitule en clair -->
-            <Button
-                android:id="@+id/donnee_afficher"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:text="@string/donnee_passe_clair" />
-            <!-- champ confirm -->
-            <EditText
-                android:id="@+id/donnee_pass"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/champ"
-                android:hint="@string/invite_remplir"
-                android:inputType="text"
-                android:textAppearance="@style/texte_bleu" />
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+                <!-- intitule-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/donnee_pass"
+                    android:padding="3dp"
+                    android:text="@string/donnee_passe"
+                    android:textAppearance="@style/texte_bleu"/>
+
+
+                <TextView
+                    android:id="@+id/donnee_decoder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/donnee_passe_clair"
+                    android:textAppearance="@style/texte_bleu"
+                    android:background="@drawable/linearborder"
+                    android:clickable="true"/>
+
+                <!-- affichage -->
+                <TextView
+                    android:id="@+id/donnee_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:minWidth="30dp"
+                    android:background="@drawable/linearborder"
+                    android:textAppearance="@style/texte_bleu" />
+
         </LinearLayout>
 
 
@@ -75,39 +106,42 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
-                android:id="@+id/donnee_web_titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:labelFor="@+id/donnee_web"
+                android:padding="3dp"
                 android:text="@string/donnee_web"
-                android:textAppearance="@style/texte_bleu" />
-            <!-- champ saisie -->
-            <EditText
+                android:textAppearance="@style/texte_bleu"/>
+            <!-- champ affichage -->
+            <TextView
                 android:id="@+id/donnee_web"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/champ"
-                android:hint="@string/invite_remplir"
-                android:inputType="text"
-                android:textAppearance="@style/texte_bleu" />
+                  android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/linearborder"
+                android:padding="3dp"
+                android:minWidth="30dp"
+                android:textAppearance="@style/texte_bleu"/>
             <!-- intitule -->
             <TextView
-                android:id="@+id/donnee_web_url_titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/donnee_web_url_label"
+                android:padding="3dp"
                 android:text="@string/donnee_web_url"
-                android:textAppearance="@style/texte_bleu" />
-            <!-- champ saisie -->
-            <EditText
+                android:textAppearance="@style/texte_bleu"/>
+            <!-- champ affichage -->
+            <TextView
                 android:id="@+id/donnee_web_url"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/champ"
-                android:hint="@string/invite_remplir"
-                android:inputType="textUri"
-                android:textAppearance="@style/texte_bleu" />
+                  android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/linearborder"
+                android:minWidth="30dp"
+                android:padding="3dp"
+                android:textAppearance="@style/texte_bleu"/>
         </LinearLayout>
 
 
@@ -115,276 +149,183 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
-                android:id="@+id/donnee_id_titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:labelFor="@+id/donnee_id"
+                android:padding="3dp"
                 android:text="@string/donnee_identifiant"
-                android:textAppearance="@style/texte_bleu" />
-            <!-- champ saisie -->
-            <EditText
+                android:textAppearance="@style/texte_bleu"/>
+            <!-- affiche affichage -->
+            <TextView
                 android:id="@+id/donnee_id"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/champ"
-                android:hint="@string/invite_remplir"
-                android:inputType="textVisiblePassword"
-                android:textAppearance="@style/texte_bleu" />
-        </LinearLayout>
-
+                  android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/linearborder"
+                android:minWidth="30dp"
+                android:padding="3dp"
+                android:textAppearance="@style/texte_bleu"/>
 
         <!--  mail -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
             <!-- intitule -->
             <TextView
-                android:id="@+id/donnee_mail_titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:labelFor="@+id/donnee_mail"
+                android:padding="3dp"
                 android:text="@string/donnee_mail"
-                android:textAppearance="@style/texte_bleu" />
-            <!-- champ saisie -->
-            <EditText
+                android:textAppearance="@style/texte_bleu"/>
+            <!-- champ affichage -->
+            <TextView
                 android:id="@+id/donnee_mail"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/champ"
-                android:hint="@string/invite_remplir"
-                android:inputType="textEmailAddress"
-                android:textAppearance="@style/texte_bleu" />
-        </LinearLayout>
+                  android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/linearborder"
+                android:padding="3dp"
+                android:minWidth="30dp"
+                android:textAppearance="@style/texte_bleu"/>
 
+        </LinearLayout>
 
         <!--  question secrete -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
-                android:id="@+id/donnee_quest_titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:labelFor="@+id/donnee_question"
+                android:padding="3dp"
                 android:text="@string/donnee_question"
-                android:textAppearance="@style/texte_bleu" />
-            <!-- champ saisie -->
-            <EditText
+                android:textAppearance="@style/texte_bleu"/>
+            <!-- champ affichage -->
+            <TextView
                 android:id="@+id/donnee_question"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/champ"
-                android:hint="@string/invite_remplir"
-                android:inputType="text"
-                android:textAppearance="@style/texte_bleu" />
+                  android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/linearborder"
+                android:padding="3dp"
+                android:minWidth="30dp"
+                android:textAppearance="@style/texte_bleu"/>
         </LinearLayout>
 
-
+        <!-- categorisation  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+            <!-- intitule -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/donnee_categorie"
+                android:padding="3dp"
+                android:text="@string/donnee_categorie"
+                android:textAppearance="@style/texte_bleu"
+                />
+            <!-- champ affichage -->
+            <TextView
+                android:id="@+id/donnee_categorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
+                android:background="@drawable/linearborder"
+                android:textAppearance="@style/texte_bleu"
+                android:padding="3dp"
+                />
+        </LinearLayout>
 
         <!-- note additionnelle  -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
             <!-- intitule -->
             <TextView
-                android:id="@+id/donnee_notes_titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:labelFor="@+id/donnee_notes"
+                android:padding="3dp"
                 android:text="@string/donnee_note"
-                android:textAppearance="@style/texte_bleu" />
-            <!-- champ saisie -->
-            <EditText
+                android:textAppearance="@style/texte_bleu"/>
+            <!-- champ affichage -->
+            <TextView
                 android:id="@+id/donnee_notes"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@color/champ"
-                android:hint="@string/invite_remplir"
-                android:inputType="text"
-                android:textAppearance="@style/texte_bleu" />
+                  android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/linearborder"
+                android:minWidth="30dp"
+                android:padding="3dp"
+                android:textAppearance="@style/texte_bleu"/>
         </LinearLayout>
 
 
-        <!-- Titre bouton creer -->
-        <TextView
-            android:id="@+id/creer_bouton_titre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/texte_bleu"
-            android:text="@string/creation" />
-
-        <!-- bouton creer -->
-        <Button
-            android:id="@+id/creer_bouton"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:background="@drawable/cadnas" />
-
     </LinearLayout>
 
-</LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
 
 
-
-<!--
-EXEMPLE
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#fff"
-            android:id="@+id/set_service_view">
-<RelativeLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/title_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/title" />
-
-    <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/set_title"
-        android:singleLine="true"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/title_hint"
-        android:layout_alignBaseline="@+id/title_hint"
-        android:layout_alignBottom="@+id/title_hint"
-        android:layout_alignParentRight="true" />
-
-    <TextView
-        android:id="@+id/url_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/set_title"
-        android:text="@string/url" />
-
-    <EditText
-        android:id="@+id/set_url"
-        android:inputType="textUri"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginRight="8dp"
-        android:layout_toRightOf="@+id/url_hint"
-        android:layout_alignLeft="@+id/set_title"
-        android:singleLine="true"
-        android:layout_alignBaseline="@+id/url_hint"
-        android:layout_alignBottom="@+id/url_hint"
-        android:layout_alignParentRight="true" />
-
-    <TextView
-        android:id="@+id/username_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/set_url"
-        android:text="@string/username" />
-
-    <EditText
-        android:id="@+id/set_username"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginRight="8dp"
-        android:layout_toRightOf="@+id/username_hint"
-        android:layout_alignLeft="@+id/set_title"
-        android:singleLine="true"
-        android:layout_alignBaseline="@+id/username_hint"
-        android:layout_alignBottom="@+id/username_hint"
-        android:layout_alignParentRight="true" />
-
-    <TextView
-        android:id="@+id/password_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/set_username"
-        android:text="@string/password" />
-
-
-    <EditText
-        android:id="@+id/set_password"
-        android:singleLine="true"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginRight="8dp"
-        android:layout_toRightOf="@+id/password_hint"
-        android:layout_alignLeft="@+id/set_title"
-        android:layout_alignBaseline="@+id/password_hint"
-        android:layout_alignBottom="@+id/password_hint"
-        android:layout_alignParentRight="true"
-        android:inputType="textPassword" />
     <LinearLayout
-        android:id="@+id/button_container"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/set_password"
-        android:layout_alignLeft="@id/set_password"
-        android:layout_alignRight="@id/set_password"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/generate_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/brand"
-            android:textColor="#fff"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:textStyle="bold"
-            android:text="@string/generate_password" />
-        <Button
-            android:id="@+id/show_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/brand"
-            android:textColor="#fff"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:textStyle="bold"
-            android:text="@string/show_password"/>
+        android:orientation="horizontal"
+
+        android:gravity="center">
+
+
+    <Button
+        android:id="@+id/b_fermerD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fermer"
+        android:background="@android:drawable/btn_default"
+        android:textAppearance="@style/texte_simple"
+        />
+
+
+    <Button
+        android:id="@+id/b_supprD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/donnee_supprimer"
+        android:background="@android:drawable/btn_default"
+        android:textAppearance="@style/texte_simple"
+        />
+
+    <Button
+        android:id="@+id/b_modifD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/donnee_modifier"
+        android:background="@android:drawable/btn_default"
+        android:textAppearance="@style/texte_simple"
+        />
+
     </LinearLayout>
 
-
-
-    <TextView
-        android:id="@+id/notes_hint"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/button_container"
-        android:text="@string/notes" />
+        android:orientation="horizontal"
 
-    <EditText
-        android:id="@+id/set_notes"
-        android:layout_height="60dp"
-        android:layout_width="wrap_content"
-        android:layout_marginRight="8dp"
-        android:layout_toRightOf="@+id/notes_hint"
-        android:layout_alignLeft="@+id/set_title"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/notes_hint"
-        android:inputType="textMultiLine" />
-</RelativeLayout>
-</ScrollView>
+        android:gravity="center">
 
--->
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@android:drawable/ic_dialog_alert"
+            android:background="@color/colorAccent"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>

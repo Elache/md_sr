@@ -7,6 +7,7 @@ import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
  */
 public class Donnee {
 
+    private int idEnBaseLocale ;
     private String passeDonnee;
     private String nomDonnee;
 
@@ -57,13 +58,15 @@ public class Donnee {
      * @param siteWebDonnee         site web associ&eacute;
      * @param loginDonnee           identifiant associ&eacute; au mot de passe
      * @param cleDonnee             cl&eacute; utilis&eacute;e et conserv&eacute;e en base
+     * @param idEnBase             identifiant (cle primaire) dans la base locale
      */
     public Donnee(String passeDonnee, String nomDonnee, String loginDonnee, String mailDonnee, String siteWebDonnee,
-                  String questionSecreteDonnee, String categorieDonnee, String noteDonnee, String cleDonnee) {
+                  String questionSecreteDonnee, String categorieDonnee, String noteDonnee, String cleDonnee, int idEnBase) {
         this(nomDonnee, loginDonnee, mailDonnee, siteWebDonnee, questionSecreteDonnee, categorieDonnee, noteDonnee);
         this.passeDonnee = null ;
         this.passeDonneeChiffre = passeDonnee;
         this.cleChiffrementDonnee = cleDonnee;
+        this.idEnBaseLocale = idEnBase ;
     }
 
     /**
@@ -115,6 +118,17 @@ public class Donnee {
         cm.chiffrer(this.passeDonnee);
         this.passeDonneeChiffre = cm.getPasseCode();
         this.cleChiffrementDonnee = cm.getCleCode();
+    }
+
+
+    /**
+     * Chiffrement du mot de passe
+     * <BR>(appelle la fonction de chiffrement) ChiffeMode.chiffrer(passeClair)
+     */
+    public void chiffrerMotPasse(boolean modif) {
+        ChiffeMode cm = new ChiffeMode() ;
+        cm.chiffrer(this.passeDonnee, this.getCleChiffrementDonnee());
+        this.passeDonneeChiffre = cm.getPasseCode();
     }
 
 
@@ -226,6 +240,10 @@ public class Donnee {
 
     public String getCleChiffrementDonnee() {
         return cleChiffrementDonnee ;
+    }
+
+    public int getIdEnBaseLocale () {
+        return idEnBaseLocale ;
     }
 
     // ////////// SETTERS //////////////////
