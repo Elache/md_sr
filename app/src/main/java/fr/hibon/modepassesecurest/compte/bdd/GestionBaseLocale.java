@@ -19,8 +19,8 @@ import fr.hibon.modepassesecurest.compte.bdd.table.Table_Site_Web;
 public class GestionBaseLocale extends SQLiteOpenHelper {
 
     /* Nom de la base de donnees */
-    public static final String DATABASE_NOM = "modepasse_securest";
-    public static final int DATABASE_VERSION = 2;
+    public static final String DATABASE_NOM = "modepasse_securest.db";
+    public static final int DATABASE_VERSION = 3;
 
 
     /* ** CREATION DES TABLES - REQUETES ********
