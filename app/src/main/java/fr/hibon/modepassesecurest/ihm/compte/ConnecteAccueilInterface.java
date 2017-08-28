@@ -68,17 +68,12 @@ public class ConnecteAccueilInterface extends Activity  implements View.OnClickL
 
         /* Si creation du compte (donc premiere connexion), insere en base */
         if(creation) {
-            try {
                 String nomSaisi = getIntent().getStringExtra("nom") ;
                 String passe1Saisi = getIntent().getStringExtra("passe1") ;
                 String passe2Saisi = getIntent().getStringExtra("passe2") ;
                 String mailSaisi = getIntent().getStringExtra("mail") ;
                 CompteUtilisateur.renseigneLeCompte(nomSaisi, passe1Saisi, passe2Saisi, mailSaisi,"") ;
                 new GestionIHM().instanceInsert(this) ;
-
-            } catch (CompteException e) {
-                e.printStackTrace();
-            }
         }
 
         user.setText("Connecté : " + lUtilisateur.getNomUser());
