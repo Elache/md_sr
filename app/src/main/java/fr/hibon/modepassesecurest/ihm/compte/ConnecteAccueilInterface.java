@@ -45,13 +45,7 @@ public class ConnecteAccueilInterface extends Activity  implements View.OnClickL
         /* Origine de l'acces */
         creation = getIntent().getBooleanExtra("creation", false) ;
 
-        /* Utilisateur et Base de données */
-        lUtilisateur = CompteUtilisateur.getCompteConnecte() ;
-
-        /* Repertoire par defaut */
-        selectRep = lUtilisateur.getLesRepertoires().get(0) ;
-
-        /* Accueil et titres */
+       /* Accueil et titres */
         user =  (TextView) findViewById(R.id.accueil_connecte_user) ;
         titreRep = (TextView) findViewById(R.id.titre_repert) ;
         titreRep.setText("Liste des répertoires");
@@ -76,6 +70,13 @@ public class ConnecteAccueilInterface extends Activity  implements View.OnClickL
                 new GestionIHM().instanceInsert(this) ;
         }
 
+
+        /* Utilisateur et Base de données */
+        lUtilisateur = CompteUtilisateur.getCompteConnecte() ;
+
+        /* Repertoire par defaut */
+        selectRep = lUtilisateur.getLesRepertoires().get(0) ;
+        
         user.setText("Connecté : " + lUtilisateur.getNomUser());
 
        /* Liste des repertoires : Spinner */
