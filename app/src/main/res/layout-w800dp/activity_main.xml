@@ -8,9 +8,9 @@
 
 
     <LinearLayout
-                  android:orientation="horizontal"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
         <Space
@@ -20,13 +20,13 @@
 
 
         <LinearLayout
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_weight="1.2"
-                      android:background="@drawable/cadnas"
-                      android:orientation="vertical"
-                      android:paddingLeft="5dp"
-                      android:paddingRight="5dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:background="@drawable/cadnas"
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
 
             <!-- Nom app -->
 
@@ -38,17 +38,55 @@
                 android:padding="5dp"
                 app:srcCompat="@drawable/app_name"/>
 
-            <TextView
-                android:id=
-                    "@+id/accueilTexte"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="top|start"
-                android:padding="5dp"
-                android:text="@string/texte_accueil"
-                android:textColor="@color/titre1"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id=
+                        "@+id/accueilTexte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:padding="5dp"
+                    android:text="@string/texte_accueil"
+                    android:textColor="@color/titre1"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_weight="0.5"
+                    />
+
+                <!-- bouton consulter -->
+                <Button
+                    android:id="@+id/bouton_consulter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@mipmap/mp_sr"/>
+
+                <!-- Titre connexion -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/bouton_consulter"
+                    android:paddingEnd="0dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="0dp"
+                    android:paddingStart="5dp"
+                    android:text="@string/bouton_consulter"
+                    android:textAppearance="@style/texte_bleu"/>
+
+                <ImageButton
+                    android:id="@+id/test_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:background="@color/colorAccent"
+                    />
+
+
+            </LinearLayout>
+
 
             <Space
                 android:layout_width="match_parent"
