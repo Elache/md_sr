@@ -1,4 +1,4 @@
-package fr.hibon.modepassesecurest.ihm.outipasses;
+package fr.hibon.modepassesecurest.ihm;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

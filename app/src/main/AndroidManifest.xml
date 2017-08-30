@@ -26,7 +26,7 @@
         <activity android:name=".ihm.outipasses.Passes" android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ihm.outipasses.Analysor" android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ihm.outipasses.Generator" android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".ihm.outipasses.Infos"  android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ihm.Infos" android:windowSoftInputMode="stateHidden" />
 
         <activity android:name=".ihm.Test"  android:windowSoftInputMode="stateHidden" />
 

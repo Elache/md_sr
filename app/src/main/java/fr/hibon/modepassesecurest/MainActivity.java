@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 
 import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
+import fr.hibon.modepassesecurest.ihm.Infos;
 import fr.hibon.modepassesecurest.ihm.Test;
 import fr.hibon.modepassesecurest.ihm.outipasses.*;
 import fr.hibon.modepassesecurest.ihm.compte.*;

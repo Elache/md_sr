@@ -1,8 +1,11 @@
         package fr.hibon.modepassesecurest.ihm.outipasses;
 
 
+        import android.content.Intent;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
+        import android.view.Menu;
+        import android.view.MenuItem;
         import android.view.View;
         import android.widget.CheckBox;
         import android.widget.EditText;
@@ -10,9 +13,16 @@
         import android.widget.ImageView;
         import android.widget.TextView;
 
+        import org.w3c.dom.Text;
+
         import java.util.ArrayList;
 
+        import fr.hibon.modepassesecurest.MainActivity;
         import fr.hibon.modepassesecurest.R;
+        import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
+        import fr.hibon.modepassesecurest.ihm.Infos;
+        import fr.hibon.modepassesecurest.ihm.compte.ConnecteAccueilInterface;
+        import fr.hibon.modepassesecurest.ihm.compte.CreationCompteInterface;
         import fr.hibon.modepassesecurest.ihm.compte.GestionIHM;
         import fr.hibon.modepassesecurest.motpasse.ChainePasse;
         import fr.hibon.modepassesecurest.motpasse.MotDePasseCotation;
@@ -41,7 +51,7 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passes);
-        setTitle("MP&SR - Outi'passes");
+        setTitle("Outi'passes");
 
         btnGenere = (ImageButton) findViewById(R.id.bouton_generator) ;
         btnGenere.setOnClickListener(this);
@@ -187,6 +197,47 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
         lePasse.getMotPasse().getChaineDuPasse() ;
 
         affichAnalyse.setText(commentaire) ;
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(CompteUtilisateur.getCompteConnecte().getIsConnecte()) {
+            getMenuInflater().inflate(R.menu.menu_outipasses_co, menu);
+        }
+        else {
+            getMenuInflater().inflate(R.menu.menu_outipasses, menu);
+        }
+        return true;
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent mIn ;
+
+        switch (item.getItemId()){
+
+            case R.id.menu_info:
+                mIn = new Intent(Passes.this, Infos.class);
+                startActivity(mIn);
+                return true ;
+
+            case R.id.menu_deco:
+            case R.id.menu_versAccueil :
+                if(CompteUtilisateur.getCompteConnecte().getIsConnecte())
+                    CompteUtilisateur.getCompteConnecte().deconnecter();
+                mIn = new Intent(Passes.this, MainActivity.class) ;
+                startActivity(mIn);
+                return true;
+
+            case R.id.menu_creation:
+                mIn = new Intent(Passes.this, CreationCompteInterface.class);
+                startActivity(mIn);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

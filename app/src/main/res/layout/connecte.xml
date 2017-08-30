@@ -11,7 +11,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="5dp"
-    android:paddingRight="5dp">
+    android:paddingRight="5dp"
+    android:background="@drawable/cadnas_fond">
 
 
         <!-- titre -->
@@ -21,6 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:text="@string/connexion"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:textAppearance="@style/titre2"
             android:background="@drawable/linearborder"/>
 
@@ -42,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/linearborder">
+        android:background="@drawable/encadre_gris">
 
     <TextView
         android:id="@+id/titre_donnees"
@@ -73,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/linearborder">
+        android:background="@drawable/encadre_gris">
 
         <TextView
             android:labelFor="@+id/cherche"
@@ -92,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:textAppearance="@style/texte_simple" />
+            android:textAppearance="@style/texte_simple"/>
 
         <ImageButton
             android:id="@+id/btn_search"
@@ -127,7 +130,8 @@
         android:id="@+id/donneesListe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minLines="3" />
+        android:minLines="3"
+        android:background="@drawable/encadre_gris"/>
 
     </LinearLayout>
 

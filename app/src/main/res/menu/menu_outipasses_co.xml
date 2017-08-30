@@ -8,29 +8,12 @@
         android:icon="@android:drawable/ic_menu_info_details"
         app:showAsAction="always" />
 
-<!-- Si User NON connecte -->
-
-    <!-- Accueil -->
-    <item
-        android:id="@+id/menu_versAccueil"
-        android:title="@string/menu_accueil"
-        app:showAsAction="always" />
-
-    <!-- Creer compte -->
-    <item
-        android:id="@+id/menu_creation"
-        android:title="@string/menu_creation"
-        app:showAsAction="ifRoom"
-        />
-
-
-<!-- Si User connecte -->
 
     <!-- Deconnexion -->
     <item
         android:id="@+id/menu_deco"
         android:title="@string/menu_deco"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
 
 

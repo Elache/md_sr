@@ -1,8 +1,13 @@
 package fr.hibon.modepassesecurest.ihm.compte;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +20,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import fr.hibon.modepassesecurest.MainActivity;
 import fr.hibon.modepassesecurest.R;
 import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
 import fr.hibon.modepassesecurest.compte.Donnee;
@@ -23,8 +29,10 @@ import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
 import fr.hibon.modepassesecurest.compte.exception.CompteException;
 import fr.hibon.modepassesecurest.ihm.compte.donnee.DonneeAdapter;
 import fr.hibon.modepassesecurest.ihm.compte.donnee.DonneesControl;
+import fr.hibon.modepassesecurest.ihm.Infos;
+import fr.hibon.modepassesecurest.ihm.outipasses.Passes;
 
-public class ConnecteAccueilInterface extends Activity  implements View.OnClickListener, AdapterView.OnItemSelectedListener{
+public class ConnecteAccueilInterface extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
     CompteUtilisateur lUtilisateur ;
 
@@ -41,6 +49,7 @@ public class ConnecteAccueilInterface extends Activity  implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.connecte);
+        setTitle("MP&SR");
 
         /* Origine de l'acces */
         creation = getIntent().getBooleanExtra("creation", false) ;
@@ -162,4 +171,45 @@ public class ConnecteAccueilInterface extends Activity  implements View.OnClickL
         selectRep = (Repertoire) parent.getItemAtPosition(0);
     }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+         super.onCreateOptionsMenu(menu);
+         MenuInflater inflater = getMenuInflater();
+         inflater.inflate(R.menu.menu_interne, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent mIn ;
+
+        switch (item.getItemId()){
+
+            case R.id.menu_deco:
+                CompteUtilisateur.getCompteConnecte().deconnecter();
+                mIn = new Intent(ConnecteAccueilInterface.this, MainActivity.class) ;
+                startActivity(mIn);
+                return true;
+
+            case R.id.menu_nouvelle:
+                DonneesControl.saisirDonnee(this, selectRep.getidRepEnBase());
+                return true;
+
+            case R.id.menu_outipasses:
+                mIn = new Intent(ConnecteAccueilInterface.this, Passes.class);
+                startActivity(mIn);
+                return true;
+
+            case R.id.menu_info:
+                mIn = new Intent(ConnecteAccueilInterface.this, Infos.class);
+                startActivity(mIn);
+                return true;
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -34,6 +34,7 @@ public class CompteUtilisateur {
     private ChainePasse passeInternet;
     private ChainePasse passeInternetChiffre;
 
+    private boolean isConnecte ;
 
     /**
      * Constructeur priv&eacute; : PDC Singleton
@@ -100,6 +101,7 @@ public class CompteUtilisateur {
             ChainePasse chPassInternet = ChainePasse.composition(passeU)  ;
             instanceSingleton.passeInternet = ChainePasse.passeComplete10(chPassInternet) ;
         }
+        instanceSingleton.isConnecte = true ;
     }
 
     /**
@@ -127,6 +129,7 @@ public class CompteUtilisateur {
         instanceSingleton.passeInternetChiffre = ChainePasse.composition(passeInternet);
         instanceSingleton.cleChiffreUser = cleChiffreUser;
         instanceSingleton.lesRepertoires = lesRep;
+        instanceSingleton.isConnecte = true ;
     }
 
     // ////////// Gestion de la CONNEXION //////////////////
@@ -136,6 +139,7 @@ public class CompteUtilisateur {
      */
     public void deconnecter() {
         instanceSingleton = null;
+        isConnecte = false ;
         lesRepertoires = null;
         nomUser = null ;
         mailContactUser = null ;
@@ -357,6 +361,9 @@ public class CompteUtilisateur {
         return passeInternetChiffre;
     }
 
+    public boolean getIsConnecte() {
+        return isConnecte;
+    }
 
 
     // ////////// SETTERS //////////////////
