@@ -105,7 +105,6 @@ public class GestionIHM {
                 + Table_Compte_Utilisateur.COMPTE_USER_TABLE_NOM
                 + " WHERE " + Table_Compte_Utilisateur.COMPTE_USER_NOM + " = '" + lUtilisateur.getNomUser() + "';";
 
-        manip = ManipTables.accesBase(context);
         Cursor res = manip.getLaBase().rawQuery(requete, null);
         res.moveToNext();
         int idUser = res.getInt(0);
@@ -141,7 +140,11 @@ public class GestionIHM {
     /* ***** */
 
     public static ArrayList<Donnee> rechercheDonneeParNom(Context c, int idRep, String recherche) {
-        return ManipTables.accesBase(c).rechercheParMot(idRep, recherche) ;
+        ManipTables manip = ManipTables.accesBase(c) ;
+        ArrayList<Donnee> result = manip.rechercheParMot(idRep, recherche) ;
+        manip.fermerLaBase();
+        return result ;
+
     }
 
 

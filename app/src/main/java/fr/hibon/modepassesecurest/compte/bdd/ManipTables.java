@@ -32,7 +32,7 @@ public class ManipTables {
 
     private static ManipTables manipBase ;
     private static SQLiteDatabase laBase ;
-    private final GestionBaseLocale outilBase ;
+    private GestionBaseLocale outilBase ;
 
     private ManipTables(Context c) throws SQLException {
         this.outilBase = new GestionBaseLocale(c);
@@ -53,6 +53,8 @@ public class ManipTables {
 
     public void fermerLaBase() {
         outilBase.close();
+        outilBase = null ;
+        laBase = null ;
     }
 
     public SQLiteDatabase getLaBase() {

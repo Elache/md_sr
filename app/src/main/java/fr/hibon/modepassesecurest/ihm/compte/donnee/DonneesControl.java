@@ -65,7 +65,9 @@ public class DonneesControl {
 
             // TODO categorie en tant que table (jointures)
             /* Liste des categories : Spinner */
-            final ArrayList<String> categ = ManipTables.accesBase(contxt).listerCateg();
+            ManipTables manip = ManipTables.accesBase(contxt) ;
+            final ArrayList<String> categ = manip.listerCateg();
+            manip.fermerLaBase();
             catSpin = (Spinner) dialog.findViewById(R.id.c_donnee_categorie) ;
             ArrayAdapter adapter = new ArrayAdapter(contxt, android.R.layout.simple_spinner_item, categ) ;
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -241,7 +243,9 @@ public class DonneesControl {
 
             // to do : récuperer dans Table Categorie le nom correspondant à l'id
             Spinner spinCat = (Spinner) dialog.findViewById(R.id.donnee_categorie_modif) ;
-            final ArrayList<String> categ = ManipTables.accesBase(leCont).listerCateg();
+            ManipTables manip = ManipTables.accesBase(leCont) ;
+            final ArrayList<String> categ = manip.listerCateg();
+            manip.fermerLaBase();
             ArrayAdapter adapter = new ArrayAdapter(leCont, android.R.layout.simple_spinner_item, categ) ;
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinCat.setAdapter(adapter) ;
@@ -279,10 +283,10 @@ public class DonneesControl {
                     String noteSaisi = ((TextView) dialog.findViewById(R.id.donnee_notes_modif)).getText().toString() ;
                     String passeSaisi = ((TextView) dialog.findViewById(R.id.donnee_pass_modif)).getText().toString() ;
                     Donnee donneeSaisie = new Donnee(passeSaisi, nomSaisi, loginSaisi, mailSaisi, siteWebSaisi, questionSaisi, categorieSaisi, noteSaisi) ;
-
-                    ManipTables.accesBase(leCont).extraitDonnee(laDonnee.getIdEnBaseLocale()) ;
-
-                     popModifConfirm(leCont, laDonnee, donneeSaisie) ;
+                    ManipTables manip = ManipTables.accesBase(leCont) ;
+                    manip.extraitDonnee(laDonnee.getIdEnBaseLocale()) ;
+                    manip.fermerLaBase();
+                    popModifConfirm(leCont, laDonnee, donneeSaisie) ;
                 }
             });
 
@@ -315,8 +319,9 @@ public class DonneesControl {
                     r.ajoutDonnee(donneeSaisie);
 
                     // ajout BDD
-                    ManipTables.accesBase(context).insertDonnee(donneeSaisie, idRepertInser);
-
+                    ManipTables manip = ManipTables.accesBase(context) ;
+                    manip.insertDonnee(donneeSaisie, idRepertInser);
+                    manip.fermerLaBase();
                     dialog.dismiss();
                 }
             });
@@ -342,7 +347,9 @@ public class DonneesControl {
         builder.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // supprime de la base
-                ManipTables.accesBase(context).supprDonnee(laDonnee.getIdEnBaseLocale());
+                ManipTables manip = ManipTables.accesBase(context);
+                manip.supprDonnee(laDonnee.getIdEnBaseLocale());
+                manip.fermerLaBase();
                 // supprime l'objet
                 for (Repertoire rep : CompteUtilisateur.getCompteConnecte().getLesRepertoires()) {
                     for (Donnee donn : rep.getLesDonnees()) {
@@ -379,8 +386,9 @@ public class DonneesControl {
                 upLaDonnee(aModifier, donneeSaisie) ;
 
                 // insere en base de donnees
-                ManipTables.accesBase(context).modifDonnee(aModifier) ;
-
+                ManipTables manip = ManipTables.accesBase(context) ;
+                manip.modifDonnee(aModifier) ;
+                manip.fermerLaBase();
                 dialog.dismiss();
             }
         });

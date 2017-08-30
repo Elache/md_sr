@@ -95,8 +95,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String identifiant = saisieIdentifiant.getText().toString() ;
                 String passe = passeIdentifiant.getText().toString() ;
                 // TODO verifier saisie
-                boolean existe = ManipTables.accesBase(this).verifierCompte(identifiant, passe) ;
-
+                ManipTables manip = ManipTables.accesBase(this) ;
+                boolean existe = manip.accesBase(this).verifierCompte(identifiant, passe) ;
+                manip.fermerLaBase();
                 if (existe) {
                     mIn = new Intent(MainActivity.this, ConnecteAccueilInterface.class) ;
                     mIn.putExtra("creation", false) ;

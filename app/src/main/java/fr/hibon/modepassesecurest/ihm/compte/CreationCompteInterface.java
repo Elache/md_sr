@@ -98,6 +98,7 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
 
                 ManipTables manip = ManipTables.accesBase(this) ;
                 erreurs = manip.erreursBloquantes(this, user_nom) ;
+                manip.fermerLaBase();
                 if(erreurs.length() > 0){
                     titre = "Erreur sur l'Identifiant" ;
                     message += erreurs + erreursEtExceptions() + avertiss ;
