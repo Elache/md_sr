@@ -29,20 +29,32 @@ import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire.*;
 
 public class ManipTables {
 
-    private SQLiteDatabase laBase ;
+
+    private static ManipTables manipBase ;
+    private static SQLiteDatabase laBase ;
     private GestionBaseLocale outilBase ;
 
-    public ManipTables(Context c) throws SQLException {
+    private ManipTables(Context c) throws SQLException {
         this.outilBase = new GestionBaseLocale(c);
         try {
             laBase = outilBase.getWritableDatabase();
         } catch (SQLiteException ex) {
             laBase = outilBase.getReadableDatabase();
         }
+        manipBase = this ;
+    }
+
+    public static ManipTables accesBase(Context c) {
+        if(manipBase != null)
+            return manipBase ;
+        manipBase = new ManipTables(c) ;
+        return manipBase ;
     }
 
     public void fermerLaBase() {
         outilBase.close();
+        outilBase = null ;
+        laBase = null ;
     }
 
     public SQLiteDatabase getLaBase() {
