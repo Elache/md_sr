@@ -55,7 +55,7 @@ public class Test extends AppCompatActivity  {
         c.close() ;
         */
 
-        manip =  new ManipTables(this) ;
+        manip =  ManipTables.accesBase(this);
 
         requete = "SELECT * FROM " + Table_Donnee.DONNEE_TABLE_NOM ;
         c = manip.getLaBase().rawQuery(requete, null) ;

@@ -123,7 +123,9 @@ public class ConnecteAccueilInterface extends Activity  implements View.OnClickL
                 break ;
 
             case R.id.btn_lister :
-                ArrayList<Donnee> result = new ManipTables(this).listerDonnees(selectRep.getidRepEnBase()) ;
+                ManipTables manip = ManipTables.accesBase(this) ;
+                ArrayList<Donnee> result = manip.listerDonnees(selectRep.getidRepEnBase()) ;
+                manip.fermerLaBase();
                 affichResultats(result);
                 break ;
 
