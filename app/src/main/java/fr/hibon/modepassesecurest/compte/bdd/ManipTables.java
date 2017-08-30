@@ -126,7 +126,11 @@ public class ManipTables {
         // TODO passeInternet vide car Base locale // gerer aussi quand existe en ligne
         ArrayList<Repertoire> lesRep = listerRepertoires(id_User) ;
         CompteUtilisateur.getCompteConnecte() ;
-        CompteUtilisateur.recupereLeCompte(userNom, mot1, mot2, mail, note,  "",  cle, lesRep);
+        try {
+            CompteUtilisateur.recupereLeCompte(userNom, mot1, mot2, mail, note,  "",  cle, lesRep);
+        } catch (CompteException e) {
+            e.printStackTrace();
+        }
         laBase.close();
         return true ;
     }
