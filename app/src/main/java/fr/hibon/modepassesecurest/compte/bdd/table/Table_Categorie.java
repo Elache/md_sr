@@ -9,7 +9,7 @@ public class Table_Categorie {
 
         public static final String CATEGORIE_TABLE_NOM = "Categorie" ;
 
-        public static final String CATEGORIE_KEY = "id" ;
+        private static final String CATEGORIE_KEY = "id" ;
         public static final String CATEGORIE_NOM = "nom_cat" ;
 
 

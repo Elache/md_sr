@@ -401,7 +401,11 @@ public class ChainePasse {
  */
 class TriInclusions {
 
-	ArrayList<Character> chiffres, minuscules, majuscules, accentsCedil, speciaux;
+	final ArrayList<Character> chiffres;
+    final ArrayList<Character> minuscules;
+    final ArrayList<Character> majuscules;
+    final ArrayList<Character> accentsCedil;
+    final ArrayList<Character> speciaux;
 
 	TriInclusions() {
 		chiffres = new ArrayList<>();

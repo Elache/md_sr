@@ -9,10 +9,10 @@ import static org.junit.Assert.assertTrue;
 
 public class MotDePasseCotationTest {
 
-	ArrayList<String> echantillon_1;
-	ArrayList<String> echantillon_2;
-	ArrayList<String> echantillon_3;
-	ArrayList<String> echantillon_4;
+	private final ArrayList<String> echantillon_1;
+	private final ArrayList<String> echantillon_2;
+	private final ArrayList<String> echantillon_3;
+	private final ArrayList<String> echantillon_4;
 
 	public MotDePasseCotationTest() {
 		// 50ne de MP, classes par "force" (echelle ModePasse SecuRest
@@ -128,7 +128,7 @@ public class MotDePasseCotationTest {
 
 	// ECHANTILLON ///////////
 
-	public void echantillonStr() {
+	private void echantillonStr() {
 
 		String chiffres10_6 = "258741";
 		String chiffres10_19 = "5876130649865312568";

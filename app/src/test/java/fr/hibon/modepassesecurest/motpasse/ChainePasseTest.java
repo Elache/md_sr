@@ -509,14 +509,14 @@ public class ChainePasseTest {
 
     // methode pour echantillon de test
 
-    public ArrayList<Character> echantillon_exclusions() {
+    private ArrayList<Character> echantillon_exclusions() {
         ArrayList<Character> excl;
         excl = (ArrayList<Character>) Arrays.asList(Character.valueOf('0'), Character.valueOf('o'), Character.valueOf('%'), Character.valueOf('i'), Character.valueOf('+'), Character.valueOf('e'),
                 Character.valueOf('#'), Character.valueOf('a'), Character.valueOf('ù'), Character.valueOf('â'), Character.valueOf('é'), Character.valueOf('~'), Character.valueOf('Q'), Character.valueOf('^'), Character.valueOf('ç'), Character.valueOf('6'));
         return excl;
     }
 
-    public ArrayList<Character> echantillon_exclu_VoyellesMajuscules() {
+    private ArrayList<Character> echantillon_exclu_VoyellesMajuscules() {
         ArrayList<Character> excl = new ArrayList<>();
         excl.add(Character.valueOf('A'));
         excl.add(Character.valueOf('E'));
@@ -529,7 +529,7 @@ public class ChainePasseTest {
 
     // methode pour echantillon de test
 
-    public ArrayList<Character> echantillon_inclusions() {
+    private ArrayList<Character> echantillon_inclusions() {
         ArrayList<Character> incl = new ArrayList<>();
         incl.add(Character.valueOf('1'));
         incl.add(Character.valueOf('p'));

@@ -50,7 +50,7 @@ public class CompteUtilisateur {
     public static CompteUtilisateur getCompteConnecte() {
         if (instanceSingleton == null) {
             instanceSingleton = new CompteUtilisateur();
-            instanceSingleton.lesRepertoires = new ArrayList<>();
+            instanceSingleton.lesRepertoires = new ArrayList<Repertoire>();
         }
         return instanceSingleton;
     }
@@ -71,7 +71,7 @@ public class CompteUtilisateur {
      *                         vides
      */
     public static void renseigneLeCompte(String nomU, String passeU, String passeRecoursU, String mailContactU,
-                                         String notePersoU) {
+                                         String notePersoU) throws CompteException {
 
         getCompteConnecte();
 
@@ -116,7 +116,7 @@ public class CompteUtilisateur {
      * @throws CompteException
      */
     public static void recupereLeCompte(String nomU, String passeU, String passeRecoursU, String mailContactU,
-                                        String notePersoU,  String passeInternet,  String cleChiffreUser, ArrayList<Repertoire> lesRep) {
+                                        String notePersoU,  String passeInternet,  String cleChiffreUser, ArrayList<Repertoire> lesRep) throws CompteException {
         getCompteConnecte().deconnecter() ;
         getCompteConnecte() ;
         instanceSingleton.nomUser = nomU;
@@ -163,7 +163,7 @@ public class CompteUtilisateur {
     public boolean passeInternetAcceptable(String pass1, String pass2) {
         MotDePasseCotation mp = MotDePasseCotation.analyser(pass1);
         if (mp.getValeurAnalyse() >= 3)
-                return true;
+            return true;
         mp = MotDePasseCotation.analyser(pass2);
         return mp.getValeurAnalyse() >= 3;
     }

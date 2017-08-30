@@ -26,12 +26,15 @@
 
 public class Passes extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton btnGenere, btnAnalyse, btnInfosGen, btnInfoAnalz ;
-    String passeCado ;
-    EditText champPasse ;
-    TextView affichAnalyse ;
-    ImageView resultatGraphique ;
-    MotDePasseCotation lePasse ;
+    private ImageButton btnGenere;
+    private ImageButton btnAnalyse;
+    private ImageButton btnInfosGen;
+    private ImageButton btnInfoAnalz ;
+    private String passeCado ;
+    private EditText champPasse ;
+    private TextView affichAnalyse ;
+    private ImageView resultatGraphique ;
+    private MotDePasseCotation lePasse ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

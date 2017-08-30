@@ -2,13 +2,13 @@ package fr.hibon.modepassesecurest.motpasse;
 
 public class MotDePasseCotation {
 
-	private ChainePasse motPasse;
+	private final ChainePasse motPasse;
 
-	private int valeurAnalyse;
-	private String qualifieAnalyse;
+	private final int valeurAnalyse;
+	private final String qualifieAnalyse;
 
-	private int forceBits;
-	private String niveauAnssi;
+	private final int forceBits;
+	private final String niveauAnssi;
 
 	private MotDePasseCotation(String chaineToAnalyse) {
 		motPasse = ChainePasse.composition(chaineToAnalyse);
@@ -213,7 +213,7 @@ public class MotDePasseCotation {
 		return Math.pow(determinerEtendue(), motPasse.longeurMot());
 	}
 
-	public int determinerEtendue() {
+	private int determinerEtendue() {
 		int gamme = 0;
 		if (motPasse.avecChiffre())
 			gamme += 10;

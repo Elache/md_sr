@@ -14,9 +14,15 @@ import static junit.framework.Assert.assertTrue;
 @RunWith(AndroidJUnit4.class)
 public class DonneeMockTest {
 
-    Donnee donneeUn;
-    String mailDonneeUn, questionSecreteDonneeUn, categorieDonneeUn, noteDonneeUn, nomDonneeUn, siteWebDonneeUn,
-            loginDonneeUn, passeDonneeUn;
+    private Donnee donneeUn;
+    private String mailDonneeUn;
+    private String questionSecreteDonneeUn;
+    private String categorieDonneeUn;
+    private String noteDonneeUn;
+    private String nomDonneeUn;
+    private String siteWebDonneeUn;
+    private String loginDonneeUn;
+    private String passeDonneeUn;
 
     public Donnee echantillon() {
         passeDonneeUn = "jojoLapin";

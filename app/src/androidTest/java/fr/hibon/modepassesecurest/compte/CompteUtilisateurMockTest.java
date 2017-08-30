@@ -19,16 +19,14 @@ import fr.hibon.modepassesecurest.motpasse.ChainePasse;
 @RunWith(AndroidJUnit4.class)
 public class CompteUtilisateurMockTest {
 
-    private CompteUtilisateur compte;
-
     private ArrayList<Repertoire> lesRepertoires;
-    private String nomUser;
-    private String mailContactUser;
-    private String notePersoUser;
+    private final String nomUser;
+    private final String mailContactUser;
+    private final String notePersoUser;
 
-    private String passeUserStr;
-    private String passeRecoursUserStr;
-    private Repertoire rep1;
+    private final String passeUserStr;
+    private final String passeRecoursUserStr;
+    private final Repertoire rep1;
 
     // ////////////////// ECHANTILLONAGE //////////////////
 
@@ -36,7 +34,7 @@ public class CompteUtilisateurMockTest {
      * Constructeur qui affecte des valeurs de test
      */
     public CompteUtilisateurMockTest() {
-        compte = CompteUtilisateur.getCompteConnecte();
+        CompteUtilisateur compte = CompteUtilisateur.getCompteConnecte();
         nomUser = "loic.hibon";
         passeUserStr = "Fra:3-Bré:0!";
         passeRecoursUserStr = "le plop";

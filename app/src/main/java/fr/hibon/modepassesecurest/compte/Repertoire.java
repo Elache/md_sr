@@ -20,12 +20,12 @@ public class Repertoire {
 	private String noteRepertoire;
 
 	public Repertoire() {
-		lesDonnees = new ArrayList<>();
+		lesDonnees = new ArrayList<Donnee>();
 	}
 
 	public Repertoire(String nomRepertoire, String noteRepertoire) {
 		super();
-		this.lesDonnees = new ArrayList<>();
+		this.lesDonnees = new ArrayList<Donnee>();
 		this.nomRepertoire = nomRepertoire;
 		this.noteRepertoire = noteRepertoire;
 		this.idRepEnBase = -1 ;
@@ -33,7 +33,7 @@ public class Repertoire {
 
 	public Repertoire(String nomRepertoire, String noteRepertoire, int id) {
 		super();
-		this.lesDonnees = new ArrayList<>();
+		this.lesDonnees = new ArrayList<Donnee>();
 		this.nomRepertoire = nomRepertoire;
 		this.noteRepertoire = noteRepertoire;
 		this.idRepEnBase = id ;
@@ -93,7 +93,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeNom(String nom) {
-		ArrayList<Donnee> nomsTrouves = new ArrayList<>();
+		ArrayList<Donnee> nomsTrouves = new ArrayList<Donnee>();
 		for (Donnee d : this.lesDonnees) {
 			if (d.getNomDonnee().equals(nom))
 				nomsTrouves.add(d);
@@ -106,7 +106,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeMail(String mail) {
-		ArrayList<Donnee> mailsTrouves = new ArrayList<>();
+		ArrayList<Donnee> mailsTrouves = new ArrayList<Donnee>();
 		for (Donnee d : this.lesDonnees) {
 			if (d.getMailDonnee().equals(mail))
 				mailsTrouves.add(d);
@@ -119,7 +119,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeNote(String ch) {
-		ArrayList<Donnee> notesTrouves = new ArrayList<>();
+		ArrayList<Donnee> notesTrouves = new ArrayList<Donnee>();
 		for (Donnee d : this.lesDonnees) {
 			if (Donnee.presenceMotDansChamp(d.getNoteDonnee(), ch))
 				notesTrouves.add(d);
@@ -132,7 +132,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeQuestSecret(String ch) {
-		ArrayList<Donnee> questionsTrouves = new ArrayList<>();
+		ArrayList<Donnee> questionsTrouves = new ArrayList<Donnee>();
 		for (Donnee d : this.lesDonnees) {
 			if (Donnee.presenceMotDansChamp(d.getQuestionSecreteDonnee(), ch))
 				questionsTrouves.add(d);
@@ -145,7 +145,7 @@ public class Repertoire {
 	 * @return liste des donn&eacute;es trouv&eacute;es (ou vide)
 	 */
 	public List<Donnee> cherchDonneeWebsite(String ch) {
-		ArrayList<Donnee> websitesTrouves = new ArrayList<>();
+		ArrayList<Donnee> websitesTrouves = new ArrayList<Donnee>();
 		for (Donnee d : this.lesDonnees) {
 			if (Donnee.presenceMotDansChamp(d.getSiteWebDonnee(), ch))
 				websitesTrouves.add(d);

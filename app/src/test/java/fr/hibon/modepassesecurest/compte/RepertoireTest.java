@@ -19,17 +19,29 @@ import fr.hibon.modepassesecurest.compte.exception.CompteException;
  */
 public class RepertoireTest {
 
-	private Repertoire repo;
+	private final Repertoire repo;
 
-	private String nomRepertoire;
-	private String noteRepertoire;
+	private final String nomRepertoire;
+	private final String noteRepertoire;
 
-	Donnee donneeUn;
-	String mailDonneeUn, questionSecreteDonneeUn, categorieDonneeUn, noteDonneeUn, nomDonneeUn, siteWebDonneeUn,
-			loginDonneeUn, passeDonneeUn;
-	Donnee donneeDeux;
-	String mailDonneeDeux, questionSecreteDonneeDeux, categorieDonneeDeux, noteDonneeDeux, nomDonneeDeux,
-			siteWebDonneeDeux, loginDonneeDeux, passeDonneeDeux;
+	private final Donnee donneeUn;
+	private final String mailDonneeUn;
+    private final String questionSecreteDonneeUn;
+    private final String categorieDonneeUn;
+    private final String noteDonneeUn;
+    private final String nomDonneeUn;
+    private final String siteWebDonneeUn;
+    private final String loginDonneeUn;
+    private final String passeDonneeUn;
+	private final Donnee donneeDeux;
+	private final String mailDonneeDeux;
+    private final String questionSecreteDonneeDeux;
+    private final String categorieDonneeDeux;
+    private final String noteDonneeDeux;
+    private final String nomDonneeDeux;
+    private final String siteWebDonneeDeux;
+    private final String loginDonneeDeux;
+    private final String passeDonneeDeux;
 
 	// ////////////////// ECHANTILLONAGE //////////////////
 
@@ -69,7 +81,7 @@ public class RepertoireTest {
 	 * Echantillonnage : vider infos
 	 * 
 	 */
-	public void viderEchantillon() {
+    private void viderEchantillon() {
 		repo.getLesDonnees().clear();
 	}
 
@@ -77,7 +89,7 @@ public class RepertoireTest {
 	 * Echantillonnage : mettre 2 Donn&eacute;es
 	 * 
 	 */
-	public void ajouterDansEchantillon() {
+    private void ajouterDansEchantillon() {
 		repo.getLesDonnees().add(donneeUn);
 		repo.getLesDonnees().add(donneeDeux);
 	}
@@ -131,7 +143,7 @@ public class RepertoireTest {
 	@Test
 	public void setLesDonnees_doitModifier() {
 		Repertoire r = new Repertoire() ;
-		ArrayList<Donnee> listeDonnees = new ArrayList<>() ;
+		ArrayList<Donnee> listeDonnees = new ArrayList<Donnee>() ;
 		listeDonnees.add(donneeDeux) ; 
 		listeDonnees.add(new Donnee()) ; 
 		listeDonnees.add(new Donnee()) ; 

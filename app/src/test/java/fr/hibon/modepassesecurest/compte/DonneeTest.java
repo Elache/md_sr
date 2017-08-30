@@ -10,13 +10,25 @@ import fr.hibon.modepassesecurest.compte.Repertoire;
 
 public class DonneeTest {
 
-	Donnee donneeUn;
-	String mailDonneeUn, questionSecreteDonneeUn, categorieDonneeUn, noteDonneeUn, nomDonneeUn, siteWebDonneeUn,
-			loginDonneeUn, passeDonneeUn;
+	private final Donnee donneeUn;
+	private final String mailDonneeUn;
+	private final String questionSecreteDonneeUn;
+	private final String categorieDonneeUn;
+	private final String noteDonneeUn;
+	private final String nomDonneeUn;
+	private final String siteWebDonneeUn;
+	private final String loginDonneeUn;
+	private final String passeDonneeUn;
 
-	Donnee donneeDeux;
-	String mailDonneeDeux, questionSecreteDonneeDeux, categorieDonneeDeux, noteDonneeDeux, nomDonneeDeux,
-			siteWebDonneeDeux, loginDonneeDeux, passeDonneeDeux;
+	private final Donnee donneeDeux;
+	private final String mailDonneeDeux;
+	private final String questionSecreteDonneeDeux;
+	private final String categorieDonneeDeux;
+	private final String noteDonneeDeux;
+	private final String nomDonneeDeux;
+	private final String siteWebDonneeDeux;
+	private final String loginDonneeDeux;
+	private final String passeDonneeDeux;
 	
 	// ////////////////// ECHANTILLONAGE //////////////////
 

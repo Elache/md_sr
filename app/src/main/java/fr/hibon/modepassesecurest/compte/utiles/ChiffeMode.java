@@ -24,7 +24,7 @@ public class ChiffeMode {
     private String passeCode ;
     private String cleCode;
 
-    protected static final String prefix  = "&zAgrù:vR" ;
+    static final String prefix  = "&zAgrù:vR" ;
 
 
     public ChiffeMode() {
@@ -110,7 +110,7 @@ public class ChiffeMode {
      *
      * @return SecretKey g&eacute;n&eacute;r&eacute;e ou null si NoSuchAlgorithmException
      */
-    protected SecretKey genererCle() throws NoSuchAlgorithmException {
+    SecretKey genererCle() throws NoSuchAlgorithmException {
         SecretKey cleSK;
         KeyGenerator kyGen = KeyGenerator.getInstance("AES");
         kyGen.init(128);
@@ -165,7 +165,7 @@ public class ChiffeMode {
      * @param passe passe &agrave; pr&eacute;fixer
      * @return passe pr&eacute;fix&eacute;
      */
-    protected String prefixer(String passe) {
+    String prefixer(String passe) {
         if(passe == null)
             passe = "" ;
         return ChiffeMode.prefix + passe;
@@ -177,7 +177,7 @@ public class ChiffeMode {
      * @param passe passe &agrave; d&eacute;pr&eacute;fixer
      * @return passe sans pr&eacute;fixe
      */
-    protected String dePrefixer(String passe) {
+    String dePrefixer(String passe) {
         if(passe.length() <= 9)
             return "" ;
         if(!(passe.substring(0,9)).equals(ChiffeMode.prefix))

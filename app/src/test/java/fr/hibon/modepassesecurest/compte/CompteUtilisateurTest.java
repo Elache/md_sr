@@ -19,24 +19,13 @@ import fr.hibon.modepassesecurest.compte.exception.CompteException;
  */
 public class CompteUtilisateurTest {
 
-    private ArrayList<Repertoire> lesRepertoires;
-    private String nomUser;
-    private String mailContactUser;
-    private String notePersoUser;
+    private final String nomUser;
+    private final String mailContactUser;
+    private final String notePersoUser;
 
-    private String passeUserStr;
-    private ChainePasse passeUser;
-    private ChainePasse passeUserChiffre;
-    private String cleChiffreDonneeUser;
+    private final String passeUserStr;
 
-    private String passeRecoursUserStr;
-    private ChainePasse passeRecoursUser;
-    private ChainePasse passeRecoursUserChiffre;
-    private String cleChiffreDonneeRecours;
-
-    private ChainePasse passeCompleteInternet;
-    private ChainePasse passeCompleteInternetChiffre;
-    private String cleChiffreDonneeCompleteInternet;
+    private final String passeRecoursUserStr;
 
     private Repertoire rep1;
 
@@ -65,22 +54,22 @@ public class CompteUtilisateurTest {
                     notePersoUser);
         } catch (CompteException e) {
         }
-        lesRepertoires = new ArrayList<>();
+        ArrayList<Repertoire> lesRepertoires = new ArrayList<Repertoire>();
 
-        passeUser = ChainePasse.composition(passeUserStr);
-        passeUserChiffre = ChainePasse.composition("Chiffre-U-Fra");
-        cleChiffreDonneeUser = "Clé U";
+        ChainePasse passeUser = ChainePasse.composition(passeUserStr);
+        ChainePasse passeUserChiffre = ChainePasse.composition("Chiffre-U-Fra");
+        String cleChiffreDonneeUser = "Clé U";
 
         rep1 = new Repertoire("RepTest", "");
         lesRepertoires.add(rep1);
 
-        passeRecoursUser = ChainePasse.composition(passeRecoursUserStr);
-        passeRecoursUserChiffre = ChainePasse.composition("plopCHIFFRE");
-        cleChiffreDonneeRecours = "Clé R";
+        ChainePasse passeRecoursUser = ChainePasse.composition(passeRecoursUserStr);
+        ChainePasse passeRecoursUserChiffre = ChainePasse.composition("plopCHIFFRE");
+        String cleChiffreDonneeRecours = "Clé R";
 
-        passeCompleteInternet = ChainePasse.composition("ds,f43''tfzét_'NZ");
-        passeCompleteInternetChiffre = ChainePasse.composition("le meme en chiffre");
-        cleChiffreDonneeCompleteInternet = "la clé 3";
+        ChainePasse passeCompleteInternet = ChainePasse.composition("ds,f43''tfzét_'NZ");
+        ChainePasse passeCompleteInternetChiffre = ChainePasse.composition("le meme en chiffre");
+        String cleChiffreDonneeCompleteInternet = "la clé 3";
         return cu;
     }
 
@@ -89,7 +78,7 @@ public class CompteUtilisateurTest {
      *
      * @return CompteUtilisateur vide
      */
-    public CompteUtilisateur preparerCompteTestVide() {
+    private CompteUtilisateur preparerCompteTestVide() {
         CompteUtilisateur cu = preparerCompteTest();
         cu.viderListeRepert();
         return cu;
@@ -221,7 +210,7 @@ public class CompteUtilisateurTest {
      */
     @Test
     public void cherchRepert_doitRetournerRep() throws CompteException {
-        Repertoire recherche = null;
+        Repertoire recherche;
         CompteUtilisateur cu = preparerCompteTestVide();
         cu.ajoutRepert(rep1);
         recherche = cu.trouverRepert(rep1.getNomRepertoire());
@@ -236,7 +225,7 @@ public class CompteUtilisateurTest {
      */
     @Test
     public void cherchRepert_doitRetournerNull() throws CompteException {
-        Repertoire recherche = null;
+        Repertoire recherche;
         CompteUtilisateur cu = CompteUtilisateur.getCompteConnecte();
         recherche = cu.trouverRepert("MonRepertoire");
         assertNull(recherche);
@@ -269,7 +258,7 @@ public class CompteUtilisateurTest {
      */
     @Test
     public void supprRepert_parNom_donneRechercheNulle() throws CompteException {
-        Repertoire recherche = null;
+        Repertoire recherche;
         CompteUtilisateur cu = preparerCompteTestVide();
         cu.ajoutRepert(rep1);
         cu.supprRepert("RepTest");
@@ -315,7 +304,7 @@ public class CompteUtilisateurTest {
     public void setLesRepertoires() {
         CompteUtilisateur cu = preparerCompteTestVide();
         int tailleInit = cu.getLesRepertoires().size();
-        ArrayList<Repertoire> toutPret = new ArrayList<>();
+        ArrayList<Repertoire> toutPret = new ArrayList<Repertoire>();
         toutPret.add(new Repertoire());
         toutPret.add(new Repertoire("2", null));
         toutPret.add(new Repertoire("3", "A"));

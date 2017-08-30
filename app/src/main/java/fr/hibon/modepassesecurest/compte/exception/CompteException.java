@@ -8,7 +8,7 @@ package fr.hibon.modepassesecurest.compte.exception;
 	public class CompteException extends Exception {
 
 		private static final long serialVersionUID = 1L;
-		private ErreurDetail erreur;
+		private final ErreurDetail erreur;
 		private String description = "";
 
 		public CompteException(ErreurDetail erreur) {

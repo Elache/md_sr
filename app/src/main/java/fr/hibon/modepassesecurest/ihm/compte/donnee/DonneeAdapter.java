@@ -17,7 +17,7 @@ import fr.hibon.modepassesecurest.compte.Donnee;
  */
 public class DonneeAdapter extends BaseAdapter {
 
-    private ArrayList<Donnee> mItems;
+    private final ArrayList<Donnee> mItems;
 
     private static class Holder {
         ImageView imageView;
@@ -53,7 +53,7 @@ public class DonneeAdapter extends BaseAdapter {
 
     @Override
     public Donnee getItem(int position) {
-        return mItems.get(position) ;
+        return mItems.get(position);
     }
 
     @Override
