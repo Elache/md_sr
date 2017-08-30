@@ -95,7 +95,7 @@ public class GestionIHM {
             lUtilisateur.chiffrerMotPasse(unPasse, 3);
         }
 
-        ManipTables manip = new ManipTables(context);
+        ManipTables manip = ManipTables.accesBase(context);
         manip.insertCompteUtilisateur(lUtilisateur.getNomUser(), lUtilisateur.getPasseUserChiffre().getChaineDuPasse(),
                 lUtilisateur.getPasseRecoursChiffre().getChaineDuPasse(), lUtilisateur.getMailContactUser(),
                 "", lUtilisateur.getCleChiffreUser());
@@ -105,7 +105,7 @@ public class GestionIHM {
                 + Table_Compte_Utilisateur.COMPTE_USER_TABLE_NOM
                 + " WHERE " + Table_Compte_Utilisateur.COMPTE_USER_NOM + " = '" + lUtilisateur.getNomUser() + "';";
 
-        manip = new ManipTables(context);
+        manip = ManipTables.accesBase(context);
         Cursor res = manip.getLaBase().rawQuery(requete, null);
         res.moveToNext();
         int idUser = res.getInt(0);
@@ -141,7 +141,7 @@ public class GestionIHM {
     /* ***** */
 
     public static ArrayList<Donnee> rechercheDonneeParNom(Context c, int idRep, String recherche) {
-        return new ManipTables(c).rechercheParMot(idRep, recherche) ;
+        return ManipTables.accesBase(c).rechercheParMot(idRep, recherche) ;
     }
 
 

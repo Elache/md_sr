@@ -96,7 +96,7 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
 
                 String avertiss = new GestionIHM(user_nom,user_pass1,user_pass1_confirmer,user_pass2, user_pass2_confirmer, user_mail, enLigne).verifier() ;
 
-                ManipTables manip = new ManipTables(this) ;
+                ManipTables manip = ManipTables.accesBase(this) ;
                 erreurs = manip.erreursBloquantes(this, user_nom) ;
                 if(erreurs.length() > 0){
                     titre = "Erreur sur l'Identifiant" ;
