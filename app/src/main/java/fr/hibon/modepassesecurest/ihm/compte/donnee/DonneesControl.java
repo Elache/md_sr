@@ -350,6 +350,9 @@ public class DonneesControl {
                             rep.getLesDonnees().remove(donn);
                     }
                 }
+
+                // TODO rafraichir liste affichee
+
                 dialog.dismiss();
             }
         });
@@ -380,6 +383,8 @@ public class DonneesControl {
 
                 // insere en base de donnees
                 new ManipTables(context).modifDonnee(aModifier) ;
+
+                // TODO rafraichir liste affichee
 
                 dialog.dismiss();
             }

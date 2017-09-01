@@ -53,7 +53,7 @@ public class GestionIHM {
     public String verifier() {
         String avertiss = "";
         boolean confirm = true;
-        if (!verifNom() && enLigne) {
+        if (user_nom.length() < 5 && enLigne) {
             avertiss += "! Un nom aussi court ne sera pas adapté à l'utilisation de la consultation web.\n";
         }
         if (!verifConcordePasse(user_pass1, user_pass1_confirmer)) {
@@ -64,12 +64,12 @@ public class GestionIHM {
             avertiss += "! \"Passe de recours\" et confirmation différents \n";
             confirm = false;
         }
-        if (!CompteUtilisateur.getCompteConnecte().passeInternetAcceptable(user_pass1, user_pass2) && enLigne) {
+        if (!CompteUtilisateur.passeInternetAcceptable(user_pass1, user_pass2) && enLigne) {
             avertiss += "! Ces mots de passe, trop simples, ne vous permettront pas d'accéder à l'interrogation en ligne de la base de données. " +
                     "\n (la sauvegarde sur serveur reste possible).";
         }
         if (avertiss.length() > 0) {
-            avertiss += "\n Vous pouvez modifier vos saisies ou bien les valider sans tenir compte de cet avertissement.";
+            avertiss += "\n\n Vous pouvez modifier vos saisies ou bien les valider sans tenir compte de cet avertissement.";
             if (!confirm)
                 avertiss += "\n (passe retenu même sans confirmation)";
         }

@@ -108,8 +108,9 @@ public class CompteUtilisateurTest {
      */
     @Test(expected = CompteException.class)
     public void renseigneLeCompte_passeAbsent() throws CompteException {
-        CompteUtilisateur.renseigneLeCompte(nomUser, "", passeRecoursUserStr, mailContactUser, notePersoUser);
+        CompteUtilisateur.renseigneLeCompte(nomUser, null, passeRecoursUserStr, mailContactUser, notePersoUser);
     }
+
 
     /**
      * Teste l'affectation des valeurs &agrave; l'instance de CompteUtilisateur
@@ -120,8 +121,9 @@ public class CompteUtilisateurTest {
      */
     @Test(expected = CompteException.class)
     public void renseigneLeCompte_passe2Absent() throws CompteException {
-        CompteUtilisateur.renseigneLeCompte(nomUser, passeUserStr, "", mailContactUser, notePersoUser);
+        CompteUtilisateur.renseigneLeCompte(nomUser, passeUserStr, null, mailContactUser, notePersoUser);
     }
+
 
     /**
      * Teste l'affectation des valeurs &agrave; l'instance de CompteUtilisateur
@@ -132,7 +134,7 @@ public class CompteUtilisateurTest {
      */
     @Test(expected = CompteException.class)
     public void renseigneLeCompte_identifiantAbsent() throws CompteException {
-        CompteUtilisateur.renseigneLeCompte("", passeUserStr, passeRecoursUserStr, mailContactUser, notePersoUser);
+        CompteUtilisateur.renseigneLeCompte(null, passeUserStr, passeRecoursUserStr, mailContactUser, notePersoUser);
     }
 
     // ////////////////// Deconnexion // ///////////////////////////////

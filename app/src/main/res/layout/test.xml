@@ -24,16 +24,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/titre2"
-            android:paddingTop="10dp"/>
+            android:paddingTop="5dp"/>
 
         <!-- infos -->
         <TextView
             android:id="@+id/info1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/texte_simple"
+            android:textAppearance="@style/titre2"
             android:background="@drawable/encadre_gris"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="5dp"/>
 
 
         <!-- Titre 2 -->
@@ -43,33 +43,55 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/titre2"
-            android:paddingTop="10dp"/>
+            android:paddingTop="5dp"/>
 
           <!-- infos -->
         <TextView
             android:id="@+id/info2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/texte_simple"
+            android:textAppearance="@style/titre2"
             android:background="@drawable/encadre_gris"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="5dp"/>
 
+        
         <!-- Titre 3 -->
         <TextView
+            android:text="@string/info_param"
             android:id="@+id/info_titre3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/titre2"
-            android:paddingTop="10dp"/>
+            android:paddingTop="5dp"/>
 
         <!-- infos -->
         <TextView
             android:id="@+id/info3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/texte_simple"
+            android:textAppearance="@style/titre2"
             android:background="@drawable/encadre_gris"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="5dp"/>
+
+        
+        <!-- Titre 4 -->
+        <TextView
+            android:text="@string/info_param"
+            android:id="@+id/info_titre4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/titre2"
+            android:paddingTop="5dp"/>
+
+        <!-- infos -->
+        <TextView
+            android:id="@+id/info4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/titre2"
+            android:background="@drawable/encadre_gris"
+            android:layout_marginTop="5dp"/>
+
 
     </LinearLayout>
 

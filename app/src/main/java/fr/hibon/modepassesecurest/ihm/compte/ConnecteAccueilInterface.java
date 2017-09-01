@@ -145,6 +145,7 @@ public class ConnecteAccueilInterface extends AppCompatActivity implements View.
         }
     }
 
+
     private void affichResultats(ArrayList<Donnee> result) {
         final DonneeAdapter adaptListe ;
         affichRes.setVisibility(View.VISIBLE);
@@ -158,6 +159,7 @@ public class ConnecteAccueilInterface extends AppCompatActivity implements View.
             listView.setAdapter(avertiss) ;
         }
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

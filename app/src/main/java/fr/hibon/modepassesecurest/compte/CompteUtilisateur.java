@@ -77,14 +77,12 @@ public class CompteUtilisateur {
         getCompteConnecte();
 
 
-        if (nomU.length() == 0 || nomU == null){
-            // TODO gerer exception
-            // throw new CompteException(ErreurDetail.IdentifiantVide);
+        if (nomU == null){
+            throw new CompteException(ErreurDetail.IdentifiantVide);
         }
 
-        if (passeU.length() == 0 || passeRecoursU.length() == 0 || passeU == null || passeRecoursU == null) {
-            // TODO gerer exception
-            // throw new CompteException(ErreurDetail.MotDePasseVide);
+        if (passeU == null || passeRecoursU == null) {
+            throw new CompteException(ErreurDetail.MotDePasseVide);
         }
 
         instanceSingleton.nomUser = nomU;
@@ -164,7 +162,7 @@ public class CompteUtilisateur {
      * suffisante pour connexion &agrave; la base de donn&eacute;es en ligne
      * @return true si 1 des mots de passe est de niveau acceptable ou bon
      */
-    public boolean passeInternetAcceptable(String pass1, String pass2) {
+    public static boolean passeInternetAcceptable(String pass1, String pass2) {
         MotDePasseCotation mp = MotDePasseCotation.analyser(pass1);
         if (mp.getValeurAnalyse() >= 3)
             return true;

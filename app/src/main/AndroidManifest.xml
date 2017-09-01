@@ -3,6 +3,7 @@
     package="fr.hibon.modepassesecurest">
 
     <uses-sdk android:minSdkVersion="15" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="false"

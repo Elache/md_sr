@@ -21,7 +21,7 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
 
     /* Nom de la base de donnees */
     private static final String DATABASE_NOM = "modepasse_securest.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 7;
 
 
         /* ** METHODES ********
@@ -43,7 +43,7 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
         db.execSQL(DONNEE_TABLE_CREATE);
         db.execSQL(CATEGORIE_TABLE_CREATE) ;
         db.execSQL(SITE_WEB_TABLE_CREATE);
-        db.execSQL(lesCategories());
+        lesCategories(db);
     }
 
     @Override
@@ -51,6 +51,7 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DONNEE_TABLE_NOM + " ; ");
         db.execSQL("DROP TABLE IF EXISTS " + REPERTOIRE_TABLE_NOM + " ; " );
         db.execSQL("DROP TABLE IF EXISTS " + COMPTE_USER_TABLE_NOM + " ; " );
+        db.execSQL("DELETE FROM " + CATEGORIE_TABLE_NOM );
         db.execSQL("DROP TABLE IF EXISTS " + CATEGORIE_TABLE_NOM + " ; " );
         db.execSQL("DROP TABLE IF EXISTS " + SITE_WEB_TABLE_NOM + " ;" );
         onCreate(db);
@@ -58,13 +59,19 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
 
 
     /* ** CATEGORIE : INITIALISATION TABLE * */
-    private static final String lesCategories() {
+    private final void lesCategories(SQLiteDatabase dBase) {
         String[] cat = {"Général", "Accès Internet et connexions", "E-mail", "Réseaux sociaux", "Sites web Loisirs", "Jeux", "Services web", "Codes confidentiels", "Autres"};
         String reqInsertPrefixe = "INSERT INTO " + CATEGORIE_TABLE_NOM + " (" + CATEGORIE_NOM + ") VALUES ('";
         String reqInsertSuffixe = "') ;";
-        String requete = "";
-        for (int i = 0; i < cat.length; i++)
-            requete += reqInsertPrefixe + cat[i] + reqInsertSuffixe;
-        return requete;
+        String requete ;
+        for (int i = 0; i < cat.length; i++){
+            requete = reqInsertPrefixe + cat[i] + reqInsertSuffixe;
+            dBase.execSQL(requete);
+        }
+    }
+
+
+    public static String getDatabaseNom() {
+        return DATABASE_NOM ;
     }
 }
