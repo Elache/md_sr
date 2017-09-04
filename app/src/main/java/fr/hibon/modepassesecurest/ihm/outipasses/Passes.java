@@ -105,7 +105,7 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
             EditText nbCaractSaisi = (EditText) findViewById(R.id.saisie_longueur);
             String nbCaractLu = nbCaractSaisi.getText().toString();
             int longueur;
-            if (nbCaractLu.equals("") || nbCaractLu.equals("0"))
+            if (nbCaractLu.equals(""))
                 longueur = 10;
             else
                 longueur = Integer.parseInt(nbCaractLu);

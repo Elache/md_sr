@@ -104,12 +104,19 @@ public class Caractere {
 	 * @return un caractere faisant partie des caracteres possibles (table hors exclusions)
 	 */
 	static char genererCaractere(ArrayList<Character> table, ArrayList<Character> exclusions) {
-		char c = table.get((int) (Math.random() * table.size())) ;
+		ArrayList<Character> pool ;
+		if(table.size() == 0 || table == null)
+			pool = ensembleChiffres ;
+		else
+			pool = table ;
+
+
+		char c = pool.get((int) (Math.random() * pool.size())) ;
 		if (exclusions == null) {
 			return c;
 		}
 		while (exclusions.contains(c)) {
-			c = table.get((int) (Math.random() * table.size())) ;
+			c = pool.get((int) (Math.random() * pool.size())) ;
 		}
 		return c;
 	}

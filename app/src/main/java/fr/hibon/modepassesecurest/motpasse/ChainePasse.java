@@ -2,6 +2,7 @@ package fr.hibon.modepassesecurest.motpasse;
 
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Attributs : chaine, longueur, caracterisation de la chaine (types presents /
@@ -258,13 +259,18 @@ public class ChainePasse {
 			leMP += Caractere.genererCaractere(pool, exclusions);
 		}
 
+		if (leMP.length() == 0)
+			leMP = "!" ;
+
 		// si nb types voulus > longueur voulue, on renvoie seulement la longueur voulue
 		if(nbTypes > nb)
 			leMP = leMP.substring(0,nb) ;
 
 		// le mot de passe
-		mp.chaineDuPasse = leMP;
+		// melanger les caracteres tires pour casser l'ordre
+		mp.chaineDuPasse = melanger(leMP);
 		mp.longueur = leMP.length();
+
 		return mp;
 	}
 
@@ -347,7 +353,27 @@ public class ChainePasse {
 			presence += "-Caractères spéciaux- " ;
 		return presence;
 	}
-	
+
+	/**
+	 * Melange du tirage pour eviter l'ordre systematique de l'algorithme (chiffres, minusc...)
+	 * @param aMel passe a melanger
+	 * @return passe final
+	 */
+
+	private static String melanger(String aMel) {
+		int n = aMel.length();
+		char[] caract = aMel.toCharArray() ;
+		char temp;
+		int rdm ;
+		for(int i = n-1; n>=1; n--){
+			rdm = (int) Math.floor(Math.random()*(i+1));
+			temp = caract[i] ;
+			caract[i] = caract[rdm];
+			caract[rdm] = temp ;
+		}
+		return new String(caract) ;
+	}
+
 	/**
 	 * toString()
 	 */
