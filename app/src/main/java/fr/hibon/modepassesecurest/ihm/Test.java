@@ -21,6 +21,7 @@ import fr.hibon.modepassesecurest.compte.bdd.table.Table_Categorie;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Compte_Utilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Donnee;
 import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
+import fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire;
 import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
 import fr.hibon.modepassesecurest.ihm.compte.GestionIHM;
 
@@ -61,50 +62,34 @@ public class Test extends AppCompatActivity  {
 /* *** *** CREATIONS *** *** */
 
 
+/* Section de CREATION d'un SET DE DONNEES */
 /*
-// création d'un compte utilisateur    loic // passe  et loic // test = acces
+        // création d'un compte utilisateur    Admin // passe1  et  passe2
 
-        ChiffeMode cm = new ChiffeMode();
-        cm.chiffrer("test")  ;
-        String cle = cm.getCleCode() ;
-        String passeTestChiffre = cm.getPasseCode() ;
-        cm.chiffrer("passe", cle) ;
-        String passePasseChiffre = cm.getPasseCode() ;
-        manip.insertCompteUtilisateur("Loic", passeTestChiffre, passePasseChiffre, "lohibon@free.fr", "Utilisateur test", cle);
-
-
-// Creation 1er repertoire (automatique en IHM
-        manip.inserRepertoire("Mes codes","",1) ;
-
-// Creation d'un 2nd repertoire pour Utilisateur 1 (non accessible IHM)
-        manip.inserRepertoire("Répertoire professionnel","",1) ;
-
-
-// Insertion de donnees dans le repertoire
-
-        ChiffeMode chm = new ChiffeMode();
-        chm.chiffrer("motPasseDonnee")  ;
-        manip.insertDonnee(chm.getPasseCode(), "gmail", "lohib", "mp@secours.fr",
-                "www.gmail.com", "1er chat", "Webservices", "voir 2 autres comptes gmail", chm.getCleCode(), 1);
-
-        chm = new ChiffeMode().chiffrer("passeMauvais") ;
-        manip.insertDonnee(chm.getPasseCode(), "laposte", "jo.alfrit", "mp@se.fr",
-                "www.lp.net", "", "E-mail", "", chm.getCleCode(), 1);
-
-
-        chm = new ChiffeMode().chiffrer("d7svR43'Zé7") ;
-        manip.insertDonnee(chm.getPasseCode(), "sfrBox", "admin_moi", "mail@sfr.fr",
-                "moncompte-sfr.sfr.fr", "Code recup : hibuse", "Accès Internet et connexions", "", chm.getCleCode(), 1);
-
-
-// Insertion de donnees dans le repertoire
-        ChiffeMode cim = new ChiffeMode();
-        cim.chiffrer("byPasse")  ;
-        manip.insertDonnee(cim.getPasseCode(), "Entrée bât admin", "", "",
-                "www.gmail.com", "1er chat", "Codes confidentiels", "754 Darling Street", cim.getCleCode(), 2);
-
+                ChiffeMode cm = new ChiffeMode();
+                cm.chiffrer("passe1")  ;
+                String cle = cm.getCleCode() ;
+                String passeTestChiffre = cm.getPasseCode() ;
+                cm.chiffrer("passe2", cle) ;
+                String passePasseChiffre = cm.getPasseCode() ;
+                manip.insertCompteUtilisateur("Admin", passeTestChiffre, passePasseChiffre, "mail@freesbee.fr", "Utilisateur test", cle);
 
 */
+
+
+
+
+/* VIDER les tables : Compte_Utilisateur, Repertoire et Donnee */
+/*
+        requete = "DELETE FROM " + Table_Compte_Utilisateur.COMPTE_USER_TABLE_NOM ;
+        manip.getLaBase().execSQL(requete);
+        requete =  "DELETE FROM " + Table_Repertoire.REPERTOIRE_TABLE_NOM ;
+        manip.getLaBase().execSQL(requete);
+        requete =  "DELETE FROM " + Table_Donnee.DONNEE_TABLE_NOM ;
+        manip.getLaBase().execSQL(requete);
+*/
+
+
 
 /* *** *** AFFICHAGE *** *** */
 /* *** *** AFFICHAGE *** *** */

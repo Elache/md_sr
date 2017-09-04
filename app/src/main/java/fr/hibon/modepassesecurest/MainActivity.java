@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ImageButton test ;
 
-    // TODO largeur d\'ecran et haute densite ??
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
