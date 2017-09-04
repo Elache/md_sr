@@ -61,7 +61,9 @@ public class DonneesControl {
             // TODO site web en tant que table distincte
             webEdT = ((EditText) dialog.findViewById(R.id.c_donnee_web)) ;
             urlEdT = ((EditText) dialog.findViewById(R.id.c_donnee_web_url)) ;
+            // masquage provisoire des titre et champ Adresse web
             urlEdT.setVisibility(View.INVISIBLE); // provisoire
+            dialog.findViewById(R.id.donnee_web_url_titre).setVisibility(View.INVISIBLE);
 
             // TODO categorie en tant que table (jointures)
             /* Liste des categories : Spinner */

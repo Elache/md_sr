@@ -237,7 +237,6 @@ public class CompteUtilisateur {
      * @throws CompteException si plusieurs r&eacute;pertoires de m&ecirc;me nom
      */
     public Repertoire trouverRepert(String nomRep) throws CompteException {
-        // TODO gérer exception
         int doublons = 0;
         Repertoire enCours = null;
         for (Repertoire rep : lesRepertoires) {
@@ -246,8 +245,7 @@ public class CompteUtilisateur {
                 enCours = rep;
             }
             if (doublons > 1) {
-                // TODO gérer exception
-                throw new CompteException(ErreurDetail.NomRepertoireAmbigu);
+              throw new CompteException(ErreurDetail.NomRepertoireAmbigu);
             }
         }
         return enCours;

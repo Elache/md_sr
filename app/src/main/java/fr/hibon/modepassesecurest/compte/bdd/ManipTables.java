@@ -61,7 +61,7 @@ public class ManipTables {
 
 
     /* Insert Utilisateur */
-    public void insertCompteUtilisateur(String nom, String passe, String passeRecours, String mail, String note, String cle_chiffre) {
+        public void insertCompteUtilisateur(String nom, String passe, String passeRecours, String mail, String note, String cle_chiffre) {
         ContentValues valeurs = new ContentValues() ;
         valeurs.put(COMPTE_USER_NOM, nom);
         valeurs.put(COMPTE_USER_PASSE, passe);
@@ -72,12 +72,18 @@ public class ManipTables {
         laBase.insert(COMPTE_USER_TABLE_NOM, null, valeurs) ;
     }
 
+    // Supprimer un utilsiateur
     public void supprimeUtilisateur(int index) {
         String requete = "DELETE FROM " + COMPTE_USER_TABLE_NOM +
                 " WHERE " + COMPTE_USER_KEY + " = '" + index + "'; ";
         this.laBase.execSQL(requete);
     }
 
+    // Vider la table Utilisateur
+    public void viderUtilisateur() {
+        String requete = "DELETE FROM " + COMPTE_USER_TABLE_NOM ;
+        this.laBase.execSQL(requete);
+    }
 
 
     /* Rechercher Utilisateur en Base et Instancie si existe */
@@ -234,13 +240,18 @@ public class ManipTables {
         return lesInfos ;
     }
 
-
+    // supprimer un répertoire
     public void supprimeRepertoire(int index) {
         String requete = "DELETE FROM " + REPERTOIRE_TABLE_NOM +
                 " WHERE " + REPERTOIRE_KEY + " = '" + index + "'; ";
         this.laBase.execSQL(requete);
     }
 
+    // vider la table Repertoire
+    public void viderRepertoire() {
+        String requete = "DELETE FROM " + REPERTOIRE_TABLE_NOM ;
+        this.laBase.execSQL(requete);
+    }
 
 
     /* ****************** */
@@ -292,6 +303,14 @@ public class ManipTables {
                 " WHERE " + DONNEE_KEY + " = '" + index + "'; ";
         this.laBase.execSQL(requete);
     }
+
+
+    /* vider la table Donnee */
+    public void viderDonnee() {
+        String requete = "DELETE FROM " + DONNEE_TABLE_NOM ;
+        this.laBase.execSQL(requete);
+    }
+
 
     /* modifier une donnee */
     public void modifDonnee(Donnee laDonnee) {
