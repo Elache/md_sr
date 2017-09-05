@@ -4,6 +4,9 @@ package fr.hibon.modepassesecurest.ihm.compte;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,9 +14,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import fr.hibon.modepassesecurest.MainActivity;
 import fr.hibon.modepassesecurest.R;
 import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
+import fr.hibon.modepassesecurest.ihm.Infos;
+import fr.hibon.modepassesecurest.ihm.outipasses.Passes;
 import fr.hibon.modepassesecurest.motpasse.ChainePasse;
 
 /**
@@ -131,10 +137,72 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
 
     }
 
-
     private String erreursEtExceptions() {
         return "\n\n_____________________\nAutres anomalies : \n(correction facultative)\n" ;
     }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        if(CompteUtilisateur.getCompteConnecte().getIsConnecte()) {
+            getMenuInflater().inflate(R.menu.menu_creation_co, menu);
+        }
+        else {
+            getMenuInflater().inflate(R.menu.menu_creation, menu);
+        }
+        return true;
+    }
+
+    /**
+     * Gere les choix du menu :
+     * <BR>Deconnexion, Outi'passes, Infos, accueil, consulter
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent mIn ;
+
+        switch (item.getItemId()){
+
+            case R.id.menu_deco:
+                CompteUtilisateur.getCompteConnecte().deconnecter();
+                mIn = new Intent(CreationCompteInterface.this, CreationCompteInterface.class);
+                startActivity(mIn);
+                return true;
+
+            case R.id.menu_outipasses:
+                mIn = new Intent(CreationCompteInterface.this, Passes.class);
+                startActivity(mIn);
+                return true;
+
+            case R.id.menu_acces:
+                if(CompteUtilisateur.getCompteConnecte().getIsConnecte()) {
+                    mIn = new Intent(CreationCompteInterface.this, ConnecteAccueilInterface.class);
+                    startActivity(mIn);
+                    return true ;
+                }
+                mIn = new Intent(CreationCompteInterface.this, CreationCompteInterface.class);
+                startActivity(mIn);
+                return false;
+
+
+            case R.id.menu_info:
+                mIn = new Intent(CreationCompteInterface.this, Infos.class);
+                startActivity(mIn);
+                return true;
+
+
+            case R.id.menu_accueil:
+                mIn = new Intent(CreationCompteInterface.this, MainActivity.class);
+                startActivity(mIn);
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }
