@@ -344,21 +344,21 @@ public class ChainePasseTest {
     }
 
 
-    // //////// Completer passe jusque 10 caracteres ////////////////////
+    // //////// Completer passe jusque 15 caracteres ////////////////////
 
     /**
-     * verifie methode passeComplete10() qui permet de completer un mot de passe
-     * court jusqu'&agrave; atteindre une longueur de 10 caracteres <BR>
-     * test : le mot de passe obtenu doit etre de longueur 10 et commencer par
+     * verifie methode passeComplete15() qui permet de completer un mot de passe
+     * court jusqu'&agrave; atteindre une longueur de 15 caracteres <BR>
+     * test : le mot de passe obtenu doit etre de longueur 15 et commencer par
      * les caracteres du mot de passe court
      */
     @Test
-    public void passeComplete10() {
+    public void passeComplete15() {
         String chaineTropCourte = "pass5";
         ChainePasse passeCourt = ChainePasse.composition(chaineTropCourte);
 
-        String pass = ChainePasse.passeComplete10(passeCourt).getChaineDuPasse();
-        assertTrue((pass.length() == 10) && (pass.substring(0, chaineTropCourte.length()).equals(chaineTropCourte)));
+        String pass = ChainePasse.passeComplete15(passeCourt).getChaineDuPasse();
+        assertTrue((pass.length() == 15) && (pass.substring(0, chaineTropCourte.length()).equals(chaineTropCourte)));
     }
 
     // //////// toString() ////////////////////

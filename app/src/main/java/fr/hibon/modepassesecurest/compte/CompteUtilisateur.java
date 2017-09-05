@@ -61,7 +61,7 @@ public class CompteUtilisateur {
      * <b>param&egrave;tres saisis par l'Utilisateur</b>
      * <BR>
      * Si aucun mot de passe adapt&eacute; pour usage Internet, mot de passe compl&eacute;t&eacute;
-     * jusque longueur 10 et stock&eacute; dans attribut passeInternet
+     * jusque longueur 15 et stock&eacute; dans attribut passeInternet
      *
      * @param nomU          nom d'Utilisateur
      * @param passeU        mot de passe Utilisateur (authentification-syst&egrave;me)
@@ -97,7 +97,7 @@ public class CompteUtilisateur {
         instanceSingleton.passeInternet =  null ;
         if(!instanceSingleton.passeInternetAcceptable(passeU, passeRecoursU)) {
             ChainePasse chPassInternet = ChainePasse.composition(passeU)  ;
-            instanceSingleton.passeInternet = ChainePasse.passeComplete10(chPassInternet) ;
+            instanceSingleton.passeInternet = ChainePasse.passeComplete15(chPassInternet) ;
         }
         instanceSingleton.isConnecte = true ;
     }
@@ -197,7 +197,6 @@ public class CompteUtilisateur {
             this.lesRepertoires.remove(r);
             return;
         }
-        // TODO gérer exception
         throw new CompteException(ErreurDetail.RepertoireNExistePas);
     }
 

@@ -274,17 +274,17 @@ public class ChainePasse {
 		return mp;
 	}
 
-	// Completer une ChainePasse à 10
+	// Completer une ChainePasse à 15
 	/**
-	 * Complete un mot de passe trop court (jusqu'&agrave; une longueur de 10)
+	 * Complete un mot de passe trop court (jusqu'&agrave; une longueur de 15)
 	 *
 	 * @param motPasse
 	 *            le mot de passe trop court &agrave; compl&eacute;ter
-	 * @return ChainePasse avec mot de passe de 10 caracteres
+	 * @return ChainePasse avec mot de passe de 15 caracteres
 	 */
-	public static ChainePasse passeComplete10(ChainePasse motPasse) {
+	public static ChainePasse passeComplete15(ChainePasse motPasse) {
 		String nouvelleChaine = motPasse.chaineDuPasse;
-		nouvelleChaine += genererMotDePasse(10 - motPasse.longueur);
+		nouvelleChaine += genererMotDePasse(15 - motPasse.longueur);
 		return composition(nouvelleChaine);
 	}
 
