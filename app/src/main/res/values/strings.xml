@@ -6,7 +6,7 @@
     <string name="texte_logo">ModePasse SecuRest - logo</string>
 
     <!-- PROVISOIRES -->
-    <string name="provisoire">"Provisoire"</string>
+    <string name="test">"Bouton test"</string>
 
     <!-- param generaux -->
     <string name="creation">Création</string>
@@ -106,17 +106,24 @@
     <!-- ####################### -->
 
     <string name="donnee_creation">Enregistrement d\'une Donnée</string>
+            <string name="btn_donnee">Bouton Ajouter une Donnéee</string>
+
     <string name="donnee_consultation">Consultation d\'une Donnée</string>
     <string name="donnee_modification">Modification d\'une Donnée</string>
 
     <string name="donnee_modifier">Modifier</string>
     <string name="donnee_supprimer">Supprimer</string>
+        <string name="manip_attention">Icône avertissement</string>
+
     <string name="donnee_modif_valider">Enregistrer</string>
 
     <string name="donnee_passe_clair">Voir</string>
 
     <string name="donnee_cherche">Recherche</string>
+        <string name="btn_chercher">Bouton Rechercher</string>
     <string name="donnee_liste">Liste</string>
+        <string name="btn_lister">Bouton Lister</string>
+        <string name="puce_liste">Puce pour lister les Données</string>
 
     <string name="donnee_nom">Nom de la donnée</string>
     <string name="donnee_passe">Mot de passe</string>
@@ -153,6 +160,8 @@
 
     <string name="aTester">Mot de passe à tester</string>
         <string name="aTester_indic">Saisir la suite de caractères</string>
+
+    <string name="echelle">Echelle graphique de cotation</string>
 
     <!-- force des mots de passe-->
     <string name="forcepasse_tresfaible">Très faible</string>
