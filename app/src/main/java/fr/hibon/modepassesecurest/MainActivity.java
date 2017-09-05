@@ -22,7 +22,7 @@ import fr.hibon.modepassesecurest.motpasse.ChainePasse;
 /**
  * Ecran d'accueil et Interactions :
  * <BR><U>Boutons</U> : consulter, outi'passes, connexion, creation de compte
- * <BR><U>Menu</U> :  creation de compte, outi'passes, infos
+ * <BR><U>Menu</U> :  creation de compte, outi'passes, infos, deconnexion
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     /**
-     * Gere les options du menu : creation de compte, outi'passes, infos
+     * Gere les options du menu : creation de compte, outi'passes, infos, deconnexion
      * @param item
      * @return boolean
      */
@@ -158,6 +158,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.menu_info:
                 mIn = new Intent(MainActivity.this, Infos.class);
                 startActivity(mIn);
+                return true;
+
+            case R.id.menu_deconnex:
+                CompteUtilisateur.getCompteConnecte().deconnecter();
                 return true;
         }
 

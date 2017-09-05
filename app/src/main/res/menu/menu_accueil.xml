@@ -23,6 +23,11 @@
         app:showAsAction="never" />
 
 
+    <item
+        android:id="@+id/menu_deconnex"
+        android:title="@string/menu_deco"
+        app:showAsAction="never" />
+
 
 
 </menu>
