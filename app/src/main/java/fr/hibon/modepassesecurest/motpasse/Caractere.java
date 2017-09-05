@@ -44,7 +44,7 @@ public class Caractere {
 
 
 	/////////////// TESTER LE TYPE D'UN CARACTERE ///////////////
-	
+
 	/**
 	 * Teste que la valeur estUnChiffre
 	 * @return true si le type est bon
