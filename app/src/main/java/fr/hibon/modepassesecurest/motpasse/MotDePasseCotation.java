@@ -1,5 +1,10 @@
 package fr.hibon.modepassesecurest.motpasse;
 
+/**
+ * Assure l'analyse des mots de passe
+ * <BR>Methode de l'application ModePasse SecuRest
+ * <BR>+ methode de l'ANSSI (force en bits) : https://www.ssi.gouv.fr/administration/precautions-elementaires/calculer-la-force-dun-mot-de-passe/
+ */
 public class MotDePasseCotation {
 
 	private final ChainePasse motPasse;
@@ -10,6 +15,10 @@ public class MotDePasseCotation {
 	private final int forceBits;
 	private final String niveauAnssi;
 
+	/**
+	 * Constructeur priv&eacute; <BR>Objet avec resultats d'analyse pour qualifier la force du mot de passe
+	 * @param chaineToAnalyse mot a analyser
+	 */
 	private MotDePasseCotation(String chaineToAnalyse) {
 		motPasse = ChainePasse.composition(chaineToAnalyse);
 		motPasse.setMotPasse(chaineToAnalyse);
@@ -18,7 +27,11 @@ public class MotDePasseCotation {
 		this.valeurAnalyse = bilanChiffre();
 		this.qualifieAnalyse = bilanTexte();
 	}
-	
+
+	/**
+	 *  Constructeur priv&eacute; <BR>Objet avec resultats d'analyse pour qualifier la force du mot de passe
+	 * @param passToAnalyse ChainePasse a analyser
+	 */
 	private MotDePasseCotation(ChainePasse passToAnalyse) {
 		motPasse = passToAnalyse ;
 		this.forceBits = quantifierBits();
@@ -27,10 +40,20 @@ public class MotDePasseCotation {
 		this.qualifieAnalyse = bilanTexte();
 	}
 
+	/**
+	 * Analyse une chaine pour qualifier la force du mot de passe
+	 * @param pass mot a analyser
+	 * @return Objet MotDePasseCotation avec les resultats d'analyse
+	 */
 	public static MotDePasseCotation analyser(String pass) {
 		return new MotDePasseCotation(pass);
 	}
-	
+
+	/**
+	 * Analyse un ChainePasse pour qualifier la force du mot de passe
+	 * @param pass ChainePasse a analyser
+	 * @return Objet MotDePasseCotation avec les resultats d'analyse
+	 */
 	public static MotDePasseCotation analyser(ChainePasse pass) {
 		return new MotDePasseCotation(pass);
 	}
@@ -46,6 +69,11 @@ public class MotDePasseCotation {
 	
 	/// ANALYSE du MOT DE PASSE //////////////
 
+	/**
+	 * Retourne le niveau du mot de passe qualifi&eacute; par l'application
+	 * <BR>fonction de la longueur et du nombre de caracteres potentiellement utilisables
+	 * @return force du mot de passe (1 &agrave; 4)
+	 */
 	private int bilanChiffre() {
 
 		// Cas lies uniquement a la longueur
@@ -145,6 +173,10 @@ public class MotDePasseCotation {
 		return 4;
 	}
 
+	/**
+	 * Retourne le niveau du mot de passe qualifi&eacute; par l'application
+	 * @return force du mot de passe (textuel)
+	 */
 	private String bilanTexte() {
 		switch (valeurAnalyse) {
 		case 1:
@@ -172,6 +204,10 @@ public class MotDePasseCotation {
 
 	/// ANSSI ///
 
+	/**
+	 * Determine la force en bits d'un mot de passe d'apres les combinaisons possibles
+	 * @return force en bits
+	 */
 	private int quantifierBits() {
 		int bits = 1;
 		double stat = combinaisonsPossibles();
@@ -182,6 +218,10 @@ public class MotDePasseCotation {
 		return bits;
 	}
 
+	/**
+	 * Decrit le niveau du mot de passe suivant sa force en bits (methode ANSSI)
+	 * @return niveau ANSSI (textuel)
+	 */
 	private String classifAnssi() {
 		if (this.forceBits <= 64)
 			return "très faible";
@@ -208,11 +248,19 @@ public class MotDePasseCotation {
 	/// Utilitaires ///
 
 
-	// combinaisons : limite 1,8^308 (passw ~150 long ~1024 b)
+	/**
+	 * Calcul les combinaisons possibles suivant la longueur du mot et le nombre de caracteres differents utilisables
+	 * <BR>limite 1,8^308 (passw ~150 long ~1024 b)
+	 * @return nombre de combinaisons possibles
+	 */
 	private double combinaisonsPossibles() {
 		return Math.pow(determinerEtendue(), motPasse.longeurMot());
 	}
 
+	/**
+	 * A partir des types de caracteres representes, determine la taille (minimale) du pool initial de caracteres
+	 * @return nombre de caracteres du pool de depart
+	 */
 	private int determinerEtendue() {
 		int gamme = 0;
 		if (motPasse.avecChiffre())

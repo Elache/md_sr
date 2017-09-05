@@ -7,6 +7,7 @@ import android.widget.TextView;
 import fr.hibon.modepassesecurest.R;
 
 /**
+ * Ecran d'informations generales sur l'application
  */
 public class Infos extends AppCompatActivity {
 

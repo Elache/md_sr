@@ -19,7 +19,8 @@ import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Categorie.*;
 
 
 /**
- * Created by lohib on 20/08/2017.
+ * Gere la creation des tables et l'initialisation
+ * <BR>(categories + jeu d'essai)
  */
 
 public class GestionBaseLocale extends SQLiteOpenHelper {
@@ -41,6 +42,12 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
         super(context, name, null, version);
     }
 
+    /**
+     * Creation des 5 tables
+     * <BR>Initialisation des categories
+     * <BR>En phase de développement : création d'un jeu d'essai
+     * @param db Base de donnees
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(COMPTE_USER_TABLE_CREATE) ;
@@ -54,19 +61,24 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
         jeuTest(db) ;
     }
 
+    /**
+     * Recree la base pour mise à jour de version
+     * @param db base de donnees
+     * @param oldVersion num ancienne version
+     * @param newVersion num nouvelle version
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + DONNEE_TABLE_NOM + " ; ");
         db.execSQL("DROP TABLE IF EXISTS " + REPERTOIRE_TABLE_NOM + " ; " );
         db.execSQL("DROP TABLE IF EXISTS " + COMPTE_USER_TABLE_NOM + " ; " );
-        db.execSQL("DELETE FROM " + CATEGORIE_TABLE_NOM );
         db.execSQL("DROP TABLE IF EXISTS " + CATEGORIE_TABLE_NOM + " ; " );
         db.execSQL("DROP TABLE IF EXISTS " + SITE_WEB_TABLE_NOM + " ;" );
         onCreate(db);
     }
 
 
-    /* ** CATEGORIE : INITIALISATION TABLE * */
+    /** ** Categories : Initialisation de la table * */
     private final void lesCategories(SQLiteDatabase dBase) {
         String[] cat = {"Général", "Accès Internet et connexions", "E-mail", "Réseaux sociaux", "Sites web Loisirs", "Jeux", "Services web", "Codes confidentiels", "Autres"};
         String reqInsertPrefixe = "INSERT INTO " + CATEGORIE_TABLE_NOM + " (" + CATEGORIE_NOM + ") VALUES ('";
@@ -84,8 +96,7 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
     }
 
 
-    // Genere un Jeu de tests
-    // phase de tests
+    /** Genere un Jeu de tests */
     public static void jeuTest(SQLiteDatabase db) {
 
         // création d'un compte utilisateur    Loic // passe  et Loic // test pour acces

@@ -7,7 +7,7 @@ import fr.hibon.modepassesecurest.R;
 
 /**
  * Crée l'activité "Analyse de mot de passe"
- * <BR>et son aide
+ * <BR>et son teste d'aide
  */
 
 public class Analysor extends AppCompatActivity {
@@ -18,6 +18,10 @@ public class Analysor extends AppCompatActivity {
         setContentView(R.layout.analysor);
     }
 
+    /**
+     * Texte d'information sur l'analyse
+     * @return chaine texte d'information sur analyse
+     */
     public static String infoAnalyse() {
 
         String infos = "L'analyse utilise 2 facteurs :" ;

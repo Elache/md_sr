@@ -20,6 +20,9 @@ import fr.hibon.modepassesecurest.ihm.compte.*;
 import fr.hibon.modepassesecurest.motpasse.ChainePasse;
 
 /**
+ * Ecran d'accueil et Interactions :
+ * <BR><U>Boutons</U> : consulter, outi'passes, connexion, creation de compte
+ * <BR><U>Menu</U> :  creation de compte, outi'passes, infos
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -64,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * Gere les interactions avec les boutons : consulter, outi'passes, connexion, creation de compte
+     * @param v vue
+     */
     @Override
     public void onClick(View v) {
         Intent mIn;
@@ -93,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case(R.id.bouton_connexion):
                 String identifiant = saisieIdentifiant.getText().toString() ;
                 String passe = passeIdentifiant.getText().toString() ;
-                // TODO verifier saisie
+
                 boolean existe = new ManipTables(this).verifierCompte(identifiant, passe) ;
 
                 if (existe) {
@@ -127,8 +134,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
-    // TODO menu accueil
+    /**
+     * Gere les options du menu : creation de compte, outi'passes, infos
+     * @param item
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent mIn ;

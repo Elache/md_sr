@@ -24,7 +24,17 @@ import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire.*;
 
 
 /**
- * Created by lohib on 22/08/2017.
+ * Gere la manipulation des donnees avec la base de donnees :
+ * <BR><U>Compte_Utilisateur</U> : inserer un utilisateur, supprimer, vider la table,
+ * <BR> &nbsp;verifier l'existence d'un utilisateur (identifiant + mot de passe)
+ * <BR> &nbsp;lister les repertoires d'un utilisateur
+ * <BR><U>Repertoire</U> : inserer, supprimer, vider la table
+ * <BR> &nbsp;lister les donnees d'un repertoire
+ * <BR><U>Donnee</U> : inserer, supprimer, modifier une Donnee, vider la table
+ * <BR> &nbsp;rechercher une Donnee (identifiant)
+ * <BR> &nbsp;rechercher une chaine dans les champs d'une Donnee
+ * <BR><U>Categorie</U> : inserer, lister les categories
+ * <BR><U>Site_Web</u> : inserer, supprimer
  */
 
 public class ManipTables {
@@ -60,7 +70,16 @@ public class ManipTables {
     /* ****************** */
 
 
-    /* Insert Utilisateur */
+
+    /**
+     * Insere Utilisateur dans la base
+     * @param nom nom utilisateur
+     * @param passe passe utilisateur
+     * @param passeRecours passe de recours utilisateur
+     * @param mail mail utilisateur
+     * @param note note utilisateur
+     * @param cle_chiffre cle de chiffrement
+     */
         public void insertCompteUtilisateur(String nom, String passe, String passeRecours, String mail, String note, String cle_chiffre) {
         ContentValues valeurs = new ContentValues() ;
         valeurs.put(COMPTE_USER_NOM, nom);
@@ -72,21 +91,35 @@ public class ManipTables {
         laBase.insert(COMPTE_USER_TABLE_NOM, null, valeurs) ;
     }
 
-    // Supprimer un utilsiateur
+
+    /**
+     * Supprime un utilisateur de sa table
+     * @param index cle primaire
+     */
     public void supprimeUtilisateur(int index) {
         String requete = "DELETE FROM " + COMPTE_USER_TABLE_NOM +
                 " WHERE " + COMPTE_USER_KEY + " = '" + index + "'; ";
         this.laBase.execSQL(requete);
     }
 
-    // Vider la table Utilisateur
+    /**
+     * Vide la table Compte_Utilisateur
+     */
     public void viderUtilisateur() {
         String requete = "DELETE FROM " + COMPTE_USER_TABLE_NOM ;
         this.laBase.execSQL(requete);
     }
 
 
-    /* Rechercher Utilisateur en Base et Instancie si existe */
+
+    /**
+     * Recherche un Utilisateur en Base de donnees
+     * a partir de ses saisies (identifiant et mot de passe)
+     * <BR>SI l'utilisateur existe, Instancie le CompteUtilisateur (singleton) qui est ainsi connect&eacute;
+     * @param userNom nom d'utilisateur
+     * @param userPassSaisi mot de passe saisi
+     * @return true si un utilisateur est trouve
+     */
     public boolean verifierCompte(String userNom, String userPassSaisi) {
 
         /* REQUETE Compte_Utilisateur */
@@ -103,9 +136,8 @@ public class ManipTables {
             laBase.close();
             return false ;
         }
-        /*  if(res.getCount() > 1) // EXCEPTION */
 
-        /* Verification mot de passe saisi avec ceux en base de données */
+       /* Verification mot de passe saisi avec ceux en base de données */
         res.moveToNext() ;
         String mot1 = res.getString(res.getColumnIndex(COMPTE_USER_PASSE)) ;
         String mot2 = res.getString(res.getColumnIndex(COMPTE_USER_PASSE_RECOURS)) ;
@@ -129,7 +161,8 @@ public class ManipTables {
         String note = res.getString(res.getColumnIndex(COMPTE_USER_NOTE));
         res.close() ;
 
-        // TODO passeInternet vide car Base locale // gerer aussi quand existe en ligne
+        // TODO avec la base en ligne gerer aussi passe_internet
+
         ArrayList<Repertoire> lesRep = listerRepertoires(id_User) ;
         CompteUtilisateur.getCompteConnecte() ;
         try {
@@ -141,9 +174,11 @@ public class ManipTables {
         return true ;
     }
 
-
-
-    /* Recupere Repertoires de l'Utilisateur */
+    /**
+     * Liste les repertoires d'un utilisateur
+     * @param id_User utilisateur (sa cle primaire)
+     * @return liste des repertoires de l'utilisateur
+     */
     public ArrayList<Repertoire> listerRepertoires(int id_User) {
         ArrayList<Repertoire> lesRep = new ArrayList<>() ;
         String nomRepertoire;
@@ -167,7 +202,13 @@ public class ManipTables {
 
 
 
-    // verifie l'existence d'un identifiant
+
+    /**
+     * Verifie l'existence d'un identifiant (nom d'utilisateur) dans la base
+     * @param context contexte de l'activite
+     * @param identifiant nom d'utilisateur recherche
+     * @return
+     */
     private boolean identifExiste(Context context, String identifiant) {
         String req = "SELECT * FROM " + COMPTE_USER_TABLE_NOM
                 + " WHERE " + COMPTE_USER_NOM + " ='" + identifiant + "';" ;
@@ -181,6 +222,12 @@ public class ManipTables {
         return id.length() == 0 || id == null;
     }
 
+    /**
+     * Genere des messages d'erreur sur le choix du nom d'utilisateur (identifiant)
+     * @param context contexte de l'activite
+     * @param identifiant identifiant saisi pour l'inscription
+     * @return texte d'erreur
+     */
     public String erreursBloquantes(Context context, String identifiant) {
         String erreur = ""  ;
         if(identiNVide(identifiant))
@@ -198,7 +245,13 @@ public class ManipTables {
     /* Table REPERTOIRE */
     /* ****************** */
 
-        /* Insere un repertoire */
+
+    /**
+     * Insere un Repertoire dans la base
+     * @param nom nom du repertoire
+     * @param note information associee
+     * @param userProprio utilisateur proprietaire
+     */
     public void inserRepertoire(String nom, String note, int userProprio) {
         ContentValues valeurs = new ContentValues() ;
         valeurs.put(REPERTOIRE_NOM, nom ) ;
@@ -208,7 +261,12 @@ public class ManipTables {
     }
 
 
-    /* Recupere Donnees d'un Repertoire */
+
+    /**
+     * Liste les Donnees d'un Repertoire
+     * @param repertoire repertoire a parcourir
+     * @return liste des donnees
+     */
     public ArrayList<Donnee> listerDonnees(int repertoire) {
         ArrayList<Donnee> lesInfos = new ArrayList<>() ;
         String passeD, nomD, mailD, questD, catD, noteD, webD, logD, cleChD ;
@@ -240,14 +298,22 @@ public class ManipTables {
         return lesInfos ;
     }
 
-    // supprimer un répertoire
+
+
+    /**
+     * Supprime un Repertoire dans la table (a partir de son index)
+     * @param index cle primaire
+     */
     public void supprimeRepertoire(int index) {
         String requete = "DELETE FROM " + REPERTOIRE_TABLE_NOM +
                 " WHERE " + REPERTOIRE_KEY + " = '" + index + "'; ";
         this.laBase.execSQL(requete);
     }
 
-    // vider la table Repertoire
+
+    /**
+     * Vide la table Repertoire
+     */
     public void viderRepertoire() {
         String requete = "DELETE FROM " + REPERTOIRE_TABLE_NOM ;
         this.laBase.execSQL(requete);
@@ -259,6 +325,20 @@ public class ManipTables {
     /* ****************** */
 
     /* Insert Donnee */
+
+    /**
+     * Insere les informations d'une Donnee dans la table Donnee
+     * @param passeDonnee mot de passe (chiffre)
+     * @param nomDonnee nom
+     * @param loginDonnee login
+     * @param mailDonnee mail
+     * @param siteWebDonnee wite web
+     * @param questionSecreteDonnee question secrete
+     * @param categorieDonnee categorie choisis
+     * @param noteDonnee note
+     * @param cleDonnee cle de chiffrement
+     * @param repertoire repertoire de destination
+     */
     public void insertDonnee(String passeDonnee, String nomDonnee, String loginDonnee, String mailDonnee, String siteWebDonnee,
                              String questionSecreteDonnee, String categorieDonnee, String noteDonnee, String cleDonnee, int repertoire) {
         long dateCreation = System.currentTimeMillis() ;
@@ -278,6 +358,11 @@ public class ManipTables {
         laBase.insert(DONNEE_TABLE_NOM, null, valeurs) ;
     }
 
+    /**
+     * Inserer une Donnee dans la base
+     * @param donnee Donnee a inserer
+     * @param repert repertoire de destination
+     */
     public void insertDonnee(Donnee donnee, int repert) {
         long dateCreation = System.currentTimeMillis() ;
         ContentValues valeurs = new ContentValues() ;
@@ -297,22 +382,28 @@ public class ManipTables {
     }
 
 
-    /* supprimer une donnee */
+    /**
+     * supprimer une donnee
+     * @param index cle primaire
+     */
     public void supprDonnee(int index) {
         String requete = "DELETE FROM " + DONNEE_TABLE_NOM +
                 " WHERE " + DONNEE_KEY + " = '" + index + "'; ";
         this.laBase.execSQL(requete);
     }
 
-
-    /* vider la table Donnee */
+    /**
+     * vider la table Donnee
+     */
     public void viderDonnee() {
         String requete = "DELETE FROM " + DONNEE_TABLE_NOM ;
         this.laBase.execSQL(requete);
     }
 
-
-    /* modifier une donnee */
+    /**
+     * modifier une donnee : update sur la table
+     * @param laDonnee Donnee a modifier
+     */
     public void modifDonnee(Donnee laDonnee) {
         long dateModif = System.currentTimeMillis() ;
         String requete = "UPDATE " + DONNEE_TABLE_NOM + " SET "
@@ -330,7 +421,12 @@ public class ManipTables {
     }
 
 
-    /* Cree une Donnee a partir d'un enregistrement */
+
+    /**
+     * Cree une Donnee a partir d'un enregistrement
+     * @param index cle primaire
+     * @return objet Donnee
+     */
     public Donnee extraitDonnee(int index) {
         String requete =  " SELECT * FROM " + DONNEE_TABLE_NOM + " WHERE " + DONNEE_KEY + " ='" + index + "' ;" ;
         Cursor res = laBase.rawQuery(requete, null );
@@ -355,7 +451,13 @@ public class ManipTables {
         return laDonnee ;
     }
 
-
+    /**
+     * Cherche dans les champs NOM + QUESTION + NOTE d'une Donnee
+     * la chaine en parametre et retourne les Donnee correspondantes
+     * @param idRep Repertoire selectionne
+     * @param chaine Chaine a chercher
+     * @return Liste des Donnee trouvees
+     */
     public ArrayList<Donnee> rechercheParMot(int idRep, String chaine) {
         ArrayList<Donnee> resultats = new ArrayList<>() ;
 
@@ -394,7 +496,12 @@ public class ManipTables {
     /* TABLE SITE WEB */
     /* ****************** */
 
-    /* Insert SITE_WEB */
+
+    /**
+     *Insere un SITE_WEB dans sa table
+     * @param nom nom du site
+     * @param url adresse du site
+     */
     public void insertSiteWeb(String nom, String url) {
         ContentValues valeurs = new ContentValues() ;
         valeurs.put(Table_Site_Web.SITE_WEB_NOM, nom) ;
@@ -402,6 +509,10 @@ public class ManipTables {
         laBase.insert(Table_Site_Web.SITE_WEB_TABLE_NOM, null, valeurs) ;
     }
 
+    /**
+     * Supprime un site web dans sa table
+     * @param index cle primaire
+     */
     public void supprimeSiteWeb(int index) {
         String requete = "DELETE FROM " + Table_Site_Web.SITE_WEB_TABLE_NOM + " WHERE " + Table_Site_Web.SITE_WEB_KEY + " = '" + index + "'; ";
         this.laBase.execSQL(requete);
@@ -411,6 +522,11 @@ public class ManipTables {
     /* ****************** */
     /* TABLE CATEGORIE */
     /* ****************** */
+
+    /**
+     * Liste les categories a partir de la table Categorie
+     * @return Liste des categories
+     */
     public ArrayList<String> listerCateg() {
         ArrayList<String> lesCategories = new ArrayList<>() ;
         String requete = "SELECT " + CATEGORIE_NOM + " FROM " + CATEGORIE_TABLE_NOM ;
@@ -425,6 +541,10 @@ public class ManipTables {
     }
 
 
+    /**
+     * Insere une categorie dans la base de donnees
+     * @param nomC nom de la categorie
+     */
     public void insertCategorie(String nomC) {
         ContentValues valeurs = new ContentValues() ;
         valeurs.put(CATEGORIE_NOM, nomC) ;

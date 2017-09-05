@@ -17,10 +17,12 @@ import fr.hibon.modepassesecurest.ihm.compte.GestionIHM;
 import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Donnee.DONNEE_TABLE_NOM;
 
 /**
- * Created by lohib on 30/08/2017.
+ * Classe pour l'export en fichier csv
+ * <BR>!! EN COURS DE DEVELOPPEMENT
  */
 
 public class Export extends AppCompatActivity {
+
 
 
 /*

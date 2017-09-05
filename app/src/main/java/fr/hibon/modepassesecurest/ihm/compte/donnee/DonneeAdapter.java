@@ -13,7 +13,7 @@ import fr.hibon.modepassesecurest.R;
 import fr.hibon.modepassesecurest.compte.Donnee;
 
 /**
- * Created by Boris Sauvage on 10/10/2015.
+ * Adaptateur pour une liste de Donnee
  */
 public class DonneeAdapter extends BaseAdapter {
 

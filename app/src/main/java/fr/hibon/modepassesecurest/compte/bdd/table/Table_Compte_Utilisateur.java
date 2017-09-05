@@ -1,7 +1,8 @@
 package fr.hibon.modepassesecurest.compte.bdd.table;
 
 /**
- * Created by lohib on 20/08/2017.
+ *Classe correspondant à la table Compte_utilisateur de la base de donnees
+ * <BR>les champs ; la requete de creation
  */
 
 public class Table_Compte_Utilisateur  {
@@ -17,7 +18,7 @@ public class Table_Compte_Utilisateur  {
         public static final String COMPTE_USER_CLE_CHIFFRE = "cle_chiffre_u";
 
 
-    /* CREATION DE LA TABLE */
+    /** Requete CREATION DE LA TABLE */
     public static final String COMPTE_USER_TABLE_CREATE = "CREATE TABLE " + COMPTE_USER_TABLE_NOM + " " +
             "(" + COMPTE_USER_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COMPTE_USER_NOM +
             " TEXT UNIQUE, " + COMPTE_USER_PASSE + " TEXT, " + COMPTE_USER_PASSE_RECOURS + " TEXT, " + COMPTE_USER_MAIL + " TEXT, " +

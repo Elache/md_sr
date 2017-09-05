@@ -32,6 +32,9 @@ import fr.hibon.modepassesecurest.ihm.compte.donnee.DonneesControl;
 import fr.hibon.modepassesecurest.ihm.Infos;
 import fr.hibon.modepassesecurest.ihm.outipasses.Passes;
 
+/**
+ * Gere l'interface d'accueil apres connexion : nom, liste des repertoires, acces aux fonctions de recherche et liste, affichage des noms de donn&eacute;es trouv&eacute;es
+ */
 public class ConnecteAccueilInterface extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
 
     CompteUtilisateur lUtilisateur ;
@@ -122,7 +125,11 @@ public class ConnecteAccueilInterface extends AppCompatActivity implements View.
         DonneesControl.afficherDonnee(this, d, rep) ;
     }
 
-
+    /**
+     * Gere les choix sur les boutons pour
+     * Rechercher / Lister / Ajouter une Donnee
+     * @param v vue
+     */
     @Override
     public void onClick(View v) {
 
@@ -146,6 +153,11 @@ public class ConnecteAccueilInterface extends AppCompatActivity implements View.
     }
 
 
+    /**
+     * Gere l'affichage de la liste de Donnee retourn&eacute;es par une requete (rechercher ou lister)
+     *
+     * @param result
+     */
     private void affichResultats(ArrayList<Donnee> result) {
         final DonneeAdapter adaptListe ;
         affichRes.setVisibility(View.VISIBLE);
@@ -183,6 +195,12 @@ public class ConnecteAccueilInterface extends AppCompatActivity implements View.
         return true;
     }
 
+    /**
+     * Gere les choix du menu :
+     * <BR>Deconnexion, Outi'passes, Infos, Creer une Donnee
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent mIn ;

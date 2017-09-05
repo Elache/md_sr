@@ -1,7 +1,7 @@
 package fr.hibon.modepassesecurest.compte.bdd.table;
 
-/**
- * Created by lohib on 20/08/2017.
+/** Classe correspondant à la table Donnee de la base de donnees
+ * <BR>les champs ; la requete de creation
  */
 
 public class Table_Donnee {
@@ -24,7 +24,7 @@ public class Table_Donnee {
         public static final String DONNEE_WEB = "id_web";
 
 
-    /* CREATION DE LA TABLE */
+    /** Requete CREATION DE LA TABLE */
     public static final String DONNEE_TABLE_CREATE = "CREATE TABLE " + DONNEE_TABLE_NOM + " " +
             "(" + DONNEE_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DONNEE_NOM +
             " TEXT, " + DONNEE_LOGIN + " TEXT, " + DONNEE_PASSE + " TEXT, " + DONNEE_QUESTION + " TEXT, " +

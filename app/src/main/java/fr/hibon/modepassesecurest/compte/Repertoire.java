@@ -68,7 +68,6 @@ public class Repertoire {
 			lesDonnees.remove(d);
 			return ;
 		}
-		// TODO  gérer exception
 		throw new CompteException(ErreurDetail.DonneeNExistePas) ;
 	}
 
@@ -215,7 +214,7 @@ public class Repertoire {
 
 	@Override
 	public boolean equals(Object obj) {
-		// TODO verifier EQUALS + ajout suffixe au NOM pour BDD en ligne ?
+		// TODO determiner EQUALS
 		if (this == obj)
 			return true;
 		if (obj == null)

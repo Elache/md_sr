@@ -20,7 +20,9 @@ import fr.hibon.modepassesecurest.compte.bdd.table.Table_Compte_Utilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire;
 
 /**
- * Created by lohib on 19/08/2017.
+ * Classe Controle : <BR>Creation de compte : verification des saisies de creation de compte,
+ * gestion du chiffrement et de l'insertion des données
+ * <BR>Outils : generation de popup parametrable (titre, message) ; gestionnaire confirmation de deconnexion
  */
 
 public class GestionIHM {
@@ -49,7 +51,12 @@ public class GestionIHM {
     /* GESTION DE LA CREATION */
     /* ***** */
 
-
+    /**
+     * Verifie les saisies pour la creation d'un compte et genere un avertissement
+     * <BR>Concordance des passes et confirmation
+     * <BR>Pour les comptes en ligne, longueur d'identifiant et force des passes
+     * @return
+     */
     public String verifier() {
         String avertiss = "";
         boolean confirm = true;
@@ -77,7 +84,11 @@ public class GestionIHM {
         return avertiss;
     }
 
-    /* Instancie et Insert en Base */
+
+    /**
+     * Gere la creation du Compte : chiffrement des passes, insertion dans la base de donnee du Compte et de son premier repertoire
+     * @param context contexte
+     */
     public void instanceInsert(Context context) {
         CompteUtilisateur lUtilisateur = CompteUtilisateur.getCompteConnecte();
         String unPasse;
@@ -125,7 +136,6 @@ public class GestionIHM {
 
 
     private boolean verifNom() {
-        // TODO verif du nom a lier a internet
         return user_nom.length() >= 4;
     }
 
@@ -140,6 +150,13 @@ public class GestionIHM {
     /* GESTION DE DONNEES */
     /* ***** */
 
+    /**
+     * Recherche des Donnees a partir d'une chaine<BR> dans les champs nom+note+question (delegation a ManipTables)
+     * @param c contexte
+     * @param idRep repertoire a explorer
+     * @param recherche chaine a rechercher
+     * @return Liste des Donnee
+     */
     public static ArrayList<Donnee> rechercheDonneeParNom(Context c, int idRep, String recherche) {
         return new ManipTables(c).rechercheParMot(idRep, recherche) ;
     }
@@ -149,7 +166,12 @@ public class GestionIHM {
     /* OUTIL */
     /* ***** */
 
-    // POP-UP
+    /**
+     * Gestionnaire de fenetre popup d'information
+     * @param context contexte
+     * @param titre titre (texte en exerge)
+     * @param message message
+     */
     public static void popInfo(Context context, String titre, String message) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.en_ligne_pop);
@@ -169,7 +191,13 @@ public class GestionIHM {
     }
 
 
-    // pop_up OUI / NON pour deconnexion
+    /**
+     * Gestionnaire de fenetre popup de confirmation pour la deconnexion
+     *
+     * @param context contexte
+     * @param titre titre
+     * @param message message
+     */
     public static void pop2Choix(Context context, String titre, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(titre);

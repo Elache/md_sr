@@ -31,7 +31,7 @@ import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire.REPER
 
 
 /**
- * Created by lohib on 23/08/2017.
+ * Gestion de l'export des donnees d'un utilisateur
  */
 
 public class Test extends AppCompatActivity  {

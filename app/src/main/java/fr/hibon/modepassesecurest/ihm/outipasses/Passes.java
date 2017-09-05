@@ -73,7 +73,10 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-
+    /**
+     * Gere les interactions avec les boutons : infos sur analyse, infos sur generation, analyser, generer
+     * @param v
+     */
     @Override
     public void onClick(View v) {
 
@@ -149,6 +152,13 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
 
 
     /* OUTILS : crée liste d'exclusions ou d'inclusions */
+
+    /**
+     * Outil : pour les inclusions ou les exclusions de caracteres,
+     * cree une liste a partir de la chaine saisie (succession de caracteres)
+     * @param chaine
+     * @return
+     */
     private ArrayList<Character> etablirListe(String chaine){
         if(chaine == null || chaine.length() == 0)
             return null ;
@@ -168,7 +178,10 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
         coteCommentaire();
     }
 
-    /* OUTILS : cotation graphique */
+
+    /**
+     * Gere l'affichage graphique de la force du mot de passe
+     */
     private void coteGraphique() {
         resultatGraphique = (ImageView) findViewById(R.id.resultat_graphique) ;
         int cotePasse = lePasse.getValeurAnalyse() ;
@@ -183,7 +196,9 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
     }
 
 
-    /* OUTILS : cotation commentaire */
+    /**
+     * Gere le commentaire sur la force du mot de passe
+     */
     private void coteCommentaire() {
         affichAnalyse = (TextView) findViewById(R.id.info_analyse) ;
         String commentaire = "Niveau ModePasse Securest : " + lePasse.getQualifieAnalyse() + " (" + lePasse.getValeurAnalyse() + " / 4)" ;
@@ -212,7 +227,11 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
     }
 
 
-
+    /**
+     * Gere les interactions avec le menu : Infos, Deconnexion, retour accueil, creation de compte
+     * @param item item selectionne dans le menu
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent mIn ;

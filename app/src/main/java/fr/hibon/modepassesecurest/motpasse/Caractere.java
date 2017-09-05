@@ -18,8 +18,8 @@ public class Caractere {
 	private static ArrayList<Character> ensembleChiffres ;  // 10 chiffres [48-57]
 	private static ArrayList<Character> ensembleMinuscules ; // 26 minusc [97-122]
 	private static ArrayList<Character> ensembleMajuscules ; // 26 majusc [65-90]
-	private static ArrayList<Character> ensembleAccentCedil ; // 12 minusc. accentuees, cedille {224, 226,231,232,233,234,235,238,239,244,249,251};
-	private static ArrayList<Character> ensembleSpeciaux ; // = caracteresSpeciaux(); // 36 caract speciaux
+	private static ArrayList<Character> ensembleAccentCedil ; // 12 minusc. accentuees, cedille
+	private static ArrayList<Character> ensembleSpeciaux ; // 36 caract speciaux
 
 	/**
 	 * Constructeur affecte le caractere du parametre et initialise les 5 listes de caracteres (=types)
@@ -44,9 +44,9 @@ public class Caractere {
 
 
 	/////////////// TESTER LE TYPE D'UN CARACTERE ///////////////
-
+	
 	/**
-	 * Teste que la valeur estUnChiffre()
+	 * Teste que la valeur estUnChiffre
 	 * @return true si le type est bon
 	 */
 	boolean estUnChiffre() {
@@ -54,7 +54,7 @@ public class Caractere {
 	}
 
 	/**
-	 * Teste que la valeur estUneMinuscule()
+	 * Teste que la valeur estUneMinuscule
 	 * @return true si le type est bon
 	 */
 	boolean estUneMinuscule() {
@@ -62,7 +62,7 @@ public class Caractere {
 	}
 
 	/**
-	 * Teste que la valeur estUneMajuscule()
+	 * Teste que la valeur estUneMajuscule
 	 * @return true si le type est bon
 	 */
 	boolean estUneMajuscule() {
@@ -70,7 +70,7 @@ public class Caractere {
 	}
 
 	/**
-	 * Teste que la valeur estUnAccentCedil()
+	 * Teste que la valeur estUnAccentCedil
 	 * @return true si le type est bon
 	 */
 	boolean estUnAccentCedil() {
@@ -78,7 +78,7 @@ public class Caractere {
 	}
 
 	/**
-	 * Teste que la valeur estUnSpecial()
+	 * Teste que la valeur estUnSpecial
 	 * @return true si le type est bon
 	 */
 	boolean estUnSpecial() {
@@ -93,7 +93,7 @@ public class Caractere {
 	 * @param table liste des caracteres possibles pour la generation
 	 * @return un caractere faisant partie des caracteres possibles (table)
 	 */
-	 static char genererCaractere(ArrayList<Character> table) {
+	static char genererCaractere(ArrayList<Character> table) {
 		return genererCaractere(table, null);
 	}
 

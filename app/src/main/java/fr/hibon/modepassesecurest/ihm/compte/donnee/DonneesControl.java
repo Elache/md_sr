@@ -23,17 +23,18 @@ import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
 import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
 
 /**
- * Created by lohib on 26/08/2017.
- */
-
-/**
  * Gere les affichages d'interface pour <BR>affichage d'une donnee selectionnee,<BR>modification
  */
 public class DonneesControl {
 
 
-        /** Creation d'une donnee - Dialog - Champs de saisie */
-        public static void saisirDonnee(Context cont, int rep) {
+
+    /**
+     * Creation d'une donnee - Dialog - Champs de saisie
+     * @param cont Contexte de l'activite
+     * @param rep Repertoire de destination
+     */
+    public static void saisirDonnee(Context cont, int rep) {
 
             // Affichage Donnée - pop up
             final Dialog dialog = new Dialog(cont);
@@ -127,10 +128,14 @@ public class DonneesControl {
 
 
 
-        /** Afficher une donnee (Dialog)
-         * <BR>Mot de passe en clair sur demande
-         * <BR>Acces a la modification et la suppression
-         * */
+    /**
+     * Afficher une donnee (Dialog)
+     * <BR>Mot de passe en clair sur demande
+     * <BR>Acces a la modification et la suppression
+     * @param cont contexte
+     * @param donnee Donnee a afficher
+     * @param rep Repertoire de la Donnee
+     */
         public static void afficherDonnee(Context cont, Donnee donnee, int rep) {
 
             // Affichage Donnée - pop up
@@ -211,8 +216,13 @@ public class DonneesControl {
 
 
 
-        /** Modifier une donnee (Dialog) */
-        public static void modifierDonnee(Context cont, Donnee donnee) {
+
+    /**
+     * Modifier une donnee (Dialog)
+     * @param cont contexte
+     * @param donnee Donnee a modifier
+     */
+    public static void modifierDonnee(Context cont, Donnee donnee) {
             final Dialog dialog = new Dialog(cont);
             final Context leCont = cont ;
             final Donnee laDonnee = donnee ;
@@ -234,14 +244,14 @@ public class DonneesControl {
             ((TextView) dialog.findViewById(R.id.donnee_mail_modif)).setText(donnee.getMailDonnee()) ;
             ((TextView) dialog.findViewById(R.id.donnee_question_modif)).setText(donnee.getQuestionSecreteDonnee()) ;
 
-            // to do : Site_web : récuperer dans Table les nom et url correspondant à l'id
+            // todo : Site_web : récuperer dans Table les nom et url correspondant à l'id
             ((TextView) dialog.findViewById(R.id.donnee_web_modif)).setText(donnee.getSiteWebDonnee()) ;
             // masque en attendant
             // ((TextView) dialog.findViewById(R.id.donnee_web_url)).setText("") ;
             dialog.findViewById(R.id.donnee_url_modif).setVisibility(View.INVISIBLE);
             dialog.findViewById(R.id.donnee_web_url_label).setVisibility(View.INVISIBLE);
 
-            // to do : récuperer dans Table Categorie le nom correspondant à l'id
+            // todo : récuperer dans Table Categorie le nom correspondant à l'id
             Spinner spinCat = (Spinner) dialog.findViewById(R.id.donnee_categorie_modif) ;
             final ArrayList<String> categ = new ManipTables(leCont).listerCateg();
             ArrayAdapter adapter = new ArrayAdapter(leCont, android.R.layout.simple_spinner_item, categ) ;
@@ -294,8 +304,14 @@ public class DonneesControl {
 
 
 
-        // pop_up OUI / NON pour creation
-        // Creation effective : Objet + Base de donnees
+    /**
+     * Pour la creation d'une Donnee, confirmation de l'Utilisateur.
+     * <BR>Ajoute l'objet Donnee au Repertoire <BR>et l'enregistre en base de donnee
+     * @param context contexte
+     * @param saisie objet Donnee d'apres la saisie
+     * @param idReper repertoire
+     * @param confirm existence d'anomalie non bloquante (passe et confirmation differents)
+     */
         public static void popCreeConfirm(final Context context, Donnee saisie, int idReper, boolean confirm) {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             final Donnee donneeSaisie = saisie ;
@@ -333,8 +349,13 @@ public class DonneesControl {
         }
 
 
-    // pop_up OUI / NON pour suppression
-    // Suppression effective : Objet + Base de donnees
+
+    /**
+     * Pour la suppression d'une Donnee, confirmation de l'Utilisateur.
+     * <BR>Supprimer l'objet Donnee du Repertoire <BR>et de la base de donnee
+     * @param context contexte
+     * @param donnee Donnee a supprimer
+     */
     public static void popSupprConfirm(final Context context, Donnee donnee) {
         final Donnee laDonnee = donnee ;
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -352,8 +373,7 @@ public class DonneesControl {
                             rep.getLesDonnees().remove(donn);
                     }
                 }
-
-                // TODO rafraichir liste affichee
+                // TODO rafraichir automatiquement liste affichee dans l'activite
 
                 dialog.dismiss();
             }
@@ -369,8 +389,14 @@ public class DonneesControl {
     }
 
 
-    // pop_up OUI / NON pour valider modifications
-    // modification effective : Objet + Base de donnees
+
+    /**
+     *  Pour la modification d'une Donnee, confirmation de l'Utilisateur.
+     * <BR>Modifie l'objet Donnee du Repertoire <BR>et modifie dans la base de donnee
+     * @param context contexte
+     * @param laDonnee Donnee a modifier
+     * @param donneeSaisie Donnee correspondant aux nouvelles saisies
+     */
     public static void popModifConfirm(final Context context, Donnee laDonnee, final Donnee donneeSaisie) {
         final Donnee aModifier = laDonnee ;
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -402,7 +428,13 @@ public class DonneesControl {
     }
 
 
-    // met a jour l'objet Donnee apres validation des modifications
+
+
+    /**
+     * Met a jour l'objet Donnee apres validation des modifications
+     * @param laDonnee Donnee a modifier
+     * @param donneeSaisie Nouvelle Donnee
+     */
     private static void upLaDonnee(Donnee laDonnee, Donnee donneeSaisie) {
 
         if(!laDonnee.getNomDonnee().equals(donneeSaisie.getNomDonnee()))

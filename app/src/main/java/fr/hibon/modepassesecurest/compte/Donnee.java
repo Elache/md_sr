@@ -85,8 +85,8 @@ public class Donnee {
         this.nomDonnee = nomDonnee;
         this.loginDonnee = loginDonnee;
         this.mailDonnee = mailDonnee;
-        // TODO  voir url web
         this.siteWebDonnee = siteWebDonnee;
+        // TODO  voir url web (table)
         this.questionSecreteDonnee = questionSecreteDonnee;
         this.categorieDonnee = categorieDonnee;
         this.noteDonnee = noteDonnee;
@@ -174,7 +174,7 @@ public class Donnee {
      */
     @Override
     public boolean equals(Object obj) {
-        // TODO verifier equals : nom + passe ?
+        // TODO determiner equals : nom + passe ?
         if (this == obj)
             return true;
         if (obj == null)

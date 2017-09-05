@@ -17,7 +17,7 @@ import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
 import fr.hibon.modepassesecurest.motpasse.ChainePasse;
 
 /**
- *
+ * Gere l'interface de Creation d'un compte et les interactions
  */
 
 public class CreationCompteInterface extends AppCompatActivity implements View.OnClickListener {
@@ -62,7 +62,10 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
 
     }
 
-
+    /**
+     * Gestion des boutons Aide et Validation de la creation
+     * @param v vue
+     */
     @Override
     public void onClick(View v) {
         String titre;
@@ -77,7 +80,6 @@ public class CreationCompteInterface extends AppCompatActivity implements View.O
                 break ;
 
             case R.id.bouton_creation :
-                // TODO option : en ligne
                 if(CompteUtilisateur.getCompteConnecte().getNomUser() != null){
                     titre = "Utilisateur déjà connecté" ;
                     message = "Voulez-vous vous déconnecter et créer un nouveau compte ?" ;
