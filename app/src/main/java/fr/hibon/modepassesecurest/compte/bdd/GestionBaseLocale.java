@@ -1,15 +1,12 @@
 package fr.hibon.modepassesecurest.compte.bdd;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import fr.hibon.modepassesecurest.compte.Donnee;
 import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
 
-import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Categorie.*;
 import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Compte_Utilisateur.* ;
 import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Donnee.*;
 import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire.*;
@@ -123,7 +120,7 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
         valeurs.put(REPERTOIRE_NOM, "Mes codes" ) ;
         valeurs.put(REPERTOIRE_DESCRIPTION, "") ;
         valeurs.put(REPERTOIRE_UTILISATEUR_ASSOCIE, 1) ;
-        db.insert(REPERTOIRE_TABLE_NOM, null, valeurs) ;   valeurs = new ContentValues() ;
+        db.insert(REPERTOIRE_TABLE_NOM, null, valeurs) ;
 
 
         // Creation d'un 2nd repertoire pour Utilisateur 1 (non accessible IHM)
@@ -131,7 +128,7 @@ public class GestionBaseLocale extends SQLiteOpenHelper {
         valeurs.put(REPERTOIRE_NOM, "Répertoire professionnel" ) ;
         valeurs.put(REPERTOIRE_DESCRIPTION, "") ;
         valeurs.put(REPERTOIRE_UTILISATEUR_ASSOCIE, 1) ;
-        db.insert(REPERTOIRE_TABLE_NOM, null, valeurs) ;   valeurs = new ContentValues() ;
+        db.insert(REPERTOIRE_TABLE_NOM, null, valeurs) ;
 
 
         // Insertion de donnees dans le repertoire 1

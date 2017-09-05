@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * Gere les options du menu : creation de compte, outi'passes, infos, deconnexion
-     * @param item
+     * @param item item menu
      * @return boolean
      */
     @Override

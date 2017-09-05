@@ -143,7 +143,7 @@ public class RepertoireTest {
 	@Test
 	public void setLesDonnees_doitModifier() {
 		Repertoire r = new Repertoire() ;
-		ArrayList<Donnee> listeDonnees = new ArrayList<Donnee>() ;
+		ArrayList<Donnee> listeDonnees = new ArrayList<>() ;
 		listeDonnees.add(donneeDeux) ; 
 		listeDonnees.add(new Donnee()) ; 
 		listeDonnees.add(new Donnee()) ; 

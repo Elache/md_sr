@@ -55,7 +55,7 @@ public class GestionIHM {
      * Verifie les saisies pour la creation d'un compte et genere un avertissement
      * <BR>Concordance des passes et confirmation
      * <BR>Pour les comptes en ligne, longueur d'identifiant et force des passes
-     * @return
+     * @return avertissement retourn&eacute;
      */
     public String verifier() {
         String avertiss = "";

@@ -59,7 +59,8 @@
                     android:background="@drawable/linearborder"
                     android:minWidth="30dp"
                     android:padding="3dp"
-                    android:textAppearance="@style/texte_bleu"/>
+                    android:textAppearance="@style/texte_bleu"
+                    android:inputType="text"/>
             </LinearLayout>
 
             <!--  mot de passe -->
@@ -88,7 +89,8 @@
                     android:minWidth="30dp"
                     android:layout_marginStart="5dp"
                     android:background="@drawable/linearborder"
-                    android:textAppearance="@style/texte_bleu" />
+                    android:textAppearance="@style/texte_bleu"
+                    android:inputType="text"/>
 
             </LinearLayout>
 
@@ -115,7 +117,8 @@
                     android:background="@drawable/linearborder"
                     android:padding="3dp"
                     android:minWidth="30dp"
-                    android:textAppearance="@style/texte_bleu"/>
+                    android:textAppearance="@style/texte_bleu"
+                    android:inputType="text"/>
                 <!-- intitule -->
                 <TextView
                     android:layout_width="wrap_content"
@@ -132,7 +135,8 @@
                     android:minWidth="30dp"
                     android:background="@drawable/linearborder"
                     android:padding="3dp"
-                    android:textAppearance="@style/texte_bleu"/>
+                    android:textAppearance="@style/texte_bleu"
+                    android:inputType="text"/>
             </LinearLayout>
 
 
@@ -158,7 +162,8 @@
                     android:background="@drawable/linearborder"
                     android:minWidth="30dp"
                     android:padding="3dp"
-                    android:textAppearance="@style/texte_bleu"/>
+                    android:textAppearance="@style/texte_bleu"
+                    android:inputType="text"/>
 
                 <!--  mail -->
                 <!-- intitule -->
@@ -177,7 +182,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/linearborder"
                     android:padding="3dp"
-                    android:textAppearance="@style/texte_bleu"/>
+                    android:textAppearance="@style/texte_bleu"
+                    android:inputType="text"/>
 
             </LinearLayout>
 
@@ -203,7 +209,8 @@
                     android:background="@drawable/linearborder"
                     android:padding="3dp"
                     android:minWidth="30dp"
-                    android:textAppearance="@style/texte_bleu"/>
+                    android:textAppearance="@style/texte_bleu"
+                    android:inputType="text"/>
             </LinearLayout>
 
             <!-- categorisation  -->
@@ -256,7 +263,8 @@
                     android:background="@drawable/linearborder"
                     android:minWidth="30dp"
                     android:padding="3dp"
-                    android:textAppearance="@style/texte_bleu"/>
+                    android:textAppearance="@style/texte_bleu"
+                    android:inputType="text"/>
             </LinearLayout>
 
 

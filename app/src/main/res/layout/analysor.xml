@@ -74,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@drawable/echelle_analyse"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/echelle"/>
 
 
     <!-- infos resultats -->

@@ -11,7 +11,8 @@
         android:id="@+id/ico"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/puce_liste"/>
 
     <TextView
         android:id="@+id/name"

@@ -1,6 +1,5 @@
 package fr.hibon.modepassesecurest.ihm.compte;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -156,7 +155,7 @@ public class ConnecteAccueilInterface extends AppCompatActivity implements View.
     /**
      * Gere l'affichage de la liste de Donnee retourn&eacute;es par une requete (rechercher ou lister)
      *
-     * @param result
+     * @param result Liste de Donnee a afficher
      */
     private void affichResultats(ArrayList<Donnee> result) {
         final DonneeAdapter adaptListe ;
@@ -198,8 +197,8 @@ public class ConnecteAccueilInterface extends AppCompatActivity implements View.
     /**
      * Gere les choix du menu :
      * <BR>Deconnexion, Outi'passes, Infos, Creer une Donnee
-     * @param item
-     * @return
+     * @param item item Menu
+     * @return booleen
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

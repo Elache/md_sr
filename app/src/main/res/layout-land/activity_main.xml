@@ -43,6 +43,7 @@
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:background="@color/colorAccent"
+                android:contentDescription="@string/test"
                 />
 
             <LinearLayout
@@ -54,7 +55,7 @@
                 <TextView
                     android:id=
                         "@+id/accueilTexte"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="top|start"
                     android:padding="5dp"

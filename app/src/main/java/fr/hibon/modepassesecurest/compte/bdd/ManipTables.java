@@ -207,7 +207,7 @@ public class ManipTables {
      * Verifie l'existence d'un identifiant (nom d'utilisateur) dans la base
      * @param context contexte de l'activite
      * @param identifiant nom d'utilisateur recherche
-     * @return
+     * @return true si identifiant deja dans la base
      */
     private boolean identifExiste(Context context, String identifiant) {
         String req = "SELECT * FROM " + COMPTE_USER_TABLE_NOM

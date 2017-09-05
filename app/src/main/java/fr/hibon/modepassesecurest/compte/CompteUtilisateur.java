@@ -51,7 +51,7 @@ public class CompteUtilisateur {
     public static CompteUtilisateur getCompteConnecte() {
         if (instanceSingleton == null) {
             instanceSingleton = new CompteUtilisateur();
-            instanceSingleton.lesRepertoires = new ArrayList<Repertoire>();
+            instanceSingleton.lesRepertoires = new ArrayList<>();
         }
         return instanceSingleton;
     }

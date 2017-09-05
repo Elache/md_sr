@@ -1,32 +1,16 @@
 package fr.hibon.modepassesecurest.ihm;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
-import com.opencsv.CSVWriter;
-
-import java.io.File;
-import java.io.FileWriter;
-
 import fr.hibon.modepassesecurest.R;
-import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
-import fr.hibon.modepassesecurest.compte.bdd.GestionBaseLocale;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Categorie;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Compte_Utilisateur;
 import fr.hibon.modepassesecurest.compte.bdd.table.Table_Donnee;
 import fr.hibon.modepassesecurest.compte.bdd.ManipTables;
-import fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire;
-import fr.hibon.modepassesecurest.compte.utiles.ChiffeMode;
-import fr.hibon.modepassesecurest.ihm.compte.GestionIHM;
 
-import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Categorie.CATEGORIE_NOM;
-import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Categorie.CATEGORIE_TABLE_NOM;
 import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Repertoire.REPERTOIRE_TABLE_NOM;
 
 

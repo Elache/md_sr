@@ -251,7 +251,7 @@ public class ChainePasseTest {
             exTest = ChainePasse.genererMotDePasse(20, true, false, false, false, false, null, incl);
             chainPasse = exTest.getChaineDuPasse();
             for (int k = 0; k < chainPasse.length(); k++) {
-                if (!Character.isDigit(chainPasse.charAt(k)) && !incl.contains(Character.valueOf(chainPasse.charAt(k))))
+                if (!Character.isDigit(chainPasse.charAt(k)) && !incl.contains(chainPasse.charAt(k)))
                     test = false;
             }
         }
@@ -305,9 +305,9 @@ public class ChainePasseTest {
             chainPasse = exTest.getChaineDuPasse();
             for (int k = 0; k < chainPasse.length(); k++) {
                 ch = new Caractere(chainPasse.charAt(k));
-                if (excl.contains(Character.valueOf(ch.getLeChar())))
+                if (excl.contains(ch.getLeChar()))
                     test = false;
-                if (!ch.estUneMajuscule() && !incl.contains(Character.valueOf(ch.getLeChar())))
+                if (!ch.estUneMajuscule() && !incl.contains(ch.getLeChar()))
                     test = false;
             }
         }
@@ -484,12 +484,12 @@ public class ChainePasseTest {
         boolean test;
 
         ArrayList<Character> inclusions = new ArrayList<>();
-        inclusions.add(Character.valueOf('4'));
-        inclusions.add(Character.valueOf('#'));
-        inclusions.add(Character.valueOf('*'));
-        inclusions.add(Character.valueOf('m'));
-        inclusions.add(Character.valueOf('v'));
-        inclusions.add(Character.valueOf('A'));
+        inclusions.add('4');
+        inclusions.add('#');
+        inclusions.add('*');
+        inclusions.add('m');
+        inclusions.add('v');
+        inclusions.add('A');
 
         TriInclusions caractTries = new TriInclusions(inclusions);
 
@@ -511,19 +511,19 @@ public class ChainePasseTest {
 
     private ArrayList<Character> echantillon_exclusions() {
         ArrayList<Character> excl;
-        excl = (ArrayList<Character>) Arrays.asList(Character.valueOf('0'), Character.valueOf('o'), Character.valueOf('%'), Character.valueOf('i'), Character.valueOf('+'), Character.valueOf('e'),
-                Character.valueOf('#'), Character.valueOf('a'), Character.valueOf('ù'), Character.valueOf('â'), Character.valueOf('é'), Character.valueOf('~'), Character.valueOf('Q'), Character.valueOf('^'), Character.valueOf('ç'), Character.valueOf('6'));
+        excl = (ArrayList<Character>) Arrays.asList('0', 'o', '%', 'i', '+', 'e',
+                '#', 'a', 'ù', 'â', 'é', '~', 'Q', '^', 'ç', '6');
         return excl;
     }
 
     private ArrayList<Character> echantillon_exclu_VoyellesMajuscules() {
         ArrayList<Character> excl = new ArrayList<>();
-        excl.add(Character.valueOf('A'));
-        excl.add(Character.valueOf('E'));
-        excl.add(Character.valueOf('I'));
-        excl.add(Character.valueOf('O'));
-        excl.add(Character.valueOf('U'));
-        excl.add(Character.valueOf('Y'));
+        excl.add('A');
+        excl.add('E');
+        excl.add('I');
+        excl.add('O');
+        excl.add('U');
+        excl.add('Y');
         return excl;
     }
 
@@ -531,22 +531,22 @@ public class ChainePasseTest {
 
     private ArrayList<Character> echantillon_inclusions() {
         ArrayList<Character> incl = new ArrayList<>();
-        incl.add(Character.valueOf('1'));
-        incl.add(Character.valueOf('p'));
-        incl.add(Character.valueOf('$'));
-        incl.add(Character.valueOf('j'));
-        incl.add(Character.valueOf('-'));
-        incl.add(Character.valueOf('S'));
-        incl.add(Character.valueOf('{'));
-        incl.add(Character.valueOf('z'));
-        incl.add(Character.valueOf('è'));
-        incl.add(Character.valueOf('ô'));
-        incl.add(Character.valueOf('à'));
-        incl.add(Character.valueOf('}'));
-        incl.add(Character.valueOf('R'));
-        incl.add(Character.valueOf('@'));
-        incl.add(Character.valueOf('*'));
-        incl.add(Character.valueOf('9'));
+        incl.add('1');
+        incl.add('p');
+        incl.add('$');
+        incl.add('j');
+        incl.add('-');
+        incl.add('S');
+        incl.add('{');
+        incl.add('z');
+        incl.add('è');
+        incl.add('ô');
+        incl.add('à');
+        incl.add('}');
+        incl.add('R');
+        incl.add('@');
+        incl.add('*');
+        incl.add('9');
         return incl;
     }
 

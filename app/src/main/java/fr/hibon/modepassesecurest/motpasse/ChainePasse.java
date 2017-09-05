@@ -2,7 +2,6 @@ package fr.hibon.modepassesecurest.motpasse;
 
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Attributs : chaine, longueur, caracterisation de la chaine (types presents /

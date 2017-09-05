@@ -13,15 +13,12 @@
         import android.widget.ImageView;
         import android.widget.TextView;
 
-        import org.w3c.dom.Text;
-
         import java.util.ArrayList;
 
         import fr.hibon.modepassesecurest.MainActivity;
         import fr.hibon.modepassesecurest.R;
         import fr.hibon.modepassesecurest.compte.CompteUtilisateur;
         import fr.hibon.modepassesecurest.ihm.Infos;
-        import fr.hibon.modepassesecurest.ihm.compte.ConnecteAccueilInterface;
         import fr.hibon.modepassesecurest.ihm.compte.CreationCompteInterface;
         import fr.hibon.modepassesecurest.ihm.compte.GestionIHM;
         import fr.hibon.modepassesecurest.motpasse.ChainePasse;
@@ -75,7 +72,7 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
 
     /**
      * Gere les interactions avec les boutons : infos sur analyse, infos sur generation, analyser, generer
-     * @param v
+     * @param v vue
      */
     @Override
     public void onClick(View v) {
@@ -156,8 +153,8 @@ public class Passes extends AppCompatActivity implements View.OnClickListener {
     /**
      * Outil : pour les inclusions ou les exclusions de caracteres,
      * cree une liste a partir de la chaine saisie (succession de caracteres)
-     * @param chaine
-     * @return
+     * @param chaine caracteres saisis pour inclusion ou pour exclusion
+     * @return liste de Character a inclure ou a exclure
      */
     private ArrayList<Character> etablirListe(String chaine){
         if(chaine == null || chaine.length() == 0)

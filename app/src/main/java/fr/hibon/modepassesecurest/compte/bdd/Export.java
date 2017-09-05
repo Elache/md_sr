@@ -1,11 +1,13 @@
 package fr.hibon.modepassesecurest.compte.bdd;
 
+/*
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
+*/
 import android.support.v7.app.AppCompatActivity;
-
+/*
 import com.opencsv.CSVWriter;
 
 import java.io.File;
@@ -15,6 +17,8 @@ import fr.hibon.modepassesecurest.compte.bdd.table.Table_Donnee;
 import fr.hibon.modepassesecurest.ihm.compte.GestionIHM;
 
 import static fr.hibon.modepassesecurest.compte.bdd.table.Table_Donnee.DONNEE_TABLE_NOM;
+*/
+
 
 /**
  * Classe pour l'export en fichier csv

@@ -61,7 +61,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/liste"/>
+            android:background="@drawable/liste"
+            android:contentDescription="@string/btn_lister"/>
 
         <TextView
             android:labelFor="@+id/btn_lister"
@@ -103,7 +104,8 @@
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:background="@drawable/bouton_cadenas"/>
+            android:background="@drawable/bouton_cadenas"
+            android:contentDescription="@string/btn_chercher"/>
 
     </LinearLayout>
 
@@ -141,6 +143,7 @@
     android:gravity="end"
     android:layout_height="70dp"
     android:src="@drawable/ajout"
+    android:contentDescription="@string/btn_donnee"
     android:layout_gravity="center"/>
 
 </LinearLayout>

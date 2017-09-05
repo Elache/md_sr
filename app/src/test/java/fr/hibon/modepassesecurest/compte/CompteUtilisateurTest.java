@@ -54,7 +54,7 @@ public class CompteUtilisateurTest {
                     notePersoUser);
         } catch (CompteException e) {
         }
-        ArrayList<Repertoire> lesRepertoires = new ArrayList<Repertoire>();
+        ArrayList<Repertoire> lesRepertoires = new ArrayList<>();
 
         ChainePasse passeUser = ChainePasse.composition(passeUserStr);
         ChainePasse passeUserChiffre = ChainePasse.composition("Chiffre-U-Fra");
@@ -306,7 +306,7 @@ public class CompteUtilisateurTest {
     public void setLesRepertoires() {
         CompteUtilisateur cu = preparerCompteTestVide();
         int tailleInit = cu.getLesRepertoires().size();
-        ArrayList<Repertoire> toutPret = new ArrayList<Repertoire>();
+        ArrayList<Repertoire> toutPret = new ArrayList<>();
         toutPret.add(new Repertoire());
         toutPret.add(new Repertoire("2", null));
         toutPret.add(new Repertoire("3", "A"));
