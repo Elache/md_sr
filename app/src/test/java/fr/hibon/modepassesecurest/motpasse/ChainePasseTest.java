@@ -454,7 +454,7 @@ public class ChainePasseTest {
     /**
      * Test Egalit&eacute; de deux ChainePasse <BR>
      * Condition &eacute;galit&eacute; non v&eacute;rifi&eacute;e : classe
-     * diff&eacute;nte
+     * diff&eacute;rente
      */
     @Test
     public void equals_classeDifferente() {
@@ -510,9 +510,10 @@ public class ChainePasseTest {
     // methode pour echantillon de test
 
     private ArrayList<Character> echantillon_exclusions() {
-        ArrayList<Character> excl;
-        excl = (ArrayList<Character>) Arrays.asList('0', 'o', '%', 'i', '+', 'e',
-                '#', 'a', 'ù', 'â', 'é', '~', 'Q', '^', 'ç', '6');
+        ArrayList<Character> excl ;
+        Character[] echantillon = {'0', 'o', '%', 'i', '+', 'e',
+                '#', 'a', 'ù', 'â', 'é', '~', 'Q', '^', 'ç', '6'};
+        excl = new ArrayList(Arrays.asList(echantillon));
         return excl;
     }
 

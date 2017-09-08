@@ -315,7 +315,7 @@ public class Caractere {
 			ensembleSpeciaux.add((char) i);
 		ensembleSpeciaux.add((char) 163);
 		ensembleSpeciaux.add((char) 166);
-		ensembleSpeciaux.add((char) 167);
+	//	ensembleSpeciaux.add((char) 167); §
 		ensembleSpeciaux.add((char) 176);
 	}
 

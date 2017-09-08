@@ -320,7 +320,7 @@ public class DonneesControl {
             String message = "Confirmez-vous l'enregistrement ?" ;
 
             if(!confirm)
-                message += "\n\nRemarque : passe et confirmation différent.\nSi vous validez, la première saisie sera conservée." ;
+                message += "\n\nRemarque : passe et confirmation diffèrent.\nSi vous validez, la première saisie sera conservée." ;
 
             builder.setMessage(message);
 
